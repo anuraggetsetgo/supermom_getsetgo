@@ -20,10 +20,17 @@ const ColorButton = withStyles((theme) => ({
 // const gridNoHover = (event) => {
 //   event.target.style.transform = "scale(1,1)";
 // };
-
+const handleScroll = () => {
+  window.scroll({
+    top: 350,
+    left: 0,
+    behavior: "smooth",
+  });
+};
 export default {
   // gridHover,
   // gridNoHover,
+  handleScroll,
   ColorButton,
   cardRadius: {
     borderRadius: "5px",

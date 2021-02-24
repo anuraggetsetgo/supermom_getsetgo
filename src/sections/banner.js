@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
-import { Typography } from "@material-ui/core";
+import { Typography, Button } from "@material-ui/core";
 import { colors, retrievePath, docHt } from "../services";
 import Signupform from "../signupform";
 import PreloadImage from "../helpers/preloadimg";
@@ -85,9 +85,12 @@ class Banner extends Component {
             ...{ position: "absolute", bottom: "60px" },
           }}
         >
-          <span style={{ color: colors.secondary, lineHeight: 0 }}>
-            Scroll down
-          </span>
+          <Button
+            onClick={Styles.handleScroll}
+            style={{ ...Styles.colorWhite }}
+          >
+            Scroll Down
+          </Button>
         </div>
         <div
           style={{

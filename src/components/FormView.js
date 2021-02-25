@@ -33,6 +33,17 @@ class ReferralForm extends React.Component {
     values[row][col].value = value;
     this.setState({ inputFeildRows: values });
   };
+  // validate2 = (row, col, name) => {
+  //   let errorMsg = `Please Enter a ${name}`;
+  //   if (errorMsg != null) {
+  //     hasError = true;
+  //   } else {
+  //     hasError = false;
+  //   }
+  //   const values = _.cloneDeep(this.state.inputFeildRows);
+  //   values[row][col].error = errorMsg;
+  //   this.setState({ inputFeildRows: values });
+  // };
   validate = (row, col, e) => {
     const emailReg = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/g;
     const nameReg = /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/g;
@@ -90,16 +101,33 @@ class ReferralForm extends React.Component {
           if (colData.displayname === "Name") tempName = colData.value;
           if (colData.displayname === "Email") tempEmail = colData.value;
           if (colData.displayname === "Phone") tempPhone = colData.value;
+          if (tempName == "") {
+            values[row][col].error = "Please Enter a Name";
+            this.setState({ inputFeildRows: values });
+          }
+          if (tempEmail == "") {
+            values[row][col].error = "Please Enter a Email";
+            this.setState({ inputFeildRows: values });
+          }
+          if (tempPhone == "") {
+            values[row][col].error = "Please Enter a Phone";
+            this.setState({ inputFeildRows: values });
+          }
           return 0;
         });
-        postArray.push({
-          name: tempName,
-          email: tempEmail,
-          mobile: tempPhone,
-          city: "",
-          ip: "",
-          mailStatus: null,
-        });
+        if (tempName !== "" && tempEmail !== "" && tempPhone !== "") {
+          postArray.push({
+            name: tempName,
+            email: tempEmail,
+            mobile: tempPhone,
+            city: "",
+            ip: "",
+            mailStatus: null,
+          });
+        } else {
+          console.log("Empty");
+        }
+
         return 0;
       });
       axios({

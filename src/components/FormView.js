@@ -126,6 +126,7 @@ class ReferralForm extends React.Component {
           });
         } else {
           console.log("Empty Field found");
+          return 0;
         }
 
         return 0;

@@ -125,7 +125,7 @@ class ReferralForm extends React.Component {
             mailStatus: null,
           });
         } else {
-          console.log("Empty");
+          console.log("Empty Field found");
         }
 
         return 0;

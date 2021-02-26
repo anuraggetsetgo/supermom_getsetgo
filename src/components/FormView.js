@@ -197,7 +197,7 @@ class ReferralForm extends React.Component {
                   spacing={2}
                   style={{
                     ...Styles.formFieldContainer,
-                    marginBottom: Styles.spacing(3),
+                    marginBottom: Styles.spacing(6),
                   }}
                 >
                   {inputRow.map((inputCol, col) => (

@@ -161,7 +161,7 @@ class ReferralForm extends React.Component {
   };
   render() {
     return (
-      <Grid container item xs={10}>
+      <Grid container item xs={12}>
         {this.state.response === "" && (
           <Grid
             item

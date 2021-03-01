@@ -194,7 +194,7 @@ class ReferralForm extends React.Component {
                   item
                   container
                   key={row}
-                  spacing={2}
+                  spacing={0}
                   style={{
                     ...Styles.formFieldContainer,
                     marginBottom: Styles.spacing(6),

@@ -230,14 +230,20 @@ class ReferralForm extends React.Component {
                   ))}
                   <IconButton
                     aria-label="Add"
-                    onClick={() => this.handleAddRow(row)}
+                    onClick={() => {
+                      this.handleAddRow(row);
+                      this.setState({ btn: false });
+                    }}
                   >
                     <AddSharpIcon color="primary"></AddSharpIcon>
                   </IconButton>
                   {row > 0 && (
                     <IconButton
                       aria-label="Remove"
-                      onClick={() => this.handleRemoveRow(row)}
+                      onClick={() => {
+                        this.handleRemoveRow(row);
+                        this.setState({ btn: false });
+                      }}
                     >
                       <RemoveSharpIcon
                         style={{ color: "#ff1744" }}

@@ -38,7 +38,7 @@ class Banner extends Component {
           justify="center"
         >
           <Typography variant="h1" style={{ ...Styles.colorWhite }}>
-            {customTxt.bannerPageTxt.mainheading}
+            {customTxt.bannerPageTxt.mainHeading}
           </Typography>
           <Typography
             variant="subtitle1"

@@ -54,7 +54,7 @@ export default (props) => {
   let [err, updateErr] = useState(false);
   let [formSubmitting, updateFormSubmitting] = useState(false);
   let [sendingEmail, updatesendingEmail] = useState(false);
-  let [btn, setBtn] = useState(false);
+  let [submitButtonEnable, setSubmitButtonEnable] = useState(false);
   function moveNxt() {
     history.replace("packages");
   }
@@ -81,7 +81,7 @@ export default (props) => {
     moveNxt();
   };
   let submitForm = (values) => {
-    setBtn(true);
+    setSubmitButtonEnable(true);
     set("userDetails", values);
     updateFormSubmitting(true);
     const campaign_id = get("campaign_id");
@@ -269,8 +269,8 @@ export default (props) => {
               type="submit"
               variant="contained"
               color="primary"
-              disabled={btn}
-              // onClick={(e) => setBtn(true)}
+              disabled={submitButtonEnable}
+              // onClick={(e) => setSubmitButtonEnable(true)}
             >
               Proceed to join
             </Styles.ColorButton>

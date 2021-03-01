@@ -21,7 +21,7 @@ class ReferralForm extends React.Component {
     this.state = {
       inputFeildRows: [obj],
       response: "",
-      btn: false,
+      submitButtonEnable: false,
     };
   }
 
@@ -77,7 +77,7 @@ class ReferralForm extends React.Component {
     }
   };
   handleSubmit = (e) => {
-    this.setState({ btn: true });
+    this.setState({ submitButtonEnable: true });
     e.preventDefault();
     //let campaign_id=1//this.props.campaign_id;
     let postArray = [];
@@ -218,7 +218,7 @@ class ReferralForm extends React.Component {
                         //label={inputCol.error ? inputCol.error : ""}
                         onChange={(e) => {
                           this.handleChangeInput(row, col, e);
-                          this.setState({ btn: false });
+                          this.setState({ submitButtonEnable: false });
                         }}
                         onBlur={(e) => this.validate(row, col, e)}
                         style={inputCol.style ? inputCol.style : null}
@@ -232,7 +232,7 @@ class ReferralForm extends React.Component {
                     aria-label="Add"
                     onClick={() => {
                       this.handleAddRow(row);
-                      this.setState({ btn: false });
+                      this.setState({ submitButtonEnable: false });
                     }}
                   >
                     <AddSharpIcon color="primary"></AddSharpIcon>
@@ -242,7 +242,7 @@ class ReferralForm extends React.Component {
                       aria-label="Remove"
                       onClick={() => {
                         this.handleRemoveRow(row);
-                        this.setState({ btn: false });
+                        this.setState({ submitButtonEnable: false });
                       }}
                     >
                       <RemoveSharpIcon
@@ -256,7 +256,7 @@ class ReferralForm extends React.Component {
                 style={Styles.deafultButton}
                 variant="contained"
                 color="primary"
-                disabled={this.state.btn}
+                disabled={this.state.submitButtonEnable}
                 type="submit"
                 // onClick={(e) => {
                 //   this.handleSubmit(e);

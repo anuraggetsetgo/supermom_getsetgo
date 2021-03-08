@@ -13,6 +13,7 @@ class Banner extends Component {
       <Grid
         item
         container
+        className="fixed"
         style={{ ...Styles.banner }}
         alignItems="center"
         justify="space-evenly"

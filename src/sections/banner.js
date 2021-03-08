@@ -13,7 +13,6 @@ class Banner extends Component {
       <Grid
         item
         container
-        className="fixed"
         style={{ ...Styles.banner }}
         alignItems="center"
         justify="space-evenly"
@@ -79,7 +78,7 @@ class Banner extends Component {
             </Grid>
           </Grid>
         </Grid>
-        {/* <div
+        <div
           style={{
             ...Styles.highZ,
             ...{ position: "absolute", bottom: "60px" },
@@ -91,8 +90,8 @@ class Banner extends Component {
           >
             Scroll Down
           </Button>
-        </div> */}
-        {/* <div
+        </div>
+        <div
           style={{
             ...Styles.highZ,
             ...{ position: "absolute", bottom: "10px" },
@@ -104,7 +103,7 @@ class Banner extends Component {
           >
             keyboard_arrow_down
           </span>
-        </div> */}
+        </div>
       </Grid>
     );
   }

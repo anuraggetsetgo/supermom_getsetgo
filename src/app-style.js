@@ -88,7 +88,7 @@ export default {
   },
   banner: {
     paddingTop: "40px",
-    minHeight: "100vh",
+    height: "100vh",
     zIndex: 1000,
     overflow: "hidden",
   },

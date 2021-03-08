@@ -171,7 +171,7 @@ export default {
     maxHeight: "280px",
   },
   whiteColor: { color: colors.secondary },
-  err: { color: colors.err },
+  err: { color: colors.err, marginLeft: "10px" },
   special: { display: "inline-block", width: "5%", textAlign: "center" },
   countryContainer: { display: "inline-block", width: "15%" },
   mobileContainer: { display: "inline-block", width: "75%" },

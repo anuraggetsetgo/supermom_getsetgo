@@ -18,7 +18,10 @@ class Homeworkout extends Component {
       <Grid
         container
         item
-        style={{ ...Styles.highZ, ...Styles.fullHt }}
+        style={{
+          ...Styles.highZ,
+          ...Styles.fullHt,
+        }}
         direction="row"
         alignItems="center"
         justify="space-evenly"
@@ -33,6 +36,7 @@ class Homeworkout extends Component {
             padding: "40px",
             position: "relative",
             ...Styles.cardRadius,
+            marginTop: Styles.spacing(5),
           }}
           alignItems="center"
           justify="center"

@@ -224,7 +224,7 @@ class ReferralForm extends React.Component {
                         style={inputCol.style ? inputCol.style : null}
                       />
                       {inputCol.error && (
-                        <Typography variant="h6" style={{ ...Styles.err }}>
+                        <Typography variant="h6" style={{ ...Styles.err2 }}>
                           {inputCol.error}
                         </Typography>
                       )}

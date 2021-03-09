@@ -93,7 +93,10 @@ class Banner extends Component {
           <Grid item>
             <Button
               onClick={Styles.handleScroll}
-              style={{ ...Styles.colorWhite }}
+              style={{
+                ...Styles.colorWhite,
+                ...Styles.colorTransparent,
+              }}
             >
               Scroll Down
             </Button>
@@ -101,7 +104,7 @@ class Banner extends Component {
           <Grid item>
             <Button
               onClick={Styles.handleScroll}
-              style={{ ...Styles.colorWhite }}
+              style={{ ...Styles.colorWhite, ...Styles.colorTransparent }}
             >
               <span
                 className="material-icons"

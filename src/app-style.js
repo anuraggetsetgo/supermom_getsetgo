@@ -47,6 +47,9 @@ export default {
   blackBG: {
     background: "#000",
   },
+  colorTransparent: {
+    background: colors.transparent,
+  },
   boldTxt: {
     fontStyle: "bold",
   },

@@ -13,6 +13,23 @@ class Thanks extends Component {
       message: "",
     };
   }
+  copyUrl = () => {
+    if (navigator.clipboard != undefined) {
+      //Chrome
+      navigator.clipboard.writeText(this.state.url).then(
+        function () {
+          console.log("Copying to clipboard was successful!");
+        },
+        function (err) {
+          console.error(": Could not copy text: ", err);
+        }
+      );
+    } else if (window.clipboardData) {
+      //console.log("gg")
+      window.clipboardData.setData("Text", this.state.url);
+    }
+    //(navigator.clipboard.writeText(this.state.url)).catch((err)=>console.log(navigator.clipboard))
+  };
   componentDidMount() {
     this.setState({ url: this.props.url });
     this.setState({ message: this.props.message });
@@ -80,7 +97,8 @@ class Thanks extends Component {
                 color="primary"
                 size="small"
                 startIcon={<FileCopyOutlinedIcon />}
-                onClick={navigator.clipboard.writeText(this.state.url)}
+                // onClick={navigator.clipboard.writeText(this.state.url)}
+                onClick={this.copyUrl}
               >
                 Copy Link
               </Button>

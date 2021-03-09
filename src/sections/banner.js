@@ -93,6 +93,7 @@ class Banner extends Component {
           </Button>
         </Grid>
         <Grid
+          onClick={Styles.handleScroll}
           style={{
             ...Styles.highZ,
             ...{ position: "absolute", bottom: "10px" },

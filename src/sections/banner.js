@@ -80,31 +80,41 @@ class Banner extends Component {
           </Grid>
         </Grid>
         <Grid
+          item
+          container
+          justify="center"
+          alignItems="center"
+          direction="column"
           style={{
             ...Styles.highZ,
             ...{ position: "absolute", bottom: "60px" },
           }}
         >
-          <Button
-            onClick={Styles.handleScroll}
-            style={{ ...Styles.colorWhite }}
-          >
-            Scroll Down
-          </Button>
-        </Grid>
-        <Grid
-          onClick={Styles.handleScroll}
-          style={{
-            ...Styles.highZ,
-            ...{ position: "absolute", bottom: "10px" },
-          }}
-        >
-          <span
-            className="material-icons"
-            style={{ fontSize: "4rem", color: colors.secondary, lineHeight: 0 }}
-          >
-            keyboard_arrow_down
-          </span>
+          <Grid item>
+            <Button
+              onClick={Styles.handleScroll}
+              style={{ ...Styles.colorWhite }}
+            >
+              Scroll Down
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              onClick={Styles.handleScroll}
+              style={{ ...Styles.colorWhite }}
+            >
+              <span
+                className="material-icons"
+                style={{
+                  fontSize: "4rem",
+                  color: colors.secondary,
+                  lineHeight: 0,
+                }}
+              >
+                keyboard_arrow_down
+              </span>
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     );

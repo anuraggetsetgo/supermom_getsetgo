@@ -287,7 +287,7 @@ class Package extends Component {
                             {desc[index]}
                             {/* //product.pack_des} */}
                           </Typography>
-                          <div>
+                          <Grid item>
                             <Styles.ColorButton
                               variant="contained"
                               color="primary"
@@ -301,7 +301,7 @@ class Package extends Component {
                                 {!bored ? "Please wait ..." : "Buy now"}
                               </Typography>
                             </Styles.ColorButton>
-                          </div>
+                          </Grid>
                         </Grid>
                       );
                     })

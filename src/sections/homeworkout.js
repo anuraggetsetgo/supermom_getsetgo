@@ -48,7 +48,7 @@ class Homeworkout extends Component {
               Your browser does not support HTML5 video.
             </video>
             {!videoPlaying && (
-              <div
+              <Grid
                 onClick={() => {
                   this.refs.vidRef.play();
                   this.setState({ videoPlaying: true });
@@ -76,7 +76,7 @@ class Homeworkout extends Component {
                     zIndex: -1,
                   }}
                 />
-              </div>
+              </Grid>
             )}
           </Grid>
         </Grid>

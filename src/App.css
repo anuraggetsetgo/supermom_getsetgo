@@ -17,8 +17,9 @@ ul li {
   -webkit-transform: translate3d(0, 0, 0);
 }
 .fixed {
-  position: -webkit-sticky;
   position: sticky;
+  position: -webkit-sticky;
+
   top: 0;
 }
 hr {

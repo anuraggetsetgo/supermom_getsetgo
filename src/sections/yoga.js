@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-import Feelgood from "./feelgood";
 
 import Styles from "../app-style.js";
 import { Typography } from "@material-ui/core";
@@ -20,7 +19,6 @@ class Yoga extends Component {
           justify="space-evenly"
           className="top"
         >
-          <Feelgood />
           <Grid
             item
             container

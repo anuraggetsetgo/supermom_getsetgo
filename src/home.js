@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import GetStarted from "./sections/getstarted";
-
+// import Feelgood from "./sections//feelgood";
+import Feelgood2 from "./sections/Feelgood2";
 import Banner from "./sections/banner";
 import Yoga from "./sections/yoga";
 import Yogabanner from "./sections/yogabanner";
@@ -64,7 +65,7 @@ class Home extends Component {
     return (
       <React.Fragment>
         <Banner />
-
+        <Feelgood2 />
         {/* <Yogabanner section02={section02} /> */}
         <Yoga />
         {/* <Homeworkoutbanner section03={section03}/> */}

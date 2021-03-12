@@ -8,47 +8,49 @@ const FeelGood = () => {
   return (
     <>
       <Grid
-        container
+        style={{ zIndex: "1000", ...Styles.greyBG, padding: "10vh" }}
         item
-        style={{ ...Styles.fullHt, ...Styles.highZ }}
-        direction="row"
+        xs={12}
+        container
         alignItems="center"
-        justify="space-evenly"
+        justify="center"
+        direction="column"
       >
-        <Grid item container style={{ ...Styles.section01, ...Styles.highZ }}>
-          <Grid
-            item
-            container
-            style={{ ...Styles.section01Content, ...Styles.cardRadius }}
-            alignItems="center"
-            justify="center"
-            direction="column"
-          >
-            <Grid item>
-              <Typography variant="h2" style={{ ...Styles.centerTxt }}>
-                {customTxt.feelgoodPageTxt.mainHeading[0]}
-                <span style={Styles.colorPrimary}>
-                  {customTxt.feelgoodPageTxt.mainHeading[1]}
+        <Grid
+          style={{ ...Styles.blackBG }}
+          item
+          container
+          alignItems="center"
+          justify="center"
+        >
+          {" "}
+          <Grid item>
+            <Typography
+              variant="h2"
+              style={{ ...Styles.centerTxt, ...Styles.colorWhite }}
+            >
+              {customTxt.feelgoodPageTxt.mainHeading[0]}
+              <span style={Styles.colorPrimary}>
+                {customTxt.feelgoodPageTxt.mainHeading[1]}
+              </span>
+              {customTxt.feelgoodPageTxt.mainHeading[2]}
+              <span style={Styles.colorPrimary}>
+                {customTxt.feelgoodPageTxt.mainHeading[3]}{" "}
+              </span>
+              {customTxt.feelgoodPageTxt.mainHeading[4]}
+            </Typography>
+          </Grid>
+          <Grid item container spacing={4} justify="space-between">
+            <Grid item xs={8} style={{ margin: "auto" }}>
+              <Typography
+                variant="h4"
+                style={{ ...Styles.colorGrey, ...Styles.centerTxt }}
+              >
+                <br></br>
+                <span style={{ ...Styles.colorGrey, ...Styles.italicTxt }}>
+                  {customTxt.feelgoodPageTxt.subHeading}
                 </span>
-                {customTxt.feelgoodPageTxt.mainHeading[2]}
-                <span style={Styles.colorPrimary}>
-                  {customTxt.feelgoodPageTxt.mainHeading[3]}{" "}
-                </span>
-                {customTxt.feelgoodPageTxt.mainHeading[4]}
               </Typography>
-            </Grid>
-            <Grid item container spacing={4} justify="space-between">
-              <Grid item xs={8} style={{ margin: "auto" }}>
-                <Typography
-                  variant="h4"
-                  style={{ ...Styles.colorGrey, ...Styles.centerTxt }}
-                >
-                  <br></br>
-                  <span style={{ ...Styles.colorGrey, ...Styles.italicTxt }}>
-                    {customTxt.feelgoodPageTxt.subHeading}
-                  </span>
-                </Typography>
-              </Grid>
             </Grid>
           </Grid>
         </Grid>

@@ -122,7 +122,7 @@ export default {
   section02: {
     background: "#111",
     padding: "0 5%",
-    minHeight: "100vh",
+    minHeight: "80vh",
   },
   translucentContainer: {
     background: colors.translucentBG,

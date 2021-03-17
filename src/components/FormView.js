@@ -169,7 +169,7 @@ class ReferralForm extends React.Component {
             direction="column"
             justify="center"
             alignItems="center"
-            spacing={2}
+            style={Styles.blueBG}
           >
             <Typography
               variant="h3"
@@ -179,9 +179,9 @@ class ReferralForm extends React.Component {
                 ...Styles.centerTxt,
               }}
             >
-              Enjoy <span style={{ ...Styles.colorPrimary }}>Free gifts </span>
+              Enjoy <span style={{ ...Styles.colorYellow }}>Free gifts </span>
               and
-              <span style={{ ...Styles.colorPrimary }}> Rewards points </span>
+              <span style={{ ...Styles.colorYellow }}> Rewards points </span>
               by referring more people
             </Typography>
 

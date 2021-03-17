@@ -4,12 +4,13 @@ import Button from "@material-ui/core/Button";
 
 const ColorButton = withStyles((theme) => ({
   root: {
-    color: theme.palette.getContrastText(colors.primary),
-    backgroundColor: colors.primary,
-    border: `1px solid ${colors.primary}`,
+    color: colors.blue,
+    backgroundColor: colors.yellow,
+    border: `1px solid ${colors.yellow}`,
     "&:hover": {
       backgroundColor: colors.transparent,
-      border: `1px solid white`,
+      border: `1px solid ${colors.yellow}`,
+      color: colors.yellow,
     },
   },
 }))(Button);
@@ -41,11 +42,17 @@ export default {
   colorPrimary: {
     color: colors.primary,
   },
+  colorYellow: {
+    color: colors.yellow,
+  },
   colorGrey: {
     color: colors.grey,
   },
   blackBG: {
     background: "#000",
+  },
+  whiteBG: {
+    background: "#fff",
   },
   colorTransparent: {
     background: colors.transparent,
@@ -58,6 +65,9 @@ export default {
   },
   greyBG: {
     background: "#111",
+  },
+  blueBG: {
+    background: "#3e4e6d",
   },
   italicTxt: {
     fontStyle: "italic",
@@ -130,7 +140,7 @@ export default {
   },
   fullHt: {
     minHeight: "100vh",
-    background: "#111",
+    background: "#fff",
   },
   fullHtNoBG: { height: "100vh" },
   highZ: {
@@ -144,7 +154,7 @@ export default {
     top: 0,
     left: 0,
     padding: "15px",
-    background: "rgba(0,0,0,.5)",
+    background: "rgb(100 116 166 / 44%)",
     zIndex: 20000,
   },
   popup: {
@@ -158,7 +168,7 @@ export default {
   },
   footer: {
     padding: "50px",
-    background: "#000",
+    background: "#fff",
     textAlign: "center",
   },
   spacing: (value) => `${value * 8}px`,

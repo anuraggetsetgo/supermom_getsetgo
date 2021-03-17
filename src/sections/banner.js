@@ -14,12 +14,17 @@ class Banner extends Component {
         item
         container
         className="fixed"
-        style={{ ...Styles.banner }}
+        style={{
+          ...Styles.banner,
+          background: `linear-gradient(0deg, rgba(0,0,0,0.3981967787114846) 21%, rgba(0,0,0,0.4) 66%), url('./img/Website_Image.jpg')`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
         alignItems="center"
         justify="space-evenly"
       >
-        <PreloadImage
-          src={`${retrievePath()}corona.jpg`}
+        {/* <PreloadImage
+          src={"./img/Website_Image.jpg"}
           style={{
             position: "absolute",
             top: 0,
@@ -28,7 +33,8 @@ class Banner extends Component {
             height: "100%",
             zIndex: -1,
           }}
-        />
+        /> */}
+
         <Grid
           item
           container

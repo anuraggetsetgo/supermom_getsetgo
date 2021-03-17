@@ -32,7 +32,7 @@ class Homeworkout extends Component {
           item
           xs={5}
           style={{
-            background: "#000",
+            ...Styles.whiteBG,
             padding: "40px",
             position: "relative",
             ...Styles.cardRadius,
@@ -43,7 +43,12 @@ class Homeworkout extends Component {
           direction="column"
         >
           <Grid item xs={10} style={{ position: "relative" }}>
-            <video width="300" controls={videoPlaying} ref="vidRef">
+            <video
+              width="100%"
+              height="400"
+              controls={videoPlaying}
+              ref="vidRef"
+            >
               <source src={`${retrievePath()}homewo.mp4`} type="video/mp4" />
               Your browser does not support HTML5 video.
             </video>
@@ -65,7 +70,7 @@ class Homeworkout extends Component {
                 }}
               >
                 <PreloadImage
-                  src={`${retrievePath()}videoframe.jpg`}
+                  src={"./img/Video_Thumbail.jpg"}
                   alt="Start your day with meditation or yoga"
                   style={{
                     position: "absolute",
@@ -85,7 +90,7 @@ class Homeworkout extends Component {
           container
           xs={5}
           style={{
-            ...Styles.blackBG,
+            ...Styles.blueBG,
             ...Styles.padding5,
             ...Styles.cardRadius,
           }}
@@ -95,14 +100,14 @@ class Homeworkout extends Component {
         >
           <Typography variant="h2" style={Styles.colorWhite}>
             {customTxt.homeworkoutPageTxt.mainHeading[0]}
-            <span style={Styles.colorPrimary}>
+            <span style={Styles.colorYellow}>
               {customTxt.homeworkoutPageTxt.mainHeading[1]}
             </span>
             {customTxt.homeworkoutPageTxt.mainHeading[2]}
           </Typography>
           <Typography
             variant="h6"
-            style={{ ...Styles.colorGrey, ...Styles.italicTxt }}
+            style={{ ...Styles.colorWhite, ...Styles.italicTxt }}
           >
             {customTxt.homeworkoutPageTxt.subHeading[0]} <br></br>
             <br></br>

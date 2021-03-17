@@ -109,7 +109,7 @@ class Ordersummary extends Component {
     return (
       <Grid
         container
-        style={{ paddingTop: "20vh", minHeight: "85vh" }}
+        style={{ paddingTop: "20vh", minHeight: "85vh", ...Styles.blueBG }}
         alignItems="center"
         justify="center"
       >

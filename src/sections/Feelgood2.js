@@ -8,7 +8,7 @@ const FeelGood = () => {
   return (
     <>
       <Grid
-        style={{ zIndex: "1000", ...Styles.greyBG, padding: "10vh" }}
+        style={{ zIndex: "1000", ...Styles.blueBG, padding: "10vh" }}
         item
         xs={12}
         container
@@ -17,7 +17,7 @@ const FeelGood = () => {
         direction="column"
       >
         <Grid
-          style={{ ...Styles.blackBG }}
+          style={{ ...Styles.whiteBG, padding: "20vh 5vh" }}
           item
           container
           alignItems="center"
@@ -25,10 +25,7 @@ const FeelGood = () => {
         >
           {" "}
           <Grid item>
-            <Typography
-              variant="h2"
-              style={{ ...Styles.centerTxt, ...Styles.colorWhite }}
-            >
+            <Typography variant="h2" style={{ ...Styles.centerTxt }}>
               {customTxt.feelgoodPageTxt.mainHeading[0]}
               <span style={Styles.colorPrimary}>
                 {customTxt.feelgoodPageTxt.mainHeading[1]}

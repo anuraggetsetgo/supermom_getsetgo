@@ -24,7 +24,7 @@ class Yoga extends Component {
             container
             xs={5}
             style={{
-              ...Styles.blackBG,
+              ...Styles.blueBG,
               ...Styles.padding5,
               ...Styles.cardRadius,
             }}
@@ -34,14 +34,14 @@ class Yoga extends Component {
           >
             <Typography variant="h2" style={Styles.colorWhite}>
               {customTxt.yogaPageTxt.mainHeading[0]}
-              <span style={Styles.colorPrimary}>
+              <span style={Styles.colorYellow}>
                 {customTxt.yogaPageTxt.mainHeading[1]}{" "}
               </span>
               {customTxt.yogaPageTxt.mainHeading[2]}
             </Typography>
             <Typography
               variant="h6"
-              style={{ ...Styles.colorGrey, ...Styles.italicTxt }}
+              style={{ ...Styles.colorWhite, ...Styles.italicTxt }}
             >
               <ul>
                 {customTxt.yogaPageTxt.contentList.map((val) => {
@@ -58,14 +58,14 @@ class Yoga extends Component {
             container
             item
             xs={5}
-            style={{ ...Styles.blackBG, ...Styles.cardRadius }}
+            style={{ ...Styles.whiteBG, ...Styles.cardRadius }}
             alignItems="center"
             justify="center"
             direction="column"
           >
             <Grid item xs={10}>
               <PreloadImage
-                src={`${retrievePath()}yogi_vertical.png`}
+                src={"./img/Why-our-health-care-plans-are-effective.jpg"}
                 style={{ position: "relative", width: "100%", height: "auto" }}
                 alt="Morning yoga to help you stay positive"
               />

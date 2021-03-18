@@ -84,8 +84,8 @@ export default (props) => {
     setSubmitButtonEnable(true);
     set("userDetails", values);
     updateFormSubmitting(true);
-    const campaign_id = get("campaign_id");
-    const affiliate_id = get("affiliate_id");
+    const campaign_id = get("campaign_id") === null ? 1 : get("campaign_id");
+    const affiliate_id = get("affiliate_id") === null ? 1 : get("affiliate_id");
     let loc = get("loc");
     loc = JSON.parse(loc);
     loc.region = loc.region || null;

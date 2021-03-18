@@ -178,6 +178,7 @@ class Package extends Component {
         style={{
           minHeight: `${docHt() - 100}px`,
           paddingTop: Styles.spacing(10),
+          ...Styles.blueBG,
         }}
         direction="column"
         alignItems="center"

@@ -169,9 +169,8 @@ class ReferralForm extends React.Component {
             direction="column"
             justify="center"
             alignItems="center"
-            style={Styles.blueBG}
           >
-            <Typography
+            {/* <Typography
               variant="h3"
               style={{
                 ...Styles.colorWhite,
@@ -183,7 +182,7 @@ class ReferralForm extends React.Component {
               and
               <span style={{ ...Styles.colorYellow }}> Rewards points </span>
               by referring more people
-            </Typography>
+            </Typography> */}
 
             <form
               onSubmit={(e) => this.handleSubmit(e)}

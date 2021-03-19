@@ -272,7 +272,7 @@ export default (props) => {
               variant="contained"
               color="primary"
               disabled={submitButtonEnable}
-              // onClick={(e) => setSubmitButtonEnable(true)}
+              onClick={(e) => setSubmitButtonEnable(true)}
             >
               Proceed to join
             </Styles.ColorButton>

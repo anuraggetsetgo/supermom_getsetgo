@@ -42,6 +42,7 @@ class Banner extends Component {
           md={6}
           alignItems="center"
           justify="center"
+          style={{ ...Styles.translucentContainer }}
         >
           <Typography variant="h1" style={{ ...Styles.colorWhite }}>
             {customTxt.bannerPageTxt.mainHeading}
@@ -66,9 +67,11 @@ class Banner extends Component {
           <Grid item container>
             <Grid item>
               <Typography variant="h6" style={{ ...Styles.colorWhite }}>
-                Sign up with us to manage your diabetes better & take a step
-                towards a better life.{" "}
-                <span style={{ fontWeight: "bold" }}>free</span>
+                <span style={{ ...Styles.colorYellow }}>Sign up with us </span>
+                to manage your
+                <span style={{ ...Styles.colorYellow }}> Diabetes</span> better
+                & take a step towards a
+                <span style={{ ...Styles.colorYellow }}> Better Life</span>
               </Typography>
               <hr />
             </Grid>

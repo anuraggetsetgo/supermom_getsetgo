@@ -13,7 +13,7 @@ class Publicreviews extends Component {
         style={{
           ...Styles.highZ,
           ...Styles.spacingVertical,
-          ...Styles.blackBG,
+          ...Styles.blueBG,
         }}
         direction="column"
         alignItems="center"
@@ -22,13 +22,13 @@ class Publicreviews extends Component {
       >
         <Grid item>
           <Typography
-            variant="h1"
-            style={{ ...Styles.colorPrimary, ...Styles.centerTxt }}
+            variant="h2"
+            style={{ ...Styles.colorYellow, ...Styles.centerTxt }}
           >
             Like they say - client is the king
           </Typography>
           <Typography
-            variant="h2"
+            variant="h3"
             style={{ color: colors.grey, ...Styles.centerTxt }}
           >
             This is what kings and queens are saying about us
@@ -55,7 +55,7 @@ class Publicreviews extends Component {
             </Typography>
             <Typography
               variant="subtitle2"
-              style={{ ...Styles.colorGrey, ...Styles.centerTxt }}
+              style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
             >
               Rating on Facebook
             </Typography>

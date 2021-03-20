@@ -11,15 +11,18 @@ class Transformations extends Component {
       <Grid
         item
         container
-        style={{ ...Styles.highZ, ...Styles.whiteBG, ...Styles.padding5 }}
+        style={{ ...Styles.highZ, ...Styles.blueBG, ...Styles.padding5 }}
         alignItems="flex-start"
         justify="center"
         className="top"
       >
         <Grid item>
-          <Typography variant="h2" style={{ ...Styles.centerTxt }}>
-            More than <span style={Styles.colorPrimary}>20000</span> people have
-            learned <span style={Styles.colorPrimary}>a new way of life</span>{" "}
+          <Typography
+            variant="h2"
+            style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+          >
+            More than <span style={Styles.colorYellow}>20000</span> people have
+            learned <span style={Styles.colorYellow}>a new way of life</span>{" "}
             with us
           </Typography>
           <Typography

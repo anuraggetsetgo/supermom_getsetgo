@@ -16,7 +16,8 @@ class Banner extends Component {
         className="fixed"
         style={{
           ...Styles.banner,
-          background: `linear-gradient(0deg, rgba(0,0,0,0.3981967787114846) 21%, rgba(0,0,0,0.4) 66%), url('./img/Website_Image.jpg')`,
+          //ANV background: `linear-gradient(0deg, rgba(0,0,0,0.3981967787114846) 21%, rgba(0,0,0,0.4) 66%), url('./img/Website_Image.jpg')`,
+          background:  `url('./img/Website_Image.jpg')`,
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
@@ -62,7 +63,7 @@ class Banner extends Component {
           direction="column"
           alignItems="stretch"
           justify="flex-start"
-          style={{ ...Styles.translucentContainer, ...Styles.cardRadius }}
+          style={{ background:"rgb(101 97 141 / 70%)",padding:'20px', ...Styles.cardRadius }}
         >
           <Grid item container>
             <Grid item>

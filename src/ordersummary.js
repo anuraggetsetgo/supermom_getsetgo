@@ -213,25 +213,27 @@ class Ordersummary extends Component {
             </Typography>
           </Grid>
         )}
-        {(orderStatus === "success" || orderStatus === "successEmailErr") && (
-          <Grid
-            item
-            container
-            style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
-            alignItems="flex-end"
-            justify="center"
-            xs={12}
-          >
-            {/* <Refercomponents  fields = {empty} affiliate_name="Anurag Vishwakarma"affiliate_email = "vaibhav@getsetgo.fitess" affiliate_mobile = "+919821354464" campaign_id="1" ></Refercomponents> */}
-            <Refercomponents
-              fields={empty}
-              affiliate_id={new_affiliate_id}
-              campaign_id={get("campaign_id") === null ? 1 : get("campaign_id")}
-            ></Refercomponents>
-          </Grid>
-        )}
+
       </Grid>
     );
   }
 }
 export default Ordersummary;
+
+// {(orderStatus === "success" || orderStatus === "successEmailErr") && (
+//   <Grid
+//     item
+//     container
+//     style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+//     alignItems="flex-end"
+//     justify="center"
+//     xs={12}
+//   >
+//     {/* <Refercomponents  fields = {empty} affiliate_name="Anurag Vishwakarma"affiliate_email = "vaibhav@getsetgo.fitess" affiliate_mobile = "+919821354464" campaign_id="1" ></Refercomponents> */}
+//     <Refercomponents
+//       fields={empty}
+//       affiliate_id={new_affiliate_id}
+//       campaign_id={get("campaign_id") === null ? 1 : get("campaign_id")}
+//     ></Refercomponents>
+//   </Grid>
+// )}

@@ -54,13 +54,13 @@ form > label {
 }
 .speech-bubble {
   position: relative;
-  background: #f1f1f1;
+  background: #3e4e6d;
   border-radius: 0.4em;
   display: inline-block;
   vertical-align: bottom;
   padding: 20px;
-  margin-bottom: 40px;
-  margin-right: 50px;
+  margin-bottom: 40px !important; 
+  margin-right: 50px !important;
 }
 .speech-bubble:after {
   content: "";
@@ -70,7 +70,7 @@ form > label {
   width: 0;
   height: 0;
   border: 20px solid transparent;
-  border-top-color: #f1f1f1;
+  border-top-color: #3e4e6d;
   border-bottom: 0;
   border-left: 0;
   margin-left: -10px;

@@ -13,7 +13,7 @@ class Publicreviews extends Component {
         style={{
           ...Styles.highZ,
           ...Styles.spacingVertical,
-          ...Styles.blueBG,
+          ...Styles.whiteBG,
         }}
         direction="column"
         alignItems="center"
@@ -23,10 +23,11 @@ class Publicreviews extends Component {
         <Grid item>
           <Typography
             variant="h2"
-            style={{ ...Styles.colorYellow, ...Styles.centerTxt }}
+            style={{  ...Styles.centerTxt }}
           >
-            Like they say - client is the king
-          </Typography>
+            Like they say -
+            <span style={{  ...Styles.colorPrimary,...Styles.centerTxt }}> Client is the King
+          </span></Typography> 
           <Typography
             variant="h3"
             style={{ color: colors.grey, ...Styles.centerTxt }}
@@ -49,13 +50,13 @@ class Publicreviews extends Component {
           <Grid item xs={6} style={{ borderRight: "1px solid #fff" }}>
             <Typography
               variant="h1"
-              style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+              style={{ ...Styles.colorPrimary, ...Styles.centerTxt }}
             >
               4.8/5
             </Typography>
             <Typography
               variant="subtitle2"
-              style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+              style={{  ...Styles.colorPrimary,...Styles.centerTxt }}
             >
               Rating on Facebook
             </Typography>
@@ -63,19 +64,19 @@ class Publicreviews extends Component {
           <Grid item xs={6}>
             <Typography
               variant="h1"
-              style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+              style={{ ...Styles.colorPrimary, ...Styles.centerTxt }}
             >
               4.8/5
             </Typography>
             <Typography
               variant="subtitle2"
-              style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+              style={{   ...Styles.colorPrimary,...Styles.centerTxt }}
             >
               Rating on Google
             </Typography>
           </Grid>
         </Grid>
-        <Grid container item xs={10} style={Styles.centerTxt}>
+        <Grid container item xs={10} style={{...Styles.centerTxt,display:'block'}}>
           <Grid item className="speech-bubble">
             <iframe
               src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fcharan.panjwani.3%2Fposts%2F229774871476080&width=500"
@@ -91,7 +92,7 @@ class Publicreviews extends Component {
           </Grid>
           <Grid item className="speech-bubble">
             <iframe
-              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fdeepsee.gupta%2Fposts%2F2343576852336900&width=500"
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Faashu.luthra/posts/10159555067681995&width=500"
               width="500"
               height="200"
               style={{ border: "none", overflow: "hidden" }}
@@ -104,7 +105,7 @@ class Publicreviews extends Component {
           </Grid>
           <Grid item className="speech-bubble">
             <iframe
-              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fharshrmb%2Fposts%2F1937028956346033&width=500"
+              src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fabhishek.maurya.98/posts/10213407272911439&width=500"
               width="500"
               height="181"
               style={{ border: "none", overflow: "hidden" }}

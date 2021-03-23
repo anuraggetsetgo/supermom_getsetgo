@@ -13,7 +13,11 @@ import Styles from "./app-style";
 import PreloadImage from "./helpers/preloadimg";
 import GetDiscount from "./sections/getdiscount";
 import { Link } from "react-router-dom";
-
+import ProductTable from './producttable.js'
+import Divider from '@material-ui/core/Divider';
+import { CheckCircleOutlineRounded } from "@material-ui/icons";
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
+import VideoCallIcon from '@material-ui/icons/VideoCall';
 let baseurl = "https://getsetgo.fitness";
 class Package extends Component {
   constructor(props) {
@@ -99,7 +103,24 @@ class Package extends Component {
     }, 10000);
     this.hideDetails();
   };
+  setProducts=(data)=>{        
+    var services = data.data.services;
+    console.log(services);
+    //setServices(services);
+    baseurl = data.data.redirect_base_url;
+    this.setState({ products: services });
+    let row=[];
+    var desc
+      services.map((product)=>{
+          desc = JSON.parse(product.pack_des);
+         for (const key in desc) {
+          row.push(key)
+        }
+        })
+        var uniqueRow = [...new Set(row)]  
+        this.setState({serviceInclusions:uniqueRow});
 
+  }
   getproducts = () => {
     let currency = this.state.currency;
     let campaign_id = get("campaign_id") === null ? 1 : get("campaign_id");
@@ -110,13 +131,7 @@ class Package extends Component {
     callAPI(
       "https://api.getsetgo.fitness/base_ind/API/v1/fetch_services",
       "post",
-      (data) => {
-        var services = data.data.services;
-        //console.log(services);
-        //setServices(services);
-        baseurl = data.data.redirect_base_url;
-        this.setState({ products: services });
-      },
+      (data) => {this.setProducts(data)},
       (err) => {
         console.log(err);
       },
@@ -126,6 +141,31 @@ class Package extends Component {
       }
     );
   };
+  setIcons=(text)=>{
+    var element;
+    switch (text) {
+      case 'Yes':
+          return <CheckCircleOutlineRounded fontSize='large' color="primary"/>
+        break;
+      case '1 call / month':
+        return <span><PhoneAndroidIcon fontSize='large'color="primary"/>{ text}</span>
+        break;
+      case '3 calls / month':
+          return <span><PhoneAndroidIcon fontSize='large'color="primary"/>{ text}</span>
+        break;
+      case '1 video call / month':
+          return <span><VideoCallIcon fontSize='large'color="primary"/>{ text}</span>
+        break; 
+      case '2 video calls / month':
+          return <span><VideoCallIcon fontSize='large' color="primary"/>{ text}</span>
+        break;   
+          default:
+        element=text;
+        break;
+    }
+    return element;
+
+  }
   componentDidMount() {
     this.getproducts();
   }
@@ -141,22 +181,8 @@ class Package extends Component {
       discountDetails,
       discountActivated,
       activatingDiscount,
+      serviceInclusions,
     } = this.state;
-    // let desc = [
-    //     "Stranded alone at home? Well, no more. Join thousands of others and turn it into a great at-home-staycation for you!",
-    //     "Running out of ideas about things to do together? Tired of binge-watching series and movies? How about getting fit together?",
-    //     "They say the more the merrier. We can tell you it's true! Join with your complete family. It doesn't get better than this."
-    // ];
-    // let imgs = [
-    //     `${retrievePath()}boredMan.jpg`,
-    //     `${retrievePath()}boredCouple.jpg`,
-    //     `${retrievePath()}boredFamily.jpg`
-    // ];
-    // let imgsHappy=[
-    //     `${retrievePath()}happyMan.jpg`,
-    //     `${retrievePath()}happyCouple.jpg`,
-    //     `${retrievePath()}happyFamily.jpg`,
-    // ];
     let desc = [
       "Stranded alone at home? Well, no more. Join thousands of others and turn it into a great at-home-staycation for you!",
       "Running out of ideas about things to do together? Tired of binge-watching series and movies? How about getting fit together?",
@@ -245,6 +271,9 @@ class Package extends Component {
                           style={{
                             ...Styles.centerTxt,
                             ...{ padding: "0 50px" },
+                            boxShadow: '0px 0px 19px -3px rgba(0,0,0,0.36)',
+                            background: 'rgb(255, 255, 255)',
+                            border :'5px soild'
                           }}
                           key={index}
                         >
@@ -269,25 +298,25 @@ class Package extends Component {
                           <Typography style={{ ...Styles.colorGrey }}>
                             (Cost: {currency} {product.pack_price} per person)
                           </Typography>
-                          {/* {config['offer'] &&  <Grid>
-                                                <Typography variant="subtitle1" style={{...Styles.colorWhite, ...Styles.marginTop}}>{index+1} {index>0?'People':'Person'}</Typography>
-                                            <Typography style={{...Styles.colorGrey, ...Styles.marginTop}}>{currency} {discountActivated?offerAmount[key]*(index+1):amount[key]*(index+1)} per month</Typography>
-                                            {!(activatingDiscount || discountActivated) && <Typography style={{...Styles.colorPrimary, ...{cursor: 'pointer'}}} onClick={this.showDiscount}>Click here for discounted price: {currency} {offerAmount[key]*(indx+1)} per month</Typography>}
-                                            {activatingDiscount && !discountActivated && <Typography style={{...Styles.colorPrimary, ...{cursor: 'pointer'}}} >Validating your post. Please wait ...</Typography>}
-                                            {!activatingDiscount && discountActivated && <Typography style={{...Styles.colorPrimary, ...{cursor: 'pointer'}}} >Discount activated!</Typography>}
-                                            <Typography style={{...Styles.colorGrey}}>(Effective cost: {currency} {offerAmount[key]} per person)</Typography> </Grid>
-                                        } */}
                           <Typography
                             variant="subtitle2"
                             style={{
-                              ...Styles.colorWhite,
+                              ...Styles.colorPrimary,
                               ...Styles.marginTop,
-                              ...{ minHeight: "120px" },
+                              
                             }}
                           >
-                            {desc[index]}
+                            <strong>{product.service_caption}</strong>
                             {/* //product.pack_des} */}
                           </Typography>
+                          <Divider style={{height:'4px'}} />
+                          {serviceInclusions && serviceInclusions.map((feature,index)=>(<Grid>
+                            <Typography variant="h6" style={{...Styles.colorPrimary}}>
+                              {feature}
+                              </Typography>
+                          <Typography variant="subtitle2">{this.setIcons(JSON.parse(product.pack_des)[feature])}</Typography>
+                          </Grid>
+                          ))}
                           <Grid item>
                             <Styles.ColorButton
                               variant="contained"
@@ -307,7 +336,11 @@ class Package extends Component {
                       );
                     })
                 }
-              </Grid>
+               {/* {products&&(
+                  <Grid xs={8}><ProductTable products={products}/></Grid>
+              )
+  } */}
+  </Grid>
             )}
             <GetDiscount
               discountDetails={discountDetails}

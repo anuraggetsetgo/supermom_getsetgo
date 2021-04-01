@@ -7,17 +7,14 @@ import {
   getURL,
   updateLoc,
   retrievePath,
+  colors,
 } from "./services";
-import { Typography, Button, Fade } from "@material-ui/core";
+import { Typography, Button, Fade, Table, TableCell, TableBody, TableContainer, TableHead, TableRow, Paper } from "@material-ui/core";
 import Styles from "./app-style";
 import PreloadImage from "./helpers/preloadimg";
 import GetDiscount from "./sections/getdiscount";
 import { Link } from "react-router-dom";
-import ProductTable from './producttable.js'
-import Divider from '@material-ui/core/Divider';
-import { CheckCircleOutlineRounded } from "@material-ui/icons";
-import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
-import VideoCallIcon from '@material-ui/icons/VideoCall';
+
 let baseurl = "https://getsetgo.fitness";
 class Package extends Component {
   constructor(props) {
@@ -103,21 +100,24 @@ class Package extends Component {
     }, 10000);
     this.hideDetails();
   };
-  setProducts=(data)=>{        
+  setProducts=(data)=>{  
+    console.log("DATA FETCHED!!")      
     var services = data.data.services;
     console.log(services);
     //setServices(services);
     baseurl = data.data.redirect_base_url;
     this.setState({ products: services });
-    let row=[];
-    var desc
+    let row=[], fields = [];
+    let desc
       services.map((product)=>{
           desc = JSON.parse(product.pack_des);
+         row.push(desc); 
          for (const key in desc) {
-          row.push(key)
+          row.push(desc);
         }
         })
-        var uniqueRow = [...new Set(row)]  
+        var uniqueRow = [...new Set(row)]; 
+        console.log("UNIQUE ROW -->>", uniqueRow);
         this.setState({serviceInclusions:uniqueRow});
 
   }
@@ -141,27 +141,29 @@ class Package extends Component {
       }
     );
   };
-  setIcons=(text)=>{
+  returnCurrencySymbol = (currency)=>{
+    switch (currency){
+      case 'INR':
+        return "₹";
+        case 'AED':
+          return 'aed';
+        default: 
+        return '$';
+    }
+  }
+  renderVal=(text)=>{
     var element;
     switch (text) {
       case 'Yes':
-          return <CheckCircleOutlineRounded fontSize='large' color="primary"/>
+          return <span className="material-icons" style={{color: 'green', fontSize: '1.5rem', fontWeight: 'bold'}}>add</span>
         break;
-      case '1 call / month':
-        return <span><PhoneAndroidIcon fontSize='large'color="primary"/>{ text}</span>
+        case 'No':
+          return <span className="material-icons" style={{color: 'red', fontSize: '1.5rem', fontWeight: 'bold'}}>remove</span>
         break;
-      case '3 calls / month':
-          return <span><PhoneAndroidIcon fontSize='large'color="primary"/>{ text}</span>
+      default:
+        return <Typography variant="body2">{text}</Typography>
         break;
-      case '1 video call / month':
-          return <span><VideoCallIcon fontSize='large'color="primary"/>{ text}</span>
-        break; 
-      case '2 video calls / month':
-          return <span><VideoCallIcon fontSize='large' color="primary"/>{ text}</span>
-        break;   
-          default:
-        element=text;
-        break;
+      
     }
     return element;
 
@@ -198,6 +200,7 @@ class Package extends Component {
       `${retrievePath()}happyCouple.jpg`,
       `${retrievePath()}happyFamily.jpg`,
     ];
+    console.log("PRODUCTS -->>", serviceInclusions)
     return (
       <Grid
         container
@@ -233,10 +236,18 @@ class Package extends Component {
                 style={{
                   ...Styles.colorWhite,
                   ...Styles.centerTxt,
-                  ...Styles.marginBottom,
                 }}
               >
                 Get started today! Your health is worth it
+              </Typography>
+              <Typography
+                variant="subtitle1"
+                style={{
+                  ...Styles.colorWhite,
+                  ...Styles.centerTxt,
+                }}
+              >
+                All our plans are meticulously crafted to ensure you adopt a healthy lifestyle and enjoy freedom with moderation. 
               </Typography>
             </Grid>
             {!products && (
@@ -257,84 +268,135 @@ class Package extends Component {
                 item
                 container
                 alignItems="center"
-                justify="space-evenly"
+                justify="center"
                 //style={{ ...Styles.marginTop }}
               >
                 {
                   //Object.keys(this.state.amount).map((key, indx)=>
-                  products &&
-                    products.map((product, index) => {
-                      return (
-                        <Grid
-                          item
-                          xs={4}
-                          style={{
-                            ...Styles.centerTxt,
-                            ...{ padding: "0 50px" },
-                            boxShadow: '0px 0px 19px -3px rgba(0,0,0,0.36)',
-                            background: 'rgb(255, 255, 255)',
-                            border :'5px soild'
-                          }}
-                          key={index}
-                        >
-                          {bored && (
-                            <Fade in={bored}>
-                              <PreloadImage
-                                src={imgs[index]}
-                                alt="Simple, macro-calculated recipes"
-                                style={{ width: "100%", minHeight: "100px" }}
-                              />
-                            </Fade>
-                          )}
-                          {!bored && (
-                            <Fade in={!bored}>
-                              <PreloadImage
-                                src={imgsHappy[index]}
-                                alt="Simple, macro-calculated recipes"
-                                style={{ width: "100%", minHeight: "100px" }}
-                              />
-                            </Fade>
-                          )}
-                          <Typography style={{ ...Styles.colorGrey }}>
-                            (Cost: {currency} {product.pack_price} per person)
-                          </Typography>
-                          <Typography
-                            variant="subtitle2"
-                            style={{
-                              ...Styles.colorPrimary,
-                              ...Styles.marginTop,
-                              
-                            }}
-                          >
-                            <strong>{product.service_caption}</strong>
-                            {/* //product.pack_des} */}
-                          </Typography>
-                          <Divider style={{height:'4px'}} />
-                          {serviceInclusions && serviceInclusions.map((feature,index)=>(<Grid>
-                            <Typography variant="h6" style={{...Styles.colorPrimary}}>
-                              {feature}
-                              </Typography>
-                          <Typography variant="subtitle2">{this.setIcons(JSON.parse(product.pack_des)[feature])}</Typography>
-                          </Grid>
-                          ))}
-                          <Grid item>
-                            <Styles.ColorButton
-                              variant="contained"
-                              color="primary"
-                              onClick={() => this.createOrder(product, index)}
-                              disabled={!bored}
-                            >
-                              <Typography
-                                variant="subtitle1"
-                                style={Styles.colorWhite}
+                  // products &&
+                  //   products.map((product, index) => {
+                  //     return (
+                        <TableContainer component={Paper} style={{width: '50%', padding: '10px', borderRadius: '20px',minWidth:'680px'}}>
+      <Table size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell><div style={{background: colors.yellow, borderRadius: '20px', padding: '20px'}}><Typography variant="subtitle2">Plans</Typography></div></TableCell>
+            {products.map(el=>(
+              <TableCell align="center"><div style={{background: colors.primary, borderRadius: '20px', padding: '20px', color: colors.secondary}}><Typography variant="body1">{el.service_caption}</Typography></div></TableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {/* {products.map((product) => (
+            <TableRow key={product.name}>
+              <TableCell component="th" scope="row">
+                {product.name}
+              </TableCell>
+              <TableCell align="right">{product.calories}</TableCell>
+              <TableCell align="right">{product.fat}</TableCell>
+              <TableCell align="right">{row.carbs}</TableCell>
+              <TableCell align="right">{row.protein}</TableCell>
+            </TableRow>
+          ))} */}
+          {serviceInclusions && Object.keys(serviceInclusions[0]).map((key, indx)=>(
+            <TableRow key={`${key}-${indx}`}>
+              <TableCell component="td" scope="row"><Typography variant="body2">{key}</Typography></TableCell>
+              {serviceInclusions.map(el=>(
+                <TableCell align="center" component="td" scope="row">
+                  <Typography variant="body2">{this.renderVal(el[key])}</Typography>
+                </TableCell>
+              ))}
+            </TableRow>
+          ))}
+          <TableRow>
+          <TableCell align="left" component="td" scope="row">&nbsp;</TableCell>
+          {products.map(el=>(<TableCell align="center" component="td" scope="row"><Grid container direction="column">
+            <Grid item><Typography variant="body1">{this.returnCurrencySymbol(el.pack_currency)} {el.pack_price}</Typography></Grid><Grid item><Typography variant="body2" style={{color: colors.grey}}>{"12 weeks"}</Typography></Grid></Grid></TableCell>))}
+          </TableRow>
+          <TableRow>
+          <TableCell align="left" component="td" scope="row"></TableCell>
+          {products.map((product, indx)=>(
+            <TableCell align="center" component="td" scope="row">
+            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => this.createOrder(product, indx)}
+                                disabled={!bored}
+                                style={{width: '100%'}}
                               >
-                                {!bored ? "Please wait ..." : "Buy now"}
-                              </Typography>
-                            </Styles.ColorButton>
-                          </Grid>
-                        </Grid>
-                      );
-                    })
+                                <Typography
+                                  variant="body2"
+                                  style={{...Styles.colorWhite}}
+                                >
+                                  {!bored ? "Please wait ..." : "Sign up"}
+                                </Typography>
+                              </Button>
+            </TableCell>
+          ))}
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+                        // <Grid
+                        //   item
+                        //   xs={4}
+                        //   style={{
+                        //     ...Styles.centerTxt,
+                        //     ...{ padding: "0 50px" },
+                        //     boxShadow: '0px 0px 19px -3px rgba(0,0,0,0.36)',
+                        //     background: 'rgb(255, 255, 255)',
+                        //     border :'5px soild'
+                        //   }}
+                        //   key={index}
+                        // >
+                            
+                        //       <PreloadImage
+                        //         src={imgs[index]}
+                        //         alt="Diabetes special plan"
+                        //         style={{ width: "100%", minHeight: "100px" }}
+                        //       />
+                            
+                          
+                        //   <Typography style={{ ...Styles.colorGrey }}>
+                        //     (Cost: {currency} {product.pack_price} per person)
+                        //   </Typography>
+                        //   <Typography
+                        //     variant="subtitle2"
+                        //     style={{
+                        //       ...Styles.colorPrimary,
+                        //       ...Styles.marginTop,
+                              
+                        //     }}
+                        //   >
+                        //     <strong>{product.service_caption}</strong>
+                        //     {/* //product.pack_des} */}
+                        //   </Typography>
+                        //   <Divider style={{height:'4px'}} />
+                        //   {serviceInclusions && serviceInclusions.map((feature,index)=>(<Grid>
+                        //     <Typography variant="h6" style={{...Styles.colorPrimary}}>
+                        //       Feature: {feature}
+                        //       </Typography>
+                        //   <Typography variant="subtitle2">{this.setIcons(JSON.parse(product.pack_des)[feature])}</Typography>
+                        //   </Grid>
+                        //   ))}
+                        //   <Grid item>
+                        //     <Styles.ColorButton
+                        //       variant="contained"
+                        //       color="primary"
+                        //       onClick={() => this.createOrder(product, index)}
+                        //       disabled={!bored}
+                        //     >
+                        //       <Typography
+                        //         variant="subtitle1"
+                        //         style={Styles.colorWhite}
+                        //       >
+                        //         {!bored ? "Please wait ..." : "Buy now"}
+                        //       </Typography>
+                        //     </Styles.ColorButton>
+                        //   </Grid>
+                        // </Grid>
+                      // );
+                    // })
                 }
                {/* {products&&(
                   <Grid xs={8}><ProductTable products={products}/></Grid>

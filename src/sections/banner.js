@@ -43,7 +43,7 @@ class Banner extends Component {
           md={6}
           alignItems="center"
           justify="center"
-          style={{ ...Styles.translucentContainer }}
+          style={{ ...Styles.translucentContainer,marginTop:'5%' }}
         >
           <Typography variant="h1" style={{ ...Styles.colorWhite }}>
             {customTxt.bannerPageTxt.mainHeading}

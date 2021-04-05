@@ -14,6 +14,7 @@ import Styles from "./app-style";
 import PreloadImage from "./helpers/preloadimg";
 import GetDiscount from "./sections/getdiscount";
 import { Link } from "react-router-dom";
+import { Style } from "@material-ui/icons";
 
 let baseurl = "https://getsetgo.fitness";
 class Package extends Component {
@@ -317,20 +318,21 @@ class Package extends Component {
           <TableCell align="left" component="td" scope="row"></TableCell>
           {products.map((product, indx)=>(
             <TableCell align="center" component="td" scope="row">
-            <Button
+            <Styles.ColorButton
                                 variant="contained"
+                                style={Styles.deafultButton}
                                 color="primary"
                                 onClick={() => this.createOrder(product, indx)}
                                 disabled={!bored}
                                 style={{width: '100%'}}
                               >
                                 <Typography
-                                  variant="body2"
-                                  style={{...Styles.colorWhite}}
+                                  variant="body1"
+                                  style={Styles.colorBlue}
                                 >
                                   {!bored ? "Please wait ..." : "Sign up"}
                                 </Typography>
-                              </Button>
+                              </Styles.ColorButton>
             </TableCell>
           ))}
           </TableRow>

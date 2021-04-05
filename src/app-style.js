@@ -48,6 +48,9 @@ export default {
   colorGrey: {
     color: colors.grey,
   },
+  colorBlue: {
+    color: colors.blue,
+  },
   blackBG: {
     background: "#000",
   },

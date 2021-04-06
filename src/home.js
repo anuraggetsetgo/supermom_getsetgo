@@ -44,10 +44,10 @@ class Home extends Component {
     }
   }
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll.bind(this));
+    window.addEventListener('scroll', this.handleScroll.bind(this));
   }
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll.bind(this));
+    window.removeEventListener('scroll', this.handleScroll.bind(this));
   }
   showDetails = () => {
     this.setState({ currentScroll: window.scrollY });
@@ -67,11 +67,11 @@ class Home extends Component {
     return (
       <React.Fragment>
         <Banner />
-        <Feelgood2 />
+        {/* <Feelgood2 /> */}
         {/* <Yogabanner section02={section02} /> */}
-        <Yoga />
+        <Yoga section02={section02}/>
         {/* <Homeworkoutbanner section03={section03}/> */}
-        <Homeworkout />
+        <Homeworkout section03={section03}/>
         {/* <Diet showDetails={this.showDetails} /> */}
         {/* <Homefood /> */}
         {/* <Fun /> */}

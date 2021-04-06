@@ -43,7 +43,7 @@ class Banner extends Component {
           md={6}
           alignItems="center"
           justify="center"
-          style={{ ...Styles.translucentContainer,marginTop:'5%' }}
+          style={{ ...Styles.translucentContainer,marginTop:'14.5%',background:'rgb(6 4 29 / 30%)'  }}
         >
           <Typography variant="h1" style={{ ...Styles.colorWhite }}>
             {customTxt.bannerPageTxt.mainHeading}
@@ -63,7 +63,7 @@ class Banner extends Component {
           direction="column"
           alignItems="stretch"
           justify="flex-start"
-          style={{ background:"rgb(101 97 141 / 70%)",padding:'20px', ...Styles.cardRadius }}
+          style={{ background:"rgb(62, 78, 109)",padding:'20px', ...Styles.cardRadius }}
         >
           <Grid item container>
             <Grid item>
@@ -72,7 +72,7 @@ class Banner extends Component {
                 to manage your
                 <span style={{ ...Styles.colorYellow }}> Diabetes</span> better
                 & take a step towards a
-                <span style={{ ...Styles.colorYellow }}> Better Life</span>
+                <span style={{ ...Styles.colorYellow }}> Better Life.</span>
               </Typography>
               <hr />
             </Grid>
@@ -101,15 +101,16 @@ class Banner extends Component {
           }}
         >
           <Grid item>
-            <Button
+            {/* <Button
               onClick={Styles.handleScroll}
               style={{
-                ...Styles.colorWhite,
+                ...Styles.colorGrey,
                 ...Styles.colorTransparent,
+                color: colors.grey,
               }}
             >
               Scroll Down
-            </Button>
+            </Button> */}
           </Grid>
           <Grid item>
             <Button
@@ -120,7 +121,7 @@ class Banner extends Component {
                 className="material-icons"
                 style={{
                   fontSize: "4rem",
-                  color: colors.secondary,
+                  color: colors.grey,
                   lineHeight: 0,
                 }}
               >

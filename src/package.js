@@ -156,7 +156,7 @@ class Package extends Component {
     var element;
     switch (text) {
       case 'Yes':
-          return <span className="material-icons" style={{color: 'green', fontSize: '1.5rem', fontWeight: 'bold'}}>add</span>
+          return <span className="material-icons" style={{color: 'green', fontSize: '1.5rem', fontWeight: 'bold'}}>check</span>
         break;
         case 'No':
           return <span className="material-icons" style={{color: 'red', fontSize: '1.5rem', fontWeight: 'bold'}}>remove</span>
@@ -239,7 +239,7 @@ class Package extends Component {
                   ...Styles.centerTxt,
                 }}
               >
-                Get started today! Your health is worth it
+                Get started today! Your health is worth it.
               </Typography>
               <Typography
                 variant="subtitle1"
@@ -277,7 +277,7 @@ class Package extends Component {
                   // products &&
                   //   products.map((product, index) => {
                   //     return (
-                        <TableContainer component={Paper} style={{width: '50%', padding: '10px', borderRadius: '20px',minWidth:'680px'}}>
+                        <TableContainer component={Paper} style={{width: '80%', padding: '10px', borderRadius: '20px',minWidth:'680px'}}>
       <Table size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>

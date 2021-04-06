@@ -21,8 +21,8 @@ class Transformations extends Component {
             variant="h2"
             style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
           >
-            More than <span style={Styles.colorYellow}>20000</span> people have
-            learned <span style={Styles.colorYellow}>a new way of life</span>{" "}
+            More than <span style={Styles.colorYellow}>20000 people</span> have
+            learned a <span style={Styles.colorYellow}>new way of life</span>{" "}
             with us
           </Typography>
           <Typography

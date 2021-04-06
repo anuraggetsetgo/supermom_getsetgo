@@ -17,7 +17,7 @@ const FeelGood = () => {
         direction="column"
       >
         <Grid
-          style={{ ...Styles.whiteBG, padding: "20vh 5vh" }}
+          style={{ ...Styles.whiteBG, padding: "20vh 5vw" }}
           item
           container
           alignItems="center"
@@ -44,7 +44,7 @@ const FeelGood = () => {
                 style={{ ...Styles.colorGrey, ...Styles.centerTxt }}
               >
                 <br></br>
-                <span style={{ ...Styles.colorGrey, ...Styles.italicTxt }}>
+                <span style={{ ...Styles.colorGrey }}>
                   {customTxt.feelgoodPageTxt.subHeading}
                 </span>
               </Typography>

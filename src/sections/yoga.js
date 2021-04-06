@@ -6,14 +6,20 @@ import { Typography } from "@material-ui/core";
 import PreloadImage from "../helpers/preloadimg";
 import { retrievePath } from "../services";
 import customTxt from "./customTxt.json";
+import Feelgood2 from './Feelgood2'
 class Yoga extends Component {
   render() {
     return (
-      <>
+      <><Grid container
+      item style={{ ...Styles.fullHt, ...Styles.highZ, }}
+      direction="row"
+      alignItems="center"
+      justify="space-evenly"
+      className="top"><Feelgood2/></Grid>
         <Grid
           container
           item
-          style={{ ...Styles.fullHt, ...Styles.highZ }}
+          style={{ ...Styles.fullHt, ...Styles.highZ, }}
           direction="row"
           alignItems="center"
           justify="space-evenly"
@@ -41,7 +47,7 @@ class Yoga extends Component {
             </Typography>
             <Typography
               variant="h6"
-              style={{ ...Styles.colorWhite, ...Styles.italicTxt }}
+              style={{ ...Styles.colorWhite }}
             >
               <ul>
                 {customTxt.yogaPageTxt.contentList.map((val) => {

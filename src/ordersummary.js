@@ -148,12 +148,12 @@ class Ordersummary extends Component {
             }}
           >
             <Typography
-              variant="subtitle1"
+              variant="h2"
               style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
             >
               Your registration is complete!!!
             </Typography>
-            <Typography variant="subtitle2" style={{ ...Styles.colorWhite }}>
+            <Typography variant="subtitle2" style={{ ...Styles.colorWhite,lineHeight:'2.2rem' }}>
               Congratulations {name.split(" ")[0]}! There has been a small
               glitch: we haven't been able to drop you an email. Don't worry
               though. Our backend team qill quickly review this. For your
@@ -173,14 +173,14 @@ class Ordersummary extends Component {
             }}
           >
             <Typography
-              variant="subtitle1"
+              variant="h2"
               style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
             >
               Your registration is complete!!!
             </Typography>
             <Typography
               variant="subtitle2"
-              style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+              style={{ ...Styles.colorWhite, ...Styles.marginBottom,lineHeight:'2.2rem' }}
             >
               Congratulations {name.split(" ")[0]}! Our representatives will get
               in touch with you within 2 working days. Feel free to drop us an
@@ -198,17 +198,17 @@ class Ordersummary extends Component {
             }}
           >
             <Typography
-              variant="subtitle1"
+              variant="h2"
               style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
             >
               Uh oh, seems like your order got stuck somewhere. Do not worry
               though
             </Typography>
-            <Typography variant="subtitle2" style={Styles.colorWhite}>
+            <Typography variant="subtitle2" style={{...Styles.colorWhite,lineHeight:'2.2rem'}}>
               Do not worry though. Your package is totally secure. Simply drop
               us an email at:{" "}
-              <a href="mailto: info@getsetgo.fitness">info@getsetgo.fitness</a>.
-              Remember to quote your order id in the email:{" "}
+              <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>.
+              <br></br>Remember to quote your order id in the email:{" "}
               {this.props.match.params.orderId}
             </Typography>
           </Grid>

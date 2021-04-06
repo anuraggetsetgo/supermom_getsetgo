@@ -36,7 +36,7 @@ class Homeworkout extends Component {
             padding: "40px",
             position: "relative",
             ...Styles.cardRadius,
-            marginTop: Styles.spacing(5),
+            marginTop: Styles.spacing(3),
           }}
           alignItems="center"
           justify="center"
@@ -44,8 +44,8 @@ class Homeworkout extends Component {
         >
           <Grid item xs={10} style={{ position: "relative" }}>
             <iframe
-              width="300"
-              height="300"
+              width="400"
+              height="400"
               src="https://www.youtube.com/embed/FLXOHwf32K8"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -117,7 +117,7 @@ class Homeworkout extends Component {
           </Typography>
           <Typography
             variant="h6"
-            style={{ ...Styles.colorWhite, ...Styles.italicTxt }}
+            style={{ ...Styles.colorWhite }}
           >
             {customTxt.homeworkoutPageTxt.subHeading[0]} <br></br>
             <br></br>

@@ -13,6 +13,7 @@ import Home from "./home";
 import Package from "./package";
 import Ordersummary from "./ordersummary";
 import ReactPixel from "react-facebook-pixel";
+import "../src/fonts/fonts.css";
 
 //import Secret from './secretworkout';
 

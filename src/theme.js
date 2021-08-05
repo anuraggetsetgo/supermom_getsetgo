@@ -27,7 +27,7 @@ const theme = createMuiTheme({
   },
   spacing: (value) => `${value * 8}px`,
   typography: {
-    fontFamily: "Poppins,Arial",
+    fontFamily: "Poppins,Roboto",
     spacing: (value) => value ** 8,
     color: colors.secondary,
 
@@ -73,8 +73,10 @@ const theme = createMuiTheme({
       lineHeight: "2.2rem",
     },
     subtitle2: {
-      fontSize: "1.2rem",
-      lineHeight: "1.8rem",
+      fontSize: "1rem",
+      lineHeight: "1.75rem",
+      fontFamily: "Roboto",
+      fontWeight: "normal",
     },
   },
   MuiButton: {

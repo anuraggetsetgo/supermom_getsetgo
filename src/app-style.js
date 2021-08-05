@@ -170,7 +170,7 @@ export default {
     background: "#000",
   },
   footer: {
-    padding: "30px",
+    padding: "22px",
     background: "#fff",
     textAlign: "center",
   },

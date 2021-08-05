@@ -14,8 +14,8 @@ const ColorButton = withStyles((theme) => ({
     },
   },
 }))(Button);
-const backCoverImg2 = (image) => {
-  return `../public/img/${image}`;
+const backCoverImg = (image) => {
+  return `./img/${image}`;
 };
 
 // const gridHover = (event) => {
@@ -34,6 +34,7 @@ const handleScroll = () => {
 export default {
   // gridHover,
   // gridNoHover,
+  backCoverImg,
   handleScroll,
   ColorButton,
   cardRadius: {

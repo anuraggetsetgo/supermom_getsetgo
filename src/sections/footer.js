@@ -15,26 +15,59 @@ const Footer = () => {
         justify="center"
         xs={12}
       >
+        <Grid item justify="center" alignItems="center" display="flex">
+          <svg
+            width="167"
+            height="1"
+            viewBox="0 0 167 1"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="167"
+              y1="0.5"
+              x2="-4.37114e-08"
+              y2="0.499985"
+              stroke="black"
+              stroke-opacity="0.2"
+            />
+          </svg>
+
+          <Typography
+            variant="h4"
+            style={{ color: "#103A42", fontWeight: "700", margin: "0 21px" }}
+          >
+            {customTxt.GSGInTheNews.mainheading}
+          </Typography>
+          <svg
+            width="167"
+            height="1"
+            viewBox="0 0 167 1"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="167"
+              y1="0.5"
+              x2="-4.37114e-08"
+              y2="0.499985"
+              stroke="black"
+              stroke-opacity="0.2"
+            />
+          </svg>
+        </Grid>
         <Grid
           item
-          xs={12}
           container
-          direction={"row"}
-          alignItems={"center"}
-          justify={"center"}
-          className="app-card"
+          justify="center"
           style={{
             zIndex: 2,
-            backgroundColor: "white",
             padding: "40px 51px 40px 51px",
-            maxWidth: "1070px",
-            height: "242px",
           }}
         >
           <Grid
             item
             container
-            spacing={3}
             direction="row"
             alignItems="center"
             justify="flex-start"
@@ -49,27 +82,23 @@ const Footer = () => {
                     item
                     style={{
                       width: "100%",
-
                       margin: "12px auto",
                     }}
                   >
-                    {/* <a
-                        href={val[1]}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <img width="100%" src={val[0]} />
-                      </a> */}
-                    <img width="100%" src={Styles.backCoverImg(val[0])} />
+                    <a href={val[1]} target="_blank" rel="noopener noreferrer">
+                      <img width="100%" src={Styles.backCoverImg(val[0])} />
+                    </a>
                   </Grid>
                 </Grid>
               );
             })}
           </Grid>
         </Grid>
-        <Typography variant="subtitle2" style={{ color: "#666666" }}>
-          © 2021 GetSetGo Fitness. All Rights Reserved.
-        </Typography>
+        <Grid item>
+          <Typography variant="subtitle2" style={{ color: "#666666" }}>
+            © 2021 GetSetGo Fitness. All Rights Reserved.
+          </Typography>
+        </Grid>
       </Grid>
     </>
   );

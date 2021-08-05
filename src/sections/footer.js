@@ -15,7 +15,12 @@ const Footer = () => {
         justify="center"
         xs={12}
       >
-        <Grid item justify="center" alignItems="center" display="flex">
+        <Grid
+          item
+          justify="center"
+          alignItems="center"
+          style={{ display: "flex" }}
+        >
           <svg
             width="167"
             height="1"
@@ -72,7 +77,8 @@ const Footer = () => {
             alignItems="center"
             justify="flex-start"
             style={{
-              width: "588px",
+              width: "1170px",
+              height: "242px",
             }}
           >
             {customTxt.GSGInTheNews.images.map((val, key) => {
@@ -81,12 +87,11 @@ const Footer = () => {
                   <Grid
                     item
                     style={{
-                      width: "100%",
                       margin: "12px auto",
                     }}
                   >
                     <a href={val[1]} target="_blank" rel="noopener noreferrer">
-                      <img width="100%" src={Styles.backCoverImg(val[0])} />
+                      <img width="50%" src={Styles.backCoverImg(val[0])} />
                     </a>
                   </Grid>
                 </Grid>
@@ -95,7 +100,10 @@ const Footer = () => {
           </Grid>
         </Grid>
         <Grid item>
-          <Typography variant="subtitle2" style={{ color: "#666666" }}>
+          <Typography
+            variant="subtitle2"
+            style={{ color: "#666666", marginTop: "80px" }}
+          >
             © 2021 GetSetGo Fitness. All Rights Reserved.
           </Typography>
         </Grid>

@@ -31,5 +31,33 @@
       "Regular sharing of progress update with your doctor.",
       "Unlimited coach support via WhatsApp & Call."
     ]
+  },
+  "GSGInTheNews": {
+    "mainheading": "Get Set Go, In The News",
+    "images": [
+      [
+        "../public/img/yourstory_logo.png",
+        "https://yourstory.com/2017/02/keep-eyes-prize-getsetgo-ready-flag-off-fitness-journey/amp"
+      ],
+      [
+        "../public/img/mensxp_logo.png",
+        "https://www.mensxp.com/health/motivation/49207-31-days-of-fitness-teased-for-being-fat-melvin-rsquo-s-transformation-shut-down-all-his-bullies.html"
+      ],
+      [
+        "../public/img/cnbc_logo.png",
+        "https://www.youtube.com/watch?v=T_So6fZaAk0"
+      ],
+      [
+        "../public/img/mc_logo.png",
+        "https://hindi.moneycontrol.com/news/market-news/getsetgos-fitness-fund-know-how-these-startups-became-a-hit-with-fit_223777.html"
+      ],
+      [
+        "../public/img/e_business_logo.png",
+        "https://ebusinessindia.wordpress.com/2018/01/25/getsetgo-an-online-fitness-solutions-startup-helps-people-to-stay-fit-on-the-go/"
+      ],
+      ["../public/img/toi_logo.png"],
+      ["../public/img/the_hindu_logo.png"],
+      ["../public/img/radiomirchiusa_logo.png"]
+    ]
   }
 }

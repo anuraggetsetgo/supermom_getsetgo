@@ -14,6 +14,9 @@ const ColorButton = withStyles((theme) => ({
     },
   },
 }))(Button);
+const backCoverImg2 = (image) => {
+  return `../public/img/${image}`;
+};
 
 // const gridHover = (event) => {
 //   event.target.style.transform = "scale(1.02,1.02)";

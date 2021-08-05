@@ -20,7 +20,7 @@ import {
   Divider
 } from "@material-ui/core";
 // import { SketchPicker } from "react-color";
-import "./TextEditor.css";
+import "./Texteditor.css";
 import { withStyles } from "@material-ui/styles";
 const config = {
   headings: {
@@ -274,14 +274,14 @@ const Texteditor = props => {
                 <span className='material-icons'>link</span>
               </IconButton>
             </Grid>
-            {/* <Grid item>
+            <Grid item>
               <IconButton
                 onClick={toggleVars}
                 style={showVars ? Styles.selected : {}}
               >
                 <span className='material-icons'>code</span>
               </IconButton>
-            </Grid> */}
+            </Grid>
           </React.Fragment>
         )}
       </GridSpaceBottom>

@@ -1,160 +1,93 @@
-import "./App.css";
-import Container from "@material-ui/core/Container";
+import React, { Component } from "react";
+import Header from "./sections/header";
+import Footer from "./sections/footer";
+import ScrollToTop from "./scrolltotop";
 import { ThemeProvider } from "@material-ui/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Grid from "@material-ui/core/Grid";
 import theme from "./theme";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Diwali from "./diwali";
-import { Grid, Typography } from "@material-ui/core";
-import PreloadImage from "./preloadImg";
-import FBMessenger from "./fbMassenger.png";
-import FBGroup from "./fbGroup.png";
-import Youtube from "./youtube.png";
-import LogoElement from "./logoElement.png";
-import Insta from "./insta.png";
-import Whatsapp from "./whatsapp.png";
-import Linkedin from "./linkedin.png";
-import UserInfo from "./Userinfo";
-import ReactPixel from "react-facebook-pixel";
 import { updateLoc } from "./services";
-import { useState, useEffect } from "react";
+import ReactGA from "react-ga";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./home";
+import Package from "./package";
 import Ordersummary from "./ordersummary";
-import Counter from "./Counter";
+import ReactPixel from "react-facebook-pixel";
 
-function App() {
-  const options = {
-    autoConfig: true, // set pixel's autoConfig
-    debug: false // enable logs
-  };
-  ReactPixel.init("1197059610427258", options);
-  ReactPixel.pageView();
-  const [region, setRegion] = useState(null);
-  const setPrices = data => {
-    setRegion(data);
-  };
-  useEffect(() => {
-    updateLoc(setPrices);
-  }, []);
+//import Secret from './secretworkout';
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Container className='container'>
-        <Router>
-          <Switch>
-            <Route
-              exact
-              path='/'
-              component={props => <Diwali region={region} {...props} />}
-            />
-            <Route exact path='/userinfo' component={UserInfo} />
-            <Route
-              path='/thank_you/summary/:orderId'
-              component={Ordersummary}
-            />
-          </Switch>
-        </Router>
-        <Counter
-          style={{ position: "fixed", top: "2vh", left: "35%", width: "30%" }}
-        />
-        <Grid
-          container
-          justify='space-between'
-          alignItems='flex-start'
-          className='footer'
-        >
-          <Grid item>
-            <a
-              href='https://www.facebook.com/groups/getsetgofitness/'
-              target='_blank'
+ReactGA.initialize("UA-86957619-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.pageview("/");
+ReactGA.pageview("/packages");
+//ReactGA.pageview('/secret');
+ReactGA.pageview("/summary");
+const options = {
+  autoConfig: true, // set pixel's autoConfig
+  debug: false, // enable logs
+};
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      scrollStatus: false,
+    };
+  }
+  componentDidMount() {
+    updateLoc(this.cb);
+  }
+  cb(currency) {
+    ReactPixel.init("727377464279666", options);
+    ReactPixel.pageView(); // For tracking page view
+    ReactPixel.track("Purchase", { currency: currency }); // For tracking default events, more info about events and data https://developers.facebook.com/docs/ads-for-websites/pixel-events/v2.9
+  }
+  freezeScroll(val) {
+    this.setState({ scrollStatus: val });
+  }
+  //  component={props=> <Home freezeScroll={(val)=>{this.freezeScroll(val)}} {...props}/>}/>
+  render() {
+    let { scrollStatus } = this.state;
+    return (
+      <Router>
+        <ScrollToTop />
+        <ThemeProvider theme={theme}>
+          <CssBaseline>
+            <Grid
+              container
+              direction="column"
+              className="app"
+              style={
+                scrollStatus ? { overflow: "hidden", height: "100vh" } : {}
+              }
             >
-              <PreloadImage
-                alt='Facebook messenger'
-                src={FBMessenger}
-                style={{ maxWidth: "40px" }}
-              />
-            </a>
-          </Grid>
-          <Grid item>
-            <a
-              href='https://www.youtube.com/channel/UCdUryFTSw0IIdRjmPWXo_Pg'
-              target='_blank'
-            >
-              <PreloadImage
-                alt='Youtube'
-                src={Youtube}
-                style={{ maxWidth: "40px" }}
-              />
-            </a>
-          </Grid>
-          <Grid item>
-            <a href='https://www.instagram.com/getsetgofit/' target='_blank'>
-              <PreloadImage
-                alt='Youtube'
-                src={Insta}
-                style={{ maxWidth: "40px" }}
-              />
-            </a>
-          </Grid>
-          <Grid
-            item
-            container
-            direction='column'
-            alignItems='center'
-            spacing={1}
-            xs={3}
-            style={{ textAlign: "center" }}
-          >
-            <Grid item>
-              <a href='https://www.getsetgo.fitness/' target='_blank'>
-                <PreloadImage
-                  alt='GetSetGo Fitness'
-                  src={LogoElement}
-                  style={{ maxWidth: "80px" }}
+              <Header />
+              <Switch>
+                <Route exact path="/">
+                  <Home
+                    freezeScroll={(val) => {
+                      this.freezeScroll(val);
+                    }}
+                  />
+                </Route>
+                <Route path="/packages">
+                  <Package
+                    freezeScroll={(val) => {
+                      this.freezeScroll(val);
+                    }}
+                  />
+                </Route>
+                <Route
+                  path="/thank_you/summary/:orderId"
+                  component={Ordersummary}
                 />
-              </a>
+              </Switch>
+              <Footer />
             </Grid>
-            <Grid item>
-              <Typography>
-                <small>© GetSetGo, 2020. All rights reserved</small>
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <a href='https://www.facebook.com/getsetgofit/' target='_blank'>
-              <PreloadImage
-                alt='Facebook messenger'
-                src={FBGroup}
-                style={{ maxWidth: "40px" }}
-              />
-            </a>
-          </Grid>
-          <Grid item>
-            <a
-              href={`https://api.whatsapp.com/send?phone=917666785371&text=${"GSG DIWALI OFFER"}`}
-              target='_blank'
-            >
-              <PreloadImage
-                alt='Facebook messenger'
-                src={Whatsapp}
-                style={{ maxWidth: "40px" }}
-              />
-            </a>
-          </Grid>
-          <Grid item>
-            <a
-              href='https://www.linkedin.com/in/getsetgo-fitness-6a05451b2/'
-              target='_blank'
-            >
-              <PreloadImage
-                alt='Facebook messenger'
-                src={Linkedin}
-                style={{ maxWidth: "40px" }}
-              />
-            </a>
-          </Grid>
-        </Grid>
-      </Container>
-    </ThemeProvider>
-  );
+          </CssBaseline>
+        </ThemeProvider>
+      </Router>
+    );
+  }
 }
-
 export default App;

@@ -1,27 +1,41 @@
 import React, { Component } from "react";
 import { Grid, Typography } from "@material-ui/core";
-import Styles from "./App.styles";
-import { docHt, callAPI, getURL } from "./services";
+import Styles from "./app-style";
+import { docHt, callAPI, getURL, get } from "./services";
 import Emailtemplates from "./emailTemplate.json";
+import Refercomponents from "./components/FormView";
+const empty = [
+  {
+    displayname: "Name",
+    value: "",
+    error: null,
+    type: "text",
+    style: null,
+  },
+  { displayname: "Email", value: "", error: null, type: "email", style: null },
+  { displayname: "Phone", value: "", error: null, type: "mobile", style: null },
+];
 
 class Ordersummary extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      orderStatus: "waiting"
+      orderStatus: "waiting",
     };
   }
   componentDidMount() {
+    let campaign_id = get("campaign_id") === null ? 1 : get("campaign_id");
+    //        callAPI(getURL('order_status'), 'post', (data)=>{this.orderData(data.data)}, (err)=>{this.orderStatus(err)}, {order_id:this.props.match.params.orderId})
     callAPI(
-      getURL("order_status"),
+      getURL("campaign_order_status"),
       "post",
-      data => {
+      (data) => {
         this.orderData(data.data);
       },
-      err => {
+      (err) => {
         this.orderStatus(err);
       },
-      { order_id: this.props.match.params.orderId }
+      { order_id: this.props.match.params.orderId, campaign_id: campaign_id }
     );
   }
   emailSent(data) {
@@ -31,6 +45,7 @@ class Ordersummary extends Component {
     this.setState({ orderStatus: "successEmailErr" });
   }
   orderData(data) {
+    console.log("Order successful");
     let {
       order_status,
       customer_phone,
@@ -38,7 +53,8 @@ class Ordersummary extends Component {
       customer_name,
       order_date,
       order_amount,
-      currency
+      currency,
+      new_affiliate_id,
     } = data;
     // let loc = JSON.parse(get('loc'));
     // this.setState({orderStatus: 'success', name: customer_name, email: customer_email});
@@ -47,7 +63,8 @@ class Ordersummary extends Component {
       this.setState({
         orderStatus: "sendingEmail",
         name: customer_name,
-        email: customer_email
+        email: customer_email,
+        new_affiliate_id: new_affiliate_id,
       });
       let emailBody = Emailtemplates.paymentComplete
         .replace(/#fname/g, customer_name.split(" ")[0])
@@ -55,57 +72,56 @@ class Ordersummary extends Component {
         .replace(/#full_name/g, customer_name)
         .replace(/#mob/g, `${customer_phone}`)
         .replace(/#date/g, order_date)
-        .replace(/#amount/g, `${currency} ${order_amount}`)
-        .replace(/#orderId/g, this.props.match.params.orderId);
+        .replace(/#amount/g, `${currency} ${order_amount}`);
       console.log("Email template", emailBody);
       callAPI(
         getURL("sendEmail"),
         "post",
-        data => {
+        (data) => {
           this.emailSent(data);
         },
-        err => {
+        (err) => {
           this.emailErr(err);
         },
         {
           to: customer_email,
-          cc: "info@getsetgo.fitness;remo@getsetgo.fitness",
+          cc: "info@getsetgo.fitness",
           subject: "GetSetGo Fitness: Your fitness journey starts here",
-          message: emailBody
+          message: emailBody,
         }
       );
     } else {
       this.setState({
         orderStatus: "fail",
         name: customer_name,
-        email: customer_email
+        email: customer_email,
       });
     }
   }
   orderStatus(err) {
     console.log("Ran into errors");
     this.setState({
-      orderStatus: "err"
+      orderStatus: "err",
     });
   }
   render() {
-    let { orderStatus, name } = this.state;
+    let { orderStatus, name, new_affiliate_id } = this.state;
     return (
       <Grid
         container
-        style={{ height: docHt() }}
-        alignItems='center'
-        justify='center'
+        style={{ paddingTop: "20vh", minHeight: "85vh", ...Styles.blueBG }}
+        alignItems="center"
+        justify="center"
       >
         {orderStatus === "waiting" && (
           <Grid
             item
             style={{
               ...{ padding: "0 50px", width: "50%" },
-              ...Styles.centerTxt
+              ...Styles.centerTxt,
             }}
           >
-            <Typography variant='subtitle1'>
+            <Typography variant="subtitle1" style={Styles.colorWhite}>
               Give us a minute. Completing your registration ...
             </Typography>
           </Grid>
@@ -115,10 +131,10 @@ class Ordersummary extends Component {
             item
             style={{
               ...{ padding: "0 50px", width: "50%" },
-              ...Styles.centerTxt
+              ...Styles.centerTxt,
             }}
           >
-            <Typography variant='subtitle1'>
+            <Typography variant="subtitle1" style={Styles.colorWhite}>
               Okay, payment complete. Sending you an email acknowledgement ...
             </Typography>
           </Grid>
@@ -128,20 +144,23 @@ class Ordersummary extends Component {
             item
             style={{
               ...{ padding: "0 50px", width: "50%" },
-              ...Styles.centerTxt
+              ...Styles.centerTxt,
             }}
           >
-            <Typography variant='subtitle1' style={{ ...Styles.marginBottom }}>
-              ... And we're done! Your registration is complete
+            <Typography
+              variant="h2"
+              style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+            >
+              Your registration is complete!!!
             </Typography>
-            <Typography variant='subtitle2'>
+            <Typography variant="subtitle2" style={{ ...Styles.colorWhite,lineHeight:'2.2rem' }}>
               Congratulations {name.split(" ")[0]}! There has been a small
               glitch: we haven't been able to drop you an email. Don't worry
               though. Our backend team qill quickly review this. For your
               registration, our representatives will get in touch with you
               within 2 working days. Feel free to drop us an email in case you
               have any queries:{" "}
-              <a href='mailto: info@getsetgo.fitness'>info@getsetgo.fitness</a>
+              <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
             </Typography>
           </Grid>
         )}
@@ -150,17 +169,23 @@ class Ordersummary extends Component {
             item
             style={{
               ...{ padding: "0 50px", width: "50%" },
-              ...Styles.centerTxt
+              ...Styles.centerTxt,
             }}
           >
-            <Typography variant='subtitle1' style={{ ...Styles.marginBottom }}>
-              ... And we're done! Your registration is complete
+            <Typography
+              variant="h2"
+              style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+            >
+              Your registration is complete!!!
             </Typography>
-            <Typography variant='subtitle2'>
+            <Typography
+              variant="subtitle2"
+              style={{ ...Styles.colorWhite, ...Styles.marginBottom,lineHeight:'2.2rem' }}
+            >
               Congratulations {name.split(" ")[0]}! Our representatives will get
               in touch with you within 2 working days. Feel free to drop us an
               email in case you have any queries:{" "}
-              <a href='mailto: info@getsetgo.fitness'>info@getsetgo.fitness</a>
+              <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
             </Typography>
           </Grid>
         )}
@@ -169,24 +194,46 @@ class Ordersummary extends Component {
             item
             style={{
               ...{ padding: "0 50px", width: "50%" },
-              ...Styles.centerTxt
+              ...Styles.centerTxt,
             }}
           >
-            <Typography variant='subtitle1' style={{ ...Styles.marginBottom }}>
+            <Typography
+              variant="h2"
+              style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+            >
               Uh oh, seems like your order got stuck somewhere. Do not worry
               though
             </Typography>
-            <Typography variant='subtitle2'>
+            <Typography variant="subtitle2" style={{...Styles.colorWhite,lineHeight:'2.2rem'}}>
               Do not worry though. Your package is totally secure. Simply drop
               us an email at:{" "}
-              <a href='mailto: info@getsetgo.fitness'>info@getsetgo.fitness</a>.
-              Remember to quote your order id in the email:{" "}
+              <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>.
+              <br></br>Remember to quote your order id in the email:{" "}
               {this.props.match.params.orderId}
             </Typography>
           </Grid>
         )}
+
       </Grid>
     );
   }
 }
 export default Ordersummary;
+
+// {(orderStatus === "success" || orderStatus === "successEmailErr") && (
+//   <Grid
+//     item
+//     container
+//     style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+//     alignItems="flex-end"
+//     justify="center"
+//     xs={12}
+//   >
+//     {/* <Refercomponents  fields = {empty} affiliate_name="Anurag Vishwakarma"affiliate_email = "vaibhav@getsetgo.fitess" affiliate_mobile = "+919821354464" campaign_id="1" ></Refercomponents> */}
+//     <Refercomponents
+//       fields={empty}
+//       affiliate_id={new_affiliate_id}
+//       campaign_id={get("campaign_id") === null ? 1 : get("campaign_id")}
+//     ></Refercomponents>
+//   </Grid>
+// )}

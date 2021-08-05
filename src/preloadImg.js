@@ -1,11 +1,11 @@
 import React from "react";
-
+import { Grid } from "@material-ui/core";
 class PreloadImage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       loaded: false,
-      src: null
+      src: null,
     };
   }
 
@@ -18,8 +18,8 @@ class PreloadImage extends React.Component {
   }
 
   setObserver() {
-    this.observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           this.setPreloader();
           this.observer.disconnect();
@@ -36,7 +36,7 @@ class PreloadImage extends React.Component {
     this.preloader.onload = () =>
       this.setState({
         loaded: true,
-        src: this.props.alt ? this.props.src : `url(${this.props.src})`
+        src: this.props.alt ? this.props.src : `url(${this.props.src})`,
       });
 
     this.preloader.src = this.props.src;
@@ -49,16 +49,18 @@ class PreloadImage extends React.Component {
 
   render() {
     return (
-      <div
+      <Grid
+        item
         // Required: Relative, absolute, or fixed position
         // Required: Width & height (explicitly or via top/right/bottom/left)
         // Optional: Background color or placeholder image
         className={this.props.className}
         style={{ ...this.props.style }}
-        ref={el => (this.el = el)}
+        ref={(el) => (this.el = el)}
       >
         {!this.props.alt && (
-          <div
+          <Grid
+            item
             style={{
               position: "absolute",
               top: 0,
@@ -69,11 +71,12 @@ class PreloadImage extends React.Component {
               backgroundSize: "cover",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              transition: `opacity ${this.props.duration || "300ms"} ${this
-                .props.ease || "cubic-bezier(0.215, 0.61, 0.355, 1)"}`,
-              opacity: this.state.loaded ? 1 : 0
+              transition: `opacity ${this.props.duration || "300ms"} ${
+                this.props.ease || "cubic-bezier(0.215, 0.61, 0.355, 1)"
+              }`,
+              opacity: this.state.loaded ? 1 : 0,
             }}
-          ></div>
+          ></Grid>
         )}
         {this.props.alt && (
           <img
@@ -81,15 +84,16 @@ class PreloadImage extends React.Component {
             style={{
               ...this.props.style,
               ...{
-                transition: `opacity ${this.props.duration || "300ms"} ${this
-                  .props.ease || "cubic-bezier(0.215, 0.61, 0.355, 1)"}`,
-                opacity: this.state.loaded ? 1 : 0
-              }
+                transition: `opacity ${this.props.duration || "300ms"} ${
+                  this.props.ease || "cubic-bezier(0.215, 0.61, 0.355, 1)"
+                }`,
+                opacity: this.state.loaded ? 1 : 0,
+              },
             }}
             alt={this.props.alt}
           />
         )}
-      </div>
+      </Grid>
     );
   }
 }

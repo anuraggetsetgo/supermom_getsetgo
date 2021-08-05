@@ -17,11 +17,15 @@ function retrievePath() {
   return "https://gsg-image-uploads.s3.amazonaws.com/Homeplan/";
 }
 let colors = {
-  primary: "#4595a4",
+  primary: "#4595A4",
   secondary: "#fff",
+  transparent: "#ffffff00",
+  disableButtonColor: "#ffffff85",
+  yellow: "#FFDD3E",
+  blue: "#3e4e6d",
   err: "red",
   grey: "#aaa",
-  translucentBG: "RGBA(0,0,0,.3)"
+  translucentBG: "rgb(101 97 141 / 42%)",
 };
 function get(key) {
   return localStorage.getItem(key);
@@ -40,26 +44,23 @@ function updateLoc(cb) {
     callAPI(
       "https://ipinfo.io/?token=22065f6a076bdf",
       "get",
-      data => {
+      (data) => {
         changeLocation(data, cb);
       },
-      err => {
+      (err) => {
         askLocation(err);
       }
     );
-  } else {
-    changeLocation({ data: JSON.parse(get("loc")) }, cb);
   }
   // changeLocation({});
 }
 function changeLocation(data, cb) {
-  console.log("Data loc--->", data);
   data = data.data;
   let locObj = {
     ip: data.ip,
     city: data.city,
     region: data.region,
-    country: data.country
+    country: data.country,
   };
   set("loc", locObj);
   let region = "row";
@@ -81,7 +82,7 @@ function changeLocation(data, cb) {
     "JO",
     "PS",
     "CY",
-    "IR"
+    "IR",
   ];
   let IN = ["IN", "NP", "LK", "BT", "MM", "PK", "BD", "AF", "MV"];
   if (AE.indexOf(locObj.country) >= 0) region = "ae";
@@ -89,10 +90,11 @@ function changeLocation(data, cb) {
   // let entryptedRegion = encryption(`${region}|${(new Date(Date.now()))}`);
   // console.log("entryptedRegion",`${region}|${(new Date(Date.now()))}`, entryptedRegion);
   // callAPI(`https://api.getsetgo.fitness/base_ind/API/v1/user_packages/${entryptedRegion}`,'get',(data)=>{console.log(data)}, (err)=>{console.log(err)});
-  // set("products", config[region]);
-  // set("offer", config["offer"]);
-  cb(region);
+  set("products", config[region]);
+  set("offer", config["offer"]);
+  cb(get("products").currency);
 }
+
 function askLocation(err) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(setLoc);
@@ -112,19 +114,19 @@ function callAPI(url, type, success, error, data) {
   switch (type) {
     case "get":
       Axios.get(url)
-        .then(data => {
+        .then((data) => {
           success(data);
         })
-        .catch(err => {
+        .catch((err) => {
           error(err);
         });
       break;
     case "post":
       Axios.post(url, data)
-        .then(data => {
+        .then((data) => {
           success(data);
         })
-        .catch(err => {
+        .catch((err) => {
           error(err);
         });
       break;
@@ -141,5 +143,5 @@ export {
   get,
   set,
   getURL,
-  updateLoc
+  updateLoc,
 };

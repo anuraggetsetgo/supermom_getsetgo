@@ -1,0 +1,110 @@
+@font-face {
+  font-family: Montserrat;
+  src: url(./fonts/Montserrat-Regular.ttf);
+}
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Montserrat, Arial !important;
+}
+.app {
+  background: #fff;
+}
+div {
+  -webkit-overflow-scrolling: touch;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none !important;
+}
+ul li {
+  margin-bottom: 1em !important;
+}
+.top {
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.fixed {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+hr {
+  height: 1px;
+  background: RGBA(255, 255, 255, 0.5);
+  border: none;
+  margin: 15px 0;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select {
+  border: 1px solid #b1b1b1;
+  padding: 10px;
+  background: none;
+  color: #b1b1b1;
+  width: calc(100% - 30px);
+  margin: 5px 0 0;
+}
+form > label {
+  width: 100%;
+}
+
+.container {
+  background: #f3f2ef;
+  margin: 1%;
+  min-width: 98%;
+  min-height: 98vh;
+  padding: 0 !important;
+}
+.footer {
+  padding: 40px 5%;
+}
+.rounded {
+  border-radius: 30px;
+  padding: 10px 20px !important;
+}
+.grey {
+  background: #c0c0c0;
+}
+.bigButton {
+  border-radius: 50px !important;
+  padding: 20px !important;
+  font-weight: bold;
+}
+.blink_me {
+  animation: blinker 1.5s linear infinite;
+  background: rgb(2, 0, 36);
+  font-weight: bold !important;
+  background: linear-gradient(
+    0deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(232, 225, 22, 0.8662815467984069) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

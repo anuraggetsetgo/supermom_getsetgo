@@ -1,0 +1,186 @@
+[
+  {
+    "title": "Coach Details",
+    "fields": [
+      { "title": "name", "type": "text", "displayName": "Name" },
+      { "title": "email", "type": "email", "displayName": "Email" }
+    ]
+  },
+  {
+    "title": "Client Details",
+    "fields": [
+      { "title": "cname", "type": "text", "displayName": "Name" },
+      { "title": "cage", "type": "number", "displayName": "Age" },
+      {
+        "title": "cheight",
+        "type": "number",
+        "displayName": "Height",
+        "unit": "cm"
+      },
+      {
+        "title": "cweight",
+        "type": "number",
+        "displayName": "Weight",
+        "unit": "kg"
+      },
+      { "title": "cgoal", "type": "text", "displayName": "Fitness goal" }
+    ]
+  },
+  {
+    "title": "Current lifestyle remarks",
+    "fields": [
+      { "title": "diet", "type": "number", "displayName": "Diet" },
+      { "title": "workout", "type": "number", "displayName": "Workout" },
+      {
+        "title": "energy",
+        "type": "number",
+        "displayName": "Energy Level"
+      },
+      {
+        "title": "stress",
+        "type": "number",
+        "displayName": "Stress Level"
+      },
+      {
+        "title": "sleep",
+        "type": "number",
+        "displayName": "Sleep"
+      },
+      {
+        "title": "junk",
+        "type": "number",
+        "displayName": "Junk food"
+      }
+    ]
+  },
+  {
+    "title": "Health Conditions",
+    "fields": [
+      { "title": "diabetes", "type": "switch", "displayName": "Diabetes" },
+      {
+        "title": "thyroidism",
+        "type": "switch",
+        "displayName": "Hypo/Hyperthyroidism"
+      },
+      {
+        "title": "hypertension",
+        "type": "switch",
+        "displayName": "Hypertension"
+      },
+      {
+        "title": "pcos",
+        "type": "switch",
+        "displayName": "PCOS"
+      },
+      {
+        "title": "cholestrol",
+        "type": "switch",
+        "displayName": "Cholestrol"
+      },
+      {
+        "title": "covid",
+        "type": "switch",
+        "displayName": "Covid"
+      },
+      {
+        "title": "other",
+        "type": "textarea",
+        "displayName": "Other (injuries/disabilities etc)"
+      }
+    ]
+  },
+  {
+    "title": "Workout guidelines",
+    "fields": [
+      {
+        "title": "frequency",
+        "type": "textarea",
+        "displayName": "Frequency"
+      },
+      {
+        "title": "split",
+        "type": "textarea",
+        "displayName": "Split"
+      },
+      {
+        "title": "other",
+        "type": "textarea",
+        "displayName": "Other"
+      }
+    ]
+  },
+  {
+    "title": "Fitness score",
+    "fields": [
+      {
+        "title": "score",
+        "type": "number",
+        "displayName": "Score"
+      }
+    ]
+  },
+  {
+    "title": "Areas of improvement",
+    "fields": [
+      {
+        "title": "diet",
+        "type": "textarea",
+        "displayName": "Diet"
+      },
+      {
+        "title": "workout",
+        "type": "textarea",
+        "displayName": "Workout"
+      },
+      {
+        "title": "sleep",
+        "type": "textarea",
+        "displayName": "Sleep"
+      },
+      {
+        "title": "food_choices",
+        "type": "textarea",
+        "displayName": "Food choices"
+      },
+      {
+        "title": "other",
+        "type": "textarea",
+        "displayName": "Other"
+      }
+    ]
+  },
+  {
+    "title": "Dietary guidelines",
+    "fields": [
+      {
+        "title": "calories",
+        "type": "number",
+        "displayName": "Calories",
+        "unit": "Cals"
+      },
+      {
+        "title": "protein",
+        "type": "number",
+        "displayName": "Protein",
+        "unit": "gm"
+      },
+      {
+        "title": "carbs",
+        "type": "number",
+        "displayName": "Carbs",
+        "unit": "gm"
+      },
+      {
+        "title": "fat",
+        "type": "number",
+        "displayName": "Fat",
+        "unit": "gm"
+      },
+      {
+        "title": "additional_instructions",
+        "type": "textarea",
+        "displayName": "Additional instructions"
+      }
+    ]
+  }
+]

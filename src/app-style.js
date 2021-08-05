@@ -161,8 +161,7 @@ export default {
     top: 0,
     left: 0,
     padding: "15px",
-    background: "rgb(100 116 166 / 44%)",
-    zIndex: 20000,
+    height: "100px",
   },
   popup: {
     position: "fixed",

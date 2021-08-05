@@ -16,6 +16,13 @@ import ReactPixel from "react-facebook-pixel";
 import "../src/fonts/fonts.css";
 
 const App = () => {
-  return <Footer />;
+  return (
+    <>
+      <Router>
+        <Header />
+        <Footer />
+      </Router>
+    </>
+  );
 };
 export default App;

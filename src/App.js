@@ -16,6 +16,8 @@ import ReactPixel from "react-facebook-pixel";
 import "../src/fonts/fonts.css";
 import Socialmedia from "./sections/socialmedia";
 import Coachwork from "./sections/coachwork";
+import Success from "./sections/success";
+import Mediabanner from "./sections/mediabanner";
 
 const App = () => {
   return (
@@ -23,6 +25,8 @@ const App = () => {
       <Router>
         <Header />
         <Coachwork />
+        <Mediabanner />
+        <Success />
         {/* <Socialmedia /> */}
         <Footer />
       </Router>

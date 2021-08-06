@@ -126,7 +126,7 @@ export default (props) => {
       <Grid item style={{ padding: "20px 0" }}>
         <Typography
           variant="subtitle2"
-          style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+          style={{  ...Styles.centerTxt }}
         >
           Uh oh! We ran into an unexpected error. Please reload and try again.
         </Typography>
@@ -173,7 +173,7 @@ export default (props) => {
           <Form autoComplete="off">
             <Grid item style={Styles.formFieldContainer}>
               <label htmlFor="email">
-                <Typography variant="h7" style={Styles.whiteColor}>
+                <Typography variant="h7" >
                   Full Name
                 </Typography>
               </label>
@@ -191,7 +191,7 @@ export default (props) => {
             </Grid>
             <Grid item style={Styles.formFieldContainer}>
               <label htmlFor="email">
-                <Typography variant="h7" style={Styles.whiteColor}>
+                <Typography variant="h7" >
                   Email
                 </Typography>
               </label>
@@ -209,13 +209,13 @@ export default (props) => {
             </Grid>
             <Grid item style={Styles.formFieldContainer}>
               <label htmlFor="mobile">
-                <Typography variant="h7" style={Styles.whiteColor}>
+                <Typography variant="h7" >
                   Mobile
                 </Typography>
               </label>
               <Grid item>
                 <Grid item style={Styles.special}>
-                  <Typography variant="body2" style={Styles.whiteColor}>
+                  <Typography variant="body2" >
                     +
                   </Typography>
                 </Grid>
@@ -228,7 +228,7 @@ export default (props) => {
                   />
                 </Grid>
                 <Grid item style={Styles.special}>
-                  <Typography variant="body2" style={Styles.whiteColor}>
+                  <Typography variant="body2" >
                     -
                   </Typography>
                 </Grid>
@@ -250,7 +250,7 @@ export default (props) => {
             </Grid>
             <Grid item style={Styles.formFieldContainer}>
               <label htmlFor="age">
-                <Typography variant="h7" style={Styles.whiteColor}>
+                <Typography variant="h7" >
                   Age
                 </Typography>
               </label>
@@ -274,7 +274,7 @@ export default (props) => {
               disabled={submitButtonEnable}
               // onClick={(e) => setSubmitButtonEnable(true)}
             >
-              Proceed to join
+              YES I AM
             </Styles.ColorButton>
           </Form>
         )}

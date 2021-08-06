@@ -5,11 +5,11 @@ import Button from "@material-ui/core/Button";
 const ColorButton = withStyles((theme) => ({
   root: {
     color: colors.blue,
-    backgroundColor: colors.yellow,
+    backgroundColor: colors.primary,
     border: `1px solid ${colors.yellow}`,
     "&:hover": {
       backgroundColor: colors.transparent,
-      border: `1px solid ${colors.yellow}`,
+      border: `1px solid ${colors.primary}`,
       color: colors.yellow,
     },
   },

@@ -30,7 +30,7 @@ const Coachwork = () => {
           <Grid item style={{ marginBottom: "30px" }}>
             <Typography
               style={{
-                fontSize: "Poppins",
+                fontFamily: "Poppins",
                 fontSize: "60px",
                 color: "#103A42",
                 flexGrow: "0",

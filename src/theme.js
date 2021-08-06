@@ -24,13 +24,12 @@ const theme = createMuiTheme({
       color: colors.secondary,
     },
     body1: {
-      fontSize: "1.3rem",
+      fontSize: "16px",
     },
     h1: {
       fontSize: "48px",
       lineHeight: "54px",
-      marginBottom: "24px",
-      letterSpacing: "4px",
+      fontWeight: "normal",
     },
     h2: {
       fontSize: "40px",

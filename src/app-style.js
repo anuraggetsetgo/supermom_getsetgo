@@ -55,6 +55,9 @@ export default {
   colorBlue: {
     color: colors.blue,
   },
+  colorRed: {
+    color: colors.red,
+  },
   blackBG: {
     background: "#000",
   },
@@ -65,7 +68,7 @@ export default {
     background: colors.transparent,
   },
   boldTxt: {
-    fontStyle: "bold",
+    fontWeight: "bold",
   },
   feildRadius: {
     borderRadius: "5px",

@@ -45,7 +45,7 @@ input[type="number"] {
   border: 1px solid #000;
   padding: 10px;
   background: none;
-  
+
   width: 100%;
   margin: 5px 0 0;
 }
@@ -59,7 +59,7 @@ form > label {
   display: inline-block;
   vertical-align: bottom;
   padding: 20px;
-  margin-bottom: 40px !important; 
+  margin-bottom: 40px !important;
   margin-right: 50px !important;
 }
 .speech-bubble:after {

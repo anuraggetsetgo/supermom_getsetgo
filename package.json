@@ -12,6 +12,7 @@
     "caniuse-lite": "^1.0.30001202",
     "crypto-js": "^4.0.0",
     "formik": "^2.1.4",
+    "material-ui": "^0.20.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-facebook": "^8.1.4",

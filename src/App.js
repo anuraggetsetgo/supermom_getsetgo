@@ -5,7 +5,6 @@ import ScrollToTop from "./scrolltotop";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
-import theme from "./theme";
 import { updateLoc } from "./services";
 import ReactGA from "react-ga";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -20,11 +19,13 @@ import Success from "./sections/success";
 import Mediabanner from "./sections/mediabanner";
 import Sellingreviews from "./sections/sellingreviews";
 import Sellingmidbanner from "./sections/sellingmidbanner";
+import Banner from "./sections/banner";
 const App = () => {
   return (
     <>
       <Router>
         <Header />
+        <Banner />
         <Coachwork />
         <Sellingmidbanner />
         <Sellingreviews />

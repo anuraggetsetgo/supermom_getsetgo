@@ -24,16 +24,15 @@ const App = () => {
     <>
       <Router>
         <Header />
-        {/* <Coachwork />
+        <Coachwork />
         <Mediabanner />
-        <Success /> */}
-        {/* <Socialmedia />
-        <Footer /> */}
-        {/* <Coachwork />
-        <Success /> */}
+        <Success />
         <Socialmedia />
-        <Mediabanner />
         <Footer />
+
+        {/* <Socialmedia />
+        <Mediabanner />
+        <Footer /> */}
       </Router>
     </>
   );

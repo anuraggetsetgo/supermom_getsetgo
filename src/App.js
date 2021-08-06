@@ -18,6 +18,7 @@ import Socialmedia from "./sections/socialmedia";
 import Coachwork from "./sections/coachwork";
 import Success from "./sections/success";
 import Mediabanner from "./sections/mediabanner";
+import Sellingreviews from "./sections/sellingreviews";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
       <Router>
         <Header />
         <Coachwork />
+        <Sellingreviews />
         <Mediabanner />
         <Success />
         <Socialmedia />

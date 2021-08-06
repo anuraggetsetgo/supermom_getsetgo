@@ -15,12 +15,14 @@ import Ordersummary from "./ordersummary";
 import ReactPixel from "react-facebook-pixel";
 import "../src/fonts/fonts.css";
 import Socialmedia from "./sections/socialmedia";
+import Coachwork from "./sections/coachwork";
 
 const App = () => {
   return (
     <>
       <Router>
         <Header />
+        <Coachwork />
         <Socialmedia />
         <Footer />
       </Router>

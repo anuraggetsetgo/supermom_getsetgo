@@ -53,8 +53,7 @@ const Socialmedia = () => {
             xs={3}
             alignItems="center"
             justify="space-between"
-            display="flex"
-            style={{ marginRight: "60px" }}
+            style={{ marginRight: "60px", display: "flex" }}
           >
             <svg
               width="40"

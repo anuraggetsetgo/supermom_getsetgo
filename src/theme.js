@@ -1,17 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-import Poppins from "./fonts/poppins-v15-latin-regular.woff";
-
 import { colors } from "./services";
-
-const poppins = {
-  fontFamily: "Poppins",
-  fontStyle: "normal",
-  fontWeight: 600,
-  src: `local('Poppins'),
-       local('Poppins-Regular') , 
-       url(${Poppins}) format('woff');`,
-};
 
 const theme = createMuiTheme({
   palette: {
@@ -27,7 +16,7 @@ const theme = createMuiTheme({
   },
   spacing: (value) => `${value * 8}px`,
   typography: {
-    fontFamily: "Poppins,Roboto",
+    fontFamily: ["Poppins", "Roboto"],
     spacing: (value) => value ** 8,
     color: colors.secondary,
 
@@ -87,7 +76,9 @@ const theme = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
       "@global": {
-        "@font-face": [poppins],
+        body: {
+          fontFamily: "Poppins",
+        },
       },
     },
     MuiButton: {

@@ -4,6 +4,7 @@ import Styles from "../app-style.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -19,7 +20,36 @@ const useStyles = makeStyles({
 const Sellingreviews = () => {
   const classes = useStyles();
   return (
-    <Grid item container direction="row" alignItems="center" justify="center">
+    <Grid
+      item
+      container
+      direction="column"
+      alignItems="center"
+      justify="center"
+    >
+      <Grid
+        item
+        container
+        direction="column"
+        justify="flex-start"
+        style={{
+          width: "1170px",
+          height: "38px",
+          display: "flex",
+          marginBottom: "64px",
+        }}
+      >
+        <Typography
+          style={{
+            fontFamily: "Poppins",
+            fontSize: "32px",
+            fontWeight: "bold",
+            color: " #103A42",
+          }}
+        >
+          Our community is flooded with positive reviews
+        </Typography>
+      </Grid>
       <Grid
         direction="row"
         justify="flex-start"
@@ -28,6 +58,9 @@ const Sellingreviews = () => {
           height: "1170px",
           marginBottom: "60px",
           display: "flex",
+          background: "#FFFFFF",
+          boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+          borderRadius: "10px",
         }}
       >
         <Grid container spacing={2}>

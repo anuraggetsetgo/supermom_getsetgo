@@ -23,7 +23,7 @@ const App = () => {
       <Router>
         <Header />
         <Coachwork />
-        <Socialmedia />
+        {/* <Socialmedia /> */}
         <Footer />
       </Router>
     </>

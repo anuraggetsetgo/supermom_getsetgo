@@ -51,7 +51,6 @@ const App = () => {
           <Route exact to="/" component={HomeArea} />
           <Route exact to="/selling" component={SellingArea} />
         </Switch>
-
         <Footer />
       </Router>
     </>

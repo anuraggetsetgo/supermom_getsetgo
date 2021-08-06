@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, Button } from "@material-ui/core";
 import { colors, retrievePath, docHt } from "../services";
-import Signupform from "../signupform";
+
 import PreloadImage from "../helpers/preloadimg";
 import customTxt from "./customTxt.json";
 

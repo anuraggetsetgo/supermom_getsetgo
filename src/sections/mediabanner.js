@@ -5,7 +5,14 @@ import { Typography, Grid } from "@material-ui/core";
 const Mediabanner = () => {
   return (
     <>
-      <Grid item container direction="row" alignItems="center" justify="center">
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        style={{ marginBottom: "100px" }}
+      >
         <Grid
           justify="flex-start"
           alignItems="center"

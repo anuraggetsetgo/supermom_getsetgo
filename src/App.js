@@ -21,13 +21,16 @@ import Sellingreviews from "./sections/sellingreviews";
 import Sellingmidbanner from "./sections/sellingmidbanner";
 import Banner from "./sections/banner";
 import Videocomponent from "./sections/videocomponent";
-import Signupform from "./signupform";
 import Landingvideobanner from "./sections/landingvideobanner";
 import Joinnow from "./sections/joinnow";
 import Whygetsetgo from "./sections/whygetsetgo";
+import Signupbanner from "./sections/signupbanner";
+
+import Signupform from "../src/signupform";
 const HomeArea = () => {
   return (
     <>
+      {/* <Signupbanner /> */}
       <Signupform />
       {/* <Socialmedia /> */}
       <Landingvideobanner />

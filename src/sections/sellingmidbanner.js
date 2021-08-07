@@ -16,6 +16,7 @@ const Sellingmidbanner = () => {
             backgroundImage: `url(${Styles.backCoverImg(
               "selling_mid_img.png"
             )})`,
+            backgroundSize: "100% 100%",
           }}
         >
           <Grid

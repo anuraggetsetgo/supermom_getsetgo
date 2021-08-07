@@ -40,6 +40,9 @@ export default {
   cardRadius: {
     borderRadius: "5px",
   },
+  cardRadius2: {
+    borderRadius: "20px",
+  },
   colorWhite: {
     color: colors.secondary,
   },
@@ -58,11 +61,17 @@ export default {
   colorRed: {
     color: colors.red,
   },
+  colorReef: {
+    color: colors.reef,
+  },
   blackBG: {
     background: "#000",
   },
   whiteBG: {
     background: "#fff",
+  },
+  reefBG: {
+    background: colors.reef,
   },
   colorTransparent: {
     background: colors.transparent,
@@ -93,6 +102,9 @@ export default {
   },
   padding1: {
     padding: "1%",
+  },
+  padding30: {
+    padding: "30px 0",
   },
   paddingLR: {
     paddingLeft: "5%",

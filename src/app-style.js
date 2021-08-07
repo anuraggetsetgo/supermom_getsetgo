@@ -4,13 +4,19 @@ import Button from "@material-ui/core/Button";
 
 const ColorButton = withStyles((theme) => ({
   root: {
-    color: colors.blue,
-    backgroundColor: colors.primary,
+    width: "95%",
+    height: "80px",
+    borderRadius: "10px",
+    fontSize: "24px",
+    fontFamily: "Poppins",
+    color: colors.secondary,
+    backgroundColor: colors.reef,
     border: `1px solid ${colors.yellow}`,
     "&:hover": {
       backgroundColor: colors.transparent,
       border: `1px solid ${colors.primary}`,
-      color: colors.yellow,
+      color: colors.reef,
+      fontWeight: "bold",
     },
   },
 }))(Button);
@@ -92,7 +98,7 @@ export default {
     fontFamily: "Roboto",
   },
   feildRadius: {
-    borderRadius: "5px",
+    borderRadius: "10px",
   },
   greyBG: {
     background: "#111",
@@ -213,9 +219,14 @@ export default {
   spacing: (value) => `${value * 8}px`,
   //form styles
   formFieldContainer: {
-    height: "85px",
-    overflow: "visible",
+    height: "68px",
     marginBottom: "10px",
+  },
+  formInputField: {
+    height: "50px",
+    border: "1px solid rgba(102, 102, 102, 0.3)",
+    boxSizing: "border-box",
+    borderRadius: "10px",
   },
   verticalScroll: {
     overflowY: "auto",
@@ -227,5 +238,5 @@ export default {
   err2: { color: colors.err, marginLeft: "10px" },
   special: { display: "inline-block", width: "5%", textAlign: "center" },
   countryContainer: { display: "inline-block", width: "15%" },
-  mobileContainer: { display: "inline-block", width: "75%" },
+  mobileContainer: { display: "inline-block", width: "90%" },
 };

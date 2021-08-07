@@ -28,6 +28,7 @@ import Whygetsetgo from "./sections/whygetsetgo";
 const HomeArea = () => {
   return (
     <>
+      <Signupform />
       {/* <Socialmedia /> */}
       <Landingvideobanner />
       <Joinnow />
@@ -40,7 +41,6 @@ const HomeArea = () => {
 const SellingArea = () => {
   return (
     <>
-      {/* <Signupform /> */}
       <Banner />
       <Coachwork />
       <Videocomponent />

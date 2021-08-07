@@ -124,10 +124,7 @@ export default (props) => {
   if (err) {
     return (
       <Grid item style={{ padding: "20px 0" }}>
-        <Typography
-          variant="subtitle2"
-          style={{  ...Styles.centerTxt }}
-        >
+        <Typography variant="subtitle2" style={{ ...Styles.centerTxt }}>
           Uh oh! We ran into an unexpected error. Please reload and try again.
         </Typography>
       </Grid>
@@ -170,89 +167,106 @@ export default (props) => {
         }}
       >
         {({ errors, touched, isValidating }) => (
-          <Form autoComplete="off">
-            <Grid item style={Styles.formFieldContainer}>
-              <label htmlFor="email">
-                <Typography variant="h7" >
-                  Full Name
-                </Typography>
-              </label>
-              <Field
-                name="name"
-                type="text"
-                validate={validateName}
-                style={{ ...Styles.feildRadius }}
-              />
-              {touched.name && errors.name && (
-                <Grid item style={Styles.err}>
-                  {errors.name}
-                </Grid>
-              )}
-            </Grid>
-            <Grid item style={Styles.formFieldContainer}>
-              <label htmlFor="email">
-                <Typography variant="h7" >
-                  Email
-                </Typography>
-              </label>
-              <Field
-                name="email"
-                type="text"
-                validate={validateEmail}
-                style={{ ...Styles.feildRadius }}
-              />
-              {touched.email && errors.email && (
-                <Typography variant="h7" style={Styles.err} variant="body2">
-                  {errors.email}
-                </Typography>
-              )}
-            </Grid>
-            <Grid item style={Styles.formFieldContainer}>
-              <label htmlFor="mobile">
-                <Typography variant="h7" >
-                  Mobile
-                </Typography>
-              </label>
+          <Grid item container direction="row" justify="center">
+            <Grid
+              item
+              justify="center"
+              justify="flex-start"
+              alignItems="center"
+              xs={12}
+              sm={12}
+              lg={8}
+              style={{
+                padding: "60px",
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+                borderRadius: "10px",
+              }}
+            >
               <Grid item>
-                <Grid item style={Styles.special}>
-                  <Typography variant="body2" >
-                    +
-                  </Typography>
-                </Grid>
-                <Grid item style={Styles.countryContainer}>
-                  <Field
-                    style={{ ...Styles.feildRadius }}
-                    name="country"
-                    type="number"
-                    validate={validateCountry}
-                  />
-                </Grid>
-                <Grid item style={Styles.special}>
-                  <Typography variant="body2" >
-                    -
-                  </Typography>
-                </Grid>
-                <Grid item style={Styles.mobileContainer}>
-                  <Field
-                    style={{ ...Styles.feildRadius }}
-                    name="mobile"
-                    type="number"
-                    validate={validateMobile}
-                  />
-                </Grid>
-              </Grid>
-              {((touched.mobile && errors.mobile) ||
-                (touched.country && errors.country)) && (
-                <Grid item style={Styles.err} variant="body2">
-                  {errors.mobile} {errors.country}
-                </Grid>
-              )}
-            </Grid>
-            <Grid item style={Styles.formFieldContainer}>
-              <label htmlFor="age">
-                <Typography variant="h7" >
-                  Age
+                <Typography
+                  variant="h1"
+                  style={{
+                    textAlign: "center",
+                    ...Styles.colorRed,
+                    ...Styles.boldTxt,
+                  }}
+                >
+                  Are you the next SUPER MOM?
                 </Typography>
+              </Grid>
+              <Grid item style={{ marginBottom: "32px" }}>
+                <Typography
+                  variant="h5"
+                  style={{ textAlign: "center", color: "#666666" }}
+                >
+                  Kindly enter your details below
+                </Typography>
+              </Grid>
+              <Form autoComplete="off">
+                <Grid item xs={12} style={{ display: "flex" }}>
+                  <Grid item xs={6} style={Styles.formFieldContainer}>
+                    <Field
+                      name="name"
+                      type="text"
+                      placeholder="Enter your name"
+                      validate={validateName}
+                      style={{
+                        ...Styles.formInputField,
+                        width: "90%",
+                      }}
+                    />
+                    {touched.name && errors.name && (
+                      <Grid item style={Styles.err}>
+                        {errors.name}
+                      </Grid>
+                    )}
+                  </Grid>
+                  <Grid item xs={6} style={Styles.formFieldContainer}>
+                    <Grid item>
+                      {/* <Grid item style={Styles.countryContainer}>
+                        <Field
+                          style={{ ...Styles.feildRadius }}
+                          name="country"
+                          type="number"
+                          validate={validateCountry}
+                        />
+                      </Grid> */}
+                      <Grid item style={{ ...Styles.mobileContainer }}>
+                        <Field
+                          style={{ ...Styles.formInputField }}
+                          placeholder="Enter your contact no"
+                          name="mobile"
+                          type="number"
+                          validate={validateMobile}
+                        />
+                      </Grid>
+                    </Grid>
+                    {((touched.mobile && errors.mobile) ||
+                      (touched.country && errors.country)) && (
+                      <Grid item style={Styles.err} variant="body2">
+                        {errors.mobile} {errors.country}
+                      </Grid>
+                    )}
+                  </Grid>
+                </Grid>
+
+                <Grid item style={Styles.formFieldContainer}>
+                  <Field
+                    name="email"
+                    type="text"
+                    placeholder="Email id"
+                    validate={validateEmail}
+                    style={{ ...Styles.formInputField, width: "95%" }}
+                  />
+                  {touched.email && errors.email && (
+                    <Typography variant="h7" style={Styles.err} variant="body2">
+                      {errors.email}
+                    </Typography>
+                  )}
+                </Grid>
+                {/* <Grid item style={Styles.formFieldContainer}>
+              <label htmlFor="age">
+                <Typography variant="h7">Age</Typography>
               </label>
               <Field
                 name="age"
@@ -265,18 +279,18 @@ export default (props) => {
                   {errors.age}
                 </Typography>
               )}
+            </Grid> */}
+                <Styles.ColorButton
+                  type="submit"
+                  variant="contained"
+                  disabled={submitButtonEnable}
+                  // onClick={(e) => setSubmitButtonEnable(true)}
+                >
+                  YES I AM
+                </Styles.ColorButton>
+              </Form>
             </Grid>
-            <Styles.ColorButton
-              style={Styles.deafultButton}
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={submitButtonEnable}
-              // onClick={(e) => setSubmitButtonEnable(true)}
-            >
-              YES I AM
-            </Styles.ColorButton>
-          </Form>
+          </Grid>
         )}
       </Formik>
     );

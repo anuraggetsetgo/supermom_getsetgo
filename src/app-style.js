@@ -64,6 +64,9 @@ export default {
   colorReef: {
     color: colors.reef,
   },
+  colorCharcoalDark: {
+    color: colors.charcoalDark,
+  },
   blackBG: {
     background: "#000",
   },
@@ -73,14 +76,20 @@ export default {
   reefBG: {
     background: colors.reef,
   },
+  coralBG: {
+    background: colors.coral,
+  },
   colorTransparent: {
     background: colors.transparent,
   },
   boldTxt: {
     fontWeight: "bold",
   },
-  blodNormal: {
+  boldNormal: {
     fontWeight: "normal",
+  },
+  fontRoboto: {
+    fontFamily: "Roboto",
   },
   feildRadius: {
     borderRadius: "5px",
@@ -103,7 +112,7 @@ export default {
   padding1: {
     padding: "1%",
   },
-  padding30: {
+  padding30tb: {
     padding: "30px 0",
   },
   paddingLR: {
@@ -145,6 +154,12 @@ export default {
     minHeight: "100vh",
     zIndex: 500,
     background: "#111",
+  },
+  txtBGCoral: {
+    display: "table",
+    background: colors.coral,
+    borderRadius: "10px 0",
+    padding: "10px",
   },
   section01Content: {
     background: "#000",

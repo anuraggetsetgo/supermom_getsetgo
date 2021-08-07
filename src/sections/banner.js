@@ -25,7 +25,7 @@ class Banner extends Component {
             <img src="img/excited-beautiful-girl-smiling-pointing-fingers-small 2.png" alt="banner" style={Styles.bannerImg} />
           </Grid>
           <Grid item xs={12}>
-            <Grid item style={{ ...Styles.reefBG, ...Styles.cardRadius2, ...Styles.padding30 }} container justify="center">
+            <Grid item style={{ ...Styles.reefBG, ...Styles.cardRadius2, ...Styles.padding30tb }} container justify="center">
               <Typography variant="h2" style={{ ...Styles.boldTxt, ...Styles.colorWhite }}>
                 TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
               </Typography>

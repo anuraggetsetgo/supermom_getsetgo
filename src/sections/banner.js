@@ -17,12 +17,19 @@ class Banner extends Component {
               <span style={Styles.boldTxt}>Awesome, </span>you’re just 1 step away from a <span style={Styles.boldTxt}>kickass transformation.</span>
             </Typography>
             <br />
-            <Typography variant="h1" style={Styles.boldTxt}>
+            <Typography variant="h1" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
               YOU'RE GOING TO LOVE IT.
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={12} lg={6}>
             <img src="img/excited-beautiful-girl-smiling-pointing-fingers-small 2.png" alt="banner" style={Styles.bannerImg} />
+          </Grid>
+          <Grid item xs={12}>
+            <Grid item style={{ ...Styles.reefBG, ...Styles.cardRadius2, ...Styles.padding30 }} container justify="center">
+              <Typography variant="h2" style={{ ...Styles.boldTxt, ...Styles.colorWhite }}>
+                TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

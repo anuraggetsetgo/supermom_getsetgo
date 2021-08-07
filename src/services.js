@@ -27,6 +27,7 @@ let colors = {
   grey: "#aaa",
   translucentBG: "rgb(101 97 141 / 42%)",
   red: "#FE0000",
+  reef: "#103A42",
 };
 function get(key) {
   return localStorage.getItem(key);

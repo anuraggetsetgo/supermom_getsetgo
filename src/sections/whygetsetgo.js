@@ -31,10 +31,22 @@ const Whygetsetgo = () => {
             item
             container
             direction="row"
-            alignItems="center"
+            // alignItems="center"
             justify="space-between"
+            style={{ marginTop: "35px" }}
           >
-            <Grid item xs={4} container direction="column" alignItems="center">
+            <Grid
+              item
+              xs={4}
+              container
+              direction="column"
+              alignItems="center"
+              style={{
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+            >
               <Grid item>
                 <svg
                   width="48"
@@ -99,7 +111,18 @@ const Whygetsetgo = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item xs={4} container direction="column" alignItems="center">
+            <Grid
+              item
+              xs={4}
+              container
+              direction="column"
+              alignItems="center"
+              style={{
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+            >
               <Grid item>
                 <svg
                   width="48"
@@ -178,7 +201,18 @@ const Whygetsetgo = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item xs={4} container direction="column" alignItems="center">
+            <Grid
+              item
+              xs={4}
+              container
+              direction="column"
+              alignItems="center"
+              style={{
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+            >
               <Grid item>
                 <svg
                   width="48"
@@ -244,7 +278,18 @@ const Whygetsetgo = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item xs={4} container direction="column" alignItems="center">
+            <Grid
+              item
+              xs={4}
+              container
+              direction="column"
+              alignItems="center"
+              style={{
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+            >
               <Grid item>
                 <svg
                   width="50"
@@ -302,7 +347,18 @@ const Whygetsetgo = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item xs={4} container direction="column" alignItems="center">
+            <Grid
+              item
+              xs={4}
+              container
+              direction="column"
+              alignItems="center"
+              style={{
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+            >
               <Grid item>
                 <svg
                   width="48"
@@ -356,7 +412,18 @@ const Whygetsetgo = () => {
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item xs={4} container direction="column" alignItems="center">
+            <Grid
+              item
+              xs={4}
+              container
+              direction="column"
+              alignItems="center"
+              style={{
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+                borderRadius: "10px",
+                padding: "30px",
+              }}
+            >
               <Grid item>
                 <svg
                   width="50"

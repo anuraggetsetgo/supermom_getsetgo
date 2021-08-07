@@ -79,6 +79,9 @@ export default {
   boldTxt: {
     fontWeight: "bold",
   },
+  blodNormal: {
+    fontWeight: "normal",
+  },
   feildRadius: {
     borderRadius: "5px",
   },

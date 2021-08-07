@@ -14,12 +14,11 @@ ul li {
   margin-bottom: 1em !important;
 }
 .top {
-  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .fixed {
   position: sticky;
   position: -webkit-sticky;
-
   top: 0;
 }
 hr {

@@ -21,11 +21,14 @@ import Sellingreviews from "./sections/sellingreviews";
 import Sellingmidbanner from "./sections/sellingmidbanner";
 import Banner from "./sections/banner";
 import Videocomponent from "./sections/videocomponent";
+import Signupform from "./signupform";
+import Landingvideobanner from "./sections/landingvideobanner";
 
 const HomeArea = () => {
   return (
     <>
       <Socialmedia />
+      <Landingvideobanner />
       <Mediabanner />
     </>
   );
@@ -34,6 +37,7 @@ const HomeArea = () => {
 const SellingArea = () => {
   return (
     <>
+      <Signupform />
       <Banner />
       <Coachwork />
       <Videocomponent />
@@ -50,7 +54,7 @@ const App = () => {
       <Router>
         <Header />
         <Switch>
-          <Route exact to="/" component={SellingArea} />
+          <Route exact to="/" component={HomeArea} />
           <Route exact to="/selling" component={SellingArea} />
         </Switch>
         <Footer />

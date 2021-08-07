@@ -55,5 +55,32 @@
 
       ["radiomirchiusa_logo.png"]
     ]
+  },
+  "GSGAskQuestions": {
+    "questionsset1": [
+      ["You are unhappy with your looks and want to look better"],
+      ["Your lifestyle is bad."],
+      [
+        "You have tried all kinds of diet and exercise programs but haven’t got the results."
+      ],
+      ["You have a busy schedule and do not have a work-life balance."],
+      ["You have a binge eating disorder."],
+      ["You want to workout but have no direction."],
+      ["You want to learn how to manage your family’s health and fitness."]
+    ],
+    "questionsset2": [
+      [
+        "You want to have better energy levels to keep up with your daily tasks."
+      ],
+      [
+        "You fear certain foods and want to eat simple home cooked meals to get the results you want."
+      ],
+      [
+        "You are tired of random fitness advice and are looking for genuine guidance that can make a difference in your life."
+      ],
+      [
+        "You have tried all kinds of diet and exercise programs but haven’t got the results."
+      ]
+    ]
   }
 }

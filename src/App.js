@@ -23,12 +23,13 @@ import Banner from "./sections/banner";
 import Videocomponent from "./sections/videocomponent";
 import Signupform from "./signupform";
 import Landingvideobanner from "./sections/landingvideobanner";
-
+import Joinnow from "./sections/joinnow";
 const HomeArea = () => {
   return (
     <>
-      <Socialmedia />
+      {/* <Socialmedia /> */}
       <Landingvideobanner />
+      <Joinnow />
       <Mediabanner />
     </>
   );
@@ -37,7 +38,7 @@ const HomeArea = () => {
 const SellingArea = () => {
   return (
     <>
-      <Signupform />
+      {/* <Signupform /> */}
       <Banner />
       <Coachwork />
       <Videocomponent />

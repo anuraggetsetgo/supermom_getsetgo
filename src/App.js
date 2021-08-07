@@ -24,12 +24,14 @@ import Videocomponent from "./sections/videocomponent";
 import Signupform from "./signupform";
 import Landingvideobanner from "./sections/landingvideobanner";
 import Joinnow from "./sections/joinnow";
+import Whygetsetgo from "./sections/whygetsetgo";
 const HomeArea = () => {
   return (
     <>
       {/* <Socialmedia /> */}
       <Landingvideobanner />
       <Joinnow />
+      <Whygetsetgo />
       <Mediabanner />
     </>
   );

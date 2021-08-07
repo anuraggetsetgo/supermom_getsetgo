@@ -10,7 +10,7 @@ const Joinnow = () => {
         container
         alignItems="center"
         justify="center"
-        style={{ marginTop: "100px" }}
+        style={{ margin: "150px 0" }}
       >
         <Grid
           item

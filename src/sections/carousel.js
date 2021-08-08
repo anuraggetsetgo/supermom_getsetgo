@@ -73,7 +73,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
   return (
     <>
       <Grid item container direction="row" justify="space-between" alignItems="center" style={{ ...cardStyle }}>
-        <Grid container item xs={6} direction="row" justify="center" style={{ postion: "relative", borderRadius: "25% 0", overflow: "hidden" }}>
+        <Grid container item xs={6} direction="row" justify="center" style={{ position: "relative", borderRadius: "25% 0", overflow: "hidden" }}>
           <Grid container item xs={12}>
             {imagePath.map((image) => (
               <Grid item xs={6} style={{ backgroundRepeat: "no-repeat", height: "360px", width: "100%", backgroundImage: `url(${Styles.backCoverImg(image)})` }}></Grid>

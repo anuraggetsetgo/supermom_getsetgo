@@ -70,6 +70,9 @@ export default {
   colorReef: {
     color: colors.reef,
   },
+  colorCoral: {
+    color: colors.coral,
+  },
   colorCharcoalDark: {
     color: colors.charcoalDark,
   },
@@ -123,6 +126,9 @@ export default {
   },
   padding30tb: {
     padding: "30px 0",
+  },
+  padding40: {
+    padding: "40px",
   },
   paddingLR: {
     paddingLeft: "5%",
@@ -178,6 +184,12 @@ export default {
   txtBGCoral: {
     display: "table",
     background: colors.coral,
+    borderRadius: "10px 0",
+    padding: "10px",
+  },
+  txtBGSunshine: {
+    display: "table",
+    background: colors.sunshine,
     borderRadius: "10px 0",
     padding: "10px",
   },

@@ -4,83 +4,48 @@
     "subHeading": "Our fitness experts understand your health like no one else. Sign up with us to manage your diabetes better & take a step towards a better life."
   },
   "feelgoodPageTxt": {
-    "mainHeading": [
-      "Explore Our ",
-      "Healthcare Fitness Plans ",
-      "or Have ",
-      "A Wake-Up Call ",
-      "About Your Health & Fitness Levels."
-    ],
+    "mainHeading": ["Explore Our ", "Healthcare Fitness Plans ", "or Have ", "A Wake-Up Call ", "About Your Health & Fitness Levels."],
     "subHeading": "It’s never too late! Our fitness experts are here to help and understand your health like no one else."
   },
   "homeworkoutPageTxt": {
     "mainHeading": ["There’s a ", "reason doctors ", "recommend us"],
-    "subHeading": [
-      "18 years of my life went by taking insulin shots. Enrolling in the GetSetGo Fitness Diabetes Care package was by far the best investment I made for my health. With the help of the diet and exercise plan given by the GetSetGo team, I managed to normalize my condition. Today I am fit in my late 40s feeling like I'm in my late 20s.",
-      "Ashok Goyal,",
-      "Diabetes Care Client",
-      "Hyderabad"
+    "subHeading": ["18 years of my life went by taking insulin shots. Enrolling in the GetSetGo Fitness Diabetes Care package was by far the best investment I made for my health. With the help of the diet and exercise plan given by the GetSetGo team, I managed to normalize my condition. Today I am fit in my late 40s feeling like I'm in my late 20s.", "Ashok Goyal,", "Diabetes Care Client", "Hyderabad"]
+  },
+  "howDoesGetSetGoWorkTxt": {
+    "mainHeading": "But how does the GetSetGo Fitness online coaching work?",
+    "phases1": [
+      { "phase": "Phase -  1", "heading": "Understanding your lifestyle", "pointers": ["Identifying past and present challenges", "Understanding your current eating habits, likes, dislikes, preferences, etc.", "Understanding your stress levels, medical history, sleep patterns, nature of work, time constraints, and activity levels."] },
+      { "phase": "Phase -  3", "heading": "Induction", "pointers": ["Tweaking your current eating habits by 20-30% only to ensure a smooth start..", "Introducing you to resistance training workouts based on your preferencehome/gym/outdoors.", "Constant monitoring to hold you accountable and achieve consistency."] },
+      { "phase": "Phase -  5", "heading": "Ownership", "pointers": ["Guiding you to make better food choices on your own.", "Guiding you to design your own meal plans and exercise regime.", "One-on-one assessment by your coach to get you thorough with the concepts."] }
+    ],
+    "phases2": [
+      { "phase": "Phase -  2", "heading": "Goal setting", "pointers": ["Understanding your aspirations.", "Setting realistic goals.", "Setting short-term and long-term milestones.", "Setting the right expectations.", "Setting practical timelines to achieve your goals."] },
+      { "phase": "Phase -  4", "heading": "Transition", "pointers": ["Identifying loopholes and adopting strategies to ensure your progress keeps ticking.", "Practical solutions to manage social gatherings/traveling etc.", "Understanding calories, macros, and meal replacements.", "Introducing exercise progressions."] },
+      { "phase": "Phase -  6", "heading": "Reward and recognition", "pointers": ["Celebrating your achievements in our exclusive member community", "A chance to get interviewed by our CEO.", "Rewarding your hard work through shopping vouchers, goodies, etc.", "Featuring your transformation story on our blogs and social media to inspire other moms."] }
     ]
   },
+  "reviewImages": { "reviews1": ["review1.png", "review2.png"], "reviews2": ["review3.png", "review4.png"], "reviews3": ["review5.png"] },
   "yogaPageTxt": {
     "mainHeading": ["Why our ", "Healthcare Plans ", "are effective?"],
-    "contentList": [
-      "A 1-to-1 coach who will completely understand your lifestyle and health concerns.",
-      "Easy-to-follow nutrition and workout plan, that is in-sync with your treatment.",
-      "Frequent tweaking of diet plan till you see results.",
-      "Regular sharing of progress update with your doctor.",
-      "Unlimited coach support via WhatsApp & Call."
-    ]
+    "contentList": ["A 1-to-1 coach who will completely understand your lifestyle and health concerns.", "Easy-to-follow nutrition and workout plan, that is in-sync with your treatment.", "Frequent tweaking of diet plan till you see results.", "Regular sharing of progress update with your doctor.", "Unlimited coach support via WhatsApp & Call."]
   },
   "GSGInTheNews": {
     "mainheading": "Media Features",
     "images": [
-      [
-        "yourstory_logo.png",
-        "https://yourstory.com/2017/02/keep-eyes-prize-getsetgo-ready-flag-off-fitness-journey/amp"
-      ],
+      ["yourstory_logo.png", "https://yourstory.com/2017/02/keep-eyes-prize-getsetgo-ready-flag-off-fitness-journey/amp"],
       ["cnbc_logo.png", "https://www.youtube.com/watch?v=T_So6fZaAk0"],
       ["the_hindu_logo.png"],
 
-      [
-        "mensxp_logo.png",
-        "https://www.mensxp.com/health/motivation/49207-31-days-of-fitness-teased-for-being-fat-melvin-rsquo-s-transformation-shut-down-all-his-bullies.html"
-      ],
+      ["mensxp_logo.png", "https://www.mensxp.com/health/motivation/49207-31-days-of-fitness-teased-for-being-fat-melvin-rsquo-s-transformation-shut-down-all-his-bullies.html"],
       ["ihrsa_logo.png"],
       ["toi_logo.png"],
-      [
-        "e_business_logo.png",
-        "https://ebusinessindia.wordpress.com/2018/01/25/getsetgo-an-online-fitness-solutions-startup-helps-people-to-stay-fit-on-the-go/"
-      ],
+      ["e_business_logo.png", "https://ebusinessindia.wordpress.com/2018/01/25/getsetgo-an-online-fitness-solutions-startup-helps-people-to-stay-fit-on-the-go/"],
 
       ["radiomirchiusa_logo.png"]
     ]
   },
   "GSGAskQuestions": {
-    "questionsset1": [
-      ["You are unhappy with your looks and want to look better"],
-      ["Your lifestyle is bad."],
-      [
-        "You have tried all kinds of diet and exercise programs but haven’t got the results."
-      ],
-      ["You have a busy schedule and do not have a work-life balance."],
-      ["You have a binge eating disorder."],
-      ["You want to workout but have no direction."],
-      ["You want to learn how to manage your family’s health and fitness."]
-    ],
-    "questionsset2": [
-      [
-        "You want to have better energy levels to keep up with your daily tasks."
-      ],
-      [
-        "You fear certain foods and want to eat simple home cooked meals to get the results you want."
-      ],
-      [
-        "You are tired of random fitness advice and are looking for genuine guidance that can make a difference in your life."
-      ],
-      [
-        "You have tried all kinds of diet and exercise, programs but haven’t got the results."
-      ]
-    ]
+    "questionsset1": [["You are unhappy with your looks and want to look better"], ["Your lifestyle is bad."], ["You have tried all kinds of diet and exercise programs but haven’t got the results."], ["You have a busy schedule and do not have a work-life balance."], ["You have a binge eating disorder."], ["You want to workout but have no direction."], ["You want to learn how to manage your family’s health and fitness."]],
+    "questionsset2": [["You want to have better energy levels to keep up with your daily tasks."], ["You fear certain foods and want to eat simple home cooked meals to get the results you want."], ["You are tired of random fitness advice and are looking for genuine guidance that can make a difference in your life."], ["You have tried all kinds of diet and exercise, programs but haven’t got the results."]]
   }
 }

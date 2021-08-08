@@ -61,8 +61,8 @@ const App = () => {
       <Router>
         <Header />
         <Switch>
-          <Route exact to="/" component={SellingArea} />
-          <Route exact to="/selling" component={SellingArea} />
+          <Route exact path="/" component={HomeArea} />
+          <Route exact path="/selling" component={SellingArea} />
         </Switch>
         <Footer />
       </Router>

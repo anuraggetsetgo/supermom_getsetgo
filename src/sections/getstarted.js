@@ -7,28 +7,13 @@ import Signupform from "../signupform";
 class GetStarted extends Component {
   render() {
     return (
-      <Grid
-        item
-        container
-        direction="column"
-        style={{ ...Styles.blueBG, ...Styles.highZ, padding: "10vh" }}
-        alignItems="center"
-        justify="center"
-        className="top"
-      >
+      <Grid item container direction="column" style={{ ...Styles.blueBG, ...Styles.highZ, padding: "10vh" }} alignItems="center" justify="center" className="top">
         <Grid item xs={8}>
-          <Typography
-            variant="h2"
-            style={{ ...Styles.colorYellow, ...Styles.centerTxt }}
-          >
+          <Typography variant="h2" style={{ ...Styles.colorYellow, ...Styles.centerTxt }}>
             Prioritize your health today
           </Typography>
-          <Typography
-            variant="h3"
-            style={{ ...Styles.colorWhite, textAlign: "center" }}
-          >
-            Sign up with us to manage your diabetes better & take a step towards
-            a better life.
+          <Typography variant="h3" style={{ ...Styles.colorWhite, textAlign: "center" }}>
+            Sign up with us to manage your diabetes better & take a step towards a better life.
           </Typography>
           <hr />
         </Grid>

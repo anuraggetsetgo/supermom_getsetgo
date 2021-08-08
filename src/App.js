@@ -25,17 +25,18 @@ import Landingvideobanner from "./sections/landingvideobanner";
 import Joinnow from "./sections/joinnow";
 import Whygetsetgo from "./sections/whygetsetgo";
 import Signupbanner from "./sections/signupbanner";
-
+import Publicreviews from "./sections/publicreviews";
 import Signupform from "../src/signupform";
 const HomeArea = () => {
   return (
     <>
-      {/* <Signupbanner /> */}
-      <Signupform />
+      <Signupbanner />
+      {/* <Signupform /> */}
       {/* <Socialmedia /> */}
       <Landingvideobanner />
       <Joinnow />
       <Whygetsetgo />
+      <Publicreviews />
       <Mediabanner />
     </>
   );

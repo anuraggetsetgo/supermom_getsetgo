@@ -180,6 +180,8 @@ export default (props) => {
                 padding: "60px",
                 boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
                 borderRadius: "10px",
+                background: "white",
+                marginTop: "55px",
               }}
             >
               <Grid item>

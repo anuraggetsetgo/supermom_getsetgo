@@ -52,6 +52,7 @@ const Signupbanner = () => {
                 <span style={{ ...Styles.boldTxt }}>super busy life.</span>
               </Typography>
             </Grid>
+            <Signupform />
           </Grid>
         </Grid>
       </Grid>

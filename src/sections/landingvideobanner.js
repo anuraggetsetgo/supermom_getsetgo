@@ -6,7 +6,13 @@ import { Typography } from "@material-ui/core";
 const Landingvideobanner = () => {
   return (
     <>
-      <Grid item container direction="row" justify="center">
+      <Grid
+        item
+        container
+        direction="row"
+        justify="center"
+        style={{ marginTop: "320px" }}
+      >
         <Grid item justify="center">
           <Grid item>
             <Typography variant="h3" style={{ textAlign: "center" }}>

@@ -5,90 +5,26 @@ import customTxt from "./customTxt.json";
 const Joinnow = () => {
   return (
     <>
-      <Grid
-        item
-        container
-        alignItems="center"
-        justify="center"
-        style={{ margin: "150px 0" }}
-      >
-        <Grid
-          item
-          container
-          //   alignItems="center"
-          justify="space-between"
-          direction="row"
-          xs={12}
-          sm={12}
-          lg={10}
-        >
-          <Grid
-            xs={12}
-            sm={12}
-            lg={4}
-            style={{ position: "relative", top: "-50px" }}
-          >
-            <Grid item alignItems="center" justify="center">
-              <Typography
-                variant="h1"
-                style={{ ...Styles.colorRed, ...Styles.boldTxt }}
-              >
+      <Grid item container alignItems="center" justify="center" style={{ padding: "150px 0 100px", marginBottom: "100px", background: "rgba(255, 221, 51, 0.1)" }}>
+        <Grid item container alignItems="flex-start" justify="space-between" direction="row" xs={12} sm={12} lg={10}>
+          <Grid item xs={12} sm={12} lg={4} style={{ position: "relative", top: "-50px" }}>
+            <Grid item container alignItems="center" justify="center">
+              <Typography variant="h1" style={{ ...Styles.colorRed, ...Styles.boldTxt }}>
                 You <br />
                 should join GetSetGo <br />
                 if...
               </Typography>
             </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            lg={4}
-            container
-            direction="column"
-            // alignItems="center"
-            // justify="center"
-          >
-            <Grid
-              item
-              container
-              direction="row"
-              alignItems="center"
-              justify="center"
-            >
+          <Grid item xs={12} sm={12} lg={4} container direction="column" alignItems="center" justify="center">
+            <Grid item container direction="row" alignItems="center" justify="center">
               {customTxt.GSGAskQuestions.questionsset1.map((val, key) => {
                 return (
-                  <Grid
-                    item
-                    container
-                    direction="row"
-                    alignItems="center"
-                    justify="center"
-                  >
+                  <Grid item container direction="row" alignItems="center" justify="center">
                     <Grid item container alignItems="center">
-                      <Grid
-                        item
-                        container
-                        justify="flex-start"
-                        alignItems="flex-start"
-                        direction="row"
-                        style={{ marginBottom: "10px" }}
-                      >
-                        <Grid
-                          item
-                          xs={1}
-                          justify="flex-start"
-                          alignItems="flex-start"
-                          direction="row"
-                          style={{ marginRight: "16px" }}
-                        >
-                          <svg
-                            width="32"
-                            height="32"
-                            viewBox="0 0 32 32"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
+                      <Grid item container justify="flex-start" alignItems="flex-start" direction="row" style={{ marginBottom: "10px" }}>
+                        <Grid item xs={1} justify="flex-start" alignItems="flex-start" direction="row" style={{ marginRight: "16px" }}>
+                          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M31.8516 1.99009L31.2224 1.27646C31.1801 1.22837 31.1225 1.1963 31.0594 1.18565C30.9963 1.17499 30.9314 1.1864 30.8756 1.21796C21.3958 6.63143 14.3738 18.0778 14.3738 18.0778C11.8965 9.96891 8.31006 13.8588 7.49861 14.8903C7.4765 14.9182 7.46025 14.9502 7.45083 14.9845C7.44141 15.0188 7.43902 15.0547 7.4438 15.09C7.44858 15.1252 7.46044 15.1591 7.47865 15.1897C7.49687 15.2203 7.52107 15.2468 7.5498 15.2678C11.0204 17.7686 12.3773 22.9035 12.6549 24.109C12.6607 24.1338 12.6728 24.1567 12.6902 24.1753C12.7076 24.194 12.7295 24.2078 12.7538 24.2154C12.7782 24.2229 12.8041 24.224 12.829 24.2184C12.8538 24.2128 12.8768 24.2008 12.8956 24.1836C13.7467 23.4048 15.9446 21.9998 16.3388 21.7499C16.3783 21.7242 16.4099 21.6881 16.4303 21.6457C22.4772 9.22573 30.6907 3.02489 31.826 2.20522C31.8426 2.19333 31.8565 2.17813 31.8668 2.16058C31.8772 2.14303 31.8838 2.12352 31.8862 2.10329C31.8886 2.08306 31.8867 2.06255 31.8808 2.04306C31.8749 2.02357 31.8649 2.00553 31.8516 1.99009Z"
                               fill="#24A64A"
@@ -138,29 +74,9 @@ const Joinnow = () => {
                   //   justify="center"
                 >
                   <Grid item container>
-                    <Grid
-                      item
-                      container
-                      justify="flex-start"
-                      alignItems="flex-start"
-                      direction="row"
-                      style={{ marginBottom: "10px" }}
-                    >
-                      <Grid
-                        item
-                        xs={1}
-                        justify="flex-start"
-                        alignItems="flex-start"
-                        direction="row"
-                        style={{ marginRight: "16px" }}
-                      >
-                        <svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                    <Grid item container justify="flex-start" alignItems="flex-start" direction="row" style={{ marginBottom: "10px" }}>
+                      <Grid item xs={1} justify="flex-start" alignItems="flex-start" direction="row" style={{ marginRight: "16px" }}>
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path
                             d="M31.8516 1.99009L31.2224 1.27646C31.1801 1.22837 31.1225 1.1963 31.0594 1.18565C30.9963 1.17499 30.9314 1.1864 30.8756 1.21796C21.3958 6.63143 14.3738 18.0778 14.3738 18.0778C11.8965 9.96891 8.31006 13.8588 7.49861 14.8903C7.4765 14.9182 7.46025 14.9502 7.45083 14.9845C7.44141 15.0188 7.43902 15.0547 7.4438 15.09C7.44858 15.1252 7.46044 15.1591 7.47865 15.1897C7.49687 15.2203 7.52107 15.2468 7.5498 15.2678C11.0204 17.7686 12.3773 22.9035 12.6549 24.109C12.6607 24.1338 12.6728 24.1567 12.6902 24.1753C12.7076 24.194 12.7295 24.2078 12.7538 24.2154C12.7782 24.2229 12.8041 24.224 12.829 24.2184C12.8538 24.2128 12.8768 24.2008 12.8956 24.1836C13.7467 23.4048 15.9446 21.9998 16.3388 21.7499C16.3783 21.7242 16.4099 21.6881 16.4303 21.6457C22.4772 9.22573 30.6907 3.02489 31.826 2.20522C31.8426 2.19333 31.8565 2.17813 31.8668 2.16058C31.8772 2.14303 31.8838 2.12352 31.8862 2.10329C31.8886 2.08306 31.8867 2.06255 31.8808 2.04306C31.8749 2.02357 31.8649 2.00553 31.8516 1.99009Z"
                             fill="#24A64A"
@@ -188,12 +104,7 @@ const Joinnow = () => {
                 </Grid>
               );
             })}
-            <Grid
-              item
-              container
-              justify="flex-end"
-              style={{ marginTop: "96px" }}
-            >
+            <Grid item container justify="flex-end" style={{ marginTop: "96px" }}>
               <Grid
                 item
                 alignItems="center"

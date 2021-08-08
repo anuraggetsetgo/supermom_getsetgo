@@ -24,6 +24,20 @@
       { "phase": "Phase -  6", "heading": "Reward and recognition", "pointers": ["Celebrating your achievements in our exclusive member community", "A chance to get interviewed by our CEO.", "Rewarding your hard work through shopping vouchers, goodies, etc.", "Featuring your transformation story on our blogs and social media to inspire other moms."] }
     ]
   },
+  "whyGetSetGo": {
+    "column1": [
+      { "title": "No Strict Dieting", "text": "Say goodbye to strict dieting programs! GetSetGoFitness was built to make fitness easy and fun for you.", "image": "Diet.png" },
+      { "title": "Convenient Communication", "text": "24x7 whatsapp/email/call support to address yourqueries and challenges.", "image": "Communication.png" }
+    ],
+    "column2": [
+      { "title": "Well- Trained Professionals", "text": "Qualified fitness professionals trained in-house by ourCo-Founders who are seasoned fitness coaches withover 10 years of coaching experience.", "image": "Trained Professional.png" },
+      { "title": "Technology Driven", "text": "technology enabled coaching interface to give you aseamless experience.", "image": "Technology Drive.png" }
+    ],
+    "column3": [
+      { "title": "One- To- One Coach", "text": "Dedicated coach to guide you on a weekly basis with aproper plan of action.", "image": "Coach.png" },
+      { "title": "Long term results", "text": "Results that you can achieve and maintain for the long term.", "image": "Frame.png" }
+    ]
+  },
   "reviewImages": { "reviews1": ["review1.png", "review2.png"], "reviews2": ["review3.png", "review4.png"], "reviews3": ["review5.png"] },
   "yogaPageTxt": {
     "mainHeading": ["Why our ", "Healthcare Plans ", "are effective?"],

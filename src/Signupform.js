@@ -42,6 +42,7 @@ function validateAge(value) {
 }
 
 const Signupform = (props) => {
+  console.log(props);
   let history = useHistory();
   let [err, updateErr] = useState(false);
   let [formSubmitting, updateFormSubmitting] = useState(false);
@@ -152,63 +153,65 @@ const Signupform = (props) => {
           submitForm(values);
         }}
       >
-        {({ errors, touched, isValidating }) => (
-          <Grid item container direction="row" justify="center">
-            <Grid
-              item
-              justify="center"
-              justify="flex-start"
-              alignItems="center"
-              xs={12}
-              sm={12}
-              lg={10}
-              style={{
-                padding: "60px",
-                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
-                borderRadius: "10px",
-                background: "white",
-                marginTop: "55px",
-              }}
-            >
-              <Grid item>
-                <Typography
-                  variant="h1"
-                  style={{
-                    textAlign: "center",
-                    ...Styles.colorRed,
-                    ...Styles.boldTxt,
-                  }}
-                >
-                  Are you the next SUPER MOM?
-                </Typography>
-              </Grid>
-              <Grid item style={{ marginBottom: "32px" }}>
-                <Typography variant="h5" style={{ textAlign: "center", ...Styles.colorCharcoalLight }}>
-                  Kindly enter your details below
-                </Typography>
-              </Grid>
-              <Form autoComplete="off">
-                <Grid item xs={12} style={{ display: "flex" }}>
-                  <Grid item xs={6} style={Styles.formFieldContainer}>
-                    <Field
-                      name="name"
-                      type="text"
-                      placeholder="Enter your name"
-                      validate={validateName}
-                      style={{
-                        ...Styles.formInputField,
-                        width: "90%",
-                      }}
-                    />
-                    {touched.name && errors.name && (
-                      <Grid item style={Styles.err}>
-                        {errors.name}
-                      </Grid>
-                    )}
-                  </Grid>
-                  <Grid item xs={6} style={Styles.formFieldContainer}>
-                    <Grid item>
-                      {/* <Grid item style={Styles.countryContainer}>
+        {({ errors, touched, isValidating, values }) => {
+          console.log(values);
+          return (
+            <Grid item container direction="row" justify="center">
+              <Grid
+                item
+                justify="center"
+                justify="flex-start"
+                alignItems="center"
+                xs={12}
+                sm={12}
+                lg={10}
+                style={{
+                  padding: "60px",
+                  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+                  borderRadius: "10px",
+                  background: "white",
+                  marginTop: "55px",
+                }}
+              >
+                <Grid item>
+                  <Typography
+                    variant="h1"
+                    style={{
+                      textAlign: "center",
+                      ...Styles.colorRed,
+                      ...Styles.boldTxt,
+                    }}
+                  >
+                    Are you the next SUPER MOM?
+                  </Typography>
+                </Grid>
+                <Grid item style={{ marginBottom: "32px" }}>
+                  <Typography variant="h5" style={{ textAlign: "center", ...Styles.colorCharcoalLight }}>
+                    Kindly enter your details below
+                  </Typography>
+                </Grid>
+                <Form autoComplete="off">
+                  <Grid item xs={12} style={{ display: "flex" }}>
+                    <Grid item xs={6} style={Styles.formFieldContainer}>
+                      <Field
+                        name="name"
+                        type="text"
+                        placeholder="Enter your name"
+                        validate={validateName}
+                        style={{
+                          ...Styles.formInputField,
+                          width: "90%",
+                        }}
+                      />
+                      {touched.name && errors.name && (
+                        <Grid item style={Styles.err}>
+                          {errors.name}
+                        </Grid>
+                      )}
+                    </Grid>
+                    <Grid item xs={6} style={Styles.formFieldContainer}>
+                      <Grid item>
+                        {/* <Grid item style={Styles.countryContainer}>
                         <Field
                           style={{ ...Styles.feildRadius }}
                           name="country"
@@ -216,27 +219,27 @@ const Signupform = (props) => {
                           validate={validateCountry}
                         />
                       </Grid> */}
-                      <Grid item style={{ ...Styles.mobileContainer }}>
-                        <Field style={{ ...Styles.formInputField }} placeholder="Enter your contact no" name="mobile" type="number" validate={validateMobile} />
+                        <Grid item style={{ ...Styles.mobileContainer }}>
+                          <Field style={{ ...Styles.formInputField }} placeholder="Enter your contact no" name="mobile" type="number" validate={validateMobile} />
+                        </Grid>
                       </Grid>
+                      {((touched.mobile && errors.mobile) || (touched.country && errors.country)) && (
+                        <Grid item style={Styles.err} variant="body2">
+                          {errors.mobile} {errors.country}
+                        </Grid>
+                      )}
                     </Grid>
-                    {((touched.mobile && errors.mobile) || (touched.country && errors.country)) && (
-                      <Grid item style={Styles.err} variant="body2">
-                        {errors.mobile} {errors.country}
-                      </Grid>
+                  </Grid>
+
+                  <Grid item style={Styles.formFieldContainer}>
+                    <Field name="email" type="text" placeholder="Email id" validate={validateEmail} style={{ ...Styles.formInputField, width: "95%" }} />
+                    {touched.email && errors.email && (
+                      <Typography variant="h7" style={Styles.err} variant="body2">
+                        {errors.email}
+                      </Typography>
                     )}
                   </Grid>
-                </Grid>
-
-                <Grid item style={Styles.formFieldContainer}>
-                  <Field name="email" type="text" placeholder="Email id" validate={validateEmail} style={{ ...Styles.formInputField, width: "95%" }} />
-                  {touched.email && errors.email && (
-                    <Typography variant="h7" style={Styles.err} variant="body2">
-                      {errors.email}
-                    </Typography>
-                  )}
-                </Grid>
-                {/* <Grid item style={Styles.formFieldContainer}>
+                  {/* <Grid item style={Styles.formFieldContainer}>
               <label htmlFor="age">
                 <Typography variant="h7">Age</Typography>
               </label>
@@ -252,18 +255,19 @@ const Signupform = (props) => {
                 </Typography>
               )}
             </Grid> */}
-                <Styles.ColorButton
-                  type="submit"
-                  variant="contained"
-                  disabled={submitButtonEnable}
-                  // onClick={(e) => setSubmitButtonEnable(true)}
-                >
-                  YES I AM
-                </Styles.ColorButton>
-              </Form>
+                  <Styles.ColorButton
+                    type="submit"
+                    variant="contained"
+                    disabled={submitButtonEnable}
+                    // onClick={(e) => setSubmitButtonEnable(true)}
+                  >
+                    YES I AM
+                  </Styles.ColorButton>
+                </Form>
+              </Grid>
             </Grid>
-          </Grid>
-        )}
+          );
+        }}
       </Formik>
     );
   }

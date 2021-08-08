@@ -197,6 +197,38 @@ export const Thankyou = () => {
             </Grid>
           </Grid>
         </Grid>
+        <Grid item container alignItems="center" justify="center">
+          <Grid
+            item
+            container
+            alignItems="center"
+            justify="flex-start"
+            direction="row"
+            xs={12}
+            sm={12}
+            lg={8}
+            style={{
+              padding: "100px",
+              ...Styles.whiteBG,
+              boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+              borderRadius: "10px",
+            }}
+          >
+            <Grid item>
+              <Typography
+                variant="h3"
+                style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
+              >
+                Preferred time for call
+              </Typography>
+            </Grid>
+            <Grid item container>
+              <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
+                What’s the best time to call you for follow-up
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
     </>
   );

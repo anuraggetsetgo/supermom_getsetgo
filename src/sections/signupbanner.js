@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Grid } from "@material-ui/core";
 import Styles from "../app-style.js";
-import Signupform from "../Signupform";
+import Signupform from "../signupform";
 
 const Signupbanner = () => {
   return (
@@ -23,8 +23,7 @@ const Signupbanner = () => {
               <Typography variant="h2" style={{ textAlign: "center", ...Styles.whiteColor }}>
                 If <spam style={{ ...Styles.boldTxt }}>multi-tasking </spam>
                 is the name of the game, these mom’s who have <span style={{ ...Styles.boldTxt }}>undergone our coaching program</span> have become better
-                <span style={{ ...Styles.boldTxt }}> multi-taskers</span> and they are nowfully equipped to <span style={{ ...Styles.boldTxt }}>perform their best in all areas</span> of their{" "}
-                <span style={{ ...Styles.boldTxt }}>super busy life.</span>
+                <span style={{ ...Styles.boldTxt }}> multi-taskers</span> and they are nowfully equipped to <span style={{ ...Styles.boldTxt }}>perform their best in all areas</span> of their <span style={{ ...Styles.boldTxt }}>super busy life.</span>
               </Typography>
             </Grid>
             <Signupform />

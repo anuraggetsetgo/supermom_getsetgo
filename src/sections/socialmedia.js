@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "../app-style.js";
 import { Typography, Grid } from "@material-ui/core";
 //import GetStarted from "./getstarted.js";
-import Signupform from "../Signupform";
+import Signupform from "../signupform";
 import Publicreviews from "./publicreviews";
 const Socialmedia = () => {
   return (
@@ -25,8 +25,7 @@ const Socialmedia = () => {
         }}
       >
         <Grid item xs={8} container alignItems="center" justify="center">
-          If multi-tasking is the name of the game, these mom’s who have undergone our coaching program have become better multi-taskers and they are nowfully equipped to perform their best in all
-          areas of their super busy life.
+          If multi-tasking is the name of the game, these mom’s who have undergone our coaching program have become better multi-taskers and they are nowfully equipped to perform their best in all areas of their super busy life.
         </Grid>
         <Grid item direction="column" container style={{ position: "absolute", bottom: "0", zIndex: 10 }}>
           <Grid item>

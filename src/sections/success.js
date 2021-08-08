@@ -5,44 +5,19 @@ import { Typography } from "@material-ui/core";
 const Success = () => {
   return (
     <>
-      <Grid
-        item
-        container
-        direction="column"
-        alignItems="center"
-        justify="center"
-      >
-        <Grid
-          justify="flex-start"
-          alignItems="center"
-          style={{
-            width: "774px",
-            marginBottom: "60px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            style={{
-              fontSize: "Poppins",
-              fontSize: "48px",
-              color: "#FE0000",
-              textAlign: "center",
-              margin: "0px 10px",
-              fontWeight: "bold",
-              lineHeight: "53px",
-            }}
-          >
-            1,00,000+ GetSetGo community members are waiting to hear your
-            success story!
+      <Grid item container direction="column" alignItems="center" justify="center">
+        <Grid justify="flex-start" alignItems="center">
+          <Typography variant="h2" style={{ ...Styles.centerTxt, ...Styles.colorRed }}>
+            <span style={Styles.boldTxt}>
+              1,00,000+ GetSetGo community
+              <br /> members
+            </span>{" "}
+            are waiting to hear
+            <br /> your success story!
           </Typography>
         </Grid>
-        <Grid item>
-          <img
-            src={Styles.backCoverImg("link_below.png")}
-            alt="Link Below Girl"
-            height="400px"
-          />
+        <Grid item container alignItems="flex-end">
+          <img src={Styles.backCoverImg("link_below.png")} alt="Link Below Girl" height="400px" />
         </Grid>
         <Grid
           justify="flex-start"

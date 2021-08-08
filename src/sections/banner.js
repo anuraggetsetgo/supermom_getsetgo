@@ -21,7 +21,7 @@ class Banner extends Component {
               YOU'RE GOING TO LOVE IT.
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={12} lg={6}>
+          <Grid item xs={12} sm={12} lg={6} container alignItems="flex-end">
             <img src="img/excited-beautiful-girl-smiling-pointing-fingers-small 2.png" alt="banner" style={Styles.bannerImg} />
           </Grid>
           <Grid item xs={12}>

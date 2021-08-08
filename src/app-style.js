@@ -70,6 +70,9 @@ export default {
   colorReef: {
     color: colors.reef,
   },
+  colorCoral: {
+    color: colors.coral,
+  },
   colorCharcoalDark: {
     color: colors.charcoalDark,
   },
@@ -124,6 +127,9 @@ export default {
   padding30tb: {
     padding: "30px 0",
   },
+  padding40: {
+    padding: "40px",
+  },
   paddingLR: {
     paddingLeft: "5%",
     paddingRight: "5%",
@@ -152,7 +158,18 @@ export default {
     padding: "5px 20px",
     marginTop: "20px",
   },
-
+  landingButton: {
+    width: "287px",
+    height: "93px",
+    backgroundColor: "#FFDD33",
+    borderRadius: "10px",
+    fontFamily: "Poppins",
+    fontWeight: "bold",
+    fontSize: "24px",
+    border: "none",
+    margin: "40px 0 100px 0",
+    cursor: "pointer",
+  },
   fixed: {
     position: "sticky",
     top: 0,
@@ -167,6 +184,12 @@ export default {
   txtBGCoral: {
     display: "table",
     background: colors.coral,
+    borderRadius: "10px 0",
+    padding: "10px",
+  },
+  txtBGSunshine: {
+    display: "table",
+    background: colors.sunshine,
     borderRadius: "10px 0",
     padding: "10px",
   },

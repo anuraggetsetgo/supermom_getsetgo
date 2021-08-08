@@ -11,9 +11,13 @@ const Videocomponent = () => {
       direction="row"
       alignItems="center"
       justify="center"
-      style={{ margin: "150px 0" }}
+      style={{ margin: "92px 0" }}
     >
-      <Grid justify="flex-start" alignItems="center">
+      <Grid
+        justify="flex-start"
+        alignItems="center"
+        style={{ width: "1170px", marginBottom: "16px" }}
+      >
         <Typography
           variant="h1"
           style={{
@@ -26,7 +30,11 @@ const Videocomponent = () => {
           <br /> SUPER HEALTHY, HAPPY, AND FIT.
         </Typography>
       </Grid>
-      <Grid justify="flex-start" alignItems="center">
+      <Grid
+        justify="flex-start"
+        alignItems="center"
+        style={{ width: "1170px", height: "40px" }}
+      >
         <Typography
           variant="h3"
           style={{
@@ -45,54 +53,41 @@ const Videocomponent = () => {
           alignItems="center"
           justify="space-between"
           direction="row"
-          xs={12}
-          sm={12}
-          lg={10}
-          spacing={2}
-          style={{ marginBottom: "24px", marginTop: "30px" }}
+          style={{ width: "1170px", marginBottom: "24px", marginTop: "30px" }}
         >
           <Grid
             item
             justify="center"
-            xs={12}
-            sm={12}
-            lg={4}
-            container
-            alignItems="center"
             style={{
               height: "246px",
-              backgroundSize: "100% 100%",
+              width: "370px",
               backgroundImage: `url(${Styles.backCoverImg("video_img1.png")})`,
+              display: "flex",
+              alignItems: "center",
             }}
           >
             <Grid item></Grid>
           </Grid>
           <Grid
             item
-            xs={12}
-            sm={12}
-            lg={4}
-            container
-            alignItems="center"
             justify="center"
             style={{
               height: "246px",
+              width: "370px",
               backgroundImage: `url(${Styles.backCoverImg("video_img2.png")})`,
-              backgroundSize: "100% 100%",
+              display: "flex",
+              alignItems: "center",
             }}
           ></Grid>
           <Grid
             item
-            xs={12}
-            sm={12}
-            lg={4}
             justify="center"
             style={{
               height: "246px",
+              width: "370px",
               backgroundImage: `url(${Styles.backCoverImg("video_img3.png")})`,
               display: "flex",
               alignItems: "center",
-              backgroundSize: "100% 100%",
             }}
           ></Grid>
         </Grid>

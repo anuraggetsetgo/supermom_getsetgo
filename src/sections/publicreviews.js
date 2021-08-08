@@ -15,10 +15,26 @@ const GoogleReview = ({ review }) => {
         style={{
           background: Styles.colorWhite.color,
           padding: "40px 30px 26px 24px",
-          minHeight: "240px",
+
           alignContent: "space-between",
         }}
       >
+        {" "}
+        <Grid item xs={12} container direction="row" tyle={{ marginTop: "8px" }}>
+          <Grid item style={{ marginRight: "8px" }}>
+            <img src={review.reviewer_photo} alt="google_reviews" width="50" height="50" />
+          </Grid>
+          <Grid item xs={8} container direction="column">
+            <Rating className="app-small-font-size" name="read-only" readOnly value={review.reviewer_rating} />
+            <Typography variant="h6" className="charcoal-dark2  bold">
+              {review.reviewer_name}
+            </Typography>
+          </Grid>
+        </Grid>{" "}
+        <br />
+        <br />
+        <br />
+        <br />
         <Grid item xs={12}>
           <Typography
             variant="subtitle2"
@@ -32,17 +48,6 @@ const GoogleReview = ({ review }) => {
             {review.reviewer_comment}
           </Typography>
         </Grid>
-        <Grid item xs={12} container direction="row" tyle={{ marginTop: "8px" }}>
-          <Grid item style={{ marginRight: "8px" }}>
-            <img src={review.reviewer_photo} alt="google_reviews" width="50" height="50" />
-          </Grid>
-          <Grid item xs={8} container direction="column">
-            <Rating className="app-small-font-size" name="read-only" readOnly value={review.reviewer_rating} />
-            <Typography variant="h6" className="charcoal-dark2  bold">
-              {review.reviewer_name}
-            </Typography>
-          </Grid>
-        </Grid>
       </Grid>
     </>
   );
@@ -52,7 +57,7 @@ class Publicreviews extends Component {
   render() {
     const { reviewData } = this.props;
     return (
-      <Grid contianer direction="column">
+      <Grid item contianer direction="column" justify="center" alignItems="center">
         <Grid item container direction="column" alignItems="flex-start" justify="flex-start" style={{ marginLeft: "20px" }}>
           <Typography variant="h3" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
             Google Rating and Review
@@ -71,10 +76,10 @@ class Publicreviews extends Component {
             />
           </svg>
         </Grid>
-        <Grid item container direction="column" justify="center" alignItems="center">
+        <Grid item container direction="column" xs={12} justify="center" alignItems="center">
           {reviewData.map((review, key) => {
             return (
-              <Grid key={key} item sm={12} md={6} xs={12} style={{ padding: "14px 14px" }}>
+              <Grid container key={key} item sm={12} justify="center" md={8} xs={12} style={{ padding: "14px 14px" }}>
                 <GoogleReview review={review} />
               </Grid>
             );

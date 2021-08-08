@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./sections/header";
 import Footer from "./sections/footer";
 import ScrollToTop from "./scrolltotop";
@@ -26,10 +26,24 @@ import Joinnow from "./sections/joinnow";
 import Whygetsetgo from "./sections/whygetsetgo";
 import Signupbanner from "./sections/signupbanner";
 import Publicreviews from "./sections/publicreviews";
-import Signupform from "./signupform";
+import Signupform from "./Signupform";
 import Carousel from "./sections/carousel";
 import Thankyou from "./sections/thankyou";
-const HomeArea = () => {
+import api from "./gsgAPI/api";
+
+const HomeArea = ({ region }) => {
+  const [reviewData, setReviewdata] = useState([]);
+
+  async function getReview() {
+    let google_reviews_data = await api.callAPI(api.google_reviews_api, "GET");
+    google_reviews_data = google_reviews_data.reviews;
+    setReviewdata(google_reviews_data);
+  }
+
+  useEffect(() => {
+    getReview();
+  }, []);
+  console.log(reviewData);
   return (
     <>
       <Carousel />
@@ -39,13 +53,13 @@ const HomeArea = () => {
       <Landingvideobanner />
       <Joinnow />
       <Whygetsetgo />
-      <Publicreviews />
+      <Publicreviews reviewData={reviewData} />
       <Mediabanner />
     </>
   );
 };
 
-const SellingArea = () => {
+const SellingArea = ({ region }) => {
   return (
     <>
       <Banner />
@@ -58,7 +72,7 @@ const SellingArea = () => {
     </>
   );
 };
-const ThankyouArea = () => {
+const ThankyouArea = ({ region }) => {
   return (
     <>
       <Thankyou />
@@ -66,14 +80,31 @@ const ThankyouArea = () => {
   );
 };
 const App = () => {
+  const [appRegion, setAppRegion] = useState("base_ind");
+
+  async function setApiBase() {
+    let region = await api.getBaseUrl();
+
+    setAppRegion(region);
+  }
+
+  useEffect(() => {
+    setApiBase();
+  }, []);
   return (
     <>
       <Router>
         <Header />
         <Switch>
-          <Route exact path="/" component={HomeArea} />
-          <Route exact path="/selling" component={SellingArea} />
-          <Route exact path="/thankyou" component={ThankyouArea} />
+          <Route exact path="/">
+            <HomeArea region={appRegion} />
+          </Route>
+          <Route exact path="/selling">
+            <SellingArea region={appRegion} />
+          </Route>
+          <Route exact path="/thankyou">
+            <ThankyouArea region={appRegion} />
+          </Route>
         </Switch>
         <Footer />
       </Router>

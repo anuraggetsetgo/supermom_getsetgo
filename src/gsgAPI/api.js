@@ -52,12 +52,12 @@ async function checkRegion(country) {
 }
 async function getBaseUrl() {
   let locData = await getLocationApi();
-  if (locData == "in") {
-    return 0;
-  } else if (locData == "ae") {
-    return 1;
+  if (locData === "in") {
+    return "base_ind";
+  } else if (locData === "ae") {
+    return "base";
   } else {
-    return 2;
+    return "base_usa";
   }
 }
 

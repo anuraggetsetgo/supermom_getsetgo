@@ -1,6 +1,7 @@
 import React from "react";
 import Styles from "../app-style.js";
 import { Typography, Grid } from "@material-ui/core";
+import { Style } from "@material-ui/icons";
 
 const Mediabanner = () => {
   return (
@@ -28,13 +29,11 @@ const Mediabanner = () => {
           <Grid item xs={9}>
             <Grid item>
               <Typography
+                variant="h1"
                 style={{
-                  fontSize: "Poppins",
-                  fontSize: "48px",
-                  color: "#FFFFFF",
-                  flexGrow: "1",
+                  ...Styles.whiteColor,
                   margin: "0px 10px",
-                  fontWeight: "bold",
+                  ...Styles.boldTxt,
                 }}
               >
                 1,00,000 members
@@ -42,13 +41,10 @@ const Mediabanner = () => {
             </Grid>
             <Grid item>
               <Typography
+                variant="h5"
                 style={{
-                  fontSize: "Poppins",
-                  fontSize: "20px",
-                  color: "#FFFFFF",
-                  flexGrow: "0",
+                  ...Styles.whiteColor,
                   margin: "0px 10px",
-                  fontWeight: "normal",
                 }}
               >
                 Online community across social media

@@ -61,7 +61,7 @@ const App = () => {
       <Router>
         <Header />
         <Switch>
-          <Route exact to="/" component={HomeArea} />
+          <Route exact to="/" component={SellingArea} />
           <Route exact to="/selling" component={SellingArea} />
         </Switch>
         <Footer />

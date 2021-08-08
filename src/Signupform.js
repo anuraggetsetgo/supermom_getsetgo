@@ -199,7 +199,7 @@ export default (props) => {
               <Grid item style={{ marginBottom: "32px" }}>
                 <Typography
                   variant="h5"
-                  style={{ textAlign: "center", color: "#666666" }}
+                  style={{ textAlign: "center", ...Styles.colorCharcoalLight }}
                 >
                   Kindly enter your details below
                 </Typography>

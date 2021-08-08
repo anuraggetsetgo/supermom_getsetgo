@@ -22,7 +22,7 @@ class Publicreviews extends Component {
           >
             Google Rating and Review
           </Typography>
-          <Typography variant="h5" style={{ color: "#666666" }}>
+          <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
             4.9/5 on Google Ratings
           </Typography>
           <svg

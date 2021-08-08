@@ -5,9 +5,18 @@ import { Typography } from "@material-ui/core";
 const Success = () => {
   return (
     <>
-      <Grid item container direction="column" alignItems="center" justify="center">
+      <Grid
+        item
+        container
+        direction="column"
+        alignItems="center"
+        justify="center"
+      >
         <Grid justify="flex-start" alignItems="center">
-          <Typography variant="h2" style={{ ...Styles.centerTxt, ...Styles.colorRed }}>
+          <Typography
+            variant="h2"
+            style={{ ...Styles.centerTxt, ...Styles.colorRed }}
+          >
             <span style={Styles.boldTxt}>
               1,00,000+ GetSetGo community
               <br /> members
@@ -17,7 +26,11 @@ const Success = () => {
           </Typography>
         </Grid>
         <Grid item container alignItems="flex-end">
-          <img src={Styles.backCoverImg("link_below.png")} alt="Link Below Girl" height="400px" />
+          <img
+            src={Styles.backCoverImg("link_below.png")}
+            alt="Link Below Girl"
+            height="400px"
+          />
         </Grid>
         <Grid
           justify="flex-start"
@@ -28,7 +41,7 @@ const Success = () => {
             marginBottom: "60px",
             display: "flex",
             justifyContent: "center",
-            backgroundColor: "#103A42",
+            ...Styles.reefBG,
             borderRadius: "20px",
           }}
         >

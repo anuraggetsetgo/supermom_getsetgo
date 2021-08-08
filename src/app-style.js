@@ -73,6 +73,9 @@ export default {
   colorCharcoalDark: {
     color: colors.charcoalDark,
   },
+  colorCharcoalLight: {
+    color: colors.charcoalLight,
+  },
   blackBG: {
     background: "#000",
   },

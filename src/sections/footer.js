@@ -40,7 +40,7 @@ const Footer = () => {
 
           <Typography
             variant="h4"
-            style={{ color: "#103A42", fontWeight: "700", margin: "0 21px" }}
+            style={{ ...Styles.colorReef, fontWeight: "700", margin: "0 21px" }}
           >
             {customTxt.GSGInTheNews.mainheading}
           </Typography>
@@ -102,7 +102,7 @@ const Footer = () => {
         <Grid item>
           <Typography
             variant="subtitle2"
-            style={{ color: "#666666", marginTop: "80px" }}
+            style={{ ...Styles.colorCharcoalLight, marginTop: "80px" }}
           >
             © 2021 GetSetGo Fitness. All Rights Reserved.
           </Typography>

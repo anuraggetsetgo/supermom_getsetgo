@@ -28,6 +28,7 @@ import Signupbanner from "./sections/signupbanner";
 import Publicreviews from "./sections/publicreviews";
 import Signupform from "./signupform";
 import Carousel from "./sections/carousel";
+import Thankyou from "./sections/thankyou";
 const HomeArea = () => {
   return (
     <>
@@ -57,6 +58,13 @@ const SellingArea = () => {
     </>
   );
 };
+const ThankyouArea = () => {
+  return (
+    <>
+      <Thankyou />
+    </>
+  );
+};
 const App = () => {
   return (
     <>
@@ -65,6 +73,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={HomeArea} />
           <Route exact path="/selling" component={SellingArea} />
+          <Route exact path="/thankyou" component={ThankyouArea} />
         </Switch>
         <Footer />
       </Router>

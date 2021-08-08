@@ -41,7 +41,7 @@ function validateAge(value) {
   return validate(value, /^(1[89]|[2-9]\d)$/, "age");
 }
 
-export default (props) => {
+const Signupform = (props) => {
   let history = useHistory();
   let [err, updateErr] = useState(false);
   let [formSubmitting, updateFormSubmitting] = useState(false);
@@ -268,3 +268,5 @@ export default (props) => {
     );
   }
 };
+
+export default Signupform;

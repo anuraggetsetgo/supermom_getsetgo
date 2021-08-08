@@ -176,6 +176,12 @@ export default {
     borderRadius: "10px 0",
     padding: "10px",
   },
+  txtBGSunshine: {
+    display: "table",
+    background: colors.sunshine,
+    borderRadius: "10px 0",
+    padding: "10px",
+  },
   section01Content: {
     background: "#000",
     padding: "5%",

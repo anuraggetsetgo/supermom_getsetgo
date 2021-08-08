@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import { Typography } from "@material-ui/core";
+import customTxt from "./customTxt.json";
 
 const useStyles = makeStyles({
   root: {
@@ -20,61 +21,53 @@ const useStyles = makeStyles({
 const Sellingreviews = () => {
   const classes = useStyles();
   return (
-    <Grid item container direction="column" alignItems="center" justify="center">
-      <Grid item container justify="flex-start" style={{ padding: "100px 0 485px", background: "rgba(16, 58, 66, 0.1)" }}>
-        <Grid item container justify="center" alignItems="center" xs={12} sm={12} lg={10}>
+    <Grid item container direction="column" alignItems="center" justify="center" style={{ position: "relative", marginBottom: "785px" }}>
+      <Grid item container justify="center" style={{ padding: "100px 0 485px", background: "rgba(16, 58, 66, 0.1)" }}>
+        <Grid item container justify="flex-start" alignItems="center" xs={12} sm={12} lg={10}>
           <Typography variant="h4" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
             Our community is flooded with positive reviews
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container justify="center" alignItems="center" style={{ marginBottom: "30px", ...Styles.padding30tb, boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)", borderRadius: "10px" }} xs={12} sm={12} lg={10}>
-        <Grid item container alignItems="flex-start">
-          <Grid item xs={12} sm={12} lg={4} container justify="center" alignItems="flex-start">
-            <Card className={classes.root}>
-              <CardContent>
-                <Grid item container justify="center">
-                  <img src={Styles.backCoverImg("review1.png")} alt="Logo" />
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={4} container justify="center" alignItems="flex-start">
-            <Card className={classes.root}>
-              <CardContent>
-                <Grid item container justify="center">
-                  <img src={Styles.backCoverImg("review2.png")} alt="Logo" />
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={4} container justify="center" alignItems="flex-start">
-            <Card className={classes.root}>
-              <CardContent>
-                <Grid item container justify="center">
-                  <img src={Styles.backCoverImg("review3.png")} alt="Logo" />
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={12} lg={4} container justify="center" alignItems="flex-start">
-            <Card className={classes.root}>
-              <CardContent>
-                <Grid item container justify="center">
-                  <img src={Styles.backCoverImg("review4.png")} alt="Logo" />
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={12} md={4} container justify="center" alignItems="flex-start">
-            <Card className={classes.root}>
-              <CardContent>
-                <Grid item container justify="center">
-                  <img src={Styles.backCoverImg("review5.png")} alt="Logo" />
-                </Grid>
-              </CardContent>
-            </Card>
-          </Grid>
+      <Grid item container justify="center" alignItems="flex-start" style={{ position: "absolute", top: "192px", ...Styles.padding30tb, ...Styles.whiteBG, boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)", borderRadius: "10px" }} xs={12} sm={12} lg={10}>
+        <Grid item container alignContent="flex-start" xs={4}>
+          {customTxt.reviewImages.reviews1.map((txt, i) => (
+            <Grid item xs={12} sm={12} lg={12} container justify="center" alignItems="flex-start" key={i} style={{ margin: i === 0 && "0 0 30px" }}>
+              <Card className={classes.root}>
+                <CardContent>
+                  <Grid item container justify="center">
+                    <img src={Styles.backCoverImg(txt)} alt="Logo" />
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        <Grid item container alignContent="flex-start" xs={4}>
+          {customTxt.reviewImages.reviews2.map((txt, i) => (
+            <Grid item xs={12} sm={12} lg={12} container justify="center" alignItems="flex-start" key={i} style={{ margin: i === 0 && "0 0 30px" }}>
+              <Card className={classes.root}>
+                <CardContent>
+                  <Grid item container justify="center">
+                    <img src={Styles.backCoverImg(txt)} alt="Logo" />
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        <Grid item container alignContent="flex-start" xs={4}>
+          {customTxt.reviewImages.reviews3.map((txt, i) => (
+            <Grid item xs={12} sm={12} lg={12} container justify="center" alignItems="flex-start" key={i}>
+              <Card className={classes.root}>
+                <CardContent>
+                  <Grid item container justify="center">
+                    <img src={Styles.backCoverImg(txt)} alt="Logo" />
+                  </Grid>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
         </Grid>
       </Grid>
     </Grid>

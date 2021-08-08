@@ -158,7 +158,18 @@ export default {
     padding: "5px 20px",
     marginTop: "20px",
   },
-
+  landingButton: {
+    width: "287px",
+    height: "93px",
+    backgroundColor: "#FFDD33",
+    borderRadius: "10px",
+    fontFamily: "Poppins",
+    fontWeight: "bold",
+    fontSize: "24px",
+    border: "none",
+    margin: "40px 0 100px 0",
+    cursor: "pointer",
+  },
   fixed: {
     position: "sticky",
     top: 0,

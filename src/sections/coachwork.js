@@ -73,7 +73,13 @@ const Coachwork = () => {
                       </svg>
                     </Grid>
                     <Grid item xs={11} style={{ padding: "0 0 0 20px" }}>
-                      <Typography variant="h5" style={{ ...Styles.colorCharcoalDark, ...Styles.fontRoboto }}>
+                      <Typography
+                        variant="h5"
+                        style={{
+                          ...Styles.colorCharcoalDark,
+                          ...Styles.fontRoboto,
+                        }}
+                      >
                         Identifying past and present challenges
                       </Typography>
                     </Grid>
@@ -92,7 +98,13 @@ const Coachwork = () => {
                       </svg>
                     </Grid>
                     <Grid item xs={11} style={{ padding: "0 0 0 20px" }}>
-                      <Typography variant="h5" style={{ ...Styles.colorCharcoalDark, ...Styles.fontRoboto }}>
+                      <Typography
+                        variant="h5"
+                        style={{
+                          ...Styles.colorCharcoalDark,
+                          ...Styles.fontRoboto,
+                        }}
+                      >
                         Understanding your current eating habits, likes, dislikes, preferences, etc.
                       </Typography>
                     </Grid>
@@ -111,7 +123,13 @@ const Coachwork = () => {
                       </svg>
                     </Grid>
                     <Grid item xs={11} style={{ padding: "0 0 0 20px" }}>
-                      <Typography variant="h5" style={{ ...Styles.colorCharcoalDark, ...Styles.fontRoboto }}>
+                      <Typography
+                        variant="h5"
+                        style={{
+                          ...Styles.colorCharcoalDark,
+                          ...Styles.fontRoboto,
+                        }}
+                      >
                         Understanding your stress levels, medical history, sleep patterns, nature of work, time constraints, and activity levels.
                       </Typography>
                     </Grid>
@@ -149,8 +167,8 @@ const Coachwork = () => {
                     <Typography
                       variant="h3"
                       style={{
-                        fontWeight: "bold",
-                        color: "#103A42",
+                        ...Styles.boldTxt,
+                        ...Styles.colorReef,
                       }}
                     >
                       Understanding your lifestyle
@@ -264,8 +282,8 @@ const Coachwork = () => {
                     <Typography
                       variant="h3"
                       style={{
-                        fontWeight: "bold",
-                        color: "#103A42",
+                        ...Styles.boldTxt,
+                        ...Styles.colorReef,
                       }}
                     >
                       Understanding your lifestyle
@@ -379,8 +397,8 @@ const Coachwork = () => {
                     <Typography
                       variant="h3"
                       style={{
-                        fontWeight: "bold",
-                        color: "#103A42",
+                        ...Styles.boldTxt,
+                        ...Styles.colorReef,
                       }}
                     >
                       Understanding your lifestyle
@@ -494,8 +512,8 @@ const Coachwork = () => {
                     <Typography
                       variant="h3"
                       style={{
-                        fontWeight: "bold",
-                        color: "#103A42",
+                        ...Styles.boldTxt,
+                        ...Styles.colorReef,
                       }}
                     >
                       Understanding your lifestyle
@@ -580,7 +598,7 @@ const Coachwork = () => {
               </Card>
             </Grid>
             <Grid item xs={12} sm={6} md={6}>
-              <Card className={classes.root} style={{ backgroundColor: "#103A42" }}>
+              <Card className={classes.root} style={{ ...Styles.reefBG }}>
                 <CardContent>
                   <Grid
                     item
@@ -596,7 +614,13 @@ const Coachwork = () => {
                       margin: "0px 10px",
                     }}
                   >
-                    <Typography justify="center" variant="h6" style={{ color: "#103A42", fontWeight: "normal" }}>
+                    <Typography
+                      justify="center"
+                      variant="h6"
+                      style={{
+                        ...Styles.colorReef,
+                      }}
+                    >
                       Phase - 6
                     </Typography>
                   </Grid>

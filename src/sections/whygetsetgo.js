@@ -103,7 +103,7 @@ const Whygetsetgo = () => {
                     fontFamily: "Roboto",
                     ...Styles.boldNormal,
                     textAlign: "center",
-                    color: "#666666",
+                    ...Styles.colorCharcoalLight,
                   }}
                 >
                   Say goodbye to strict dieting programs! GetSetGoFitness was
@@ -192,7 +192,7 @@ const Whygetsetgo = () => {
                     fontFamily: "Roboto",
                     ...Styles.boldNormal,
                     textAlign: "center",
-                    color: "#666666",
+                    ...Styles.colorCharcoalLight,
                   }}
                 >
                   Qualified fitness professionals trained in-house by
@@ -270,7 +270,7 @@ const Whygetsetgo = () => {
                     fontFamily: "Roboto",
                     ...Styles.boldNormal,
                     textAlign: "center",
-                    color: "#666666",
+                    ...Styles.colorCharcoalLight,
                   }}
                 >
                   Dedicated coach to guide you on a weekly basis with aproper
@@ -339,7 +339,7 @@ const Whygetsetgo = () => {
                     fontFamily: "Roboto",
                     ...Styles.boldNormal,
                     textAlign: "center",
-                    color: "#666666",
+                    ...Styles.colorCharcoalLight,
                   }}
                 >
                   24x7 whatsapp/email/call support to address yourqueries and
@@ -404,7 +404,7 @@ const Whygetsetgo = () => {
                     fontFamily: "Roboto",
                     ...Styles.boldNormal,
                     textAlign: "center",
-                    color: "#666666",
+                    ...Styles.colorCharcoalLight,
                   }}
                 >
                   technology enabled coaching interface to give you aseamless
@@ -473,7 +473,7 @@ const Whygetsetgo = () => {
                     fontFamily: "Roboto",
                     ...Styles.boldNormal,
                     textAlign: "center",
-                    color: "#666666",
+                    ...Styles.colorCharcoalLight,
                   }}
                 >
                   Results that you can achieve and maintain for the long term.

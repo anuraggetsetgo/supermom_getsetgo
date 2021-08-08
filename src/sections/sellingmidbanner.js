@@ -10,9 +10,8 @@ const Sellingmidbanner = () => {
           justify="flex-start"
           alignItems="center"
           style={{
-            height: "644px",
+            height: "444px",
             width: "100%",
-
             backgroundImage: `url(${Styles.backCoverImg(
               "selling_mid_img.png"
             )})`,
@@ -25,21 +24,15 @@ const Sellingmidbanner = () => {
             direction="row"
             alignItems="center"
             justify="center"
-            style={{ marginTop: "150px" }}
+            style={{ marginTop: "75px" }}
           >
-            <Grid
-              justify="center"
-              alignItems="center"
-              style={{ width: "1170px", height: "132px", display: "flex" }}
-            >
+            <Grid justify="center" alignItems="center">
               <Typography
+                variant="h1"
                 style={{
                   textAlign: "center",
-                  color: "#FFFFFF",
-                  fontFamily: "Poppins",
-                  fontSize: "60px",
-                  lineHeight: "66px",
-                  fontWeight: "bold",
+                  ...Styles.colorWhite,
+                  ...Styles.boldTxt,
                 }}
               >
                 ARE YOU READY
@@ -53,28 +46,22 @@ const Sellingmidbanner = () => {
             direction="row"
             alignItems="center"
             justify="center"
-            style={{ marginTop: "40px" }}
+            style={{ marginTop: "20px" }}
           >
             <Grid
               justify="center"
               alignItems="center"
               style={{
-                width: "770px",
-                height: "172px",
-                display: "flex",
                 background: "#FFDD33",
                 borderRadius: "20px",
               }}
             >
               <Grid item style={{ margin: "30px 60px" }}>
                 <Typography
+                  variant="h2"
                   style={{
                     textAlign: "center",
-                    color: "#103A42",
-                    fontFamily: "Poppins",
-                    fontSize: "40px",
-                    lineHeight: "56px",
-                    fontWeight: "normal",
+                    ...Styles.colorReef,
                   }}
                 >
                   Try before you invest.

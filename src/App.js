@@ -26,10 +26,12 @@ import Joinnow from "./sections/joinnow";
 import Whygetsetgo from "./sections/whygetsetgo";
 import Signupbanner from "./sections/signupbanner";
 import Publicreviews from "./sections/publicreviews";
-import Signupform from "../src/signupform";
+import Signupform from "./signupform";
+import Carousel from "./sections/carousel";
 const HomeArea = () => {
   return (
     <>
+      <Carousel />
       <Signupbanner />
       {/* <Signupform /> */}
       {/* <Socialmedia /> */}

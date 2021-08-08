@@ -1,6 +1,7 @@
 import React from "react";
 import Styles from "../app-style.js";
 import { Typography, Grid } from "@material-ui/core";
+import { Style } from "@material-ui/icons";
 
 const Mediabanner = () => {
   return (

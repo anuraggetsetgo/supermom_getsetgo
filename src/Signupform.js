@@ -26,18 +26,10 @@ const validate = function (value, regex, type) {
   return error;
 };
 function validateMobile(value) {
-  return validate(
-    value,
-    /([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/g,
-    "mobile"
-  );
+  return validate(value, /([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/g, "mobile");
 }
 function validateName(value) {
-  return validate(
-    value,
-    /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/,
-    "name"
-  );
+  return validate(value, /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/, "name");
 }
 function validateEmail(value) {
   return validate(value, /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i, "email");
@@ -133,10 +125,7 @@ export default (props) => {
   if (!err && formSubmitting && !sendingEmail)
     return (
       <Grid item style={{ padding: "20px 0" }}>
-        <Typography
-          variant="subtitle2"
-          style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
-        >
+        <Typography variant="subtitle2" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
           Submitting the form ...
         </Typography>
       </Grid>
@@ -144,10 +133,7 @@ export default (props) => {
   if (!err && !formSubmitting && sendingEmail)
     return (
       <Grid item style={{ padding: "20px 0" }}>
-        <Typography
-          variant="subtitle2"
-          style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
-        >
+        <Typography variant="subtitle2" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
           Dropping an email confirmation ...
         </Typography>
       </Grid>
@@ -175,7 +161,7 @@ export default (props) => {
               alignItems="center"
               xs={12}
               sm={12}
-              lg={8}
+              lg={10}
               style={{
                 padding: "60px",
                 boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
@@ -197,10 +183,7 @@ export default (props) => {
                 </Typography>
               </Grid>
               <Grid item style={{ marginBottom: "32px" }}>
-                <Typography
-                  variant="h5"
-                  style={{ textAlign: "center", color: "#666666" }}
-                >
+                <Typography variant="h5" style={{ textAlign: "center", color: "#666666" }}>
                   Kindly enter your details below
                 </Typography>
               </Grid>
@@ -234,17 +217,10 @@ export default (props) => {
                         />
                       </Grid> */}
                       <Grid item style={{ ...Styles.mobileContainer }}>
-                        <Field
-                          style={{ ...Styles.formInputField }}
-                          placeholder="Enter your contact no"
-                          name="mobile"
-                          type="number"
-                          validate={validateMobile}
-                        />
+                        <Field style={{ ...Styles.formInputField }} placeholder="Enter your contact no" name="mobile" type="number" validate={validateMobile} />
                       </Grid>
                     </Grid>
-                    {((touched.mobile && errors.mobile) ||
-                      (touched.country && errors.country)) && (
+                    {((touched.mobile && errors.mobile) || (touched.country && errors.country)) && (
                       <Grid item style={Styles.err} variant="body2">
                         {errors.mobile} {errors.country}
                       </Grid>
@@ -253,13 +229,7 @@ export default (props) => {
                 </Grid>
 
                 <Grid item style={Styles.formFieldContainer}>
-                  <Field
-                    name="email"
-                    type="text"
-                    placeholder="Email id"
-                    validate={validateEmail}
-                    style={{ ...Styles.formInputField, width: "95%" }}
-                  />
+                  <Field name="email" type="text" placeholder="Email id" validate={validateEmail} style={{ ...Styles.formInputField, width: "95%" }} />
                   {touched.email && errors.email && (
                     <Typography variant="h7" style={Styles.err} variant="body2">
                       {errors.email}

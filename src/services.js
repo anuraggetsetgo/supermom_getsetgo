@@ -30,6 +30,7 @@ let colors = {
   reef: "#103A42",
   coral: "#4595A4",
   charcoalDark: "#4D4D4D",
+  charcoalLight: "#666666",
 };
 function get(key) {
   return localStorage.getItem(key);

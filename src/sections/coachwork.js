@@ -22,7 +22,7 @@ const Coachwork = () => {
   return (
     <>
       <Grid item container direction="row" alignItems="center" justify="center">
-        <Grid justify="flex-start" alignItems="center" xs={12} sm={12} lg={8} style={{ margin: "100px 0 60px 0" }}>
+        <Grid justify="flex-start" alignItems="center" xs={12} sm={12} lg={10} style={{ margin: "100px 0 60px 0" }}>
           <Grid item style={{ marginBottom: "30px" }}>
             <Typography variant="h1" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
               But how does the GetSetGo Fitness online coaching work?

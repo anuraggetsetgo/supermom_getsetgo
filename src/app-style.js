@@ -70,8 +70,14 @@ export default {
   colorReef: {
     color: colors.reef,
   },
+  colorCoral: {
+    color: colors.coral,
+  },
   colorCharcoalDark: {
     color: colors.charcoalDark,
+  },
+  colorCharcoalLight: {
+    color: colors.charcoalLight,
   },
   blackBG: {
     background: "#000",
@@ -120,6 +126,9 @@ export default {
   },
   padding30tb: {
     padding: "30px 0",
+  },
+  padding40: {
+    padding: "40px",
   },
   paddingLR: {
     paddingLeft: "5%",

@@ -16,61 +16,21 @@ const Success = () => {
             <br /> your success story!
           </Typography>
         </Grid>
-        <Grid item container alignItems="flex-end">
+        <Grid item container justify="center" alignItems="flex-end">
           <img src={Styles.backCoverImg("link_below.png")} alt="Link Below Girl" height="400px" />
         </Grid>
-        <Grid
-          justify="flex-start"
-          alignItems="center"
-          style={{
-            width: "773px",
-            height: "172px",
-            marginBottom: "60px",
-            display: "flex",
-            justifyContent: "center",
-            backgroundColor: "#103A42",
-            borderRadius: "20px",
-          }}
-        >
-          <Typography
-            style={{
-              fontSize: "Poppins",
-              fontSize: "40px",
-              color: "#FFFFFF",
-              textAlign: "center",
-              margin: "0px 10px",
-              fontWeight: "bold",
-              lineHeight: "53px",
-              textTransform: "uppercase",
-              margin: "0 116 0 60",
-            }}
-          >
-            Join the 2 weeks trial now AT JUST INR 999
+        <Grid item style={{ ...Styles.reefBG, ...Styles.cardRadius2, padding: "30px 60px", width: "max-content" }} container justify="center">
+          <Typography variant="h3" style={{ ...Styles.boldTxt, ...Styles.colorWhite, ...Styles.centerTxt }}>
+            JOIN THE 2 WEEKS TRAIL NOW
+            <br />
+            AT JUST INR 999
           </Typography>
         </Grid>
-        <Grid
-          justify="flex-start"
-          alignItems="center"
-          style={{
-            width: "774px",
-            marginBottom: "60px",
-            display: "flex",
-            justifyContent: "center",
-          }}
-        >
-          <Typography
-            style={{
-              fontSize: "Poppins",
-              fontSize: "32px",
-              color: "#4595A4",
-              textAlign: "center",
-              margin: "0px 10px",
-              fontWeight: "bold",
-              lineHeight: "53px",
-            }}
-          >
+        <Grid item style={{ margin: "30px 0 64px" }}>
+          <Typography variant="h4" style={{ ...Styles.boldTxt, ...Styles.colorCoral, ...Styles.centerTxt }}>
             One day or 'Now'?
-            <br /> You decide.
+            <br />
+            You decide.
           </Typography>
         </Grid>
       </Grid>

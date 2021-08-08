@@ -40,11 +40,10 @@ const Sellingreviews = () => {
         }}
       >
         <Typography
+          variant="h3"
           style={{
-            fontFamily: "Poppins",
-            fontSize: "32px",
-            fontWeight: "bold",
-            color: " #103A42",
+            ...Styles.boldTxt,
+            ...Styles.colorReef,
           }}
         >
           Our community is flooded with positive reviews

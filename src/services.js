@@ -30,6 +30,7 @@ let colors = {
   reef: "#103A42",
   coral: "#4595A4",
   charcoalDark: "#4D4D4D",
+  charcoalLight: "#666666",
 };
 function get(key) {
   return localStorage.getItem(key);
@@ -68,7 +69,26 @@ function changeLocation(data, cb) {
   };
   set("loc", locObj);
   let region = "row";
-  let AE = ["AE", "OM", "QA", "SA", "BH", "KW", "TR", "SY", "IR", "EG", "IQ", "IL", "YE", "LB", "JO", "PS", "CY", "IR"];
+  let AE = [
+    "AE",
+    "OM",
+    "QA",
+    "SA",
+    "BH",
+    "KW",
+    "TR",
+    "SY",
+    "IR",
+    "EG",
+    "IQ",
+    "IL",
+    "YE",
+    "LB",
+    "JO",
+    "PS",
+    "CY",
+    "IR",
+  ];
   let IN = ["IN", "NP", "LK", "BT", "MM", "PK", "BD", "AF", "MV"];
   if (AE.indexOf(locObj.country) >= 0) region = "ae";
   if (IN.indexOf(locObj.country) >= 0) region = "in";
@@ -119,4 +139,14 @@ function callAPI(url, type, success, error, data) {
       return;
   }
 }
-export { docHt, s3GlobalPath, colors, retrievePath, callAPI, get, set, getURL, updateLoc };
+export {
+  docHt,
+  s3GlobalPath,
+  colors,
+  retrievePath,
+  callAPI,
+  get,
+  set,
+  getURL,
+  updateLoc,
+};

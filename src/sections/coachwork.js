@@ -128,7 +128,7 @@ const Coachwork = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} style={{ position: "absolute", zIndex: "-3" }}>
-          <img src={Styles.backCoverImg("backlogo.png")} alt="backlogo" />
+          <img src={Styles.backCoverImg("backlogo.png")} width="100%" alt="backlogo" />
         </Grid>
       </Grid>
     </>

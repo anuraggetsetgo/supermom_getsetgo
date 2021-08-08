@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography } from "@material-ui/core";
 import { colors } from "../services";
-import Signupform from "../signupform";
+import Signupform from "../Signupform";
 class GetStarted extends Component {
   render() {
     return (

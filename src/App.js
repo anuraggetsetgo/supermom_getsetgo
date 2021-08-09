@@ -52,21 +52,20 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline>
-              <Header />
-              <Switch>
-                <Route exact path="/">
-                  <Home
-                  />
-                </Route>
-                <Route path="/packages">
-                  <Package/>
-                </Route>
-                <Route
-                  path="/thank_you/summary/:orderId"
-                  component={Ordersummary}
-                />
-              </Switch>
-              <Footer />
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/packages">
+                <Package />
+              </Route>
+              <Route
+                path="/thank_you/summary/:orderId"
+                component={Ordersummary}
+              />
+            </Switch>
+            <Footer />
             {/* </Grid> */}
           </CssBaseline>
         </ThemeProvider>

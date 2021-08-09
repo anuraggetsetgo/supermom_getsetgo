@@ -79,6 +79,11 @@ class Publicreviews extends Component {
         direction="column"
         justify="center"
         alignItems="center"
+        style={{
+          padding: "150px 0 100px",
+          marginBottom: "100px",
+          background: "rgba(16, 58, 66, 0.1)",
+        }}
       >
         <Grid
           item

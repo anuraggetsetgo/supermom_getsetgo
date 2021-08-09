@@ -7,6 +7,9 @@ import PreloadImage from "../helpers/preloadimg";
 import customTxt from "./customTxt.json";
 
 class Banner extends Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <Grid item container alignItems="center" justify="center">
@@ -66,8 +69,13 @@ class Banner extends Component {
               <Typography
                 variant="h2"
                 style={{ ...Styles.boldTxt, ...Styles.colorWhite }}
+              onClick={()=>{
+                //console.log(this.props.product)
+              this.props.createOrder(this.props.product[0],0)
+              }}
               >
                 TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
+
               </Typography>
             </Grid>
           </Grid>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Field, Formik } from "formik";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "./app-style";
 import { callAPI, getURL, get, set } from "./services";
 import emailTemplates from "./emailTemplate.json";
@@ -26,10 +26,18 @@ const validate = function (value, regex, type) {
   return error;
 };
 function validateMobile(value) {
-  return validate(value, /([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/g, "mobile");
+  return validate(
+    value,
+    /([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/g,
+    "mobile"
+  );
 }
 function validateName(value) {
-  return validate(value, /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/, "name");
+  return validate(
+    value,
+    /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/,
+    "name"
+  );
 }
 function validateEmail(value) {
   return validate(value, /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/i, "email");
@@ -42,6 +50,8 @@ function validateAge(value) {
 }
 
 const Signupform = (props) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   console.log(props);
   let history = useHistory();
   let [err, updateErr] = useState(false);
@@ -126,7 +136,10 @@ const Signupform = (props) => {
   if (!err && formSubmitting && !sendingEmail)
     return (
       <Grid item style={{ padding: "20px 0" }}>
-        <Typography variant="subtitle2" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
+        <Typography
+          variant="subtitle2"
+          style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+        >
           Submitting the form ...
         </Typography>
       </Grid>
@@ -134,7 +147,10 @@ const Signupform = (props) => {
   if (!err && !formSubmitting && sendingEmail)
     return (
       <Grid item style={{ padding: "20px 0" }}>
-        <Typography variant="subtitle2" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
+        <Typography
+          variant="subtitle2"
+          style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+        >
           Dropping an email confirmation ...
         </Typography>
       </Grid>
@@ -170,7 +186,7 @@ const Signupform = (props) => {
                   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px",
                   background: "white",
-                  marginTop: "55px",
+                  marginTop: `${isMobile ? "23px" : "55px"}`,
                 }}
               >
                 <Grid item>
@@ -186,13 +202,29 @@ const Signupform = (props) => {
                   </Typography>
                 </Grid>
                 <Grid item style={{ marginBottom: "32px" }}>
-                  <Typography variant="h5" style={{ textAlign: "center", ...Styles.colorCharcoalLight }}>
+                  <Typography
+                    variant="h5"
+                    style={{
+                      textAlign: "center",
+                      ...Styles.colorCharcoalLight,
+                    }}
+                  >
                     Kindly enter your details below
                   </Typography>
                 </Grid>
                 <Form autoComplete="off">
-                  <Grid item xs={12} style={{ display: "flex" }}>
-                    <Grid item xs={6} style={Styles.formFieldContainer}>
+                  <Grid item xs={12} container>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      lg={6}
+                      style={{
+                        ...Styles.formFieldContainer,
+                        // marginRight: isMobile ? "0" : "10px",
+                        marginBottom: "32px",
+                      }}
+                    >
                       <Field
                         name="name"
                         type="text"
@@ -200,7 +232,7 @@ const Signupform = (props) => {
                         validate={validateName}
                         style={{
                           ...Styles.formInputField,
-                          width: "90%",
+                          width: isMobile ? "100%" : "95%",
                         }}
                       />
                       {touched.name && errors.name && (
@@ -209,7 +241,13 @@ const Signupform = (props) => {
                         </Grid>
                       )}
                     </Grid>
-                    <Grid item xs={6} style={Styles.formFieldContainer}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      lg={6}
+                      style={Styles.formFieldContainer}
+                    >
                       <Grid item>
                         {/* <Grid item style={Styles.countryContainer}>
                         <Field
@@ -219,11 +257,30 @@ const Signupform = (props) => {
                           validate={validateCountry}
                         />
                       </Grid> */}
-                        <Grid item style={{ ...Styles.mobileContainer }}>
-                          <Field style={{ ...Styles.formInputField }} placeholder="Enter your contact no" name="mobile" type="number" validate={validateMobile} />
+                        <Grid
+                          item
+                          style={{
+                            ...Styles.mobileContainer,
+                            // marginLeft: isMobile ? "0" : "10px",
+                            width: isMobile ? "100%" : "100%",
+                            marginBottom: "32px",
+                          }}
+                        >
+                          <Field
+                            style={{ ...Styles.formInputField }}
+                            placeholder="Enter your contact no"
+                            name="mobile"
+                            type="number"
+                            validate={validateMobile}
+                            style={{
+                              ...Styles.formInputField,
+                              width: isMobile ? "100%" : "95%",
+                            }}
+                          />
                         </Grid>
                       </Grid>
-                      {((touched.mobile && errors.mobile) || (touched.country && errors.country)) && (
+                      {((touched.mobile && errors.mobile) ||
+                        (touched.country && errors.country)) && (
                         <Grid item style={Styles.err} variant="body2">
                           {errors.mobile} {errors.country}
                         </Grid>
@@ -231,10 +288,32 @@ const Signupform = (props) => {
                     </Grid>
                   </Grid>
 
-                  <Grid item style={Styles.formFieldContainer}>
-                    <Field name="email" type="text" placeholder="Email id" validate={validateEmail} style={{ ...Styles.formInputField, width: "95%" }} />
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={12}
+                    style={{
+                      ...Styles.formFieldContainer,
+                      margin: "32px 0 32px 0",
+                    }}
+                  >
+                    <Field
+                      name="email"
+                      type="text"
+                      placeholder="Email id"
+                      validate={validateEmail}
+                      style={{
+                        ...Styles.formInputField,
+                        width: isMobile ? "100%" : "98%",
+                      }}
+                    />
                     {touched.email && errors.email && (
-                      <Typography variant="h7" style={Styles.err} variant="body2">
+                      <Typography
+                        variant="h7"
+                        style={Styles.err}
+                        variant="body2"
+                      >
                         {errors.email}
                       </Typography>
                     )}
@@ -259,6 +338,10 @@ const Signupform = (props) => {
                     type="submit"
                     variant="contained"
                     disabled={submitButtonEnable}
+                    style={{
+                      width: isMobile ? "100%" : "98%",
+                      marginTop: "20px",
+                    }}
                     // onClick={(e) => setSubmitButtonEnable(true)}
                   >
                     YES I AM

@@ -279,7 +279,7 @@ export default {
     marginBottom: "10px",
   },
   formInputField: {
-    height: "50px",
+    height: "70px",
     border: "1px solid rgba(102, 102, 102, 0.3)",
     boxSizing: "border-box",
     borderRadius: "10px",

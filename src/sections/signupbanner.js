@@ -1,14 +1,25 @@
 import React from "react";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Signupform from "../signupform";
 
 const Signupbanner = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Grid item container style={{ marginBottom: "100px" }}>
+      <Grid
+        item
+        container
+        direction="row"
+        alignItems="center"
+        justify="center"
+        style={{ marginBottom: "100px" }}
+      >
         <Grid
-          justify="flex-start"
+          container
+          direction="row"
+          justify="center"
           alignItems="center"
           style={{
             height: "614px",
@@ -21,17 +32,16 @@ const Signupbanner = () => {
         >
           <Grid
             item
+            xs={12}
+            sm={12}
+            lg={10}
             container
             direction="row"
             alignItems="center"
             justify="center"
-            style={{ marginTop: "100px" }}
+            style={{ marginTop: isMobile ? "15px" : "100px" }}
           >
-            <Grid
-              justify="center"
-              alignItems="center"
-              style={{ width: "1170px", height: "212px" }}
-            >
+            <Grid justify="center" alignItems="center">
               <Typography
                 variant="h2"
                 style={{ textAlign: "center", ...Styles.whiteColor }}

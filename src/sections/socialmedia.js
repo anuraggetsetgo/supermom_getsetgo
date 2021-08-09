@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "../app-style.js";
 import { Typography, Grid } from "@material-ui/core";
 //import GetStarted from "./getstarted.js";
-import Signupform from "../signupform";
+import Signupform from "../Signupformget";
 import Publicreviews from "./publicreviews";
 const Socialmedia = () => {
   return (

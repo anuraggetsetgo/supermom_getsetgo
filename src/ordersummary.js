@@ -24,7 +24,7 @@ class Ordersummary extends Component {
     };
   }
   componentDidMount() {
-    let campaign_id = get("campaign_id") === null ? 1 : get("campaign_id");
+    let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     //        callAPI(getURL('order_status'), 'post', (data)=>{this.orderData(data.data)}, (err)=>{this.orderStatus(err)}, {order_id:this.props.match.params.orderId})
     callAPI(
       getURL("campaign_order_status"),

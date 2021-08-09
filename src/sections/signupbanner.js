@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, Grid } from "@material-ui/core";
 import Styles from "../app-style.js";
-import Signupform from "../Signupform";
+import Signupform from "../signupform";
 
 const Signupbanner = () => {
   return (

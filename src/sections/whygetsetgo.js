@@ -7,14 +7,32 @@ const Whygetsetgo = () => {
   return (
     <>
       <Grid item container direction="row" justify="center">
-        <Grid item container justify="center" alignItems="center" xs={12} sm={12} lg={10} style={{ margin: "0 0 60px 0" }}>
+        <Grid
+          item
+          container
+          justify="center"
+          alignItems="center"
+          xs={12}
+          sm={12}
+          lg={10}
+          style={{ margin: "0 0 60px 0" }}
+        >
           <Grid item style={{ marginBottom: "35px" }}>
-            <Typography variant="h1" style={{ ...Styles.centerTxt, ...Styles.colorRed }}>
+            <Typography
+              variant="h1"
+              style={{ ...Styles.centerTxt, ...Styles.colorRed }}
+            >
               Why <span style={{ ...Styles.boldTxt }}>GetSetGo</span> Fitness?
             </Typography>
           </Grid>
-          <Grid item container spacing={4} alignContent="flex-start" justify="center">
-            <Grid item container xs={4}>
+          <Grid
+            item
+            container
+            spacing={4}
+            alignContent="flex-start"
+            justify="center"
+          >
+            <Grid item container xs={12} sm={12} lg={4}>
               {customTxt.whyGetSetGo.column1.map((item, i) => (
                 <Grid
                   item
@@ -60,7 +78,7 @@ const Whygetsetgo = () => {
                 </Grid>
               ))}
             </Grid>
-            <Grid item container xs={4}>
+            <Grid item container xs={12} sm={12} lg={4}>
               {customTxt.whyGetSetGo.column2.map((item, i) => (
                 <Grid
                   item
@@ -106,7 +124,7 @@ const Whygetsetgo = () => {
                 </Grid>
               ))}
             </Grid>
-            <Grid item container xs={4}>
+            <Grid item container xs={12} sm={12} lg={4}>
               {customTxt.whyGetSetGo.column3.map((item, i) => (
                 <Grid
                   item

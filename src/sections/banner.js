@@ -49,7 +49,12 @@ class Banner extends Component {
                 "excited-beautiful-girl-smiling-pointing-fingers-small 2.png"
               )}
               alt="banner"
-              style={Styles.bannerImg}
+              style={{
+                ...Styles.bannerImg,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
             />
           </Grid>
           <Grid item xs={12}>

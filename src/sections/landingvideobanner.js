@@ -50,7 +50,10 @@ const Landingvideobanner = () => {
                 position: "absolute",
               }}
             >
-              <img src={Styles.backCoverImg("mother_holding_img1.png")} />
+              <img
+                src={Styles.backCoverImg("mother_holding_img1.png")}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
             </Grid>
             <Grid
               item
@@ -60,7 +63,10 @@ const Landingvideobanner = () => {
                 left: "36%",
               }}
             >
-              <img src={Styles.backCoverImg("pngItem_img.png")} />
+              <img
+                src={Styles.backCoverImg("pngItem_img.png")}
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
             </Grid>
           </Grid>
         </Grid>

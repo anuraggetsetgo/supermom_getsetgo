@@ -1,14 +1,18 @@
 import React from "react";
 import Styles from "../app-style.js";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import { Style } from "@material-ui/icons";
 import customTxt from "./customTxt.json";
 
 const Mediabanner = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <>
       <Grid
         item
+        xs={12}
         container
         alignItems="center"
         justify="center"
@@ -51,6 +55,7 @@ const Mediabanner = () => {
             xs={3}
             alignItems="center"
             justify="space-between"
+            style={{ display: "contents" }}
           >
             {customTxt.GSGSocialMedia.images.map((val, key) => {
               return (

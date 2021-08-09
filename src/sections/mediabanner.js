@@ -43,7 +43,11 @@ const Mediabanner = () => {
             </Typography>
             <Typography
               variant="h5"
-              style={{ ...Styles.colorWhite, marginTop: "8px" }}
+              style={{
+                ...Styles.colorWhite,
+                marginTop: "8px",
+                marginBottom: `${isMobile ? "15px" : "0"}`,
+              }}
             >
               Online community across social media
             </Typography>
@@ -52,10 +56,11 @@ const Mediabanner = () => {
           <Grid
             item
             container
-            xs={3}
+            xs={12}
+            sm={12}
+            lg={3}
             alignItems="center"
             justify="space-between"
-            style={{ display: "contents" }}
           >
             {customTxt.GSGSocialMedia.images.map((val, key) => {
               return (

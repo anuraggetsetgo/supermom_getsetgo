@@ -27,6 +27,7 @@ class GetStarted extends Component {
             variant="h3"
             style={{ ...Styles.colorWhite, textAlign: "center" }}
           >
+            {" "}
             Sign up with us to manage your diabetes better & take a step towards
             a better life.
           </Typography>

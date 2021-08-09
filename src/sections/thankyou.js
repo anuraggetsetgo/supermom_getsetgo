@@ -114,12 +114,14 @@ export const Thankyou = () => {
       <Grid item direction="row" justify="center" alignItems="center">
         <Grid
           item
+          container
           justify="center"
           alignItems="center"
           style={{
             height: "717px",
             backgroundColor: "#24A64A",
-            position: "relative",
+            position: "absolute",
+            top:0,
           }}
         >
           <Grid item container>
@@ -309,7 +311,7 @@ export const Thankyou = () => {
           container
           alignItems="center"
           justify="center"
-          style={{ top: "-250px", position: "relative" }}
+          style={{bottom:'0', position: "relative" }}
         >
           <Grid
             item

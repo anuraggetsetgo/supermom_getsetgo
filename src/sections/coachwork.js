@@ -23,99 +23,36 @@ const Coachwork = () => {
   const classes = useStyles();
   return (
     <>
-      <Grid
-        item
-        container
-        direction="row"
-        alignItems="center"
-        justify="center"
-        style={{
-          position: "relative",
-          top: "-58px",
-          zIndex: "-2",
-          background: "rgba(255, 221, 51, 0.1)",
-        }}
-      >
-        <Grid
-          item
-          justify="flex-start"
-          alignItems="center"
-          xs={12}
-          sm={12}
-          lg={10}
-          style={{ margin: "158px 0 60px 0" }}
-        >
+      <Grid item container direction="row" alignItems="center" justify="center" style={{ position: "relative", top: "-58px", zIndex: "-2", background: "rgba(255, 221, 51, 0.1)" }}>
+        <Grid item justify="flex-start" alignItems="center" xs={12} sm={12} lg={10} style={{ margin: "158px 0 60px 0" }}>
           <Grid item style={{ marginBottom: "30px" }}>
-            <Typography
-              variant="h1"
-              style={{ ...Styles.boldTxt, ...Styles.colorReef }}
-            >
+            <Typography variant="h1" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
               {customTxt.howDoesGetSetGoWorkTxt.mainHeading}
             </Typography>
           </Grid>
           <Grid item container spacing={4} justify="center">
-            <Grid
-              item
-              container
-              spacing={3}
-              xs={12}
-              sm={12}
-              lg={6}
-              alignContent="flex-start"
-              justify="center"
-            >
+            <Grid item container spacing={3} xs={6} alignContent="flex-start" justify="center">
               {customTxt.howDoesGetSetGoWorkTxt.phases1.map((txt, i) => (
                 <Grid item xs={12} sm={12} lg={12} key={i}>
                   <Card className={classes.root}>
                     <CardContent>
-                      <Typography
-                        variant="h6"
-                        style={{ ...Styles.whiteColor, ...Styles.txtBGCoral }}
-                      >
+                      <Typography variant="h6" style={{ ...Styles.whiteColor, ...Styles.txtBGCoral }}>
                         {txt.phase}
                       </Typography>
                       <Grid item style={{ margin: "8px 0" }}>
-                        <Typography
-                          variant="h4"
-                          style={{ ...Styles.boldTxt, ...Styles.colorReef }}
-                        >
+                        <Typography variant="h4" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
                           {txt.heading}
                         </Typography>
                       </Grid>
-                      <Grid
-                        item
-                        container
-                        alignItems="center"
-                        style={{ margin: "0 0 20px" }}
-                      >
-                        <svg
-                          width="40"
-                          height="6"
-                          viewBox="0 0 40 6"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                      <Grid item container alignItems="center" style={{ margin: "0 0 20px" }}>
+                        <svg width="40" height="6" viewBox="0 0 40 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <rect width="40" height="6" fill="#FFDD33" />
                         </svg>
                       </Grid>
                       {txt.pointers.map((txt, i) => (
-                        <Grid
-                          item
-                          container
-                          justify="flex-start"
-                          alignItems="flex-start"
-                          direction="row"
-                          style={{ marginBottom: "10px" }}
-                          key={i}
-                        >
+                        <Grid item container justify="flex-start" alignItems="flex-start" direction="row" style={{ marginBottom: "10px" }} key={i}>
                           <Grid item xs={1}>
-                            <svg
-                              width="32"
-                              height="32"
-                              viewBox="0 0 32 32"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path
                                 d="M31.8516 1.99006L31.2224 1.27643C31.1801 1.22834 31.1225 1.19627 31.0594 1.18562C30.9963 1.17496 30.9314 1.18637 30.8756 1.21793C21.3958 6.6314 14.3738 18.0778 14.3738 18.0778C11.8965 9.96888 8.31006 13.8588 7.49861 14.8903C7.4765 14.9181 7.46025 14.9502 7.45083 14.9845C7.44141 15.0188 7.43902 15.0547 7.4438 15.0899C7.44858 15.1252 7.46044 15.1591 7.47865 15.1897C7.49687 15.2202 7.52107 15.2468 7.5498 15.2678C11.0204 17.7685 12.3773 22.9035 12.6549 24.1089C12.6607 24.1338 12.6728 24.1567 12.6902 24.1753C12.7076 24.194 12.7295 24.2078 12.7538 24.2153C12.7782 24.2229 12.8041 24.2239 12.829 24.2184C12.8538 24.2128 12.8768 24.2008 12.8956 24.1836C13.7467 23.4047 15.9446 21.9997 16.3388 21.7499C16.3783 21.7241 16.4099 21.6881 16.4303 21.6457C22.4772 9.2257 30.6907 3.02486 31.826 2.20519C31.8426 2.1933 31.8565 2.1781 31.8668 2.16055C31.8772 2.143 31.8838 2.12349 31.8862 2.10326C31.8886 2.08303 31.8867 2.06252 31.8808 2.04303C31.8749 2.02354 31.8649 2.0055 31.8516 1.99006Z"
                                 fill="#24A64A"
@@ -144,75 +81,28 @@ const Coachwork = () => {
                 </Grid>
               ))}
             </Grid>
-            <Grid
-              item
-              container
-              spacing={3}
-              xs={12}
-              sm={12}
-              lg={6}
-              alignContent="flex-start"
-            >
+            <Grid item container spacing={3} xs={6} alignContent="flex-start">
               {customTxt.howDoesGetSetGoWorkTxt.phases2.map((txt, i) => (
                 <Grid item xs={12} sm={12} lg={12} key={i}>
                   <Card className={i === 2 ? classes.darkCard : classes.root}>
                     <CardContent>
-                      <Typography
-                        variant="h6"
-                        style={
-                          i === 2
-                            ? { ...Styles.colorReef, ...Styles.txtBGSunshine }
-                            : { ...Styles.whiteColor, ...Styles.txtBGCoral }
-                        }
-                      >
+                      <Typography variant="h6" style={i === 2 ? { ...Styles.colorReef, ...Styles.txtBGSunshine } : { ...Styles.whiteColor, ...Styles.txtBGCoral }}>
                         {txt.phase}
                       </Typography>
                       <Grid item style={{ margin: "8px 0" }}>
-                        <Typography
-                          variant="h4"
-                          style={
-                            i === 2
-                              ? { ...Styles.boldTxt, ...Styles.colorWhite }
-                              : { ...Styles.boldTxt, ...Styles.colorReef }
-                          }
-                        >
+                        <Typography variant="h4" style={i === 2 ? { ...Styles.boldTxt, ...Styles.colorWhite } : { ...Styles.boldTxt, ...Styles.colorReef }}>
                           {txt.heading}
                         </Typography>
                       </Grid>
-                      <Grid
-                        item
-                        container
-                        alignItems="center"
-                        style={{ margin: "0 0 20px" }}
-                      >
-                        <svg
-                          width="40"
-                          height="6"
-                          viewBox="0 0 40 6"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
+                      <Grid item container alignItems="center" style={{ margin: "0 0 20px" }}>
+                        <svg width="40" height="6" viewBox="0 0 40 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <rect width="40" height="6" fill="#FFDD33" />
                         </svg>
                       </Grid>
                       {txt.pointers.map((item, key) => (
-                        <Grid
-                          item
-                          container
-                          justify="flex-start"
-                          alignItems="flex-start"
-                          direction="row"
-                          style={{ marginBottom: "10px" }}
-                          key={key}
-                        >
+                        <Grid item container justify="flex-start" alignItems="flex-start" direction="row" style={{ marginBottom: "10px" }} key={key}>
                           <Grid item xs={1}>
-                            <svg
-                              width="32"
-                              height="32"
-                              viewBox="0 0 32 32"
-                              fill="none"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path
                                 d="M31.8516 1.99006L31.2224 1.27643C31.1801 1.22834 31.1225 1.19627 31.0594 1.18562C30.9963 1.17496 30.9314 1.18637 30.8756 1.21793C21.3958 6.6314 14.3738 18.0778 14.3738 18.0778C11.8965 9.96888 8.31006 13.8588 7.49861 14.8903C7.4765 14.9181 7.46025 14.9502 7.45083 14.9845C7.44141 15.0188 7.43902 15.0547 7.4438 15.0899C7.44858 15.1252 7.46044 15.1591 7.47865 15.1897C7.49687 15.2202 7.52107 15.2468 7.5498 15.2678C11.0204 17.7685 12.3773 22.9035 12.6549 24.1089C12.6607 24.1338 12.6728 24.1567 12.6902 24.1753C12.7076 24.194 12.7295 24.2078 12.7538 24.2153C12.7782 24.2229 12.8041 24.2239 12.829 24.2184C12.8538 24.2128 12.8768 24.2008 12.8956 24.1836C13.7467 23.4047 15.9446 21.9997 16.3388 21.7499C16.3783 21.7241 16.4099 21.6881 16.4303 21.6457C22.4772 9.2257 30.6907 3.02486 31.826 2.20519C31.8426 2.1933 31.8565 2.1781 31.8668 2.16055C31.8772 2.143 31.8838 2.12349 31.8862 2.10326C31.8886 2.08303 31.8867 2.06252 31.8808 2.04303C31.8749 2.02354 31.8649 2.0055 31.8516 1.99006Z"
                                 fill="#24A64A"
@@ -224,20 +114,7 @@ const Coachwork = () => {
                             </svg>
                           </Grid>
                           <Grid item xs={11} style={{ padding: "0 0 0 20px" }}>
-                            <Typography
-                              variant="h5"
-                              style={
-                                i === 2
-                                  ? {
-                                      ...Styles.colorWhite,
-                                      ...Styles.fontRoboto,
-                                    }
-                                  : {
-                                      ...Styles.colorCharcoalDark,
-                                      ...Styles.fontRoboto,
-                                    }
-                              }
-                            >
+                            <Typography variant="h5" style={i === 2 ? { ...Styles.colorWhite, ...Styles.fontRoboto } : { ...Styles.colorCharcoalDark, ...Styles.fontRoboto }}>
                               {item}
                             </Typography>
                           </Grid>
@@ -251,11 +128,7 @@ const Coachwork = () => {
           </Grid>
         </Grid>
         <Grid item xs={12} style={{ position: "absolute", zIndex: "-3" }}>
-          <img
-            src={Styles.backCoverImg("backlogo.png")}
-            width="100%"
-            alt="backlogo"
-          />
+          <img src={Styles.backCoverImg("backlogo.png")} width="100%" alt="backlogo" />
         </Grid>
       </Grid>
     </>

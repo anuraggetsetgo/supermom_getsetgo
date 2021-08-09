@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography } from "@material-ui/core";
-
+import Iframe from "./iframe";
 const Landingvideobanner = () => {
   return (
     <>
@@ -42,31 +42,39 @@ const Landingvideobanner = () => {
               have transformed with us
             </Typography>
           </Grid>
-          <Grid item xs={12} justify="center" alignItems="center" container>
+          <Grid item xs={12} justify="center" alignItems="center" container 
+          style={{margin:'0px',
+          minHeight:'40vh',
+               maxHeight:'40vh',
+               postion:'relative'
+                }}>
             <Grid
               item
-              xs={8}
               style={{
-                position: "absolute",
+                
+                //position: "absolute",
+                //minWidth:'100vw',
+                //maxWidth:'100vw',
+                
+              
+               
               }}
             >
-              <img
-                src={Styles.backCoverImg("mother_holding_img1.png")}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              {/* <img src={Styles.backCoverImg("mother_holding_img.png")} /> */}
+              <Iframe //style={{width:'80vw'}}
+                wd={window.screen.width *0.60 +'px'} ht={window.screen.height * 0.40 +'px'}
+                title="full body home workout"
+                src="https://www.youtube.com/embed/u3RRJBrcr-w"
               />
             </Grid>
             <Grid
               item
-              xs={4}
               style={{
-                position: "relative",
-                left: "36%",
+                position: "absolute",
+                right:'10%'
               }}
             >
-              <img
-                src={Styles.backCoverImg("pngItem_img.png")}
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
+              <img style={{width:'20vw',height:'40vh'}} src={Styles.backCoverImg("pngItem_img.png")} />
             </Grid>
           </Grid>
         </Grid>

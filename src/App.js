@@ -1,114 +1,76 @@
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
 import Header from "./sections/header";
 import Footer from "./sections/footer";
 import ScrollToTop from "./scrolltotop";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
+import theme from "./theme";
 import { updateLoc } from "./services";
 import ReactGA from "react-ga";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./home";
 import Package from "./package";
 import Ordersummary from "./ordersummary";
 import ReactPixel from "react-facebook-pixel";
-import "../src/fonts/fonts.css";
-import Socialmedia from "./sections/socialmedia";
-import Coachwork from "./sections/coachwork";
-import Success from "./sections/success";
-import Mediabanner from "./sections/mediabanner";
-import Sellingreviews from "./sections/sellingreviews";
-import Sellingmidbanner from "./sections/sellingmidbanner";
-import Banner from "./sections/banner";
-import Videocomponent from "./sections/videocomponent";
-import Landingvideobanner from "./sections/landingvideobanner";
-import Joinnow from "./sections/joinnow";
-import Whygetsetgo from "./sections/whygetsetgo";
-import Signupbanner from "./sections/signupbanner";
-import Publicreviews from "./sections/publicreviews";
-import Signupform from "./signupform";
-import Carousel from "./sections/carousel";
-import Thankyou from "./sections/thankyou";
-import api from "./gsgAPI/api";
 
-const HomeArea = ({ region }) => {
-  const [reviewData, setReviewdata] = useState([]);
+//import Secret from './secretworkout';
 
-  async function getReview() {
-    let google_reviews_data = await api.callAPI(api.google_reviews_api, "GET");
-    google_reviews_data = google_reviews_data.reviews;
-    setReviewdata(google_reviews_data);
+ReactGA.initialize("UA-86957619-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.pageview("/");
+ReactGA.pageview("/packages");
+//ReactGA.pageview('/secret');
+ReactGA.pageview("/summary");
+const options = {
+  autoConfig: true, // set pixel's autoConfig
+  debug: false, // enable logs
+};
+
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      scrollStatus: false,
+    };
   }
-
-  useEffect(() => {
-    getReview();
-  }, []);
-  console.log(reviewData);
-  return (
-    <>
-      <Carousel />
-      <Signupbanner />
-      {/* <Signupform /> */}
-      {/* <Socialmedia /> */}
-      <Landingvideobanner />
-      <Joinnow />
-      <Whygetsetgo />
-      <Publicreviews reviewData={reviewData} />
-      <Mediabanner />
-    </>
-  );
-};
-
-const SellingArea = ({ region }) => {
-  return (
-    <>
-      <Banner />
-      <Coachwork />
-      <Videocomponent />
-      <Sellingmidbanner />
-      <Sellingreviews />
-      <Mediabanner />
-      <Success />
-    </>
-  );
-};
-const ThankyouArea = ({ region }) => {
-  return (
-    <>
-      <Thankyou />
-    </>
-  );
-};
-const App = () => {
-  const [appRegion, setAppRegion] = useState("base_ind");
-
-  async function setApiBase() {
-    let region = await api.getBaseUrl();
-
-    setAppRegion(region);
+  componentDidMount() {
+    updateLoc(this.cb);
   }
-
-  useEffect(() => {
-    setApiBase();
-  }, []);
-  return (
-    <>
+  cb(currency) {
+    ReactPixel.init("727377464279666", options);
+    ReactPixel.pageView(); // For tracking page view
+    ReactPixel.track("Purchase", { currency: currency }); // For tracking default events, more info about events and data https://developers.facebook.com/docs/ads-for-websites/pixel-events/v2.9
+  }
+  freezeScroll(val) {
+    this.setState({ scrollStatus: val });
+  }
+  //  component={props=> <Home freezeScroll={(val)=>{this.freezeScroll(val)}} {...props}/>}/>
+  render() {
+    let { scrollStatus } = this.state;
+    return (
       <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <HomeArea region={appRegion} />
-          </Route>
-          <Route exact path="/selling">
-            <SellingArea region={appRegion} />
-          </Route>
-          <Route exact path="/thankyou">
-            <ThankyouArea region={appRegion} />
-          </Route>
-        </Switch>
-        <Footer />
+        <ThemeProvider theme={theme}>
+          <CssBaseline>
+            <Header />
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/packages">
+                <Package />
+              </Route>
+              <Route
+                path="/thank_you/summary/:orderId"
+                component={Ordersummary}
+              />
+            </Switch>
+            <Footer />
+            {/* </Grid> */}
+          </CssBaseline>
+        </ThemeProvider>
       </Router>
-    </>
-  );
-};
+    );
+  }
+}
 export default App;

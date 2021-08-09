@@ -65,7 +65,7 @@ class Package extends Component {
           this.errorOrderCreated(err);
         },
         {
-          orderNote: `KOL ${index + 1} people`,
+          orderNote: `Super Mom ${index + 1} people`,
           package_id: package_id,
           customer_name: userDetails.name,
           customer_email: userDetails.email,
@@ -194,21 +194,21 @@ class Package extends Component {
       activatingDiscount,
       serviceInclusions,
     } = this.state;
-    let desc = [
-      "Stranded alone at home? Well, no more. Join thousands of others and turn it into a great at-home-staycation for you!",
-      "Running out of ideas about things to do together? Tired of binge-watching series and movies? How about getting fit together?",
-      "They say the more the merrier. We can tell you it's true! Join with your complete family. It doesn't get better than this.",
-    ];
-    let imgs = [
-      `${retrievePath()}boredMan.jpg`,
-      `${retrievePath()}boredCouple.jpg`,
-      `${retrievePath()}boredFamily.jpg`,
-    ];
-    let imgsHappy = [
-      `${retrievePath()}happyMan.jpg`,
-      `${retrievePath()}happyCouple.jpg`,
-      `${retrievePath()}happyFamily.jpg`,
-    ];
+    // let desc = [
+    //   "Stranded alone at home? Well, no more. Join thousands of others and turn it into a great at-home-staycation for you!",
+    //   "Running out of ideas about things to do together? Tired of binge-watching series and movies? How about getting fit together?",
+    //   "They say the more the merrier. We can tell you it's true! Join with your complete family. It doesn't get better than this.",
+    // ];
+    // let imgs = [
+    //   `${retrievePath()}boredMan.jpg`,
+    //   `${retrievePath()}boredCouple.jpg`,
+    //   `${retrievePath()}boredFamily.jpg`,
+    // ];
+    // let imgsHappy = [
+    //   `${retrievePath()}happyMan.jpg`,
+    //   `${retrievePath()}happyCouple.jpg`,
+    //   `${retrievePath()}happyFamily.jpg`,
+    // ];
     console.log("PRODUCTS -->>", serviceInclusions)
     return (
       <Grid
@@ -237,16 +237,8 @@ class Package extends Component {
             </Link>
           </Grid>
         )}
-        {userData && (
-          <React.Fragment>
-            <Banner />
-            <Coachwork />
-            <Videocomponent />
-            <Sellingmidbanner />
-            <Sellingreviews />
-            <Mediabanner />
-            <Success />
-            {!products && (
+        
+            {userData && !products && (
               <Grid
                 item
                 style={{
@@ -259,6 +251,15 @@ class Package extends Component {
               </Grid>
             )}
 
+{userData && products && (
+          <React.Fragment>
+            <Banner product={products} createOrder={(data)=>this.createOrder(data)} />
+            <Coachwork />
+            <Videocomponent />
+            <Sellingmidbanner />
+            <Sellingreviews />
+            <Mediabanner />
+            <Success />
             {/* {products && (
               <Grid
                 item

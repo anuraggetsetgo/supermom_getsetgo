@@ -11,22 +11,63 @@ class Banner extends Component {
   render() {
     return (
       <Grid item container alignItems="center" justify="center">
-        <Grid item container alignItems="center" justify="space-between" direction="row" xs={12} sm={12} lg={10}>
-          <Grid item container alignItems="flex-start" justify="center" direction="column" xs={12} sm={12} lg={5}>
+        <Grid
+          item
+          container
+          alignItems="center"
+          justify="space-between"
+          direction="row"
+          xs={12}
+          sm={12}
+          lg={10}
+        >
+          <Grid
+            item
+            container
+            alignItems="flex-start"
+            justify="center"
+            direction="column"
+            xs={12}
+            sm={12}
+            lg={5}
+          >
             <Typography variant="h1" style={Styles.colorRed}>
-              <span style={Styles.boldTxt}>Awesome, </span>you’re just 1 step away from a <span style={Styles.boldTxt}>kickass transformation.</span>
+              <span style={Styles.boldTxt}>Awesome, </span>you’re just 1 step
+              away from a{" "}
+              <span style={Styles.boldTxt}>kickass transformation.</span>
             </Typography>
             <br />
-            <Typography variant="h1" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
+            <Typography
+              variant="h1"
+              style={{ ...Styles.boldTxt, ...Styles.colorReef }}
+            >
               YOU'RE GOING TO LOVE IT.
             </Typography>
           </Grid>
           <Grid item xs={12} sm={12} lg={6} container alignItems="flex-end">
-            <img src={Styles.backCoverImg("excited-beautiful-girl-smiling-pointing-fingers-small 2.png")} alt="banner" style={Styles.bannerImg} />
+            <img
+              src={Styles.backCoverImg(
+                "excited-beautiful-girl-smiling-pointing-fingers-small 2.png"
+              )}
+              alt="banner"
+              style={Styles.bannerImg}
+            />
           </Grid>
           <Grid item xs={12}>
-            <Grid item style={{ ...Styles.reefBG, ...Styles.cardRadius2, ...Styles.padding30tb }} container justify="center">
-              <Typography variant="h2" style={{ ...Styles.boldTxt, ...Styles.colorWhite }}>
+            <Grid
+              item
+              style={{
+                ...Styles.reefBG,
+                ...Styles.cardRadius2,
+                ...Styles.padding30tb,
+              }}
+              container
+              justify="center"
+            >
+              <Typography
+                variant="h2"
+                style={{ ...Styles.boldTxt, ...Styles.colorWhite }}
+              >
                 TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
               </Typography>
             </Grid>

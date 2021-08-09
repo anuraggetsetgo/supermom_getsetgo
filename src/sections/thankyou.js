@@ -1,8 +1,114 @@
 import React from "react";
 import { Typography, Grid } from "@material-ui/core";
 import Styles from "../app-style.js";
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import { CancelScheduleSendOutlined, CasinoOutlined } from "@material-ui/icons";
+import TextField from "@material-ui/core/TextField";
+
+const timeHour = [
+  { id: 1, hour: "1" },
+  { id: 2, hour: "2" },
+  { id: 3, hour: "3" },
+  { id: 4, hour: "4" },
+  { id: 5, hour: "5" },
+  { id: 6, hour: "6" },
+  { id: 7, hour: "7" },
+  { id: 8, hour: "8" },
+  { id: 9, hour: "9" },
+  { id: 10, hour: "10" },
+  { id: 11, hour: "11" },
+  { id: 12, hour: "12" },
+];
+const timeMinute = [
+  { id: 1, Minute: "1" },
+  { id: 2, Minute: "2" },
+  { id: 3, Minute: "3" },
+  { id: 4, Minute: "4" },
+  { id: 5, Minute: "5" },
+  { id: 6, Minute: "6" },
+  { id: 7, Minute: "7" },
+  { id: 8, Minute: "8" },
+  { id: 9, Minute: "9" },
+  { id: 10, Minute: "10" },
+  { id: 11, Minute: "11" },
+  { id: 12, Minute: "12" },
+  { id: 13, Minute: "13" },
+  { id: 14, Minute: "14" },
+  { id: 15, Minute: "15" },
+  { id: 16, Minute: "16" },
+  { id: 17, Minute: "17" },
+  { id: 18, Minute: "18" },
+  { id: 19, Minute: "19" },
+  { id: 20, Minute: "20" },
+  { id: 21, Minute: "21" },
+  { id: 22, Minute: "22" },
+  { id: 23, Minute: "23" },
+  { id: 24, Minute: "24" },
+  { id: 25, Minute: "26" },
+  { id: 26, Minute: "25" },
+  { id: 27, Minute: "27" },
+  { id: 28, Minute: "28" },
+  { id: 29, Minute: "29" },
+  { id: 30, Minute: "30" },
+  { id: 31, Minute: "31" },
+  { id: 32, Minute: "32" },
+  { id: 33, Minute: "33" },
+  { id: 34, Minute: "34" },
+  { id: 35, Minute: "35" },
+  { id: 36, Minute: "36" },
+  { id: 37, Minute: "37" },
+  { id: 38, Minute: "38" },
+  { id: 39, Minute: "39" },
+  { id: 40, Minute: "40" },
+  { id: 41, Minute: "41" },
+  { id: 42, Minute: "42" },
+  { id: 43, Minute: "43" },
+  { id: 44, Minute: "44" },
+  { id: 45, Minute: "45" },
+  { id: 46, Minute: "46" },
+  { id: 47, Minute: "47" },
+  { id: 48, Minute: "48" },
+  { id: 49, Minute: "49" },
+  { id: 50, Minute: "50" },
+  { id: 51, Minute: "51" },
+  { id: 52, Minute: "52" },
+  { id: 53, Minute: "53" },
+  { id: 54, Minute: "54" },
+  { id: 55, Minute: "55" },
+  { id: 56, Minute: "56" },
+  { id: 57, Minute: "57" },
+  { id: 58, Minute: "58" },
+  { id: 59, Minute: "59" },
+];
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+  formControl: {
+    marginTop: "20px",
+    minWidth: 150,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+}));
 
 export const Thankyou = () => {
+  const classes = useStyles();
+  const [hour, setHour] = React.useState("");
+
+  const handleChange = (event) => {
+    setHour(event.target.value);
+  };
   return (
     <>
       <Grid item direction="row" justify="center" alignItems="center">
@@ -13,6 +119,7 @@ export const Thankyou = () => {
           style={{
             height: "717px",
             backgroundColor: "#24A64A",
+            position: "relative",
           }}
         >
           <Grid item container>
@@ -197,7 +304,13 @@ export const Thankyou = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item container alignItems="center" justify="center">
+        <Grid
+          item
+          container
+          alignItems="center"
+          justify="center"
+          style={{ top: "-250px", position: "relative" }}
+        >
           <Grid
             item
             container
@@ -226,6 +339,88 @@ export const Thankyou = () => {
               <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
                 What’s the best time to call you for follow-up
               </Typography>
+            </Grid>
+            <Grid item direction="row" container justify="space-between">
+              <Grid item direction="row">
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Select Hour
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={hour}
+                    onChange={handleChange}
+                    label="Select Hour"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {timeHour.map((key, val) => {
+                      return <MenuItem value={key.id}>{key.hour}</MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item direction="row">
+                <FormControl variant="outlined" className={classes.formControl}>
+                  <InputLabel id="demo-simple-select-outlined-label">
+                    Select Hour
+                  </InputLabel>
+                  <Select
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    value={hour}
+                    onChange={handleChange}
+                    label="Select Hour"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {timeMinute.map((key, val) => {
+                      return <MenuItem value={key.id}>{key.Minute}</MenuItem>;
+                    })}
+                  </Select>
+                </FormControl>
+              </Grid>
+
+              <Grid item direction="row">
+                <button style={{ ...Styles.amAndpmButton }}>AM</button>
+              </Grid>
+              <Grid item direction="row">
+                <button style={{ ...Styles.amAndpmButton }}>PM</button>
+              </Grid>
+            </Grid>
+            <Grid item style={{ marginTop: "20px" }}>
+              <input
+                placeholder="Please confirm your mobile number"
+                style={{
+                  width: "690px",
+                  height: "65px",
+                  borderRadius: "10px",
+                  border: "1px solid rgba(102, 102, 102, 0.3)",
+                }}
+              />
+            </Grid>
+            <Grid item style={{ marginTop: "20px" }}>
+              <input
+                placeholder="Your whatsapp number:"
+                style={{
+                  width: "690px",
+                  height: "65px",
+                  borderRadius: "10px",
+                  border: "1px solid rgba(102, 102, 102, 0.3)",
+                }}
+              />
+            </Grid>
+            <Grid item>
+              <button
+                style={{
+                  ...Styles.thankyousubmitButton,
+                }}
+              >
+                SUBMIT
+              </button>
             </Grid>
           </Grid>
         </Grid>

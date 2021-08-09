@@ -12,23 +12,14 @@ import Logo from "../logoElement.png";
 class Header extends Component {
   render(){
     return (
-      <Grid item container style={{...Styles.header}} justify="space-between">
-        <Grid item>
-          <Link to="/">
-            <Typography variant="subtitle1" style={{...Styles.colorWhite,fontSize:'1.6rem'}}>My Health</Typography>
-          </Link>
-        </Grid>
-        <Grid item container xs={5} justify="flex-end">
-          {/* <Grid item style={Styles.paddingRight5}>
-            <Typography variant="subtitle2" style={Styles.colorWhite}>A product by</Typography>
-          </Grid> */}
-          <Grid item>
-            <a href="https://getsetgo.fitness" rel="noopener noreferrer" target="_blank">
-              <PreloadImage src={Logo} alt='GetSetGo Fitness' style={{ width: "80px", height:'35px', marginRight:'10px' }}/>
-              </a>
-          </Grid>
-        </Grid>
+      <Grid item container direction="row" alignItems="center" justify="center">
+      <Grid item container alignItems="center" justify="space-between" direction="row" xs={12} sm={12} lg={10} style={{ height: "100px" }}>
+        <Link to="/">
+        <PreloadImage src={Styles.backCoverImg("Logo.png")} alt="Logo" height="50px" />
+        </Link>
       </Grid>
+    </Grid>
+
     );
   }
 }

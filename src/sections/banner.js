@@ -3,131 +3,73 @@ import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, Button } from "@material-ui/core";
 import { colors, retrievePath, docHt } from "../services";
-import Signupform from "../signupform";
 import PreloadImage from "../helpers/preloadimg";
 import customTxt from "./customTxt.json";
 
 class Banner extends Component {
   render() {
     return (
-      <Grid
-        item
-        container
-        className="fixed"
-        style={{
-          ...Styles.banner,
-          //ANV background: `linear-gradient(0deg, rgba(0,0,0,0.3981967787114846) 21%, rgba(0,0,0,0.4) 66%), url('./img/Website_Image.jpg')`,
-          background:  `url('./img/Website_Image.jpg')`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-        }}
-        alignItems="center"
-        justify="space-evenly"
-      >
-        {/* <PreloadImage
-          src={"./img/Website_Image.jpg"}
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: -1,
-          }}
-        /> */}
-
+      <Grid item container alignItems="center" justify="center">
         <Grid
           item
           container
-          xs={12}
-          md={6}
           alignItems="center"
-          justify="center"
-          style={{ ...Styles.translucentContainer,marginTop:'14.5%',background:'rgb(6 4 29 / 30%)'  }}
-        >
-          <Typography variant="h1" style={{ ...Styles.colorWhite }}>
-            {customTxt.bannerPageTxt.mainHeading}
-          </Typography>
-          <Typography
-            variant="subtitle1"
-            style={{ ...Styles.colorWhite, ...Styles.marginTop }}
-          >
-            {customTxt.bannerPageTxt.subHeading}
-          </Typography>
-        </Grid>
-        <Grid
-          item
-          container
+          justify="space-between"
+          direction="row"
           xs={12}
-          md={4}
-          direction="column"
-          alignItems="stretch"
-          justify="flex-start"
-          style={{ background:"rgb(62, 78, 109)",padding:'20px', ...Styles.cardRadius }}
+          sm={12}
+          lg={10}
         >
-          <Grid item container>
-            <Grid item>
-              <Typography variant="h6" style={{ ...Styles.colorWhite }}>
-                <span style={{ ...Styles.colorYellow }}>Sign up with us </span>
-                to manage your
-                <span style={{ ...Styles.colorYellow }}> Diabetes</span> better
-                & take a step towards a
-                <span style={{ ...Styles.colorYellow }}> Better Life.</span>
-              </Typography>
-              <hr />
-            </Grid>
+          <Grid
+            item
+            container
+            alignItems="flex-start"
+            justify="center"
+            direction="column"
+            xs={12}
+            sm={12}
+            lg={5}
+          >
+            <Typography variant="h1" style={Styles.colorRed}>
+              <span style={Styles.boldTxt}>Awesome, </span>you’re just 1 step
+              away from a{" "}
+              <span style={Styles.boldTxt}>kickass transformation.</span>
+            </Typography>
+            <br />
+            <Typography
+              variant="h1"
+              style={{ ...Styles.boldTxt, ...Styles.colorReef }}
+            >
+              YOU'RE GOING TO LOVE IT.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={12} lg={6} container alignItems="flex-end">
+            <img
+              src={Styles.backCoverImg(
+                "excited-beautiful-girl-smiling-pointing-fingers-small 2.png"
+              )}
+              alt="banner"
+              style={Styles.bannerImg}
+            />
+          </Grid>
+          <Grid item xs={12}>
             <Grid
               item
-              container
-              style={{ minHeight: `${docHt() / 2.5}px` }}
-              justify="center"
-              alignItems="center"
-            >
-              <Grid item xs={12}>
-                <Signupform />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid
-          item
-          container
-          justify="center"
-          alignItems="center"
-          direction="column"
-          style={{
-            ...Styles.highZ,
-            ...{ position: "absolute", bottom: "60px" },
-          }}
-        >
-          <Grid item>
-            {/* <Button
-              onClick={Styles.handleScroll}
               style={{
-                ...Styles.colorGrey,
-                ...Styles.colorTransparent,
-                color: colors.grey,
+                ...Styles.reefBG,
+                ...Styles.cardRadius2,
+                ...Styles.padding30tb,
               }}
+              container
+              justify="center"
             >
-              Scroll Down
-            </Button> */}
-          </Grid>
-          <Grid item>
-            <Button
-              onClick={Styles.handleScroll}
-              style={{ ...Styles.colorWhite, ...Styles.colorTransparent }}
-            >
-              <span
-                className="material-icons"
-                style={{
-                  fontSize: "4rem",
-                  color: colors.grey,
-                  lineHeight: 0,
-                }}
+              <Typography
+                variant="h2"
+                style={{ ...Styles.boldTxt, ...Styles.colorWhite }}
               >
-                keyboard_arrow_down
-              </span>
-            </Button>
+                TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
+              </Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

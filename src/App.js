@@ -50,32 +50,16 @@ class App extends Component {
     let { scrollStatus } = this.state;
     return (
       <Router>
-        <ScrollToTop />
         <ThemeProvider theme={theme}>
           <CssBaseline>
-            <Grid
-              container
-              direction="column"
-              className="app"
-              style={
-                scrollStatus ? { overflow: "hidden", height: "100vh" } : {}
-              }
-            >
               <Header />
               <Switch>
                 <Route exact path="/">
                   <Home
-                    freezeScroll={(val) => {
-                      this.freezeScroll(val);
-                    }}
                   />
                 </Route>
                 <Route path="/packages">
-                  <Package
-                    freezeScroll={(val) => {
-                      this.freezeScroll(val);
-                    }}
-                  />
+                  <Package/>
                 </Route>
                 <Route
                   path="/thank_you/summary/:orderId"
@@ -83,7 +67,7 @@ class App extends Component {
                 />
               </Switch>
               <Footer />
-            </Grid>
+            {/* </Grid> */}
           </CssBaseline>
         </ThemeProvider>
       </Router>

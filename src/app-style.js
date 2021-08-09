@@ -4,16 +4,25 @@ import Button from "@material-ui/core/Button";
 
 const ColorButton = withStyles((theme) => ({
   root: {
-    color: colors.blue,
-    backgroundColor: colors.yellow,
+    width: "95%",
+    height: "80px",
+    borderRadius: "10px",
+    fontSize: "24px",
+    fontFamily: "Poppins",
+    color: colors.secondary,
+    backgroundColor: colors.reef,
     border: `1px solid ${colors.yellow}`,
     "&:hover": {
       backgroundColor: colors.transparent,
-      border: `1px solid ${colors.yellow}`,
-      color: colors.yellow,
+      border: `1px solid ${colors.primary}`,
+      color: colors.reef,
+      fontWeight: "bold",
     },
   },
 }))(Button);
+const backCoverImg = (image) => {
+  return `./img/${image}`;
+};
 
 // const gridHover = (event) => {
 //   event.target.style.transform = "scale(1.02,1.02)";
@@ -31,10 +40,14 @@ const handleScroll = () => {
 export default {
   // gridHover,
   // gridNoHover,
+  backCoverImg,
   handleScroll,
   ColorButton,
   cardRadius: {
     borderRadius: "5px",
+  },
+  cardRadius2: {
+    borderRadius: "20px",
   },
   colorWhite: {
     color: colors.secondary,
@@ -51,20 +64,47 @@ export default {
   colorBlue: {
     color: colors.blue,
   },
+  colorRed: {
+    color: colors.red,
+  },
+  colorReef: {
+    color: colors.reef,
+  },
+  colorCoral: {
+    color: colors.coral,
+  },
+  colorCharcoalDark: {
+    color: colors.charcoalDark,
+  },
+  colorCharcoalLight: {
+    color: colors.charcoalLight,
+  },
   blackBG: {
     background: "#000",
   },
   whiteBG: {
     background: "#fff",
   },
+  reefBG: {
+    background: colors.reef,
+  },
+  coralBG: {
+    background: colors.coral,
+  },
   colorTransparent: {
     background: colors.transparent,
   },
   boldTxt: {
-    fontStyle: "bold",
+    fontWeight: "bold",
+  },
+  boldNormal: {
+    fontWeight: "normal",
+  },
+  fontRoboto: {
+    fontFamily: "Roboto",
   },
   feildRadius: {
-    borderRadius: "5px",
+    borderRadius: "10px",
   },
   greyBG: {
     background: "#111",
@@ -83,6 +123,12 @@ export default {
   },
   padding1: {
     padding: "1%",
+  },
+  padding30tb: {
+    padding: "30px 0",
+  },
+  padding40: {
+    padding: "40px",
   },
   paddingLR: {
     paddingLeft: "5%",
@@ -112,7 +158,48 @@ export default {
     padding: "5px 20px",
     marginTop: "20px",
   },
-
+  landingButton: {
+    width: "287px",
+    height: "93px",
+    backgroundColor: "#FFDD33",
+    borderRadius: "10px",
+    fontFamily: "Poppins",
+    fontWeight: "bold",
+    fontSize: "24px",
+    border: "none",
+    margin: "40px 0 100px 0",
+    cursor: "pointer",
+  },
+  amAndpmButton: {
+    width: "65px",
+    minHeight: "56px",
+    fontFamily: "Roboto",
+    fontWeight: "normal",
+    fontSize: "20px",
+    color: "#FFFFFF",
+    border: "none",
+    cursor: "pointer",
+    marginTop: "20px",
+    background: "#103A42",
+    border: "1px solid rgba(16, 58, 66, 0.3)",
+    boxSizing: "border-box",
+    borderRadius: "10px",
+  },
+  thankyousubmitButton: {
+    width: "690px",
+    minHeight: "75px",
+    fontFamily: "Poppins",
+    fontWeight: "bold",
+    fontSize: "24px",
+    border: "none",
+    cursor: "pointer",
+    marginTop: "20px",
+    color: "#FFFFFF",
+    background: "#103A42",
+    border: "1px solid rgba(16, 58, 66, 0.3)",
+    boxSizing: "border-box",
+    borderRadius: "10px",
+  },
   fixed: {
     position: "sticky",
     top: 0,
@@ -123,6 +210,18 @@ export default {
     minHeight: "100vh",
     zIndex: 500,
     background: "#111",
+  },
+  txtBGCoral: {
+    display: "table",
+    background: colors.coral,
+    borderRadius: "10px 0",
+    padding: "10px",
+  },
+  txtBGSunshine: {
+    display: "table",
+    background: colors.sunshine,
+    borderRadius: "10px 0",
+    padding: "10px",
   },
   section01Content: {
     background: "#000",
@@ -157,8 +256,7 @@ export default {
     top: 0,
     left: 0,
     padding: "15px",
-    background: "rgb(100 116 166 / 44%)",
-    zIndex: 20000,
+    height: "100px",
   },
   popup: {
     position: "fixed",
@@ -170,16 +268,21 @@ export default {
     background: "#000",
   },
   footer: {
-    padding: "30px",
+    padding: "22px",
     background: "#fff",
     textAlign: "center",
   },
   spacing: (value) => `${value * 8}px`,
   //form styles
   formFieldContainer: {
-    height: "85px",
-    overflow: "visible",
+    height: "68px",
     marginBottom: "10px",
+  },
+  formInputField: {
+    height: "50px",
+    border: "1px solid rgba(102, 102, 102, 0.3)",
+    boxSizing: "border-box",
+    borderRadius: "10px",
   },
   verticalScroll: {
     overflowY: "auto",
@@ -191,5 +294,5 @@ export default {
   err2: { color: colors.err, marginLeft: "10px" },
   special: { display: "inline-block", width: "5%", textAlign: "center" },
   countryContainer: { display: "inline-block", width: "15%" },
-  mobileContainer: { display: "inline-block", width: "75%" },
+  mobileContainer: { display: "inline-block", width: "90%" },
 };

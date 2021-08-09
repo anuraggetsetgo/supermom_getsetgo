@@ -1,17 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-import Poppins from "./fonts/poppins-v15-latin-regular.woff";
-
 import { colors } from "./services";
-
-const poppins = {
-  fontFamily: "Poppins",
-  fontStyle: "normal",
-  fontWeight: 600,
-  src: `local('Poppins'),
-       local('Poppins-Regular') , 
-       url(${Poppins}) format('woff');`,
-};
 
 const theme = createMuiTheme({
   palette: {
@@ -27,7 +16,7 @@ const theme = createMuiTheme({
   },
   spacing: (value) => `${value * 8}px`,
   typography: {
-    fontFamily: "Poppins,Arial",
+    fontFamily: ["Poppins", "Roboto"],
     spacing: (value) => value ** 8,
     color: colors.secondary,
 
@@ -35,18 +24,17 @@ const theme = createMuiTheme({
       color: colors.secondary,
     },
     body1: {
-      fontSize: "1.3rem",
+      fontSize: "16px",
     },
     h1: {
       fontSize: "48px",
       lineHeight: "54px",
-      marginBottom: "24px",
-      letterSpacing: "4px",
+      fontWeight: "normal",
     },
     h2: {
       fontSize: "40px",
       lineHeight: "48px",
-      marginBottom: "16px",
+      fontWeight: "normal",
     },
     h3: {
       fontSize: "32px",
@@ -57,14 +45,14 @@ const theme = createMuiTheme({
       lineHeight: "28px",
     },
     h5: {
-      fontSize: "18px",
+      fontSize: "20px",
       lineHeight: "24px",
     },
     h6: {
       fontSize: "16px",
       lineHeight: "22px",
     },
-    h7: {
+    body2: {
       fontSize: "14px",
       lineHeight: "22px",
     },
@@ -73,8 +61,10 @@ const theme = createMuiTheme({
       lineHeight: "2.2rem",
     },
     subtitle2: {
-      fontSize: "1.2rem",
-      lineHeight: "1.8rem",
+      fontSize: "1rem",
+      lineHeight: "1.75rem",
+      fontFamily: "Roboto",
+      fontWeight: "normal",
     },
   },
   MuiButton: {
@@ -85,7 +75,9 @@ const theme = createMuiTheme({
   overrides: {
     MuiCssBaseline: {
       "@global": {
-        "@font-face": [poppins],
+        body: {
+          fontFamily: "Poppins",
+        },
       },
     },
     MuiButton: {

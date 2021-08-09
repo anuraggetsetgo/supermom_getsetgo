@@ -13,7 +13,6 @@ const Signupbanner = () => {
           style={{
             height: "614px",
             width: "100%",
-
             backgroundImage: `url(${Styles.backCoverImg(
               "landingpage_banner.png"
             )})`,

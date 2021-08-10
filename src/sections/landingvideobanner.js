@@ -14,19 +14,23 @@ const Landingvideobanner = () => {
         direction="row"
         justify="center"
         style={{
-          marginTop: isMobile ? "690px" : "320px",
+          marginTop: isMobile ? "380px" : "320px",
           marginBottom: isMobile ? "0" : "130px",
+          padding: isMobile ? "20px" : "0",
         }}
       >
         <Grid item justify="center" xs={12} sm={10} lg={10}>
           <Grid item>
-            <Typography variant="h3" style={{ textAlign: "center" }}>
+            <Typography
+              variant={isMobile ? "h4" : "h3"}
+              style={{ textAlign: "center" }}
+            >
               Here is why you need us!
             </Typography>
           </Grid>
           <Grid item>
             <Typography
-              variant="h1"
+              variant={isMobile ? "h3" : "h1"}
               style={{
                 textAlign: "center",
                 ...Styles.colorRed,
@@ -38,7 +42,7 @@ const Landingvideobanner = () => {
           </Grid>
           <Grid item>
             <Typography
-              variant="h1"
+              variant={isMobile ? "h3" : "h1"}
               style={{
                 textAlign: "center",
                 ...Styles.colorReef,

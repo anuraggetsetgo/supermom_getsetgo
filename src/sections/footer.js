@@ -19,6 +19,7 @@ const Footer = () => {
           xs={12}
           sm={12}
           lg={10}
+          style={{ padding: isMobile ? "20px" : "0" }}
         >
           <Grid
             item
@@ -28,7 +29,7 @@ const Footer = () => {
             style={{ margin: "0 0 66px" }}
           >
             <svg
-              width={isMobile ? "71" : "167"}
+              width={isMobile ? "61" : "167"}
               height="1"
               viewBox="0 0 167 1"
               fill="none"
@@ -54,7 +55,7 @@ const Footer = () => {
               {customTxt.GSGInTheNews.mainheading}
             </Typography>
             <svg
-              width={isMobile ? "71" : "167"}
+              width={isMobile ? "61" : "167"}
               height="1"
               viewBox="0 0 167 1"
               fill="none"
@@ -113,7 +114,7 @@ const Footer = () => {
           </Grid>
           <Grid item>
             <Typography
-              variant="subtitle2"
+              variant={isMobile ? "body2" : "subtitle2"}
               style={{
                 ...Styles.colorCharcoalLight,
                 margin: "96px 0 36px",

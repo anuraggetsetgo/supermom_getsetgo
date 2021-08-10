@@ -1,8 +1,10 @@
 import React from "react";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import customTxt from "./customTxt.json";
 const Joinnow = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
@@ -11,8 +13,8 @@ const Joinnow = () => {
         alignItems="center"
         justify="center"
         style={{
-          padding: "150px 0 100px",
-          marginBottom: "100px",
+          padding: isMobile ? "70px 0 0" : "150px 0 100px",
+          marginBottom: isMobile ? "30px" : "100px",
           background: "rgba(255, 221, 51, 0.1)",
         }}
       >
@@ -25,6 +27,7 @@ const Joinnow = () => {
           xs={12}
           sm={12}
           lg={10}
+          style={{ padding: isMobile ? "20px" : "0" }}
         >
           <Grid
             item
@@ -35,7 +38,7 @@ const Joinnow = () => {
           >
             <Grid item container alignItems="center" justify="center">
               <Typography
-                variant="h1"
+                variant={isMobile ? "h3" : "h1"}
                 style={{ ...Styles.colorRed, ...Styles.boldTxt }}
               >
                 You <br />
@@ -106,7 +109,7 @@ const Joinnow = () => {
                         </Grid>
                         <Grid item xs={10}>
                           <Typography
-                            variant="h5"
+                            variant={isMobile ? "h6" : "h5"}
                             style={{
                               fontFamily: "roboto",
                               ...Styles.colorCharcoalDark,
@@ -178,7 +181,7 @@ const Joinnow = () => {
                       </Grid>
                       <Grid item xs={10}>
                         <Typography
-                          variant="h5"
+                          variant={isMobile ? "h6" : "h5"}
                           style={{
                             fontFamily: "roboto",
                             ...Styles.colorCharcoalDark,
@@ -197,14 +200,14 @@ const Joinnow = () => {
               item
               container
               justify="flex-end"
-              style={{ marginTop: "96px" }}
+              style={{ marginTop: isMobile ? "5px" : "96px" }}
             >
               <Grid
                 item
                 alignItems="center"
                 justify="center"
                 style={{
-                  width: "270px",
+                  width: "100%",
                   height: "93px",
                   ...Styles.reefBG,
                   borderRadius: "10px",

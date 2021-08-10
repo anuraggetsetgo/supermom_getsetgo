@@ -1,9 +1,11 @@
 import React from "react";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import customTxt from "./customTxt.json";
 
 const Whygetsetgo = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid item container direction="row" justify="center">
@@ -15,11 +17,11 @@ const Whygetsetgo = () => {
           xs={12}
           sm={12}
           lg={10}
-          style={{ margin: "0 0 60px 0" }}
+          style={{ margin: "0 0 60px 0", padding: isMobile ? "20px" : "0" }}
         >
           <Grid item style={{ marginBottom: "35px" }}>
             <Typography
-              variant="h1"
+              variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.centerTxt, ...Styles.colorRed }}
             >
               Why <span style={{ ...Styles.boldTxt }}>GetSetGo</span> Fitness?
@@ -52,7 +54,7 @@ const Whygetsetgo = () => {
                   </Grid>
                   <Grid item style={{ marginBottom: "16px" }}>
                     <Typography
-                      variant="h3"
+                      variant={isMobile ? "h4" : "h3"}
                       style={{
                         ...Styles.colorCharcoalDark,
                         ...Styles.boldTxt,
@@ -98,7 +100,7 @@ const Whygetsetgo = () => {
                   </Grid>
                   <Grid item style={{ marginBottom: "16px" }}>
                     <Typography
-                      variant="h3"
+                      variant={isMobile ? "h4" : "h3"}
                       style={{
                         ...Styles.colorCharcoalDark,
                         ...Styles.boldTxt,
@@ -144,7 +146,7 @@ const Whygetsetgo = () => {
                   </Grid>
                   <Grid item style={{ marginBottom: "16px" }}>
                     <Typography
-                      variant="h3"
+                      variant={isMobile ? "h4" : "h3"}
                       style={{
                         ...Styles.colorCharcoalDark,
                         ...Styles.boldTxt,

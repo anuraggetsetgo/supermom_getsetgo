@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Carousel from "react-material-ui-carousel";
 const DataItem = [
@@ -57,7 +57,7 @@ const cardStyle = {
   backgroundColor: "#FFFFFF",
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
   borderRadius: "10px",
-  height: "480px",
+  // height: "480px",
   padding: "40px",
 };
 
@@ -174,7 +174,7 @@ const AvtarName = ({ name, profile }) => {
       justify="flex-start"
       style={{ marginTop: "32px" }}
     >
-      <Grid item container xs={3}>
+      <Grid item container xs={12} sm={12} lg={3}>
         <Grid
           item
           style={{
@@ -206,6 +206,8 @@ const AvtarName = ({ name, profile }) => {
   );
 };
 const CarouselContainer = ({ imagePath, text, name, profile }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
@@ -213,7 +215,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: "800px", height: "500px" }}
+        style={{ width: "800px" }}
       >
         <Grid
           item
@@ -254,14 +256,23 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
             </Grid>
           </Grid>
 
-          <Grid container item xs={5} direction="column" justify="center">
+          <Grid
+            container
+            item
+            xs={12}
+            sm={12}
+            lg={5}
+            direction="column"
+            justify="center"
+          >
             <Grid item>
               <Typography
                 variant="h5"
                 style={{
-                  maxWidth: "238px",
+                  maxWidth: isMobile ? "300px" : "238px",
                   ...Styles.colorCharcoalDark,
                   fontFamily: "Roboto",
+                  marginTop: isMobile ? "16px" : "0",
                 }}
               >
                 {text}
@@ -276,28 +287,38 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
 };
 
 const CarouselItem = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Grid item container xs={12} justify="center">
+      <Grid item container alignItems="center" justify="center">
         <Grid
           item
+          xs={12}
+          sm={12}
+          lg={10}
           container
           justify="center"
           alignItems="center"
-          style={{ marginBottom: "40px" }}
+          style={{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
         >
-          <Typography variant="h1" style={{ ...Styles.colorRed }}>
-            <span style={{ ...Styles.boldTxt }}>Meet</span> the{" "}
-            <span style={{ ...Styles.boldTxt }}>super moms</span> who took
-            <br /> charge of their health..
-          </Typography>
+          <Grid item>
+            <Typography
+              variant={isMobile ? "h3" : "h1"}
+              style={{ ...Styles.colorRed }}
+            >
+              <span style={{ ...Styles.boldTxt }}>Meet</span> the{" "}
+              <span style={{ ...Styles.boldTxt }}>super moms</span> who took
+              <br /> charge of their health..
+            </Typography>
+          </Grid>
         </Grid>
         <Grid
           item
           container
           direction="row"
           justify="center"
-          style={{ maxWidth: "1360px" }}
+          // style={{ maxWidth: "1360px" }}
         >
           <Carousel
             interval={5000000}
@@ -333,6 +354,7 @@ const CarouselItem = () => {
             style={{
               ...Styles.landingButton,
               ...Styles.colorReef,
+              width: `${isMobile ? "90%" : "273px"}`,
             }}
           >
             GET STARTED!

@@ -159,7 +159,6 @@ export default {
     marginTop: "20px",
   },
   landingButton: {
-    width: "287px",
     height: "93px",
     backgroundColor: "#FFDD33",
     borderRadius: "10px",

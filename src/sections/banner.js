@@ -7,8 +7,8 @@ import PreloadImage from "../helpers/preloadimg";
 import customTxt from "./customTxt.json";
 
 class Banner extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
   render() {
     return (
@@ -52,7 +52,12 @@ class Banner extends Component {
                 "excited-beautiful-girl-smiling-pointing-fingers-small 2.png"
               )}
               alt="banner"
-              style={Styles.bannerImg}
+              style={{
+                ...Styles.bannerImg,
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
             />
           </Grid>
           <Grid item xs={12}>
@@ -69,13 +74,12 @@ class Banner extends Component {
               <Typography
                 variant="h2"
                 style={{ ...Styles.boldTxt, ...Styles.colorWhite }}
-              onClick={()=>{
-                //console.log(this.props.product)
-              this.props.createOrder(this.props.product[0],0)
-              }}
+                onClick={() => {
+                  //console.log(this.props.product)
+                  this.props.createOrder(this.props.product[0], 0);
+                }}
               >
                 TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
-
               </Typography>
             </Grid>
           </Grid>

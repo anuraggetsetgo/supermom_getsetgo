@@ -13,7 +13,10 @@ const Landingvideobanner = () => {
         container
         direction="row"
         justify="center"
-        style={{ marginTop: isMobile ? "690px" : "320px" }}
+        style={{
+          marginTop: isMobile ? "690px" : "320px",
+          marginBottom: isMobile ? "0" : "130px",
+        }}
       >
         <Grid item justify="center" xs={12} sm={10} lg={10}>
           <Grid item>
@@ -79,11 +82,15 @@ const Landingvideobanner = () => {
               item
               style={{
                 position: "absolute",
-                right: "10%",
+                right: isMobile ? "11%" : "17%",
+                height: isMobile ? "" : "41vh",
               }}
             >
               <img
-                style={{ width: "20vw", height: "40vh" }}
+                style={{
+                  width: isMobile ? "20vw" : "100%",
+                  height: isMobile ? "41vh" : "68vh",
+                }}
                 src={Styles.backCoverImg("pngItem_img.png")}
               />
             </Grid>

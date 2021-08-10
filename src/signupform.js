@@ -405,7 +405,7 @@ const Signupform = (props) => {
                       Are you the next SUPER MOM?
                     </Typography>
                   </Grid>
-                  <Grid item style={{ marginBottom: "32px" }}>
+                  <Grid item style={{ marginTop:'32px',marginBottom: "32px" }}>
                     <Typography
                       variant={isMobile ? "h6" : "h5"}
                       style={{

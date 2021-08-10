@@ -87,13 +87,13 @@ const Landingvideobanner = () => {
               style={{
                 position: "absolute",
                 right: isMobile ? "5%" : "5%",
-                height: isMobile ? "" : "41vh",
+                height: isMobile ? "40vh" : "40vh",
               }}
             >
               <img
                 style={{
                   width: isMobile ? "20vw" : "100%",
-                  height: isMobile ? "41vh" : "68vh",
+                  height: isMobile ? "40vh" : "50vh",
                 }}
                 src={Styles.backCoverImg("pngItem_img.png")}
               />

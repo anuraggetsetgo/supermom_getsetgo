@@ -13,7 +13,7 @@ import Home from "./home";
 import Package from "./package";
 import Ordersummary from "./ordersummary";
 import ReactPixel from "react-facebook-pixel";
-
+import './fonts/fonts.css'
 //import Secret from './secretworkout';
 
 ReactGA.initialize("UA-86957619-1");

@@ -13,13 +13,13 @@ import Home from "./home";
 import Package from "./package";
 import Ordersummary from "./ordersummary";
 import ReactPixel from "react-facebook-pixel";
-
+import './fonts/fonts.css'
 //import Secret from './secretworkout';
 
 ReactGA.initialize("UA-86957619-1");
 ReactGA.pageview(window.location.pathname + window.location.search);
 ReactGA.pageview("/");
-ReactGA.pageview("/packages");
+ReactGA.pageview("/trynow");
 //ReactGA.pageview('/secret');
 ReactGA.pageview("/summary");
 const options = {
@@ -57,7 +57,7 @@ class App extends Component {
               <Route exact path="/">
                 <Home />
               </Route>
-              <Route path="/packages">
+              <Route path="/trynow">
                 <Package />
               </Route>
               <Route

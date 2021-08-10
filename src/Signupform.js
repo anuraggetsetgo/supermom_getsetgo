@@ -59,7 +59,7 @@ const Signupform = (props) => {
   let [sendingEmail, updatesendingEmail] = useState(false);
   let [submitButtonEnable, setSubmitButtonEnable] = useState(false);
   function moveNxt() {
-    history.replace("packages");
+    history.replace("trynow");
   }
   let formError = (err) => {
     updateErr(true);

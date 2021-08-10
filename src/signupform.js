@@ -7,7 +7,16 @@ import emailTemplates from "./emailTemplate.json";
 import { useHistory } from "react-router-dom";
 import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
-import { Dialog, DialogActions, Slider, FormControlLabel, Checkbox, MenuItem, FormControl, Snackbar } from "@material-ui/core";
+import {
+  Dialog,
+  DialogActions,
+  Slider,
+  FormControlLabel,
+  Checkbox,
+  MenuItem,
+  FormControl,
+  Snackbar,
+} from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   mui_root: {
     padding: "0 0 16px 0",
@@ -117,9 +126,16 @@ function validateAge(value) {
 }
 
 //Dialog for info message
-const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue,setSubmitButtonEnable}) => {
+const InfoPopUp = ({
+  open,
+  setOpen,
+  signUpInfoMessage,
+  setIsContinue,
+  setSubmitButtonEnable,
+}) => {
   const handleClose = () => {
-    setOpen(false);setSubmitButtonEnable(false)
+    setOpen(false);
+    setSubmitButtonEnable(false);
   };
   const classes = useStyles();
 
@@ -141,7 +157,11 @@ const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue,setSubmitBu
     >
       <DialogActions className="app-dialog-actions">
         <Grid item>
-          <HighlightOffIcon className="white cursor-pointer" onClick={handleClose} fontSize="large" />
+          <HighlightOffIcon
+            className="white cursor-pointer"
+            onClick={handleClose}
+            fontSize="large"
+          />
         </Grid>
       </DialogActions>{" "}
       <Grid
@@ -174,7 +194,10 @@ const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue,setSubmitBu
             marginBottom: Styles.spacing(3),
           }}
         >
-          <Typography variant="subtitle1" className="app-text-align-center normal line-height24">
+          <Typography
+            variant="subtitle1"
+            className="app-text-align-center normal line-height24"
+          >
             {signUpInfoMessage}
           </Typography>
         </Grid>
@@ -202,51 +225,48 @@ const Signupform = (props) => {
   let [formSubmitting, updateFormSubmitting] = useState(false);
   let [sendingEmail, updatesendingEmail] = useState(false);
   let [submitButtonEnable, setSubmitButtonEnable] = useState(false);
-  const [openDialog, setOpenDialog] = useState(false)
+  const [openDialog, setOpenDialog] = useState(false);
   const [signUpInfoMessage, setSignUpInfoMessage] = useState(false);
   const [isContinue, setIsContinue] = useState(false);
   function moveNxt() {
     history.replace("trynow");
   }
   let formError = (err) => {
-//     var infomessage =  JSON.parse(err).infomessage;
-//     console.log(err);
-//     if(infomessage) 
-// {      setOpenDialog(true)
-//       setSignUpInfoMessage(infomessage);
-//     }
+    //     var infomessage =  JSON.parse(err).infomessage;
+    //     console.log(err);
+    //     if(infomessage)
+    // {      setOpenDialog(true)
+    //       setSignUpInfoMessage(infomessage);
+    //     }
     updateErr(true);
   };
   let formSubmitted = (data) => {
-    console.log(data)
-    let infomessage =  data.data.infomessage;
-    console.log(infomessage)
-    if(infomessage && !isContinue) 
-    {      
-      setOpenDialog(true)
+    console.log(data);
+    let infomessage = data.data.infomessage;
+    console.log(infomessage);
+    if (infomessage && !isContinue) {
+      setOpenDialog(true);
       setSignUpInfoMessage(infomessage);
       updateFormSubmitting(false);
+    } else if (isContinue) {
+      updateFormSubmitting(false);
+      updatesendingEmail(true);
+      let { email, name, mobile } = JSON.parse(get("userDetails"));
+      let { city } = JSON.parse(get("loc"));
+      let emailBody = emailTemplates.registration
+        .replace(/#fname/g, name.split(" ")[0])
+        .replace(/#full_name/g, name)
+        .replace(/#city/, city)
+        .replace(/#email/g, email)
+        .replace(/#mob/g, mobile);
+      callAPI(getURL("sendEmail"), "post", moveNxt, moveNxt, {
+        to: email,
+        cc: "info@getsetgo.fitness",
+        subject: "GetSetGo Fitness: Your fitness journey starts here",
+        message: emailBody,
+      });
+      moveNxt();
     }
-    else 
-    if(isContinue) {
-    updateFormSubmitting(false);
-    updatesendingEmail(true);
-    let { email, name, mobile } = JSON.parse(get("userDetails"));
-    let { city } = JSON.parse(get("loc"));
-    let emailBody = emailTemplates.registration
-      .replace(/#fname/g, name.split(" ")[0])
-      .replace(/#full_name/g, name)
-      .replace(/#city/, city)
-      .replace(/#email/g, email)
-      .replace(/#mob/g, mobile);
-    callAPI(getURL("sendEmail"), "post", moveNxt, moveNxt, {
-      to: email,
-      cc: "info@getsetgo.fitness",
-      subject: "GetSetGo Fitness: Your fitness journey starts here",
-      message: emailBody,
-    });
-    moveNxt();
-  }
   };
   let submitForm = (values) => {
     setSubmitButtonEnable(true);
@@ -261,15 +281,18 @@ const Signupform = (props) => {
     loc.city = loc.city || null;
     loc.region = loc.country || null;
     loc.state = loc.region || null;
-  
-     callAPI(getURL('user-signup'), 'post', formSubmitted, formError, {
-      firstname : values.name.split(" ")[0],
-      lastname :values.name.split(" ")[1]===undefined?"":values.name.split(" ")[1],
+
+    callAPI(getURL("user-signup"), "post", formSubmitted, formError, {
+      firstname: values.name.split(" ")[0],
+      lastname:
+        values.name.split(" ")[1] === undefined
+          ? ""
+          : values.name.split(" ")[1],
       mobile: `${values.country}${values.mobile}`,
       email: values.email,
       skip_mobile: isContinue ? 1 : 0,
-        });//ANV
-  
+    }); //ANV
+
     //formSubmitted();
   };
   if (err) {
@@ -281,7 +304,7 @@ const Signupform = (props) => {
       </Grid>
     );
   }
-  
+
   // if (!err && !sendingEmail)
   //   return (
   //     <Grid item style={{ padding: "20px 0" }}>
@@ -293,7 +316,7 @@ const Signupform = (props) => {
   //       </Typography>
   //     </Grid>
   //   );
-  if (!err && !formSubmitting &&sendingEmail)
+  if (!err && !formSubmitting && sendingEmail)
     return (
       <Grid item style={{ padding: "20px 0" }}>
         <Typography
@@ -304,176 +327,207 @@ const Signupform = (props) => {
         </Typography>
       </Grid>
     );
-     
-  if (!(err || sendingEmail )) {
-    return (<>
-    {<InfoPopUp open={openDialog} setOpen={setOpenDialog} signUpInfoMessage={signUpInfoMessage} setIsContinue={setIsContinue} setSubmitButtonEnable={setSubmitButtonEnable}/>}
-    (<Formik
-        initialValues={{
-          name: "",
-          email: "",
-          country: 91,
-          mobile: "",
-          age: "",
-        }}
-        onSubmit={(values) => {
-          submitForm(values);
-        }}
-      >
-        {({ errors, touched, isValidating, values }) => {
-          console.log(values);
-          return (
-            <Grid item container direction="row" justify="center">
-              <Grid
-                item
-                justify="center"
-                justify="flex-start"
-                alignItems="center"
-                xs={12}
-                sm={12}
-                lg={10}
-                style={{
-                  padding: isMobile ? "30px" : "60px",
-                  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
-                  borderRadius: "10px",
-                  background: "white",
-                  marginTop: `${isMobile ? "23px" : "55px"}`,
-                }}
-              >
-                <Grid item>
-                  <Typography
-                    variant={isMobile ? "h4" : "h1"}
-                    style={{
-                      textAlign: "center",
-                      ...Styles.colorRed,
-                      ...Styles.boldTxt,
-                    }}
-                  >
-                    Are you the next SUPER MOM?
-                  </Typography>
-                </Grid>
-                <Grid item style={{ marginBottom: "32px" }}>
-                  <Typography
-                    variant={isMobile ? "h6" : "h5"}
-                    style={{
-                      textAlign: "center",
-                      ...Styles.colorCharcoalLight,
-                    }}
-                  >
-                    Kindly enter your details below
-                  </Typography>
-                </Grid>
-                <Form autoComplete="off">
-                  <Grid item xs={12} container>
+
+  if (!(err || sendingEmail)) {
+    return (
+      <>
+        {
+          <InfoPopUp
+            open={openDialog}
+            setOpen={setOpenDialog}
+            signUpInfoMessage={signUpInfoMessage}
+            setIsContinue={setIsContinue}
+            setSubmitButtonEnable={setSubmitButtonEnable}
+          />
+        }
+        (
+        <Formik
+          initialValues={{
+            name: "",
+            email: "",
+            country: 91,
+            mobile: "",
+            age: "",
+          }}
+          onSubmit={(values) => {
+            submitForm(values);
+          }}
+        >
+          {({ errors, touched, isValidating, values }) => {
+            console.log(values);
+            return (
+              <Grid item container direction="row" justify="center">
+                <Grid
+                  item
+                  justify="center"
+                  justify="flex-start"
+                  alignItems="center"
+                  xs={12}
+                  sm={12}
+                  lg={10}
+                  style={{
+                    padding: isMobile ? "30px" : "60px",
+                    boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+                    borderRadius: "10px",
+                    background: "white",
+                    marginTop: `${isMobile ? "23px" : "55px"}`,
+                  }}
+                >
+                  <Grid item container>
+                    <Typography
+                      variant={isMobile ? "h4" : "h1"}
+                      style={{
+                        textAlign: "center",
+                        ...Styles.colorRed,
+                        ...Styles.boldTxt,
+                      }}
+                    >
+                      Are you the next SUPER MOM?
+                    </Typography>
+                  </Grid>
+                  <Grid item style={{ marginBottom: "32px" }}>
+                    <Typography
+                      variant={isMobile ? "h6" : "h5"}
+                      style={{
+                        textAlign: "center",
+                        ...Styles.colorCharcoalLight,
+                      }}
+                    >
+                      Kindly enter your details below
+                    </Typography>
+                  </Grid>
+                  <Form autoComplete="off">
+                    <Grid item xs={12} container>
+                      <Grid
+                        item
+                        xs={12}
+                        sm={12}
+                        lg={6}
+                        container
+                        style={{
+                          ...Styles.formFieldContainer,
+                          // marginRight: isMobile ? "0" : "10px",
+                          marginBottom: "32px",
+                        }}
+                      >
+                        <Field
+                          name="name"
+                          type="text"
+                          placeholder="Enter your name"
+                          validate={validateName}
+                          disabled={formSubmitting}
+                          style={{
+                            ...Styles.formInputField,
+                            width: isMobile ? "100%" : "95%",
+                          }}
+                        />
+                        {touched.name && errors.name && (
+                          <Grid item style={Styles.err}>
+                            {errors.name}
+                          </Grid>
+                        )}
+                      </Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        sm={12}
+                        lg={6}
+                        container
+                        direction="row"
+                        style={Styles.formFieldContainer}
+                      >
+                        <Grid
+                          item
+                          xs={12}
+                          sm={12}
+                          lg={6}
+                          direction="row"
+                          container
+                          alignItems="center"
+                        >
+                          <Grid
+                            item
+                            xs={12}
+                            sm={12}
+                            lg={2}
+                            style={Styles.countryContainer}
+                          >
+                            <Field
+                              style={{ ...Styles.feildRadius }}
+                              name="country"
+                              type="number"
+                              validate={validateCountry}
+                              disabled={formSubmitting}
+                              style={{
+                                ...Styles.formInputField,
+                                // width: isMobile ? "100%" : "95%",
+                              }}
+                            />
+                          </Grid>
+                          <Grid
+                            item
+                            style={{
+                              ...Styles.mobileContainer,
+                              // marginLeft: isMobile ? "0" : "10px",
+                              width: isMobile ? "100%" : "100%",
+                              marginBottom: "32px",
+                            }}
+                          >
+                            <Field
+                              style={{ ...Styles.formInputField }}
+                              placeholder="Enter your contact no"
+                              name="mobile"
+                              type="number"
+                              disabled={formSubmitting}
+                              validate={validateMobile}
+                              style={{
+                                ...Styles.formInputField,
+                                // width: isMobile ? "100%" : "95%",
+                              }}
+                            />
+                          </Grid>
+                        </Grid>
+                        {((touched.mobile && errors.mobile) ||
+                          (touched.country && errors.country)) && (
+                          <Grid item style={Styles.err} variant="body2">
+                            {errors.mobile} {errors.country}
+                          </Grid>
+                        )}
+                      </Grid>
+                    </Grid>
+
                     <Grid
                       item
                       xs={12}
                       sm={12}
-                      lg={6}
+                      lg={12}
                       style={{
                         ...Styles.formFieldContainer,
-                        // marginRight: isMobile ? "0" : "10px",
-                        marginBottom: "32px",
+                        margin: "32px 0 32px 0",
                       }}
                     >
                       <Field
-                        name="name"
+                        name="email"
                         type="text"
-                        placeholder="Enter your name"
-                        validate={validateName}
+                        placeholder="Email id"
                         disabled={formSubmitting}
+                        validate={validateEmail}
                         style={{
                           ...Styles.formInputField,
-                          width: isMobile ? "100%" : "95%",
+                          width: isMobile ? "100%" : "98%",
                         }}
                       />
-                      {touched.name && errors.name && (
-                        <Grid item style={Styles.err}>
-                          {errors.name}
-                        </Grid>
-                      )}
-                    </Grid>
-                    <Grid
-                      item
-                      xs={12}
-                      sm={12}
-                      lg={6}
-                      style={Styles.formFieldContainer}
-                    >
-                      <Grid item>
-                        <Grid item style={Styles.countryContainer}>
-                          <Field
-                            style={{ ...Styles.feildRadius }}
-                            name="country"
-                            type="number"
-                            validate={validateCountry}
-                            disabled={formSubmitting}
-                          />
-                        </Grid>
-                        <Grid
-                          item
-                          style={{
-                            ...Styles.mobileContainer,
-                            // marginLeft: isMobile ? "0" : "10px",
-                            width: isMobile ? "100%" : "100%",
-                            marginBottom: "32px",
-                          }}
+                      {touched.email && errors.email && (
+                        <Typography
+                          variant="h7"
+                          style={Styles.err}
+                          variant="body2"
                         >
-                          <Field
-                            style={{ ...Styles.formInputField }}
-                            placeholder="Enter your contact no"
-                            name="mobile"
-                            type="number"
-                            disabled={formSubmitting}
-                            validate={validateMobile}
-                            style={{
-                              ...Styles.formInputField,
-                              width: isMobile ? "100%" : "95%",
-                            }}
-                          />
-                        </Grid>
-                      </Grid>
-                      {((touched.mobile && errors.mobile) ||
-                        (touched.country && errors.country)) && (
-                        <Grid item style={Styles.err} variant="body2">
-                          {errors.mobile} {errors.country}
-                        </Grid>
+                          {errors.email}
+                        </Typography>
                       )}
                     </Grid>
-                  </Grid>
-
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    lg={12}
-                    style={{
-                      ...Styles.formFieldContainer,
-                      margin: "32px 0 32px 0",
-                    }}
-                  >
-                    <Field
-                      name="email"
-                      type="text"
-                      placeholder="Email id"
-                      disabled={formSubmitting}
-                      validate={validateEmail}
-                      style={{
-                        ...Styles.formInputField,
-                        width: isMobile ? "100%" : "98%",
-                      }}
-                    />
-                    {touched.email && errors.email && (
-                      <Typography
-                        variant="h7"
-                        style={Styles.err}
-                        variant="body2"
-                      >
-                        {errors.email}
-                      </Typography>
-                    )}
-                  </Grid>
-                  {/* <Grid item style={Styles.formFieldContainer}>
+                    {/* <Grid item style={Styles.formFieldContainer}>
               <label htmlFor="age">
                 <Typography variant="h7">Age</Typography>
               </label>
@@ -489,27 +543,27 @@ const Signupform = (props) => {
                 </Typography>
               )}
             </Grid> */}
-                  <Styles.ColorButton
-                    type="submit"
-                    variant="contained"
-                    disabled={submitButtonEnable}
-                    style={{
-                      width: isMobile ? "100%" : "98%",
-                      marginTop: "20px",
-                    }}
-                    // onClick={(e) => setSubmitButtonEnable(true)}
-                  >
-                    YES I AM
-                  </Styles.ColorButton>
-                </Form>
+                    <Styles.ColorButton
+                      type="submit"
+                      variant="contained"
+                      disabled={submitButtonEnable}
+                      style={{
+                        width: isMobile ? "100%" : "98%",
+                        marginTop: "20px",
+                      }}
+                      // onClick={(e) => setSubmitButtonEnable(true)}
+                    >
+                      YES I AM
+                    </Styles.ColorButton>
+                  </Form>
+                </Grid>
               </Grid>
-            </Grid>
-          );
-        }}
-      </Formik>
-    )
-    
-    </>);
+            );
+          }}
+        </Formik>
+        )
+      </>
+    );
   }
 };
 

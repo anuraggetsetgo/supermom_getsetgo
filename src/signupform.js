@@ -360,7 +360,7 @@ const Signupform = (props) => {
             setSubmitButtonEnable={setSubmitButtonEnable}
           />
         }
-        (
+
         <Formik
           initialValues={{
             name: "",
@@ -459,9 +459,9 @@ const Signupform = (props) => {
                         <Grid item>
                           <Grid
                             item
-                            xs={12}
+                            xs={3}
                             sm={12}
-                            lg={2}
+                            lg={3}
                             style={Styles.countryContainer}
                           >
                             <Field
@@ -472,16 +472,19 @@ const Signupform = (props) => {
                               disabled={formSubmitting}
                               style={{
                                 ...Styles.formInputField,
-                                // width: isMobile ? "100%" : "95%",
+                                width: isMobile ? "90%" : "90%",
                               }}
                             />
                           </Grid>
                           <Grid
                             item
+                            xs={10}
+                            sm={12}
+                            lg={10}
                             style={{
                               ...Styles.mobileContainer,
                               // marginLeft: isMobile ? "0" : "10px",
-                              width: isMobile ? "100%" : "100%",
+                              width: isMobile ? "100%" : "93%",
                               marginBottom: "32px",
                             }}
                           >
@@ -494,7 +497,7 @@ const Signupform = (props) => {
                               validate={validateMobile}
                               style={{
                                 ...Styles.formInputField,
-                                // width: isMobile ? "100%" : "95%",
+                                width: isMobile ? "100%" : "100%",
                               }}
                             />
                           </Grid>
@@ -573,7 +576,6 @@ const Signupform = (props) => {
             );
           }}
         </Formik>
-        )
       </>
     );
   }

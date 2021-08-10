@@ -286,7 +286,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
   );
 };
 
-const CarouselItem = () => {
+const CarouselItem = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -349,7 +349,7 @@ const CarouselItem = () => {
             ))}
           </Carousel>
         </Grid>
-        <Grid item container justify="center" alignItems="center">
+        <Grid item container justify="center" alignItems="center" onClick={props.scrollToSignUp}>
           <button
             style={{
               ...Styles.landingButton,

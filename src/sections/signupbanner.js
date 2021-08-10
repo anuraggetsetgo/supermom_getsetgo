@@ -1,14 +1,15 @@
-import React from "react";
+import React,{forwardRef,ref} from "react";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Signupform from "../signupform";
 
-const Signupbanner = () => {
+const Signupbanner = forwardRef(( props,ref) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
+        
         item
         container
         direction="row"
@@ -44,7 +45,7 @@ const Signupbanner = () => {
               padding: isMobile ? "20px" : "0",
             }}
           >
-            <Grid justify="center" alignItems="center">
+            <Grid justify="center" alignItems="center" >
               <Typography
                 variant={isMobile ? "h4" : "h2"}
                 style={{ textAlign: "center", ...Styles.whiteColor }}
@@ -64,12 +65,12 @@ const Signupbanner = () => {
                 <span style={{ ...Styles.boldTxt }}>super busy life.</span>
               </Typography>
             </Grid>
-            <Signupform />
+            <Grid ref={ref}><Signupform /></Grid>
           </Grid>
         </Grid>
       </Grid>
     </>
   );
-};
+});
 
 export default Signupbanner;

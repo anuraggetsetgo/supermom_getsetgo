@@ -19,6 +19,7 @@ const Footer = () => {
           xs={12}
           sm={12}
           lg={10}
+          style={{ padding: isMobile ? "20px" : "0" }}
         >
           <Grid
             item

@@ -1,8 +1,10 @@
 import React from "react";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import customTxt from "./customTxt.json";
 const Joinnow = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
@@ -25,6 +27,7 @@ const Joinnow = () => {
           xs={12}
           sm={12}
           lg={10}
+          style={{ padding: isMobile ? "20px" : "0" }}
         >
           <Grid
             item

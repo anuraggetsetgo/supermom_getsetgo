@@ -300,7 +300,7 @@ const CarouselItem = () => {
           container
           justify="center"
           alignItems="center"
-          style={{ marginBottom: "40px" }}
+          style={{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
         >
           <Grid item>
             <Typography variant="h1" style={{ ...Styles.colorRed }}>

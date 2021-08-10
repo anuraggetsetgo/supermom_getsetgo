@@ -16,6 +16,7 @@ const Landingvideobanner = () => {
         style={{
           marginTop: isMobile ? "690px" : "320px",
           marginBottom: isMobile ? "0" : "130px",
+          padding: isMobile ? "20px" : "0",
         }}
       >
         <Grid item justify="center" xs={12} sm={10} lg={10}>

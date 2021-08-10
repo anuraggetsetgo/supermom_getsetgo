@@ -39,11 +39,14 @@ const Signupbanner = () => {
             direction="row"
             alignItems="center"
             justify="center"
-            style={{ marginTop: isMobile ? "15px" : "100px" }}
+            style={{
+              marginTop: isMobile ? "40px" : "100px",
+              padding: isMobile ? "20px" : "0",
+            }}
           >
             <Grid justify="center" alignItems="center">
               <Typography
-                variant="h2"
+                variant={isMobile ? "h3" : "h2"}
                 style={{ textAlign: "center", ...Styles.whiteColor }}
               >
                 If <spam style={{ ...Styles.boldTxt }}>multi-tasking </spam>

@@ -166,6 +166,8 @@ const LogoSvg = () => {
   );
 };
 const AvtarName = ({ name, profile }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Grid
       container
@@ -190,7 +192,7 @@ const AvtarName = ({ name, profile }) => {
         {name.split(" ").map((name) => (
           <Grid item>
             <Typography
-              variant="h5"
+              variant={isMobile?"h6":'h5'}
               style={{
                 maxWidht: "238px",
                 ...Styles.colorReef,
@@ -215,7 +217,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: "800px" }}
+        style={{ width: isMobile?"89vw":"800px" }}
       >
         <Grid
           item
@@ -223,12 +225,14 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           direction="row"
           justify="space-between"
           alignItems="center"
-          style={{ ...cardStyle }}
+          style={{ ...cardStyle,padding:isMobile?'20px':'40px' }}
         >
           <Grid
             container
             item
-            xs={6}
+            lg={6}
+            sm={6}
+            xs={12}
             direction="row"
             justify="center"
             style={{
@@ -267,7 +271,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           >
             <Grid item>
               <Typography
-                variant="h5"
+                variant={isMobile?"h6":'h5'}
                 style={{
                   maxWidth: isMobile ? "300px" : "238px",
                   ...Styles.colorCharcoalDark,
@@ -300,7 +304,8 @@ const CarouselItem = (props) => {
           container
           justify="center"
           alignItems="center"
-          style={{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
+          style={isMobile?{  padding: "24px 20px" }
+                  :{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
         >
           <Grid item>
             <Typography
@@ -321,7 +326,7 @@ const CarouselItem = (props) => {
           // style={{ maxWidth: "1360px" }}
         >
           <Carousel
-            interval={5000000}
+            interval={500000}
             indicatorIconButtonProps={{
               style: {
                 color: "#C2DCE2",

@@ -217,7 +217,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: "800px" }}
+        style={{ width: isMobile?"89vw":"800px" }}
       >
         <Grid
           item
@@ -225,12 +225,14 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           direction="row"
           justify="space-between"
           alignItems="center"
-          style={{ ...cardStyle,padding:isMobile?'20px':null }}
+          style={{ ...cardStyle,padding:isMobile?'20px':'40px' }}
         >
           <Grid
             container
             item
-            xs={6}
+            lg={6}
+            sm={6}
+            xs={12}
             direction="row"
             justify="center"
             style={{
@@ -324,7 +326,7 @@ const CarouselItem = (props) => {
           // style={{ maxWidth: "1360px" }}
         >
           <Carousel
-            interval={5000}
+            interval={500000}
             indicatorIconButtonProps={{
               style: {
                 color: "#C2DCE2",

@@ -117,9 +117,11 @@ function validateAge(value) {
 }
 
 //Dialog for info message
-const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue,setSubmitButtonEnable}) => {
+const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setSignUpInfoMessage,setIsContinue,setSubmitButtonEnable}) => {
   const handleClose = () => {
-    setOpen(false);setSubmitButtonEnable(false)
+    
+    setOpen(false);setSubmitButtonEnable(false);
+    setSignUpInfoMessage(false);
   };
   const classes = useStyles();
 
@@ -228,7 +230,7 @@ const Signupform = (props) => {
       updateFormSubmitting(false);
     }
     else 
-    if(isContinue) {
+    if(!infomessage && isContinue) {
     updateFormSubmitting(false);
     updatesendingEmail(true);
     let { email, name, mobile } = JSON.parse(get("userDetails"));
@@ -307,7 +309,7 @@ const Signupform = (props) => {
      
   if (!(err || sendingEmail )) {
     return (<>
-    {<InfoPopUp open={openDialog} setOpen={setOpenDialog} signUpInfoMessage={signUpInfoMessage} setIsContinue={setIsContinue} setSubmitButtonEnable={setSubmitButtonEnable}/>}
+    {<InfoPopUp open={openDialog} setOpen={setOpenDialog} setSignUpInfoMessage={setSignUpInfoMessage} signUpInfoMessage={signUpInfoMessage} setIsContinue={setIsContinue} setSubmitButtonEnable={setSubmitButtonEnable}/>}
     (<Formik
         initialValues={{
           name: "",

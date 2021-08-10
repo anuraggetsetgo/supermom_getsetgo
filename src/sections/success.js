@@ -12,11 +12,11 @@ const Success = () => {
           alignItems="center"
           justify="center"
           direction="column"
-          xs={10}
+          xs={12}
           sm={12}
           lg={12}
         >
-          <Grid justify="center" alignItems="center">
+          <Grid item xs={12} justify="center" alignItems="center">
             <Typography
               variant="h2"
               style={{ ...Styles.centerTxt, ...Styles.colorRed }}

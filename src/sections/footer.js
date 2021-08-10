@@ -4,7 +4,7 @@ import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import customTxt from "./customTxt.json";
 
-const Footer = () => {
+const Footer = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -112,12 +112,28 @@ const Footer = () => {
               })}
             </Grid>
           </Grid>
+          <Grid
+            item
+            container
+            alignItems="center"
+            justify="center"
+            onClick={props.scrollToSignUp}
+          >
+            <Styles.ColorButton
+              style={{
+                width: isMobile ? "90vw" : "22%",
+                marginTop: isMobile ? "40px" : "30px",
+              }}
+            >
+              REGISTER NOW!
+            </Styles.ColorButton>
+          </Grid>
           <Grid item>
             <Typography
               variant={isMobile ? "body2" : "subtitle2"}
               style={{
                 ...Styles.colorCharcoalLight,
-                margin: isMobile ? "30px 0 24px" : "96px 0 36px",
+                margin: isMobile ? "30px 0 24px" : "30px 0 36px",
                 ...Styles.centerTxt,
               }}
             >
@@ -126,7 +142,7 @@ const Footer = () => {
             </Typography>
           </Grid>
         </Grid>
-      </Grid>{" "}
+      </Grid>
     </>
   );
 };

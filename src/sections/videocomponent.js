@@ -1,9 +1,11 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
-import { Typography } from "@material-ui/core";
+import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 
 const Videocomponent = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Grid
       item
@@ -11,7 +13,7 @@ const Videocomponent = () => {
       direction="row"
       alignItems="center"
       justify="center"
-      style={{ margin: "92px 0" }}
+      style={{ margin: "92px 0", padding: isMobile ? "20px" : "0" }}
     >
       <Grid
         justify="flex-start"

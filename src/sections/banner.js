@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
-import { Typography, Button } from "@material-ui/core";
+import { Typography, Button, useMediaQuery, useTheme } from "@material-ui/core";
 import { colors, retrievePath, docHt } from "../services";
 import PreloadImage from "../helpers/preloadimg";
 import customTxt from "./customTxt.json";

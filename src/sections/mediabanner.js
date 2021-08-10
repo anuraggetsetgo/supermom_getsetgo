@@ -16,7 +16,10 @@ const Mediabanner = () => {
         container
         alignItems="center"
         justify="center"
-        style={{ marginBottom: "100px", padding: isMobile ? "20px" : "0" }}
+        style={{
+          marginBottom: isMobile ? "5px" : "100px",
+          padding: isMobile ? "20px" : "0",
+        }}
       >
         <Grid
           item

@@ -33,7 +33,7 @@ const Coachwork = () => {
         justify="center"
         style={{
           position: "relative",
-          top: "-58px",
+          top: isMobile ? "-140px" : "-58px",
           zIndex: "-2",
           background: "rgba(255, 221, 51, 0.1)",
           padding: isMobile ? "20px" : "0",
@@ -50,7 +50,7 @@ const Coachwork = () => {
         >
           <Grid item style={{ marginBottom: "30px" }}>
             <Typography
-              variant="h1"
+              variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.boldTxt, ...Styles.colorReef }}
             >
               {customTxt.howDoesGetSetGoWorkTxt.mainHeading}
@@ -131,7 +131,7 @@ const Coachwork = () => {
                           </Grid>
                           <Grid item xs={11} style={{ padding: "0 0 0 20px" }}>
                             <Typography
-                              variant="h5"
+                              variant={isMobile ? "h6" : "h5"}
                               style={{
                                 ...Styles.colorCharcoalDark,
                                 ...Styles.fontRoboto,
@@ -228,7 +228,7 @@ const Coachwork = () => {
                           </Grid>
                           <Grid item xs={11} style={{ padding: "0 0 0 20px" }}>
                             <Typography
-                              variant="h5"
+                              variant={isMobile ? "h6" : "h5"}
                               style={
                                 i === 2
                                   ? {

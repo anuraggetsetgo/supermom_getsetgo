@@ -206,6 +206,7 @@ const InfoPopUp = ({
             onClick={() => {
               setOpen(false);
               setIsContinue(true);
+              setSignUpInfoMessage(false);
               setSubmitButtonEnable(false);
             }}
           >
@@ -243,12 +244,30 @@ const Signupform = (props) => {
   let formSubmitted = (data) => {
     console.log(data);
     let infomessage = data.data.infomessage;
-    console.log(infomessage);
+    //console.log(infomessage)
     if (infomessage && !isContinue) {
       setOpenDialog(true);
       setSignUpInfoMessage(infomessage);
       updateFormSubmitting(false);
     } else if (isContinue) {
+      updateFormSubmitting(false);
+      updatesendingEmail(true);
+      let { email, name, mobile } = JSON.parse(get("userDetails"));
+      let { city } = JSON.parse(get("loc"));
+      let emailBody = emailTemplates.registration
+        .replace(/#fname/g, name.split(" ")[0])
+        .replace(/#full_name/g, name)
+        .replace(/#city/, city)
+        .replace(/#email/g, email)
+        .replace(/#mob/g, mobile);
+      callAPI(getURL("sendEmail"), "post", moveNxt, moveNxt, {
+        to: email,
+        cc: "info@getsetgo.fitness",
+        subject: "GetSetGo Fitness: Your fitness journey starts here",
+        message: emailBody,
+      });
+      moveNxt();
+    } else if (!infomessage) {
       updateFormSubmitting(false);
       updatesendingEmail(true);
       let { email, name, mobile } = JSON.parse(get("userDetails"));

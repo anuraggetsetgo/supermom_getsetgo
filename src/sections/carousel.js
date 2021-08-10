@@ -166,6 +166,8 @@ const LogoSvg = () => {
   );
 };
 const AvtarName = ({ name, profile }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Grid
       container
@@ -190,7 +192,7 @@ const AvtarName = ({ name, profile }) => {
         {name.split(" ").map((name) => (
           <Grid item>
             <Typography
-              variant="h5"
+              variant={isMobile?"h6":'h5'}
               style={{
                 maxWidht: "238px",
                 ...Styles.colorReef,
@@ -223,7 +225,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           direction="row"
           justify="space-between"
           alignItems="center"
-          style={{ ...cardStyle }}
+          style={{ ...cardStyle,padding:isMobile?'20px':null }}
         >
           <Grid
             container
@@ -267,7 +269,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           >
             <Grid item>
               <Typography
-                variant="h5"
+                variant={isMobile?"h6":'h5'}
                 style={{
                   maxWidth: isMobile ? "300px" : "238px",
                   ...Styles.colorCharcoalDark,
@@ -300,7 +302,8 @@ const CarouselItem = (props) => {
           container
           justify="center"
           alignItems="center"
-          style={{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
+          style={isMobile?{  padding: "24px 20px" }
+                  :{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
         >
           <Grid item>
             <Typography
@@ -321,7 +324,7 @@ const CarouselItem = (props) => {
           // style={{ maxWidth: "1360px" }}
         >
           <Carousel
-            interval={5000000}
+            interval={5000}
             indicatorIconButtonProps={{
               style: {
                 color: "#C2DCE2",

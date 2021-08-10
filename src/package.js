@@ -256,7 +256,7 @@ class Package extends Component {
             <Banner product={products} createOrder={(data)=>this.createOrder(data)} />
             <Coachwork />
             <Videocomponent />
-            <Sellingmidbanner />
+            <Sellingmidbanner product={products} createOrder={(data)=>this.createOrder(data)} />
             <Sellingreviews />
             <Mediabanner />
             <Success />

@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "../app-style.js";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 
-const Sellingmidbanner = () => {
+const Sellingmidbanner = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -57,7 +57,7 @@ const Sellingmidbanner = () => {
               alignItems="center"
               style={{ background: "#FFDD33", ...Styles.cardRadius2 }}
             >
-              <Grid item style={{ margin: "30px 60px" }}>
+              <Grid item style={{ margin: "30px 60px" }} onClick={()=>{props.createOrder(props.product[0], 0)}}>
                 <Typography
                   variant={isMobile ? "h5" : "h2"}
                   style={{ ...Styles.centerTxt, ...Styles.colorReef }}

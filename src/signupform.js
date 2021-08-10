@@ -119,9 +119,8 @@ function validateAge(value) {
 //Dialog for info message
 const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setSignUpInfoMessage,setIsContinue,setSubmitButtonEnable}) => {
   const handleClose = () => {
-    
-    setOpen(false);setSubmitButtonEnable(false);
-    setSignUpInfoMessage(false);
+    setOpen(false);
+    setSubmitButtonEnable(false);
   };
   const classes = useStyles();
 
@@ -185,7 +184,9 @@ const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setSignUpInfoMessage,setI
             onClick={() => {
               setOpen(false);
               setIsContinue(true);
+              setSignUpInfoMessage(false);
               setSubmitButtonEnable(false);
+              
             }}
           >
             OK
@@ -222,7 +223,7 @@ const Signupform = (props) => {
   let formSubmitted = (data) => {
     console.log(data)
     let infomessage =  data.data.infomessage;
-    console.log(infomessage)
+    //console.log(infomessage)
     if(infomessage && !isContinue) 
     {      
       setOpenDialog(true)
@@ -230,7 +231,7 @@ const Signupform = (props) => {
       updateFormSubmitting(false);
     }
     else 
-    if(!infomessage && isContinue) {
+    if(!infomessage) {
     updateFormSubmitting(false);
     updatesendingEmail(true);
     let { email, name, mobile } = JSON.parse(get("userDetails"));

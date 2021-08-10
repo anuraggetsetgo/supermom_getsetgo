@@ -1,11 +1,78 @@
 import React, { useState } from "react";
 import { Form, Field, Formik } from "formik";
-import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery } from "@material-ui/core";
 import Styles from "./app-style";
 import { callAPI, getURL, get, set } from "./services";
 import emailTemplates from "./emailTemplate.json";
 import { useHistory } from "react-router-dom";
-
+import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import { Dialog, DialogActions, Slider, FormControlLabel, Checkbox, MenuItem, FormControl, Snackbar } from "@material-ui/core";
+const useStyles = makeStyles((theme) => ({
+  mui_root: {
+    padding: "0 0 16px 0",
+  },
+  paper: {
+    backgroundColor: "transparent",
+    boxShadow: "none",
+  },
+  formControl: {
+    width: "95%",
+    border: "1px solid #FFFFFF",
+    borderRadius: "5px",
+    margin: "5px",
+    color: "white",
+    fontSize: "14px",
+    lineHeight: "14px",
+    height: "45px",
+    padding: "0 10px",
+  },
+  root: {
+    width: 310,
+    color: "#FFDD33",
+  },
+  InputBase: {
+    width: "95%",
+    border: "1px solid #FFFFFF",
+    borderRadius: "5px",
+    margin: "5px",
+    color: "white",
+    fontSize: "14px",
+    lineHeight: "14px",
+    height: "45px",
+    padding: "0 10px",
+  },
+  InputBaseError: {
+    width: "95%",
+    border: "1px solid #FF0000",
+    borderRadius: "5px",
+    margin: "5px",
+    color: "white",
+    fontSize: "14px",
+    lineHeight: "14px",
+    height: "45px",
+    padding: "0 10px",
+  },
+  label: {
+    left: "calc(-50% + 1px)",
+    top: -16,
+    "& *": {
+      paddingTop: "2px",
+      textAlign: "center",
+      height: "20px",
+      width: "20px",
+      borderRadius: "10px",
+      background: "#FFDD33",
+      color: "#FFFFFF",
+    },
+  },
+  Snackbar: {
+    bottom: "9px",
+  },
+  SnackbarMobile: {
+    bottom: "9px",
+  },
+}));
 const errMsgs = {
   requried: "Uh oh! It's a required field",
   name: "Wait, that doesn't sound like a valid name",
@@ -49,6 +116,82 @@ function validateAge(value) {
   return validate(value, /^(1[89]|[2-9]\d)$/, "age");
 }
 
+//Dialog for info message
+const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue }) => {
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const classes = useStyles();
+
+  //For Mobile Devices
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Dialog
+      classes={{ paper: classes.paper }}
+      fullWidth={true}
+      maxWidth="xs"
+      keepMounted
+      open={open}
+      onClose={handleClose}
+      scroll="body"
+      aria-labelledby="scroll-dialog-title"
+      aria-describedby="scroll-dialog-description"
+    >
+      <DialogActions className="app-dialog-actions">
+        <Grid item>
+          <HighlightOffIcon className="white cursor-pointer" onClick={handleClose} fontSize="large" />
+        </Grid>
+      </DialogActions>{" "}
+      <Grid
+        style={{
+          padding: "48px 0",
+        }}
+        item
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        className="app-card2 app-card-background-white"
+      >
+        <Grid item>
+          <Typography
+            variant="h2"
+            className="app-text-align-center bold line-height40"
+            style={{
+              color: "#0F3840",
+              marginBottom: Styles.spacing(3),
+            }}
+          >
+            Oops!!
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          style={{
+            width: "90%",
+            marginBottom: Styles.spacing(3),
+          }}
+        >
+          <Typography variant="subtitle1" className="app-text-align-center normal line-height24">
+            {signUpInfoMessage}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Styles.ColorButton
+            onClick={() => {
+              setOpen(false);
+              setIsContinue(true);
+            }}
+          >
+            OK
+          </Styles.ColorButton>
+        </Grid>
+      </Grid>
+    </Dialog>
+  );
+};
 const Signupform = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -58,7 +201,9 @@ const Signupform = (props) => {
   let [formSubmitting, updateFormSubmitting] = useState(false);
   let [sendingEmail, updatesendingEmail] = useState(false);
   let [submitButtonEnable, setSubmitButtonEnable] = useState(false);
-
+  const [openDialog, setOpenDialog] = useState(false)
+  const [signUpInfoMessage, setSignUpInfoMessage] = useState(false);
+  const [isContinue, setIsContinue] = useState(false);
   function moveNxt() {
     history.replace("trynow");
   }
@@ -66,6 +211,11 @@ const Signupform = (props) => {
     updateErr(true);
   };
   let formSubmitted = (data) => {
+    var infomessage =  JSON.parse(data).infomessage;
+    if(infomessage) 
+{      setOpenDialog(true)
+      setSignUpInfoMessage(infomessage);
+    }
     updateFormSubmitting(false);
     updatesendingEmail(true);
     let { email, name, mobile } = JSON.parse(get("userDetails"));
@@ -97,35 +247,39 @@ const Signupform = (props) => {
     loc.city = loc.city || null;
     loc.region = loc.country || null;
     loc.state = loc.region || null;
-    let postArray = [
-      {
-        name: values.name,
-        email: values.email,
-        mobile: `${values.country}${values.mobile}`,
-        city: loc.city,
-        ip: loc.ip,
-        mailStatus: null,
-      },
-    ];
-    callAPI(getURL("user-signup"), "post", formSubmitted, formError, {
-      // customer_name:values.name,
-      // customer_email:values.email,
-      // customer_phone:`${values.country}${values.mobile}`,
-      // Region:loc.country,
-      // ip: loc.ip,
-      // state:
-      // loc.state,
-      // city: loc.city,
-      // customer_age:values.age
-
-      firstname: values.name.split(" ")[0],
-      lastname:
-        values.name.split(" ")[1] === undefined
-          ? ""
-          : values.name.split(" ")[1],
+    // let postArray = [
+    //   {
+    //     name: values.name,
+    //     email: values.email,
+    //     mobile: `${values.country}${values.mobile}`,
+    //     city: loc.city,
+    //     ip: loc.ip,
+    //     mailStatus: null,
+    //   },
+    // ];
+     callAPI(getURL('user-signup'), 'post', formSubmitted, formError, {
+      firstname : values.name.split(" ")[0],
+      lastname :values.name.split(" ")[1]===undefined?"":values.name.split(" ")[1],
       mobile: `${values.country}${values.mobile}`,
       email: values.email,
-    });
+      skip_mobile: isContinue ? 1 : 0,
+        });//ANV
+        // callAPI(getURL('insert-leads'), 'post', formSubmitted, formError, {
+        //   customer_name:values.name,
+        //   customer_email:values.email,
+        //   customer_phone:`${values.country}${values.mobile}`,
+        //   Region:loc.country, 
+        //   ip: loc.ip, 
+        //   state: 
+        //   loc.state, 
+        //   city: loc.city,
+        //   customer_age:values.age
+          
+        //   // firstname : values.name.split(" ")[0],
+        //   // lastname :values.name.split(" ")[1]===undefined?"":values.name.split(" ")[1],
+        //   // mobile: `${values.country}${values.mobile}`,
+        //   // email: values.email,
+        //     });  
     // callAPI(getURL("add_referrals"), "post", formSubmitted, formError, {
     //   //customer_name:values.name,
     //   //customer_email:values.email,
@@ -140,7 +294,7 @@ const Signupform = (props) => {
     //   //state: loc.state,
     //   //city: loc.city,
     // }); //ANV
-    formSubmitted();
+    //formSubmitted();
   };
   if (err) {
     return (
@@ -174,7 +328,8 @@ const Signupform = (props) => {
       </Grid>
     );
   if (!(err || formSubmitting || sendingEmail)) {
-    return (
+    return (<>
+      <InfoPopUp open={openDialog} setOpen={setOpenDialog} signUpInfoMessage={signUpInfoMessage} setIsContinue={setIsContinue} />
       <Formik
         initialValues={{
           name: "",
@@ -370,7 +525,7 @@ const Signupform = (props) => {
           );
         }}
       </Formik>
-    );
+    </>);
   }
 };
 

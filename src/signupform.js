@@ -58,7 +58,7 @@ const Signupform = (props) => {
   let [formSubmitting, updateFormSubmitting] = useState(false);
   let [sendingEmail, updatesendingEmail] = useState(false);
   let [submitButtonEnable, setSubmitButtonEnable] = useState(false);
-  
+
   function moveNxt() {
     history.replace("trynow");
   }
@@ -107,22 +107,25 @@ const Signupform = (props) => {
         mailStatus: null,
       },
     ];
-     callAPI(getURL('user-signup'), 'post', formSubmitted, formError, {
+    callAPI(getURL("user-signup"), "post", formSubmitted, formError, {
       // customer_name:values.name,
       // customer_email:values.email,
       // customer_phone:`${values.country}${values.mobile}`,
-      // Region:loc.country, 
-      // ip: loc.ip, 
-      // state: 
-      // loc.state, 
+      // Region:loc.country,
+      // ip: loc.ip,
+      // state:
+      // loc.state,
       // city: loc.city,
       // customer_age:values.age
-      
-      firstname : values.name.split(" ")[0],
-      lastname :values.name.split(" ")[1]===undefined?"":values.name.split(" ")[1],
+
+      firstname: values.name.split(" ")[0],
+      lastname:
+        values.name.split(" ")[1] === undefined
+          ? ""
+          : values.name.split(" ")[1],
       mobile: `${values.country}${values.mobile}`,
       email: values.email,
-        });
+    });
     // callAPI(getURL("add_referrals"), "post", formSubmitted, formError, {
     //   //customer_name:values.name,
     //   //customer_email:values.email,
@@ -197,7 +200,7 @@ const Signupform = (props) => {
                 sm={12}
                 lg={10}
                 style={{
-                  padding: "60px",
+                  padding: isMobile ? "30px" : "60px",
                   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
                   borderRadius: "10px",
                   background: "white",
@@ -206,7 +209,7 @@ const Signupform = (props) => {
               >
                 <Grid item>
                   <Typography
-                    variant="h1"
+                    variant={isMobile ? "h4" : "h1"}
                     style={{
                       textAlign: "center",
                       ...Styles.colorRed,
@@ -218,7 +221,7 @@ const Signupform = (props) => {
                 </Grid>
                 <Grid item style={{ marginBottom: "32px" }}>
                   <Typography
-                    variant="h5"
+                    variant={isMobile ? "h6" : "h5"}
                     style={{
                       textAlign: "center",
                       ...Styles.colorCharcoalLight,
@@ -265,13 +268,13 @@ const Signupform = (props) => {
                     >
                       <Grid item>
                         <Grid item style={Styles.countryContainer}>
-                        <Field
-                          style={{ ...Styles.feildRadius }}
-                          name="country"
-                          type="number"
-                          validate={validateCountry}
-                        />
-                      </Grid>
+                          <Field
+                            style={{ ...Styles.feildRadius }}
+                            name="country"
+                            type="number"
+                            validate={validateCountry}
+                          />
+                        </Grid>
                         <Grid
                           item
                           style={{

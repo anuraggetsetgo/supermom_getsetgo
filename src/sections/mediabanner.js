@@ -36,13 +36,13 @@ const Mediabanner = () => {
         >
           <Grid item>
             <Typography
-              variant="h2"
+              variant={isMobile ? "h4" : "h1"}
               style={{ ...Styles.colorWhite, ...Styles.boldTxt }}
             >
               1,00,000 members
             </Typography>
             <Typography
-              variant="h5"
+              variant={isMobile ? "h6" : "h5"}
               style={{
                 ...Styles.colorWhite,
                 marginTop: "8px",

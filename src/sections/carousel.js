@@ -303,7 +303,10 @@ const CarouselItem = () => {
           style={{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
         >
           <Grid item>
-            <Typography variant="h1" style={{ ...Styles.colorRed }}>
+            <Typography
+              variant={isMobile ? "h3" : "h1"}
+              style={{ ...Styles.colorRed }}
+            >
               <span style={{ ...Styles.boldTxt }}>Meet</span> the{" "}
               <span style={{ ...Styles.boldTxt }}>super moms</span> who took
               <br /> charge of their health..
@@ -351,6 +354,7 @@ const CarouselItem = () => {
             style={{
               ...Styles.landingButton,
               ...Styles.colorReef,
+              width: `${isMobile ? "90%" : "273px"}`,
             }}
           >
             GET STARTED!

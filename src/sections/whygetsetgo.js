@@ -21,7 +21,7 @@ const Whygetsetgo = () => {
         >
           <Grid item style={{ marginBottom: "35px" }}>
             <Typography
-              variant="h1"
+              variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.centerTxt, ...Styles.colorRed }}
             >
               Why <span style={{ ...Styles.boldTxt }}>GetSetGo</span> Fitness?
@@ -54,7 +54,7 @@ const Whygetsetgo = () => {
                   </Grid>
                   <Grid item style={{ marginBottom: "16px" }}>
                     <Typography
-                      variant="h3"
+                      variant={isMobile ? "h4" : "h3"}
                       style={{
                         ...Styles.colorCharcoalDark,
                         ...Styles.boldTxt,
@@ -100,7 +100,7 @@ const Whygetsetgo = () => {
                   </Grid>
                   <Grid item style={{ marginBottom: "16px" }}>
                     <Typography
-                      variant="h3"
+                      variant={isMobile ? "h4" : "h3"}
                       style={{
                         ...Styles.colorCharcoalDark,
                         ...Styles.boldTxt,
@@ -146,7 +146,7 @@ const Whygetsetgo = () => {
                   </Grid>
                   <Grid item style={{ marginBottom: "16px" }}>
                     <Typography
-                      variant="h3"
+                      variant={isMobile ? "h4" : "h3"}
                       style={{
                         ...Styles.colorCharcoalDark,
                         ...Styles.boldTxt,

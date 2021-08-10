@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0 0 16px 0",
   },
   paper: {
-    backgroundColor: "transparent",
+    //backgroundColor: "transparent",
     boxShadow: "none",
   },
   formControl: {
@@ -117,9 +117,9 @@ function validateAge(value) {
 }
 
 //Dialog for info message
-const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue }) => {
+const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue,setSubmitButtonEnable}) => {
   const handleClose = () => {
-    setOpen(false);
+    setOpen(false);setSubmitButtonEnable(false)
   };
   const classes = useStyles();
 
@@ -183,6 +183,7 @@ const InfoPopUp = ({ open, setOpen, signUpInfoMessage, setIsContinue }) => {
             onClick={() => {
               setOpen(false);
               setIsContinue(true);
+              setSubmitButtonEnable(false);
             }}
           >
             OK
@@ -208,14 +209,26 @@ const Signupform = (props) => {
     history.replace("trynow");
   }
   let formError = (err) => {
+//     var infomessage =  JSON.parse(err).infomessage;
+//     console.log(err);
+//     if(infomessage) 
+// {      setOpenDialog(true)
+//       setSignUpInfoMessage(infomessage);
+//     }
     updateErr(true);
   };
   let formSubmitted = (data) => {
-    var infomessage =  JSON.parse(data).infomessage;
-    if(infomessage) 
-{      setOpenDialog(true)
+    console.log(data)
+    let infomessage =  data.data.infomessage;
+    console.log(infomessage)
+    if(infomessage && !isContinue) 
+    {      
+      setOpenDialog(true)
       setSignUpInfoMessage(infomessage);
+      updateFormSubmitting(false);
     }
+    else 
+    if(isContinue) {
     updateFormSubmitting(false);
     updatesendingEmail(true);
     let { email, name, mobile } = JSON.parse(get("userDetails"));
@@ -233,6 +246,7 @@ const Signupform = (props) => {
       message: emailBody,
     });
     moveNxt();
+  }
   };
   let submitForm = (values) => {
     setSubmitButtonEnable(true);
@@ -247,16 +261,7 @@ const Signupform = (props) => {
     loc.city = loc.city || null;
     loc.region = loc.country || null;
     loc.state = loc.region || null;
-    // let postArray = [
-    //   {
-    //     name: values.name,
-    //     email: values.email,
-    //     mobile: `${values.country}${values.mobile}`,
-    //     city: loc.city,
-    //     ip: loc.ip,
-    //     mailStatus: null,
-    //   },
-    // ];
+  
      callAPI(getURL('user-signup'), 'post', formSubmitted, formError, {
       firstname : values.name.split(" ")[0],
       lastname :values.name.split(" ")[1]===undefined?"":values.name.split(" ")[1],
@@ -264,36 +269,7 @@ const Signupform = (props) => {
       email: values.email,
       skip_mobile: isContinue ? 1 : 0,
         });//ANV
-        // callAPI(getURL('insert-leads'), 'post', formSubmitted, formError, {
-        //   customer_name:values.name,
-        //   customer_email:values.email,
-        //   customer_phone:`${values.country}${values.mobile}`,
-        //   Region:loc.country, 
-        //   ip: loc.ip, 
-        //   state: 
-        //   loc.state, 
-        //   city: loc.city,
-        //   customer_age:values.age
-          
-        //   // firstname : values.name.split(" ")[0],
-        //   // lastname :values.name.split(" ")[1]===undefined?"":values.name.split(" ")[1],
-        //   // mobile: `${values.country}${values.mobile}`,
-        //   // email: values.email,
-        //     });  
-    // callAPI(getURL("add_referrals"), "post", formSubmitted, formError, {
-    //   //customer_name:values.name,
-    //   //customer_email:values.email,
-    //   //customer_phone:`${values.country}${values.mobile}`,
-    //   //customer_age:values.age,
-    //   affiliate_id: affiliate_id,
-    //   campaign_id: campaign_id,
-    //   referrals: [...postArray],
-    //   //REGION INFO
-    //   //Region:loc.country,
-    //   //ip: loc.ip,
-    //   //state: loc.state,
-    //   //city: loc.city,
-    // }); //ANV
+  
     //formSubmitted();
   };
   if (err) {
@@ -305,18 +281,19 @@ const Signupform = (props) => {
       </Grid>
     );
   }
-  if (!err && formSubmitting && !sendingEmail)
-    return (
-      <Grid item style={{ padding: "20px 0" }}>
-        <Typography
-          variant="subtitle2"
-          style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
-        >
-          Submitting the form ...
-        </Typography>
-      </Grid>
-    );
-  if (!err && !formSubmitting && sendingEmail)
+  
+  // if (!err && !sendingEmail)
+  //   return (
+  //     <Grid item style={{ padding: "20px 0" }}>
+  //       <Typography
+  //         variant="subtitle2"
+  //         style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+  //       >
+  //         Submitting the form ...
+  //       </Typography>
+  //     </Grid>
+  //   );
+  if (!err && !formSubmitting &&sendingEmail)
     return (
       <Grid item style={{ padding: "20px 0" }}>
         <Typography
@@ -327,10 +304,11 @@ const Signupform = (props) => {
         </Typography>
       </Grid>
     );
-  if (!(err || formSubmitting || sendingEmail)) {
+     
+  if (!(err || sendingEmail )) {
     return (<>
-      <InfoPopUp open={openDialog} setOpen={setOpenDialog} signUpInfoMessage={signUpInfoMessage} setIsContinue={setIsContinue} />
-      <Formik
+    {<InfoPopUp open={openDialog} setOpen={setOpenDialog} signUpInfoMessage={signUpInfoMessage} setIsContinue={setIsContinue} setSubmitButtonEnable={setSubmitButtonEnable}/>}
+    (<Formik
         initialValues={{
           name: "",
           email: "",
@@ -403,6 +381,7 @@ const Signupform = (props) => {
                         type="text"
                         placeholder="Enter your name"
                         validate={validateName}
+                        disabled={formSubmitting}
                         style={{
                           ...Styles.formInputField,
                           width: isMobile ? "100%" : "95%",
@@ -428,6 +407,7 @@ const Signupform = (props) => {
                             name="country"
                             type="number"
                             validate={validateCountry}
+                            disabled={formSubmitting}
                           />
                         </Grid>
                         <Grid
@@ -444,6 +424,7 @@ const Signupform = (props) => {
                             placeholder="Enter your contact no"
                             name="mobile"
                             type="number"
+                            disabled={formSubmitting}
                             validate={validateMobile}
                             style={{
                               ...Styles.formInputField,
@@ -475,6 +456,7 @@ const Signupform = (props) => {
                       name="email"
                       type="text"
                       placeholder="Email id"
+                      disabled={formSubmitting}
                       validate={validateEmail}
                       style={{
                         ...Styles.formInputField,
@@ -525,6 +507,8 @@ const Signupform = (props) => {
           );
         }}
       </Formik>
+    )
+    
     </>);
   }
 };

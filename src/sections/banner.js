@@ -70,14 +70,15 @@ class Banner extends Component {
               }}
               container
               justify="center"
+              onClick={() => {
+                //console.log(this.props.product)
+                this.props.createOrder(this.props.product[0], 0);
+              }}
             >
               <Typography
                 variant="h2"
                 style={{ ...Styles.boldTxt, ...Styles.colorWhite }}
-                onClick={() => {
-                  //console.log(this.props.product)
-                  this.props.createOrder(this.props.product[0], 0);
-                }}
+                
               >
                 TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
               </Typography>

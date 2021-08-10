@@ -1,5 +1,5 @@
 import React from 'react'
-import {api_google_Reviews} from "./gsgAPI/api";
+import { api_google_Reviews } from "./gsgAPI/api";
 import Carousel from "./sections/carousel";
 import Signupbanner from "./sections/signupbanner";
 //import Videocomponent from "./sections/videocomponent";
@@ -11,29 +11,26 @@ import Publicreviews from './sections/publicreviews'
 
 export default function Home() {
   const [reviewData, setReviewdata] = React.useState([]);
-  const getReview=()=>{
-     api_google_Reviews(data=>{ setReviewdata(data)},err=>{console.log(err)})
-    //api.callAPI(api.google_reviews_api, "GET");
-    //google_reviews_data = google_reviews_data.reviews;
-    //setReviewdata(google_reviews_data);
+  const getReview = () => {
+    api_google_Reviews(data => { console.log(data); setReviewdata(data.data.reviews) }, err => { console.log(err) })
   }
   React.useEffect(() => {
     getReview();
   }, []);
 
   return (
-      <>
-        <Carousel />
-        <Signupbanner />
-        {/* <Signupform /> */}
-        {/* <Socialmedia /> */}
-        <Landingvideobanner />
-        <Joinnow />
-        <Whygetsetgo />
-        {/* <Publicreviews reviewData={reviewData} /> */}
-        <Mediabanner />
-      </>
-    );
+    <>
+      <Carousel />
+      <Signupbanner />
+      {/* <Signupform /> */}
+      {/* <Socialmedia /> */}
+      <Landingvideobanner />
+      <Joinnow />
+      <Whygetsetgo />
+      <Publicreviews reviewData={reviewData} />
+      <Mediabanner />
+    </>
+  );
 }
 
 

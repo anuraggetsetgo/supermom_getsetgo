@@ -2,7 +2,7 @@ import React from "react";
 import Styles from "../app-style.js";
 import { Typography, Grid } from "@material-ui/core";
 
-const Sellingmidbanner = () => {
+const Sellingmidbanner = (props) => {
   return (
     <>
       <Grid item container>
@@ -27,7 +27,7 @@ const Sellingmidbanner = () => {
           </Grid>
           <Grid item container direction="row" alignItems="center" justify="center" style={{ marginTop: "20px" }}>
             <Grid justify="center" alignItems="center" style={{ background: "#FFDD33", ...Styles.cardRadius2 }}>
-              <Grid item style={{ margin: "30px 60px" }}>
+              <Grid item style={{ margin: "30px 60px" }}  onClick={()=>{props.createOrder(props.product[0], 0)}} >
                 <Typography variant="h2" style={{ ...Styles.centerTxt, ...Styles.colorReef }}>
                   Try before you invest.
                   <br />

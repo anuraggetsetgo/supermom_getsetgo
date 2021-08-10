@@ -26,7 +26,7 @@ const Footer = () => {
             container
             justify="center"
             alignItems="center"
-            style={{ margin: "0 0 66px" }}
+            style={{ margin: isMobile ? "0 0 30px" : "0 0 66px" }}
           >
             <svg
               width={isMobile ? "61" : "167"}
@@ -117,7 +117,7 @@ const Footer = () => {
               variant={isMobile ? "body2" : "subtitle2"}
               style={{
                 ...Styles.colorCharcoalLight,
-                margin: "96px 0 36px",
+                margin: isMobile ? "30px 0 24px" : "96px 0 36px",
                 ...Styles.centerTxt,
               }}
             >

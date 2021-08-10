@@ -1,8 +1,10 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
-import { Typography } from "@material-ui/core";
+import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 const Success = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid item container alignItems="center" justify="center">
@@ -14,11 +16,12 @@ const Success = () => {
           direction="column"
           xs={12}
           sm={12}
-          lg={12}
+          lg={10}
+          style={{ padding: isMobile ? "20px" : "0" }}
         >
-          <Grid item xs={12} justify="center" alignItems="center">
+          <Grid item justify="center" alignItems="center">
             <Typography
-              variant="h2"
+              variant={isMobile ? "h3" : "h2"}
               style={{ ...Styles.centerTxt, ...Styles.colorRed }}
             >
               <span style={Styles.boldTxt}>
@@ -33,7 +36,7 @@ const Success = () => {
             <img
               src={Styles.backCoverImg("link_below.png")}
               alt="Link Below Girl"
-              style={{ objectFit: "cover" }}
+              style={{ objectFit: "cover", width: isMobile ? "100%" : "null" }}
             />
           </Grid>
           <Grid
@@ -42,13 +45,14 @@ const Success = () => {
             style={{
               ...Styles.reefBG,
               ...Styles.cardRadius2,
-              padding: "30px 60px",
-              width: "max-content",
+              width: isMobile ? "100%" : "null",
+              padding: isMobile ? "13px 8px" : "30px 60px",
+              // width: "max-content",
             }}
             justify="center"
           >
             <Typography
-              variant="h3"
+              variant={isMobile ? "h5" : "h3"}
               style={{
                 ...Styles.boldTxt,
                 ...Styles.colorWhite,
@@ -64,10 +68,10 @@ const Success = () => {
             item
             justify="center"
             alignItems="center"
-            style={{ margin: "30px 0 64px" }}
+            style={{ margin: isMobile ? "15px 0 20px" : "30px 0 64px" }}
           >
             <Typography
-              variant="h4"
+              variant={isMobile ? "h5" : "h4"}
               style={{
                 ...Styles.boldTxt,
                 ...Styles.colorCoral,

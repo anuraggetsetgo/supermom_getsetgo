@@ -2,7 +2,7 @@ import React from "react";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import customTxt from "./customTxt.json";
-const Joinnow = () => {
+const Joinnow = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -214,7 +214,7 @@ const Joinnow = () => {
                   display: "flex",
                 }}
               >
-                <Grid item alignItems="center" justify="center">
+                <Grid item alignItems="center" justify="center" onClick={props.scrollToSignUp}>
                   <Typography
                     variant="h4"
                     style={{

@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef} from 'react'
 import { api_google_Reviews } from "./gsgAPI/api";
 import Carousel from "./sections/carousel";
 import Signupbanner from "./sections/signupbanner";
@@ -9,10 +9,14 @@ import Whygetsetgo from "./sections/whygetsetgo";
 import Mediabanner from "./sections/mediabanner";
 import Publicreviews from './sections/publicreviews'
 
-export default function Home() {
+export default function Home(props) {
+  const signUpRef = useRef()
   const [reviewData, setReviewdata] = React.useState([]);
   const getReview = () => {
     api_google_Reviews(data => { console.log(data); setReviewdata(data.data.reviews) }, err => { console.log(err) })
+  }
+  const scrollToSignUp=()=>{
+    signUpRef.current.scrollIntoView({ behavior: 'smooth' })
   }
   React.useEffect(() => {
     getReview();
@@ -20,12 +24,12 @@ export default function Home() {
 
   return (
     <>
-      <Carousel />
-      <Signupbanner />
+      <Carousel scrollToSignUp={scrollToSignUp}/>
+      <Signupbanner ref={signUpRef}/>
       {/* <Signupform /> */}
       {/* <Socialmedia /> */}
       <Landingvideobanner />
-      <Joinnow />
+      <Joinnow  scrollToSignUp={scrollToSignUp}/>
       <Whygetsetgo />
       <Publicreviews reviewData={reviewData} />
       <Mediabanner />

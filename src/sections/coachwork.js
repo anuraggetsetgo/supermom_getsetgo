@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
-import { Typography } from "@material-ui/core";
+import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import customTxt from "./customTxt.json";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -20,6 +20,8 @@ const useStyles = makeStyles({
   },
 });
 const Coachwork = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
   return (
     <>
@@ -34,6 +36,7 @@ const Coachwork = () => {
           top: "-58px",
           zIndex: "-2",
           background: "rgba(255, 221, 51, 0.1)",
+          padding: isMobile ? "20px" : "0",
         }}
       >
         <Grid

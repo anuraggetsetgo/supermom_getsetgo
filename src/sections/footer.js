@@ -26,10 +26,10 @@ const Footer = () => {
             container
             justify="center"
             alignItems="center"
-            style={{ margin: isMobile ? "0 0 30px" : "0 0 66px" }}
+            style={{ margin: isMobile ? "0 0 10px" : "0 0 66px" }}
           >
             <svg
-              width={isMobile ? "61" : "167"}
+              width={isMobile ? "12vw" : "167"}
               height="1"
               viewBox="0 0 167 1"
               fill="none"
@@ -55,7 +55,7 @@ const Footer = () => {
               {customTxt.GSGInTheNews.mainheading}
             </Typography>
             <svg
-              width={isMobile ? "61" : "167"}
+              width={isMobile ? "12vw" : "167"}
               height="1"
               viewBox="0 0 167 1"
               fill="none"
@@ -98,7 +98,7 @@ const Footer = () => {
                     container
                     justify="center"
                   >
-                    <Grid item style={{ margin: "12px auto" }}>
+                    <Grid item style={{ padding: "45px 15px" }}>
                       <a
                         href={val[1]}
                         target="_blank"

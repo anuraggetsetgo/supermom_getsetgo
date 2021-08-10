@@ -1,15 +1,15 @@
-import React,{forwardRef,ref} from "react";
+import React, { forwardRef, ref } from "react";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Signupform from "../signupform";
 
-const Signupbanner = forwardRef(( props,ref) => {
+const Signupbanner = forwardRef((props, ref) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
-        
+
         item
         container
         direction="row"
@@ -65,7 +65,9 @@ const Signupbanner = forwardRef(( props,ref) => {
                 <span style={{ ...Styles.boldTxt }}>super busy life.</span>
               </Typography>
             </Grid>
-            <Grid ref={ref}><Signupform /></Grid>
+            <Grid ref={ref}>
+              <Signupform />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

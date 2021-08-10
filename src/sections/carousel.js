@@ -363,7 +363,7 @@ const CarouselItem = (props) => {
               width: `${isMobile ? "90%" : "273px"}`,
             }}
           >
-            GET STARTED!
+            <span style={isMobile?{fontSize:'20px'}:{fontSize:'24px'}}>GET STARTED!</span>
           </button>
         </Grid>
       </Grid>

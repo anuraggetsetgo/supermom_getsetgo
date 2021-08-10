@@ -207,23 +207,23 @@ const Joinnow = (props) => {
                 alignItems="center"
                 justify="center"
                 style={{
-                  width: "100%",
+                  //width: "100%",
                   height: "93px",
-                  ...Styles.reefBG,
+                  //...Styles.reefBG,
                   borderRadius: "10px",
                   display: "flex",
                 }}
               >
                 <Grid item alignItems="center" justify="center" onClick={props.scrollToSignUp}>
-                  <Typography
+                  {/* <Typography
                     variant="h4"
-                    style={{
-                      ...Styles.boldTxt,
-                      ...Styles.whiteColor,
-                    }}
-                  >
+                    
+                  > */}
+                    <Styles.ColorButton 
+                     style={isMobile?{width:'90vw'}:{width:'120%'}}>
                     JOIN NOW
-                  </Typography>
+                    </Styles.ColorButton>
+                  {/* </Typography> */}
                 </Grid>
               </Grid>
             </Grid>

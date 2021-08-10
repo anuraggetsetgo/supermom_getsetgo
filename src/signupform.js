@@ -132,6 +132,7 @@ const InfoPopUp = ({
   signUpInfoMessage,
   setIsContinue,
   setSubmitButtonEnable,
+  setSignUpInfoMessage,
 }) => {
   const handleClose = () => {
     setOpen(false);
@@ -249,7 +250,7 @@ const Signupform = (props) => {
       setOpenDialog(true);
       setSignUpInfoMessage(infomessage);
       updateFormSubmitting(false);
-    } else if (isContinue) {
+    } else if (!infomessage) {
       updateFormSubmitting(false);
       updatesendingEmail(true);
       let { email, name, mobile } = JSON.parse(get("userDetails"));

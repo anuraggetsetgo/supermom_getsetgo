@@ -14,7 +14,7 @@ const Landingvideobanner = () => {
         direction="row"
         justify="center"
         style={{
-          marginTop: isMobile ? "380px" : "320px",
+          marginTop: isMobile ? "380px" : "400px",
           marginBottom: isMobile ? "0" : "130px",
           padding: isMobile ? "20px" : "0",
         }}
@@ -46,6 +46,7 @@ const Landingvideobanner = () => {
               style={{
                 textAlign: "center",
                 ...Styles.colorReef,
+                marginBottom:isMobile?'24px':'32px',
               }}
             >
               have transformed with us

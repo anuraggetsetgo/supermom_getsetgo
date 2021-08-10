@@ -21,18 +21,70 @@ const useStyles = makeStyles({
 const Sellingreviews = () => {
   const classes = useStyles();
   return (
-    <Grid item container direction="column" alignItems="center" justify="center" style={{ position: "relative", marginBottom: "785px" }}>
-      <Grid item container justify="center" style={{ padding: "100px 0 485px", background: "rgba(16, 58, 66, 0.1)" }}>
-        <Grid item container justify="flex-start" alignItems="center" xs={12} sm={12} lg={10}>
-          <Typography variant="h4" style={{ ...Styles.boldTxt, ...Styles.colorReef }}>
+    <Grid
+      item
+      container
+      direction="column"
+      alignItems="center"
+      justify="center"
+      style={{ position: "relative", marginBottom: "785px" }}
+    >
+      <Grid
+        item
+        container
+        justify="center"
+        style={{
+          padding: "100px 0 485px",
+          background: "rgba(16, 58, 66, 0.1)",
+        }}
+      >
+        <Grid
+          item
+          container
+          justify="flex-start"
+          alignItems="center"
+          xs={12}
+          sm={12}
+          lg={10}
+        >
+          <Typography
+            variant="h4"
+            style={{ ...Styles.boldTxt, ...Styles.colorReef }}
+          >
             Our community is flooded with positive reviews
           </Typography>
         </Grid>
       </Grid>
-      <Grid item container justify="center" alignItems="flex-start" style={{ position: "absolute", top: "192px", ...Styles.padding30tb, ...Styles.whiteBG, boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)", borderRadius: "10px" }} xs={12} sm={12} lg={10}>
-        <Grid item container alignContent="flex-start" xs={4}>
+      <Grid
+        item
+        container
+        justify="center"
+        alignItems="flex-start"
+        style={{
+          position: "absolute",
+          top: "192px",
+          ...Styles.padding30tb,
+          ...Styles.whiteBG,
+          boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+          borderRadius: "10px",
+        }}
+        xs={12}
+        sm={12}
+        lg={10}
+      >
+        <Grid item container alignContent="flex-start" xs={12} sm={12} lg={4}>
           {customTxt.reviewImages.reviews1.map((txt, i) => (
-            <Grid item xs={12} sm={12} lg={12} container justify="center" alignItems="flex-start" key={i} style={{ margin: i === 0 && "0 0 30px" }}>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={12}
+              container
+              justify="center"
+              alignItems="flex-start"
+              key={i}
+              style={{ margin: i === 0 && "0 0 30px" }}
+            >
               <Card className={classes.root}>
                 <CardContent>
                   <Grid item container justify="center">
@@ -43,9 +95,19 @@ const Sellingreviews = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid item container alignContent="flex-start" xs={4}>
+        <Grid item container alignContent="flex-start" xs={12} sm={12} lg={4}>
           {customTxt.reviewImages.reviews2.map((txt, i) => (
-            <Grid item xs={12} sm={12} lg={12} container justify="center" alignItems="flex-start" key={i} style={{ margin: i === 0 && "0 0 30px" }}>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={12}
+              container
+              justify="center"
+              alignItems="flex-start"
+              key={i}
+              style={{ margin: i === 0 && "0 0 30px" }}
+            >
               <Card className={classes.root}>
                 <CardContent>
                   <Grid item container justify="center">
@@ -56,9 +118,18 @@ const Sellingreviews = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid item container alignContent="flex-start" xs={4}>
+        <Grid item container alignContent="flex-start" xs={12} sm={12} lg={4}>
           {customTxt.reviewImages.reviews3.map((txt, i) => (
-            <Grid item xs={12} sm={12} lg={12} container justify="center" alignItems="flex-start" key={i}>
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              lg={12}
+              container
+              justify="center"
+              alignItems="flex-start"
+              key={i}
+            >
               <Card className={classes.root}>
                 <CardContent>
                   <Grid item container justify="center">

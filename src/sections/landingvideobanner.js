@@ -76,7 +76,7 @@ const Landingvideobanner = () => {
             >
               {/* <img src={Styles.backCoverImg("mother_holding_img.png")} /> */}
               <Iframe //style={{width:'80vw'}}
-                wd={window.screen.width * 0.6 + "px"}
+                wd={window.screen.width * 0.7 + "px"}
                 ht={window.screen.height * 0.4 + "px"}
                 title="full body home workout"
                 src="https://www.youtube.com/embed/u3RRJBrcr-w"
@@ -86,7 +86,7 @@ const Landingvideobanner = () => {
               item
               style={{
                 position: "absolute",
-                right: isMobile ? "11%" : "17%",
+                right: isMobile ? "5%" : "5%",
                 height: isMobile ? "" : "41vh",
               }}
             >

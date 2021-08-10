@@ -58,8 +58,9 @@ const Signupform = (props) => {
   let [formSubmitting, updateFormSubmitting] = useState(false);
   let [sendingEmail, updatesendingEmail] = useState(false);
   let [submitButtonEnable, setSubmitButtonEnable] = useState(false);
+  
   function moveNxt() {
-    history.replace("packages");
+    history.replace("trynow");
   }
   let formError = (err) => {
     updateErr(true);
@@ -106,22 +107,36 @@ const Signupform = (props) => {
         mailStatus: null,
       },
     ];
-    // callAPI(getURL('insert_leads'), 'post', formSubmitted, formError, {
-    //     customer_name:values.name,customer_email:values.email,customer_phone:`${values.country}${values.mobile}`,Region:loc.country, ip: loc.ip, state: loc.state, city: loc.city,customer_age:values.age});
-    callAPI(getURL("add_referrals"), "post", formSubmitted, formError, {
-      //customer_name:values.name,
-      //customer_email:values.email,
-      //customer_phone:`${values.country}${values.mobile}`,
-      //customer_age:values.age,
-      affiliate_id: affiliate_id,
-      campaign_id: campaign_id,
-      referrals: [...postArray],
-      //REGION INFO
-      //Region:loc.country,
-      //ip: loc.ip,
-      //state: loc.state,
-      //city: loc.city,
-    }); //ANV
+     callAPI(getURL('user-signup'), 'post', formSubmitted, formError, {
+      // customer_name:values.name,
+      // customer_email:values.email,
+      // customer_phone:`${values.country}${values.mobile}`,
+      // Region:loc.country, 
+      // ip: loc.ip, 
+      // state: 
+      // loc.state, 
+      // city: loc.city,
+      // customer_age:values.age
+      
+      firstname : values.name.split(" ")[0],
+      lastname :values.name.split(" ")[1]===undefined?"":values.name.split(" ")[1],
+      mobile: `${values.country}${values.mobile}`,
+      email: values.email,
+        });
+    // callAPI(getURL("add_referrals"), "post", formSubmitted, formError, {
+    //   //customer_name:values.name,
+    //   //customer_email:values.email,
+    //   //customer_phone:`${values.country}${values.mobile}`,
+    //   //customer_age:values.age,
+    //   affiliate_id: affiliate_id,
+    //   campaign_id: campaign_id,
+    //   referrals: [...postArray],
+    //   //REGION INFO
+    //   //Region:loc.country,
+    //   //ip: loc.ip,
+    //   //state: loc.state,
+    //   //city: loc.city,
+    // }); //ANV
     formSubmitted();
   };
   if (err) {
@@ -249,14 +264,14 @@ const Signupform = (props) => {
                       style={Styles.formFieldContainer}
                     >
                       <Grid item>
-                        {/* <Grid item style={Styles.countryContainer}>
+                        <Grid item style={Styles.countryContainer}>
                         <Field
                           style={{ ...Styles.feildRadius }}
                           name="country"
                           type="number"
                           validate={validateCountry}
                         />
-                      </Grid> */}
+                      </Grid>
                         <Grid
                           item
                           style={{

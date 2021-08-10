@@ -244,7 +244,7 @@ class Secret extends Component {
             )}
           </Grid>
           <Grid item xs={3} style={{ ...Styles.centerTxt }}>
-            <Link to="/packages">
+            <Link to="/trynow">
               <Button
                 variant="contained"
                 color="primary"

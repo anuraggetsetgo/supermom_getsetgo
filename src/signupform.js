@@ -436,15 +436,7 @@ const Signupform = (props) => {
                         direction="row"
                         style={Styles.formFieldContainer}
                       >
-                        <Grid
-                          item
-                          xs={12}
-                          sm={12}
-                          lg={6}
-                          direction="row"
-                          container
-                          alignItems="center"
-                        >
+                        <Grid item>
                           <Grid
                             item
                             xs={12}

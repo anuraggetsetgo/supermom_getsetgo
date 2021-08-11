@@ -69,16 +69,8 @@ const Videocomponent = () => {
         >
           <Grid item alignItems="center" justify="center" direction="column">
             <Iframe //style={{width:'80vw'}}
-              wd={
-                isMobile
-                  ? window.screen.width * 0.8 + "px"
-                  : window.screen.width * 0.28 + "px"
-              }
-              ht={
-                isMobile
-                  ? window.screen.width * 0.8 + "px"
-                  : window.screen.width * 0.28 + "px"
-              }
+              wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
+              ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
               src="https://www.youtube.com/embed/u3RRJBrcr-w"
             />
@@ -96,16 +88,8 @@ const Videocomponent = () => {
           </Grid>
           <Grid item alignItems="center" justify="center" direction="column">
             <Iframe //style={{width:'80vw'}}
-              wd={
-                isMobile
-                  ? window.screen.width * 0.8 + "px"
-                  : window.screen.width * 0.28 + "px"
-              }
-              ht={
-                isMobile
-                  ? window.screen.width * 0.8 + "px"
-                  : window.screen.width * 0.28 + "px"
-              }
+              wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
+              ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
               src="https://www.youtube.com/embed/u3RRJBrcr-w"
             />
@@ -123,16 +107,8 @@ const Videocomponent = () => {
           </Grid>
           <Grid item alignItems="center" justify="center" direction="column">
             <Iframe //style={{width:'80vw'}}
-              wd={
-                isMobile
-                  ? window.screen.width * 0.8 + "px"
-                  : window.screen.width * 0.28 + "px"
-              }
-              ht={
-                isMobile
-                  ? window.screen.width * 0.8 + "px"
-                  : window.screen.width * 0.28 + "px"
-              }
+              wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
+              ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
               src="https://www.youtube.com/embed/u3RRJBrcr-w"
             />

@@ -405,7 +405,10 @@ const Signupform = (props) => {
                       Are you the next SUPER MOM?
                     </Typography>
                   </Grid>
-                  <Grid item style={{ marginTop:'32px',marginBottom: "32px" }}>
+                  <Grid
+                    item
+                    style={{ marginTop: "32px", marginBottom: "32px" }}
+                  >
                     <Typography
                       variant={isMobile ? "h6" : "h5"}
                       style={{
@@ -427,7 +430,7 @@ const Signupform = (props) => {
                         style={{
                           ...Styles.formFieldContainer,
                           // marginRight: isMobile ? "0" : "10px",
-                          marginBottom: "32px",
+                          marginBottom: "16px",
                         }}
                       >
                         <Field
@@ -485,7 +488,7 @@ const Signupform = (props) => {
                               ...Styles.mobileContainer,
                               // marginLeft: isMobile ? "0" : "10px",
                               width: isMobile ? "100%" : "93%",
-                              marginBottom: "32px",
+                              marginBottom: "16px",
                             }}
                           >
                             <Field
@@ -518,7 +521,7 @@ const Signupform = (props) => {
                       lg={12}
                       style={{
                         ...Styles.formFieldContainer,
-                        margin: "32px 0 32px 0",
+                        margin: "16px 0 16px 0",
                       }}
                     >
                       <Field

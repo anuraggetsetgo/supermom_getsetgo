@@ -46,7 +46,7 @@ const Landingvideobanner = () => {
               style={{
                 textAlign: "center",
                 ...Styles.colorReef,
-                marginBottom:isMobile?'24px':'32px',
+                marginBottom: isMobile ? "24px" : "32px",
               }}
             >
               have transformed with us
@@ -62,7 +62,6 @@ const Landingvideobanner = () => {
               margin: "0px",
               minHeight: "40vh",
               maxHeight: "40vh",
-              postion: "relative",
             }}
           >
             <Grid
@@ -83,7 +82,7 @@ const Landingvideobanner = () => {
                 src="https://www.youtube.com/embed/u3RRJBrcr-w"
               />
             </Grid>
-            <Grid
+            {/* <Grid
               item
               style={{
                 position: "absolute",
@@ -98,7 +97,7 @@ const Landingvideobanner = () => {
                 }}
                 src={Styles.backCoverImg("pngItem_img.png")}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

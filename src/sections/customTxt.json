@@ -87,6 +87,69 @@
       }
     ]
   },
+  "howDoesGetSetGoWorkTxtMobile": {
+    "mainHeading": "But how does the GetSetGo Fitness online coaching work?",
+    "phases1": [
+      {
+        "phase": "Phase -  1",
+        "heading": "Understanding your lifestyle",
+        "pointers": [
+          "Identifying past and present challenges",
+          "Understanding your current eating habits, likes, dislikes, preferences, etc.",
+          "Understanding your stress levels, medical history, sleep patterns, nature of work, time constraints, and activity levels."
+        ]
+      },
+      {
+        "phase": "Phase -  2",
+        "heading": "Goal setting",
+        "pointers": [
+          "Understanding your aspirations.",
+          "Setting realistic goals.",
+          "Setting short-term and long-term milestones.",
+          "Setting the right expectations.",
+          "Setting practical timelines to achieve your goals."
+        ]
+      },
+      {
+        "phase": "Phase -  3",
+        "heading": "Induction",
+        "pointers": [
+          "Tweaking your current eating habits by 20-30% only to ensure a smooth start..",
+          "Introducing you to resistance training workouts based on your preferencehome/gym/outdoors.",
+          "Constant monitoring to hold you accountable and achieve consistency."
+        ]
+      },
+      {
+        "phase": "Phase -  4",
+        "heading": "Transition",
+        "pointers": [
+          "Identifying loopholes and adopting strategies to ensure your progress keeps ticking.",
+          "Practical solutions to manage social gatherings/traveling etc.",
+          "Understanding calories, macros, and meal replacements.",
+          "Introducing exercise progressions."
+        ]
+      },
+      {
+        "phase": "Phase -  5",
+        "heading": "Ownership",
+        "pointers": [
+          "Guiding you to make better food choices on your own.",
+          "Guiding you to design your own meal plans and exercise regime.",
+          "One-on-one assessment by your coach to get you thorough with the concepts."
+        ]
+      },
+      {
+        "phase": "Phase -  6",
+        "heading": "Reward and recognition",
+        "pointers": [
+          "Celebrating your achievements in our exclusive member community",
+          "A chance to get interviewed by our CEO.",
+          "Rewarding your hard work through shopping vouchers, goodies, etc.",
+          "Featuring your transformation story on our blogs and social media to inspire other moms."
+        ]
+      }
+    ]
+  },
   "whyGetSetGo": {
     "column1": [
       {

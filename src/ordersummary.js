@@ -618,7 +618,7 @@ const [submitting, setSubmitting] = React.useState(false)
           sm={12}
           lg={8}
           style={{
-            padding: "100px",
+            padding: isMobile?"30px":"100px" ,
             ...Styles.whiteBG,
             boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
             borderRadius: "10px",
@@ -639,7 +639,7 @@ const [submitting, setSubmitting] = React.useState(false)
             </Typography>
           </Grid>
           <Grid item xs={12} direction="row" container justify="center">
-            <Grid item xs={4} >
+            <Grid item xs={6} sm={4} lg={4} >
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Select Hour
@@ -661,7 +661,7 @@ const [submitting, setSubmitting] = React.useState(false)
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item xs={4} >
+            <Grid item xs={6} sm={4} lg={4} >
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Select Minute
@@ -684,7 +684,7 @@ const [submitting, setSubmitting] = React.useState(false)
               </FormControl>
               
             </Grid>
-            <Grid xs={4} item container alignItems='flex-end' justify='space-between'>
+            <Grid xs={12} sm={4} lg={4} item container alignItems='flex-end' justify='space-between'>
               <Grid item >
                 {/* <button ></button> */}
                 <Styles.ColorButton style={meridian == 'AM' ?  { height: '65px' }:Styles.amAndpmButton} onClick={() => handleChangeMeridian('AM')}>
@@ -712,6 +712,8 @@ const [submitting, setSubmitting] = React.useState(false)
                 height: "65px",
                 borderRadius: "10px",
                 border: "1px solid rgba(102, 102, 102, 0.3)",
+                padding:'20px',
+                fontSize:'16px'
               }}
               value={phone}
               onChange={(e) => { handleChangePhone(e) }}
@@ -728,6 +730,8 @@ const [submitting, setSubmitting] = React.useState(false)
                 height: "65px",
                 borderRadius: "10px",
                 border: "1px solid rgba(102, 102, 102, 0.3)",
+                padding:'20px',
+                fontSize:'16px'
               }}
               value={whatapp}
               onChange={handleChangeWhatsApp}

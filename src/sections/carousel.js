@@ -172,12 +172,12 @@ const LogoSvg = () => {
     </div>
   );
 };
-const AvtarName = ({ name, profile },key) => {
+const AvtarName = ({ name, profile }, key) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Grid
-    key={key}
+      key={key}
       container
       item
       direction="row"
@@ -197,8 +197,8 @@ const AvtarName = ({ name, profile },key) => {
         ></Grid>
       </Grid>
       <Grid container xs={6} item direction="column">
-        {name.split(" ").map((name,key) => (
-          <Grid key={key+name} item>
+        {name.split(" ").map((name, key) => (
+          <Grid key={key + name} item>
             <Typography
               variant={isMobile ? "h6" : "h5"}
               style={{
@@ -215,13 +215,13 @@ const AvtarName = ({ name, profile },key) => {
     </Grid>
   );
 };
-const CarouselContainer = ({ imagePath, text, name, profile },key) => {
+const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
-       key={key+name}
+        key={key + name}
         item
         container
         justify="center"
@@ -320,7 +320,7 @@ const CarouselItem = (props) => {
               : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
           }
         >
-          <Grid item style={isMobile?null:{margin:'0 0 0 10px'}}>
+          <Grid item style={isMobile ? null : { margin: '0 0 0 10px' }}>
             <Typography
               variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.colorRed }}
@@ -339,9 +339,9 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
-          // style={{ maxWidth: "1360px" }}
+        // style={{ maxWidth: "1360px" }}
         >
-          {!isMobile&&<Swiper
+          {!isMobile && <Swiper
             effect={"coverflow"}
             grabCursor={true}
             centeredSlides={false}
@@ -363,10 +363,10 @@ const CarouselItem = (props) => {
             className="mySwiper"
             pagination={true}
           >
-            {DataItem.map(({ image, text, name, profile },key) => (
-              <Grid key={key+name}>
+            {DataItem.map(({ image, text, name, profile }, key) => (
+              <Grid key={key + name}>
                 <SwiperSlide>
-                
+
                   <CarouselContainer
                     profile={profile}
                     name={name}
@@ -377,9 +377,9 @@ const CarouselItem = (props) => {
               </Grid>
             ))}
           </Swiper>
-        }
+          }
 
-{isMobile&&<Carousel
+          {isMobile && <Carousel
             interval={2500}
             indicatorIconButtonProps={{
               style: {
@@ -398,9 +398,9 @@ const CarouselItem = (props) => {
               },
             }}
           >
-            {DataItem.map(({ image, text, name, profile },key) => (
+            {DataItem.map(({ image, text, name, profile }, key) => (
               <CarouselContainer
-              key={key+text+name}
+                key={key + text + name}
                 profile={profile}
                 name={name}
                 imagePath={image}
@@ -408,8 +408,8 @@ const CarouselItem = (props) => {
               />
             ))}
           </Carousel>
-        }
-        
+          }
+
         </Grid>
         <Grid
           item

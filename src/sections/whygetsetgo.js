@@ -72,6 +72,7 @@ const Whygetsetgo = () => {
                         ...Styles.boldNormal,
                         textAlign: "center",
                         ...Styles.colorCharcoalLight,
+                        lineHeight: "28px",
                       }}
                     >
                       {item.text}
@@ -118,7 +119,7 @@ const Whygetsetgo = () => {
                         ...Styles.boldNormal,
                         textAlign: "center",
                         ...Styles.colorCharcoalLight,
-                        lineHeight: "30px",
+                        lineHeight: "28px",
                       }}
                     >
                       {item.text}
@@ -165,6 +166,7 @@ const Whygetsetgo = () => {
                         ...Styles.boldNormal,
                         textAlign: "center",
                         ...Styles.colorCharcoalLight,
+                        lineHeight: "28px",
                       }}
                     >
                       {item.text}

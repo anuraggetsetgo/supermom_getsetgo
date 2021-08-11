@@ -48,6 +48,7 @@ const Success = () => {
               width: isMobile ? "100%" : "null",
               padding: isMobile ? "13px 8px" : "30px 60px",
               // width: "max-content",
+              cursor: "pointer",
             }}
             justify="center"
           >

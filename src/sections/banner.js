@@ -67,6 +67,7 @@ const Banner = (props) => {
               ...Styles.padding30tb,
               padding: isMobile ? "13px 30px 13px 30px" : "30px 0px",
               textAlign: "center",
+              cursor: "pointer",
             }}
             container
             justify="center"

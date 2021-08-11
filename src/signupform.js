@@ -178,7 +178,7 @@ const InfoPopUp = ({
       >
         <Grid item>
           <Typography
-            variant="h2"
+            variant="h3"
             className="app-text-align-center bold line-height40"
             style={{
               color: "#0F3840",
@@ -196,14 +196,14 @@ const InfoPopUp = ({
           }}
         >
           <Typography
-            variant="subtitle1"
+            variant="subtitle2"
             className="app-text-align-center normal line-height24"
           >
             {signUpInfoMessage}
           </Typography>
         </Grid>
         <Grid item>
-          <Styles.ColorButton
+          <Styles.ColorButton style={isMobile?{width:'35vw'}:{width:'100%'}}
             onClick={() => {
               setOpen(false);
               setIsContinue(true);

@@ -7,6 +7,7 @@ import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from "swiper/core";
+
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 const DataItem = [
   {
@@ -319,7 +320,7 @@ const CarouselItem = (props) => {
               : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
           }
         >
-          <Grid item>
+          <Grid item style={isMobile?null:{margin:'0 0 0 10px'}}>
             <Typography
               variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.colorRed }}
@@ -340,7 +341,7 @@ const CarouselItem = (props) => {
           justify="center"
           // style={{ maxWidth: "1360px" }}
         >
-          <Swiper
+          {!isMobile&&<Swiper
             effect={"coverflow"}
             grabCursor={true}
             centeredSlides={false}
@@ -365,6 +366,7 @@ const CarouselItem = (props) => {
             {DataItem.map(({ image, text, name, profile },key) => (
               <Grid key={key+name}>
                 <SwiperSlide>
+                
                   <CarouselContainer
                     profile={profile}
                     name={name}
@@ -375,6 +377,39 @@ const CarouselItem = (props) => {
               </Grid>
             ))}
           </Swiper>
+        }
+
+{isMobile&&<Carousel
+            interval={2500}
+            indicatorIconButtonProps={{
+              style: {
+                color: "#C2DCE2",
+                marginRight: "10px",
+              },
+            }}
+            activeIndicatorIconButtonProps={{
+              style: {
+                ...Styles.colorPrimary,
+              },
+            }}
+            indicatorContainerProps={{
+              style: {
+                marginTop: "30px",
+              },
+            }}
+          >
+            {DataItem.map(({ image, text, name, profile },key) => (
+              <CarouselContainer
+              key={key+text+name}
+                profile={profile}
+                name={name}
+                imagePath={image}
+                text={text}
+              />
+            ))}
+          </Carousel>
+        }
+        
         </Grid>
         <Grid
           item

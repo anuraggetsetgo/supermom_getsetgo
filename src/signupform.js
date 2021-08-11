@@ -430,7 +430,7 @@ const Signupform = (props) => {
                         style={{
                           ...Styles.formFieldContainer,
                           // marginRight: isMobile ? "0" : "10px",
-                          marginBottom: "16px",
+                          marginBottom: isMobile ? "28px" : "16px",
                         }}
                       >
                         <Field
@@ -474,8 +474,9 @@ const Signupform = (props) => {
                             disabled={formSubmitting}
                             style={{
                               ...Styles.formInputField,
-                              width: isMobile ? "90%" : "90%",
-                              marginBottom: "16px",
+                              width: isMobile ? "130%" : "85%",
+                              // marginBottom: "16px",
+                              marginLeft: "-5px",
                             }}
                           />
                         </Grid>
@@ -488,7 +489,7 @@ const Signupform = (props) => {
                             ...Styles.mobileContainer,
                             // marginLeft: isMobile ? "0" : "10px",
                             width: isMobile ? "100%" : "98%",
-                            marginBottom: "16px",
+                            // marginBottom: "16px",
                           }}
                         >
                           <Field
@@ -500,7 +501,8 @@ const Signupform = (props) => {
                             validate={validateMobile}
                             style={{
                               ...Styles.formInputField,
-                              width: isMobile ? "100%" : "96%",
+                              width: isMobile ? "90%" : "96%",
+                              marginLeft: isMobile ? "17px" : "0",
                             }}
                           />
                         </Grid>

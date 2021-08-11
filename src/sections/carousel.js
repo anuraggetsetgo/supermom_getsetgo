@@ -2,6 +2,12 @@ import React from "react";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Carousel from "react-material-ui-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
+import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+import "swiper/components/pagination/pagination.min.css";
+import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from "swiper/core";
+SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 const DataItem = [
   {
     image: ["ClientTras/client1-1.png", "ClientTras/client1-2.png"],
@@ -324,45 +330,49 @@ const CarouselItem = (props) => {
         </Grid>
         <Grid
           item
+          xs={12}
+          sm={12}
+          lg={10}
           container
           direction="row"
           justify="center"
           // style={{ maxWidth: "1360px" }}
         >
-          <Carousel
-            interval={5000000}
-            indicatorIconButtonProps={{
-              style: {
-                color: "#C2DCE2",
-                marginRight: "10px",
-              },
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={false}
+            slidesPerView={"auto"}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 50,
+              modifier: 0,
+              slideShadows: true,
             }}
-            activeIndicatorIconButtonProps={{
-              style: {
-                ...Styles.colorPrimary,
-              },
+            slidesPerView={isMobile ? 1 : 1.5}
+            loop={true}
+            centeredSlides={isMobile ? true : false}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
             }}
-            indicatorContainerProps={{
-              style: {
-                marginTop: "15px",
-              },
-            }}
-            navButtonsProps={{
-              // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
-              style: {
-                backgroundColor: "#4595A4",
-              },
-            }}
+            className="mySwiper"
+            pagination={true}
           >
             {DataItem.map(({ image, text, name, profile }) => (
-              <CarouselContainer
-                profile={profile}
-                name={name}
-                imagePath={image}
-                text={text}
-              />
+              <>
+                <SwiperSlide>
+                  <CarouselContainer
+                    profile={profile}
+                    name={name}
+                    imagePath={image}
+                    text={text}
+                  />
+                </SwiperSlide>
+              </>
             ))}
-          </Carousel>
+          </Swiper>
         </Grid>
         <Grid
           item

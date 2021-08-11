@@ -147,6 +147,7 @@ const Footer = (props) => {
             </Typography>
           </Grid>
         </Grid>
+        
       </Grid>
     </>
   );

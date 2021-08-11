@@ -189,9 +189,9 @@
     ]
   },
   "reviewImages": {
-    "reviews1": ["review1.png", "review2.png"],
-    "reviews2": ["review3.png", "review4.png"],
-    "reviews3": ["review5.png"]
+    "reviews1": ["review1.png", "review4.png"],
+    "reviews2": ["review2.png", "review5.png"],
+    "reviews3": ["review3.png"]
   },
   "yogaPageTxt": {
     "mainHeading": ["Why our ", "Healthcare Plans ", "are effective?"],

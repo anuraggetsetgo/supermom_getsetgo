@@ -1,14 +1,15 @@
-import React from "react";
+import React, { forwardRef, ref } from "react";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Signupform from "../signupform";
 
-const Signupbanner = () => {
+const Signupbanner = forwardRef((props, ref) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
+
         item
         container
         direction="row"
@@ -39,14 +40,17 @@ const Signupbanner = () => {
             direction="row"
             alignItems="center"
             justify="center"
-            style={{ marginTop: isMobile ? "15px" : "100px" }}
+            style={{
+              marginTop: isMobile ? "40px" : "100px",
+              padding: isMobile ? "20px" : "0",
+            }}
           >
-            <Grid justify="center" alignItems="center">
+            <Grid>
               <Typography
-                variant="h2"
+                variant={isMobile ? "h4" : "h2"}
                 style={{ textAlign: "center", ...Styles.whiteColor }}
               >
-                If <spam style={{ ...Styles.boldTxt }}>multi-tasking </spam>
+                If <span style={{ ...Styles.boldTxt }}>multi-tasking </span>
                 is the name of the game, these mom’s who have{" "}
                 <span style={{ ...Styles.boldTxt }}>
                   undergone our coaching program
@@ -61,12 +65,14 @@ const Signupbanner = () => {
                 <span style={{ ...Styles.boldTxt }}>super busy life.</span>
               </Typography>
             </Grid>
-            <Signupform />
+            <Grid ref={ref}>
+              <Signupform />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
     </>
   );
-};
+});
 
 export default Signupbanner;

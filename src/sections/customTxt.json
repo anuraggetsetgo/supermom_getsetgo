@@ -87,35 +87,98 @@
       }
     ]
   },
+  "howDoesGetSetGoWorkTxtMobile": {
+    "mainHeading": "But how does the GetSetGo Fitness online coaching work?",
+    "phases1": [
+      {
+        "phase": "Phase -  1",
+        "heading": "Understanding your lifestyle",
+        "pointers": [
+          "Identifying past and present challenges",
+          "Understanding your current eating habits, likes, dislikes, preferences, etc.",
+          "Understanding your stress levels, medical history, sleep patterns, nature of work, time constraints, and activity levels."
+        ]
+      },
+      {
+        "phase": "Phase -  2",
+        "heading": "Goal setting",
+        "pointers": [
+          "Understanding your aspirations.",
+          "Setting realistic goals.",
+          "Setting short-term and long-term milestones.",
+          "Setting the right expectations.",
+          "Setting practical timelines to achieve your goals."
+        ]
+      },
+      {
+        "phase": "Phase -  3",
+        "heading": "Induction",
+        "pointers": [
+          "Tweaking your current eating habits by 20-30% only to ensure a smooth start..",
+          "Introducing you to resistance training workouts based on your preferencehome/gym/outdoors.",
+          "Constant monitoring to hold you accountable and achieve consistency."
+        ]
+      },
+      {
+        "phase": "Phase -  4",
+        "heading": "Transition",
+        "pointers": [
+          "Identifying loopholes and adopting strategies to ensure your progress keeps ticking.",
+          "Practical solutions to manage social gatherings/traveling etc.",
+          "Understanding calories, macros, and meal replacements.",
+          "Introducing exercise progressions."
+        ]
+      },
+      {
+        "phase": "Phase -  5",
+        "heading": "Ownership",
+        "pointers": [
+          "Guiding you to make better food choices on your own.",
+          "Guiding you to design your own meal plans and exercise regime.",
+          "One-on-one assessment by your coach to get you thorough with the concepts."
+        ]
+      },
+      {
+        "phase": "Phase -  6",
+        "heading": "Reward and recognition",
+        "pointers": [
+          "Celebrating your achievements in our exclusive member community",
+          "A chance to get interviewed by our CEO.",
+          "Rewarding your hard work through shopping vouchers, goodies, etc.",
+          "Featuring your transformation story on our blogs and social media to inspire other moms."
+        ]
+      }
+    ]
+  },
   "whyGetSetGo": {
     "column1": [
       {
         "title": "No Strict Dieting",
-        "text": "Say goodbye to strict dieting programs! GetSetGoFitness was built to make fitness easy and fun for you.",
+        "text": "Say goodbye to strict dieting programs! GetSetGo Fitness was built to make fitness easy and fun for you.",
         "image": "Diet.png"
       },
       {
         "title": "Convenient Communication",
-        "text": "24x7 whatsapp/email/call support to address yourqueries and challenges.",
+        "text": "24x7 whatsapp/email/call support to address your queries and challenges.",
         "image": "Communication.png"
       }
     ],
     "column2": [
       {
         "title": "Well- Trained Professionals",
-        "text": "Qualified fitness professionals trained in-house by ourCo-Founders who are seasoned fitness coaches withover 10 years of coaching experience.",
+        "text": "Qualified fitness professionals trained in-house by our Co-Founders who are seasoned fitness coaches withover 10 years of coaching experience.",
         "image": "Trained Professional.png"
       },
       {
         "title": "Technology Driven",
-        "text": "technology enabled coaching interface to give you aseamless experience.",
+        "text": "Technology enabled coaching interface to give you a seamless experience.",
         "image": "Technology Drive.png"
       }
     ],
     "column3": [
       {
         "title": "One- To- One Coach",
-        "text": "Dedicated coach to guide you on a weekly basis with aproper plan of action.",
+        "text": "Dedicated coach to guide you on a weekly basis with a proper plan of action.",
         "image": "Coach.png"
       },
       {
@@ -126,9 +189,9 @@
     ]
   },
   "reviewImages": {
-    "reviews1": ["review1.png", "review2.png"],
-    "reviews2": ["review3.png", "review4.png"],
-    "reviews3": ["review5.png"]
+    "reviews1": ["review1.png", "review4.png"],
+    "reviews2": ["review2.png", "review5.png"],
+    "reviews3": ["review3.png"]
   },
   "yogaPageTxt": {
     "mainHeading": ["Why our ", "Healthcare Plans ", "are effective?"],

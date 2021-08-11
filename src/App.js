@@ -33,6 +33,7 @@ class App extends Component {
     this.state = {
       scrollStatus: false,
     };
+    this.signUpRef = React.createRef();
   }
   componentDidMount() {
     updateLoc(this.cb);
@@ -45,6 +46,9 @@ class App extends Component {
   freezeScroll(val) {
     this.setState({ scrollStatus: val });
   }
+   scrollToSignUp=()=>{
+    this.signUpRef.current.scrollIntoView({ behavior: 'smooth' })
+  }
   //  component={props=> <Home freezeScroll={(val)=>{this.freezeScroll(val)}} {...props}/>}/>
   render() {
     let { scrollStatus } = this.state;
@@ -55,7 +59,7 @@ class App extends Component {
             <Header />
             <Switch>
               <Route exact path="/">
-                <Home />
+                <Home signUpRef={this.signUpRef} scrollToSignUp={this.scrollToSignUp}/>
               </Route>
               <Route path="/trynow">
                 <Package />
@@ -65,7 +69,7 @@ class App extends Component {
                 component={Ordersummary}
               />
             </Switch>
-            <Footer />
+            <Footer scrollToSignUp={this.scrollToSignUp}/>
             {/* </Grid> */}
           </CssBaseline>
         </ThemeProvider>

@@ -16,7 +16,10 @@ const Mediabanner = () => {
         container
         alignItems="center"
         justify="center"
-        style={{ marginBottom: "100px" }}
+        style={{
+          marginBottom: isMobile ? "5px" : "100px",
+          padding: isMobile ? "20px" : "0",
+        }}
       >
         <Grid
           item
@@ -36,13 +39,13 @@ const Mediabanner = () => {
         >
           <Grid item>
             <Typography
-              variant="h2"
+              variant={isMobile ? "h4" : "h1"}
               style={{ ...Styles.colorWhite, ...Styles.boldTxt }}
             >
               1,00,000 members
             </Typography>
             <Typography
-              variant="h5"
+              variant={isMobile ? "h6" : "h5"}
               style={{
                 ...Styles.colorWhite,
                 marginTop: "8px",
@@ -64,7 +67,7 @@ const Mediabanner = () => {
           >
             {customTxt.GSGSocialMedia.images.map((val, key) => {
               return (
-                <a href={val[1]} target="_blank" rel="noopener noreferrer">
+                <a key={key} href={val[1]} target="_blank" rel="noopener noreferrer">
                   <img
                     src={Styles.backCoverImg(val[0])}
                     alt="social Media Icons"

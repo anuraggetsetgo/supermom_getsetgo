@@ -1,7 +1,14 @@
 import React from "react";
-import { Typography, Grid } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Carousel from "react-material-ui-carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.min.css";
+import "swiper/components/effect-coverflow/effect-coverflow.min.css";
+import "swiper/components/pagination/pagination.min.css";
+import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from "swiper/core";
+
+SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 const DataItem = [
   {
     image: ["ClientTras/client1-1.png", "ClientTras/client1-2.png"],
@@ -57,7 +64,7 @@ const cardStyle = {
   backgroundColor: "#FFFFFF",
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
   borderRadius: "10px",
-  height: "480px",
+  // height: "480px",
   padding: "40px",
 };
 
@@ -95,7 +102,7 @@ const LogoSvg = () => {
           fill="black"
         />
         <g filter="url(#filter0_d)">
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <path
               d="M103.333 215.278C121.712 215.278 136.611 200.379 136.611 182.001C136.611 163.622 121.712 148.723 103.333 148.723C84.9539 148.723 70.0549 163.622 70.0549 182.001C70.0549 200.379 84.9539 215.278 103.333 215.278Z"
               fill="white"
@@ -122,9 +129,9 @@ const LogoSvg = () => {
             width="98.5024"
             height="98.5024"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -165,16 +172,19 @@ const LogoSvg = () => {
     </div>
   );
 };
-const AvtarName = ({ name, profile }) => {
+const AvtarName = ({ name, profile },key) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Grid
+    key={key}
       container
       item
       direction="row"
       justify="flex-start"
       style={{ marginTop: "32px" }}
     >
-      <Grid item container xs={3}>
+      <Grid item container xs={12} sm={12} lg={3}>
         <Grid
           item
           style={{
@@ -187,10 +197,10 @@ const AvtarName = ({ name, profile }) => {
         ></Grid>
       </Grid>
       <Grid container xs={6} item direction="column">
-        {name.split(" ").map((name) => (
-          <Grid item>
+        {name.split(" ").map((name,key) => (
+          <Grid key={key+name} item>
             <Typography
-              variant="h5"
+              variant={isMobile ? "h6" : "h5"}
               style={{
                 maxWidht: "238px",
                 ...Styles.colorReef,
@@ -205,15 +215,18 @@ const AvtarName = ({ name, profile }) => {
     </Grid>
   );
 };
-const CarouselContainer = ({ imagePath, text, name, profile }) => {
+const CarouselContainer = ({ imagePath, text, name, profile },key) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
+       key={key+name}
         item
         container
         justify="center"
         alignItems="center"
-        style={{ width: "800px", height: "500px" }}
+        style={{ width: isMobile ? "89vw" : "800px" }}
       >
         <Grid
           item
@@ -221,12 +234,14 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           direction="row"
           justify="space-between"
           alignItems="center"
-          style={{ ...cardStyle }}
+          style={{ ...cardStyle, padding: isMobile ? "20px" : "10px" }}
         >
           <Grid
             container
             item
-            xs={6}
+            lg={6}
+            sm={6}
+            xs={12}
             direction="row"
             justify="center"
             style={{
@@ -245,6 +260,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
                     height: "360px",
                     width: "100%",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
+                    backgroundSize: "100% 100%",
                   }}
                 ></Grid>
               ))}
@@ -254,14 +270,23 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
             </Grid>
           </Grid>
 
-          <Grid container item xs={5} direction="column" justify="center">
+          <Grid
+            container
+            item
+            xs={12}
+            sm={12}
+            lg={5}
+            direction="column"
+            justify="center"
+          >
             <Grid item>
               <Typography
-                variant="h5"
+                variant={isMobile ? "h6" : "h5"}
                 style={{
-                  maxWidth: "238px",
+                  maxWidth: isMobile ? "300px" : "238px",
                   ...Styles.colorCharcoalDark,
                   fontFamily: "Roboto",
+                  marginTop: isMobile ? "16px" : "0",
                 }}
               >
                 {text}
@@ -275,32 +300,87 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
   );
 };
 
-const CarouselItem = () => {
+const CarouselItem = (props) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Grid item container xs={12} justify="center">
+      <Grid item container alignItems="center" justify="center">
         <Grid
           item
+          xs={12}
+          sm={12}
+          lg={10}
           container
-          justify="center"
+          justify="flex-start"
           alignItems="center"
-          style={{ marginBottom: "40px" }}
+          style={
+            isMobile
+              ? { padding: "24px 20px" }
+              : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
+          }
         >
-          <Typography variant="h1" style={{ ...Styles.colorRed }}>
-            <span style={{ ...Styles.boldTxt }}>Meet</span> the{" "}
-            <span style={{ ...Styles.boldTxt }}>super moms</span> who took
-            <br /> charge of their health..
-          </Typography>
+          <Grid item style={isMobile?null:{margin:'0 0 0 10px'}}>
+            <Typography
+              variant={isMobile ? "h3" : "h1"}
+              style={{ ...Styles.colorRed }}
+            >
+              <span style={{ ...Styles.boldTxt }}>Meet</span> the{" "}
+              <span style={{ ...Styles.boldTxt }}>super moms</span> who took
+              <br /> charge of their health..
+            </Typography>
+          </Grid>
         </Grid>
         <Grid
           item
+          xs={12}
+          sm={12}
+          lg={10}
           container
           direction="row"
           justify="center"
-          style={{ maxWidth: "1360px" }}
+          // style={{ maxWidth: "1360px" }}
         >
-          <Carousel
-            interval={5000000}
+          {!isMobile&&<Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={false}
+            slidesPerView={"auto"}
+            coverflowEffect={{
+              rotate: 0,
+              stretch: 0,
+              depth: 50,
+              modifier: 0,
+              slideShadows: true,
+            }}
+            slidesPerView={isMobile ? 1 : 1.5}
+            loop={true}
+            centeredSlides={isMobile ? true : false}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            className="mySwiper"
+            pagination={true}
+          >
+            {DataItem.map(({ image, text, name, profile },key) => (
+              <Grid key={key+name}>
+                <SwiperSlide>
+                
+                  <CarouselContainer
+                    profile={profile}
+                    name={name}
+                    imagePath={image}
+                    text={text}
+                  />
+                </SwiperSlide>
+              </Grid>
+            ))}
+          </Swiper>
+        }
+
+{isMobile&&<Carousel
+            interval={2500}
             indicatorIconButtonProps={{
               style: {
                 color: "#C2DCE2",
@@ -318,8 +398,9 @@ const CarouselItem = () => {
               },
             }}
           >
-            {DataItem.map(({ image, text, name, profile }) => (
+            {DataItem.map(({ image, text, name, profile },key) => (
               <CarouselContainer
+              key={key+text+name}
                 profile={profile}
                 name={name}
                 imagePath={image}
@@ -327,15 +408,28 @@ const CarouselItem = () => {
               />
             ))}
           </Carousel>
+        }
+        
         </Grid>
-        <Grid item container justify="center" alignItems="center">
+        <Grid
+          item
+          container
+          justify="center"
+          alignItems="center"
+          onClick={props.scrollToSignUp}
+        >
           <button
             style={{
               ...Styles.landingButton,
               ...Styles.colorReef,
+              width: `${isMobile ? "90%" : "273px"}`,
             }}
           >
-            GET STARTED!
+            <span
+              style={isMobile ? { fontSize: "20px" } : { fontSize: "24px" }}
+            >
+              GET STARTED!
+            </span>
           </button>
         </Grid>
       </Grid>

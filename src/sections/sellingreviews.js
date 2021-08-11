@@ -4,7 +4,7 @@ import Styles from "../app-style.js";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import { Typography } from "@material-ui/core";
+import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import customTxt from "./customTxt.json";
 
 const useStyles = makeStyles({
@@ -19,6 +19,8 @@ const useStyles = makeStyles({
 });
 
 const Sellingreviews = () => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
   return (
     <Grid
@@ -27,14 +29,17 @@ const Sellingreviews = () => {
       direction="column"
       alignItems="center"
       justify="center"
-      style={{ position: "relative", marginBottom: "785px" }}
+      style={{
+        position: "relative",
+        marginBottom: isMobile ? "2250px" : "785px",
+      }}
     >
       <Grid
         item
         container
         justify="center"
         style={{
-          padding: "100px 0 485px",
+          padding: isMobile ? "20px 0px 485px" : "100px 0 485px",
           background: "rgba(16, 58, 66, 0.1)",
         }}
       >
@@ -46,9 +51,10 @@ const Sellingreviews = () => {
           xs={12}
           sm={12}
           lg={10}
+          style={{ padding: isMobile ? "20px" : "0" }}
         >
           <Typography
-            variant="h4"
+            variant="h3"
             style={{ ...Styles.boldTxt, ...Styles.colorReef }}
           >
             Our community is flooded with positive reviews

@@ -9,7 +9,18 @@ import {
   retrievePath,
   colors,
 } from "./services";
-import { Typography, Button, Fade, Table, TableCell, TableBody, TableContainer, TableHead, TableRow, Paper } from "@material-ui/core";
+import {
+  Typography,
+  Button,
+  Fade,
+  Table,
+  TableCell,
+  TableBody,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@material-ui/core";
 import Styles from "./app-style";
 import PreloadImage from "./helpers/preloadimg";
 import GetDiscount from "./sections/getdiscount";
@@ -110,26 +121,26 @@ class Package extends Component {
     this.hideDetails();
   };
   setProducts = (data) => {
-    console.log("DATA FETCHED!!")
+    console.log("DATA FETCHED!!");
     var services = data.data.services;
     console.log(services);
     //setServices(services);
     baseurl = data.data.redirect_base_url;
     this.setState({ products: services });
-    let row = [], fields = [];
-    let desc
+    let row = [],
+      fields = [];
+    let desc;
     services.map((product) => {
       desc = JSON.parse(product.pack_des);
       row.push(desc);
       for (const key in desc) {
         row.push(desc);
       }
-    })
+    });
     var uniqueRow = [...new Set(row)];
     console.log("UNIQUE ROW -->>", uniqueRow);
     this.setState({ serviceInclusions: uniqueRow });
-
-  }
+  };
   getproducts = () => {
     let currency = this.state.currency;
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
@@ -140,7 +151,9 @@ class Package extends Component {
     callAPI(
       "https://api.getsetgo.fitness/base_ind/API/v1/fetch_services",
       "post",
-      (data) => { this.setProducts(data) },
+      (data) => {
+        this.setProducts(data);
+      },
       (err) => {
         console.log(err);
       },
@@ -152,32 +165,45 @@ class Package extends Component {
   };
   returnCurrencySymbol = (currency) => {
     switch (currency) {
-      case 'INR':
+      case "INR":
         return "₹";
-      case 'AED':
-        return 'aed';
+      case "AED":
+        return "aed";
       default:
-        return '$';
+        return "$";
     }
-  }
+  };
   renderVal = (text) => {
     var element;
     switch (text) {
-      case 'Yes':
-        return <span className="material-icons" style={{ color: 'green', fontSize: '1.5rem', fontWeight: 'bold' }}>check</span>
+      case "Yes":
+        return (
+          <span
+            className="material-icons"
+            style={{ color: "green", fontSize: "1.5rem", fontWeight: "bold" }}
+          >
+            check
+          </span>
+        );
         break;
-      case 'No':
-        return <span className="material-icons" style={{ color: 'red', fontSize: '1.5rem', fontWeight: 'bold' }}>remove</span>
+      case "No":
+        return (
+          <span
+            className="material-icons"
+            style={{ color: "red", fontSize: "1.5rem", fontWeight: "bold" }}
+          >
+            remove
+          </span>
+        );
         break;
       default:
-        return <Typography variant="body2">{text}</Typography>
+        return <Typography variant="body2">{text}</Typography>;
         break;
-
     }
     return element;
-
-  }
+  };
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getproducts();
   }
 
@@ -209,13 +235,13 @@ class Package extends Component {
     //   `${retrievePath()}happyCouple.jpg`,
     //   `${retrievePath()}happyFamily.jpg`,
     // ];
-    console.log("PRODUCTS -->>", serviceInclusions)
+    console.log("PRODUCTS -->>", serviceInclusions);
     return (
       <Grid
         container
         style={{
           minHeight: `${docHt() - 100}px`,
-          paddingTop: Styles.spacing(10),
+          // paddingTop: Styles.spacing(10),
           //...Styles.blueBG,
         }}
         direction="column"
@@ -237,26 +263,32 @@ class Package extends Component {
             </Link>
           </Grid>
         )}
-        
-            {userData && !products && (
-              <Grid
-                item
-                style={{
-                  ...Styles.colorWhite,
-                  ...Styles.centerTxt,
-                  ...Styles.marginBottom,
-                }}
-              >
-                Loading services. Please wait ...
-              </Grid>
-            )}
 
-{userData && products && (
+        {userData && !products && (
+          <Grid
+            item
+            style={{
+              ...Styles.colorWhite,
+              ...Styles.centerTxt,
+              ...Styles.marginBottom,
+            }}
+          >
+            Loading services. Please wait ...
+          </Grid>
+        )}
+
+        {userData && products && (
           <React.Fragment>
-            <Banner product={products} createOrder={(data)=>this.createOrder(data)} />
+            <Banner
+              product={products}
+              createOrder={(data) => this.createOrder(data)}
+            />
             <Coachwork />
             <Videocomponent />
-            <Sellingmidbanner />
+            <Sellingmidbanner
+              product={products}
+              createOrder={(data) => this.createOrder(data)}
+            />
             <Sellingreviews />
             <Mediabanner />
             <Success />

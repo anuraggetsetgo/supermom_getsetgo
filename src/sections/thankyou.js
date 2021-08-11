@@ -133,7 +133,7 @@ export const Thankyou = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <g clip-path="url(#clip0)">
+                <g clipPath="url(#clip0)">
                   <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"

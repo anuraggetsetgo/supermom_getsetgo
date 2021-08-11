@@ -14,19 +14,23 @@ const Landingvideobanner = () => {
         direction="row"
         justify="center"
         style={{
-          marginTop: isMobile ? "690px" : "320px",
-          marginBottom: isMobile ? "0" : "130px",
+          marginTop: isMobile ? "380px" : "400px",
+          marginBottom: isMobile ? "0" : "0px",
+          padding: isMobile ? "20px" : "0",
         }}
       >
         <Grid item justify="center" xs={12} sm={10} lg={10}>
           <Grid item>
-            <Typography variant="h3" style={{ textAlign: "center" }}>
+            <Typography
+              variant={isMobile ? "h4" : "h3"}
+              style={{ textAlign: "center" }}
+            >
               Here is why you need us!
             </Typography>
           </Grid>
           <Grid item>
             <Typography
-              variant="h1"
+              variant={isMobile ? "h3" : "h1"}
               style={{
                 textAlign: "center",
                 ...Styles.colorRed,
@@ -38,10 +42,11 @@ const Landingvideobanner = () => {
           </Grid>
           <Grid item>
             <Typography
-              variant="h1"
+              variant={isMobile ? "h3" : "h1"}
               style={{
                 textAlign: "center",
                 ...Styles.colorReef,
+                marginBottom: isMobile ? "24px" : "32px",
               }}
             >
               have transformed with us
@@ -55,9 +60,8 @@ const Landingvideobanner = () => {
             container
             style={{
               margin: "0px",
-              minHeight: "40vh",
-              maxHeight: "40vh",
-              postion: "relative",
+              //minHeight: "40vh",
+              //maxHeight: "40vh",
             }}
           >
             <Grid
@@ -71,29 +75,29 @@ const Landingvideobanner = () => {
               }
             >
               {/* <img src={Styles.backCoverImg("mother_holding_img.png")} /> */}
-              <Iframe //style={{width:'80vw'}}
-                wd={window.screen.width * 0.6 + "px"}
-                ht={window.screen.height * 0.4 + "px"}
+              <Iframe 
+                wd={window.screen.width * 0.7 + "px"}
+                ht={window.screen.height * 0.45 + "px"}
                 title="full body home workout"
                 src="https://www.youtube.com/embed/u3RRJBrcr-w"
               />
             </Grid>
-            <Grid
+            {/* <Grid
               item
               style={{
                 position: "absolute",
-                right: isMobile ? "11%" : "17%",
-                height: isMobile ? "" : "41vh",
+                right: isMobile ? "5%" : "5%",
+                height: isMobile ? "40vh" : "40vh",
               }}
             >
               <img
                 style={{
                   width: isMobile ? "20vw" : "100%",
-                  height: isMobile ? "41vh" : "68vh",
+                  height: isMobile ? "40vh" : "50vh",
                 }}
                 src={Styles.backCoverImg("pngItem_img.png")}
               />
-            </Grid>
+            </Grid> */}
           </Grid>
         </Grid>
       </Grid>

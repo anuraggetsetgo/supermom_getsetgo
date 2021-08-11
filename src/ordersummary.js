@@ -10,7 +10,10 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { api_set_reminder } from './gsgAPI/api'
+import Footer from './sections/footer'
 import { Style, WhatsApp } from "@material-ui/icons";
+import { useTheme } from "@material-ui/core";
+import { useMediaQuery } from "@material-ui/core";
 const errMsgs = {
   requried: "Uh oh! It's a required field",
   name: "Wait, that doesn't sound like a valid name",
@@ -122,6 +125,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Ordersummary = (props) => {
+  const theme =useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
   const userData = JSON.parse(get('userDetails'))
   const [hour, setHour] = React.useState("");
@@ -323,7 +328,7 @@ const [submitting, setSubmitting] = React.useState(false)
   }
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
-    <Grid style={{ position: "relative" }}>
+    <Grid >
       <Grid
         item
         container
@@ -524,7 +529,10 @@ const [submitting, setSubmitting] = React.useState(false)
                 <Typography variant="h5" style={{ ...Styles.colorWhite, lineHeight: '2.2rem' }}>
                   Congratulations {name.split(" ")[0]}! There has been a small
                   glitch: we haven't been able to drop you an email. Don't worry
-                  though. Our backend team qill quickly review this. For your
+                  though. 
+                  </Typography>
+                  <Typography variant="h5" style={{ ...Styles.colorWhite, lineHeight: '2.2rem' }}>
+                  Our backend team qill quickly review this. For your
                   registration, our representatives will get in touch with you
                   within 2 working days. Feel free to drop us an email in case you
                   have any queries:{" "}
@@ -585,7 +593,10 @@ const [submitting, setSubmitting] = React.useState(false)
                     style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
                   >
                     Congratulations {name.split(" ")[0]}! Our representatives will get
-                    in touch with you within 2 working days. Feel free to drop us an
+                    in touch with you within 2 working days. 
+                    </Typography>
+                    <Typography variant="h5" style={{ ...Styles.colorWhite, lineHeight: '2.2rem' }}>
+                    Feel free to drop us an
                     email in case you have any queries:{" "}
                     <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
                   </Typography>
@@ -611,6 +622,7 @@ const [submitting, setSubmitting] = React.useState(false)
             ...Styles.whiteBG,
             boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
             borderRadius: "10px",
+            marginBottom:'20px'
           }}
         >
           <Grid item>
@@ -675,12 +687,12 @@ const [submitting, setSubmitting] = React.useState(false)
             <Grid xs={4} item container alignItems='flex-end' justify='space-between'>
               <Grid item >
                 {/* <button ></button> */}
-                <Styles.ColorButton style={meridian == 'AM' ? Styles.amAndpmButton : { height: '65px' }} onClick={() => handleChangeMeridian('AM')}>
+                <Styles.ColorButton style={meridian == 'AM' ?  { height: '65px' }:Styles.amAndpmButton} onClick={() => handleChangeMeridian('AM')}>
                   AM
                 </Styles.ColorButton>
               </Grid>
               <Grid item >
-                <Styles.ColorButton style={meridian == 'PM' ? Styles.amAndpmButton : { height: '65px' }} onClick={() => handleChangeMeridian('PM')}>
+                <Styles.ColorButton style={meridian == 'PM' ?   { height: '65px' }:Styles.amAndpmButton} onClick={() => handleChangeMeridian('PM')}>
                   PM
                 </Styles.ColorButton>
                 {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
@@ -779,11 +791,21 @@ const [submitting, setSubmitting] = React.useState(false)
             )
           }
         </Grid>
-
+        <Grid item>
+            <Typography
+              variant={isMobile ? "body2" : "subtitle2"}
+              style={{
+                ...Styles.colorCharcoalLight,
+                margin: isMobile ? "10px 0 47px" : "20px 0 47px",
+                ...Styles.centerTxt,
+              }}
+            >
+              © {new Date().getFullYear()} GetSetGo Fitness. All Rights
+              Reserved.
+            </Typography>
+          </Grid>
 
       </Grid>
- 
-
     </Grid >
 
   );

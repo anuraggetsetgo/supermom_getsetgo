@@ -3,10 +3,13 @@ import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import customTxt from "./customTxt.json";
+import { useHistory } from "react-router-dom";
 
 const Footer = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  let history =useHistory();
+  //console.log();
   return (
     <>
       <Grid item container direction="row" alignItems="center" justify="center">
@@ -119,14 +122,14 @@ const Footer = (props) => {
             justify="center"
             onClick={props.scrollToSignUp}
           >
-            <Styles.ColorButton
+           {history.location.pathname=='/'&& <Styles.ColorButton
               style={{
                 width: isMobile ? "90vw" : "22%",
                 marginTop: isMobile ? "40px" : "30px",
               }}
             >
               REGISTER NOW!
-            </Styles.ColorButton>
+            </Styles.ColorButton>}
           </Grid>
           <Grid item>
             <Typography

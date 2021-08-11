@@ -128,6 +128,7 @@ const Footer = (props) => {
                 width: isMobile ? "90vw" : "22%",
                 marginTop: isMobile ? "40px" : "30px",
               }}
+              
             >
               REGISTER NOW!
             </Styles.ColorButton>

@@ -10,26 +10,26 @@ import Mediabanner from "./sections/mediabanner";
 import Publicreviews from './sections/publicreviews'
 
 export default function Home(props) {
-  const signUpRef = useRef()
+  const signUpRef=props.signUpRef;
   const [reviewData, setReviewdata] = React.useState([]);
   const getReview = () => {
     api_google_Reviews(data => { console.log(data); setReviewdata(data.data.reviews) }, err => { console.log(err) })
   }
-  const scrollToSignUp=()=>{
-    signUpRef.current.scrollIntoView({ behavior: 'smooth' })
-  }
+  // const scrollToSignUp=()=>{
+  //   signUpRef.current.scrollIntoView({ behavior: 'smooth' })
+  // }
   React.useEffect(() => {
     getReview();
   }, []);
 
   return (
     <>
-      <Carousel scrollToSignUp={scrollToSignUp}/>
+      <Carousel scrollToSignUp={props.scrollToSignUp}/>
       <Signupbanner ref={signUpRef}/>
       {/* <Signupform /> */}
       {/* <Socialmedia /> */}
       <Landingvideobanner />
-      <Joinnow  scrollToSignUp={scrollToSignUp}/>
+      <Joinnow  scrollToSignUp={props.scrollToSignUp}/>
       <Whygetsetgo />
       <Publicreviews reviewData={reviewData} />
       <Mediabanner />

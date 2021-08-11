@@ -9,7 +9,7 @@ const Footer = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   let history =useHistory();
-  console.log(history);
+  //console.log(history);
   return (
     <>
       <Grid item container direction="row" alignItems="center" justify="center">
@@ -45,7 +45,7 @@ const Footer = (props) => {
                 x2="-4.37114e-08"
                 y2="0.499985"
                 stroke="black"
-                stroke-opacity="0.2"
+                strokeOpacity="0.2"
               />
             </svg>
             <Typography
@@ -71,7 +71,7 @@ const Footer = (props) => {
                 x2="-4.37114e-08"
                 y2="0.499985"
                 stroke="black"
-                stroke-opacity="0.2"
+                strokeOpacity="0.2"
               />
             </svg>
           </Grid>

@@ -67,7 +67,7 @@ const Mediabanner = () => {
           >
             {customTxt.GSGSocialMedia.images.map((val, key) => {
               return (
-                <a href={val[1]} target="_blank" rel="noopener noreferrer">
+                <a key={key} href={val[1]} target="_blank" rel="noopener noreferrer">
                   <img
                     src={Styles.backCoverImg(val[0])}
                     alt="social Media Icons"

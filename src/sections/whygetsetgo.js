@@ -37,6 +37,7 @@ const Whygetsetgo = () => {
             <Grid item container xs={12} sm={12} lg={4}>
               {customTxt.whyGetSetGo.column1.map((item, i) => (
                 <Grid
+                key={i+item.title}
                   item
                   xs={12}
                   container
@@ -84,6 +85,7 @@ const Whygetsetgo = () => {
             <Grid item container xs={12} sm={12} lg={4}>
               {customTxt.whyGetSetGo.column2.map((item, i) => (
                 <Grid
+                key={i+item.title}
                   item
                   xs={12}
                   container

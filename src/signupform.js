@@ -358,6 +358,7 @@ const Signupform = (props) => {
             signUpInfoMessage={signUpInfoMessage}
             setIsContinue={setIsContinue}
             setSubmitButtonEnable={setSubmitButtonEnable}
+            setSignUpInfoMessage={setSignUpInfoMessage}
           />
         }
 
@@ -379,9 +380,9 @@ const Signupform = (props) => {
               <Grid item container direction="row" justify="center">
                 <Grid
                   item
-                  justify="center"
-                  justify="center"
-                  alignItems="center"
+                  //justify="center"
+                  //justify="center"
+                  //alignItems="center"
                   xs={12}
                   sm={12}
                   lg={12}

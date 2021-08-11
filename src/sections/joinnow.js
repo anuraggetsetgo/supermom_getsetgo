@@ -67,6 +67,7 @@ const Joinnow = (props) => {
               {customTxt.GSGAskQuestions.questionsset1.map((val, key) => {
                 return (
                   <Grid
+                  key={key}
                     item
                     container
                     direction="row"
@@ -85,9 +86,9 @@ const Joinnow = (props) => {
                         <Grid
                           item
                           xs={1}
-                          justify="flex-start"
-                          alignItems="flex-start"
-                          direction="row"
+                          //justify="flex-start"
+                          //alignItems="flex-start"
+                          //direction="row"
                           style={{ marginRight: "16px" }}
                         >
                           <svg
@@ -139,6 +140,7 @@ const Joinnow = (props) => {
             {customTxt.GSGAskQuestions.questionsset2.map((val, key) => {
               return (
                 <Grid
+                key={key}
                   item
                   container
                   direction="row"
@@ -157,9 +159,9 @@ const Joinnow = (props) => {
                       <Grid
                         item
                         xs={1}
-                        justify="flex-start"
-                        alignItems="flex-start"
-                        direction="row"
+                        //justify="flex-start"
+                        //alignItems="flex-start"
+                        //direction="row"
                         style={{ marginRight: "16px" }}
                       >
                         <svg

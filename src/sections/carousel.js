@@ -101,7 +101,7 @@ const LogoSvg = () => {
           fill="black"
         />
         <g filter="url(#filter0_d)">
-          <g clip-path="url(#clip0)">
+          <g clipPath="url(#clip0)">
             <path
               d="M103.333 215.278C121.712 215.278 136.611 200.379 136.611 182.001C136.611 163.622 121.712 148.723 103.333 148.723C84.9539 148.723 70.0549 163.622 70.0549 182.001C70.0549 200.379 84.9539 215.278 103.333 215.278Z"
               fill="white"
@@ -128,9 +128,9 @@ const LogoSvg = () => {
             width="98.5024"
             height="98.5024"
             filterUnits="userSpaceOnUse"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix
               in="SourceAlpha"
               type="matrix"
@@ -171,11 +171,12 @@ const LogoSvg = () => {
     </div>
   );
 };
-const AvtarName = ({ name, profile }) => {
+const AvtarName = ({ name, profile },key) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Grid
+    key={key}
       container
       item
       direction="row"
@@ -195,8 +196,8 @@ const AvtarName = ({ name, profile }) => {
         ></Grid>
       </Grid>
       <Grid container xs={6} item direction="column">
-        {name.split(" ").map((name) => (
-          <Grid item>
+        {name.split(" ").map((name,key) => (
+          <Grid key={key+name} item>
             <Typography
               variant={isMobile ? "h6" : "h5"}
               style={{
@@ -213,12 +214,13 @@ const AvtarName = ({ name, profile }) => {
     </Grid>
   );
 };
-const CarouselContainer = ({ imagePath, text, name, profile }) => {
+const CarouselContainer = ({ imagePath, text, name, profile },key) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
+       key={key+name}
         item
         container
         justify="center"
@@ -360,8 +362,8 @@ const CarouselItem = (props) => {
             className="mySwiper"
             pagination={true}
           >
-            {DataItem.map(({ image, text, name, profile }) => (
-              <>
+            {DataItem.map(({ image, text, name, profile },key) => (
+              <Grid key={key+name}>
                 <SwiperSlide>
                   <CarouselContainer
                     profile={profile}
@@ -370,7 +372,7 @@ const CarouselItem = (props) => {
                     text={text}
                   />
                 </SwiperSlide>
-              </>
+              </Grid>
             ))}
           </Swiper>
         </Grid>

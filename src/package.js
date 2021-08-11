@@ -203,6 +203,7 @@ class Package extends Component {
     return element;
   };
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.getproducts();
   }
 

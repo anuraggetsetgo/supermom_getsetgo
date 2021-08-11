@@ -45,12 +45,12 @@ const Signupbanner = forwardRef((props, ref) => {
               padding: isMobile ? "20px" : "0",
             }}
           >
-            <Grid justify="center" alignItems="center" >
+            <Grid>
               <Typography
                 variant={isMobile ? "h4" : "h2"}
                 style={{ textAlign: "center", ...Styles.whiteColor }}
               >
-                If <spam style={{ ...Styles.boldTxt }}>multi-tasking </spam>
+                If <span style={{ ...Styles.boldTxt }}>multi-tasking </span>
                 is the name of the game, these mom’s who have{" "}
                 <span style={{ ...Styles.boldTxt }}>
                   undergone our coaching program

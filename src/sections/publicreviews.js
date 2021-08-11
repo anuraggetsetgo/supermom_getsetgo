@@ -73,7 +73,7 @@ class Publicreviews extends Component {
     return (
       <Grid
         item
-        contianer
+        container
         direction="column"
         justify="center"
         alignItems="center"

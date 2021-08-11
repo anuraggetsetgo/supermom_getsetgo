@@ -380,11 +380,11 @@ const Signupform = (props) => {
                 <Grid
                   item
                   justify="center"
-                  justify="flex-start"
+                  justify="center"
                   alignItems="center"
                   xs={12}
                   sm={12}
-                  lg={10}
+                  lg={12}
                   style={{
                     padding: isMobile ? "30px" : "60px",
                     boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
@@ -393,7 +393,7 @@ const Signupform = (props) => {
                     marginTop: `${isMobile ? "23px" : "55px"}`,
                   }}
                 >
-                  <Grid item container>
+                  <Grid item container alignItems="center" justify="center">
                     <Typography
                       variant={isMobile ? "h4" : "h1"}
                       style={{
@@ -407,7 +407,7 @@ const Signupform = (props) => {
                   </Grid>
                   <Grid
                     item
-                    style={{ marginTop: "32px", marginBottom: "32px" }}
+                    style={{ marginTop: "16px", marginBottom: "32px" }}
                   >
                     <Typography
                       variant={isMobile ? "h6" : "h5"}
@@ -459,51 +459,50 @@ const Signupform = (props) => {
                         direction="row"
                         style={Styles.formFieldContainer}
                       >
-                        <Grid item>
-                          <Grid
-                            item
-                            xs={3}
-                            sm={12}
-                            lg={3}
-                            style={Styles.countryContainer}
-                          >
-                            <Field
-                              style={{ ...Styles.feildRadius }}
-                              name="country"
-                              type="number"
-                              validate={validateCountry}
-                              disabled={formSubmitting}
-                              style={{
-                                ...Styles.formInputField,
-                                width: isMobile ? "90%" : "90%",
-                              }}
-                            />
-                          </Grid>
-                          <Grid
-                            item
-                            xs={10}
-                            sm={12}
-                            lg={10}
+                        <Grid
+                          item
+                          xs={2}
+                          sm={12}
+                          lg={2}
+                          style={Styles.countryContainer}
+                        >
+                          <Field
+                            style={{ ...Styles.feildRadius }}
+                            name="country"
+                            type="number"
+                            validate={validateCountry}
+                            disabled={formSubmitting}
                             style={{
-                              ...Styles.mobileContainer,
-                              // marginLeft: isMobile ? "0" : "10px",
-                              width: isMobile ? "100%" : "93%",
+                              ...Styles.formInputField,
+                              width: isMobile ? "90%" : "90%",
                               marginBottom: "16px",
                             }}
-                          >
-                            <Field
-                              style={{ ...Styles.formInputField }}
-                              placeholder="Enter your contact no"
-                              name="mobile"
-                              type="number"
-                              disabled={formSubmitting}
-                              validate={validateMobile}
-                              style={{
-                                ...Styles.formInputField,
-                                width: isMobile ? "100%" : "100%",
-                              }}
-                            />
-                          </Grid>
+                          />
+                        </Grid>
+                        <Grid
+                          item
+                          xs={10}
+                          sm={12}
+                          lg={10}
+                          style={{
+                            ...Styles.mobileContainer,
+                            // marginLeft: isMobile ? "0" : "10px",
+                            width: isMobile ? "100%" : "98%",
+                            marginBottom: "16px",
+                          }}
+                        >
+                          <Field
+                            style={{ ...Styles.formInputField }}
+                            placeholder="Enter your contact no"
+                            name="mobile"
+                            type="number"
+                            disabled={formSubmitting}
+                            validate={validateMobile}
+                            style={{
+                              ...Styles.formInputField,
+                              width: isMobile ? "100%" : "96%",
+                            }}
+                          />
                         </Grid>
                         {((touched.mobile && errors.mobile) ||
                           (touched.country && errors.country)) && (

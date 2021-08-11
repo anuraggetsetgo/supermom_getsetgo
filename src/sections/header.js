@@ -20,17 +20,19 @@ const Header = () => {
         xs={12}
         sm={12}
         lg={10}
-        style={isMobile?  { height: "70px", padding: "20px" } :
-                          { height: "100px", padding: "0" }
-      }
+        style={
+          isMobile
+            ? { height: "70px", padding: "20px" }
+            : { height: "90px", padding: "0" }
+        }
       >
         <Link to="/">
           <PreloadImage
             src={Styles.backCoverImg("Logo.png")}
             alt="Logo"
-            height={isMobile?"50px":'50px'}
-            width={isMobile?"50px":'50px'}
-            style={isMobile?{height:'8vh'} :null }
+            height={isMobile ? "50px" : "50px"}
+            width={isMobile ? "50px" : "50px"}
+            style={isMobile ? { height: "8vh" } : null}
           />
         </Link>
       </Grid>

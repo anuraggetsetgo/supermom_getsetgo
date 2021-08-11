@@ -118,6 +118,7 @@ const Whygetsetgo = () => {
                         ...Styles.boldNormal,
                         textAlign: "center",
                         ...Styles.colorCharcoalLight,
+                        lineHeight: "30px",
                       }}
                     >
                       {item.text}

@@ -192,7 +192,7 @@ const AvtarName = ({ name, profile }) => {
         {name.split(" ").map((name) => (
           <Grid item>
             <Typography
-              variant={isMobile?"h6":'h5'}
+              variant={isMobile ? "h6" : "h5"}
               style={{
                 maxWidht: "238px",
                 ...Styles.colorReef,
@@ -217,7 +217,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: isMobile?"89vw":"800px" }}
+        style={{ width: isMobile ? "89vw" : "800px" }}
       >
         <Grid
           item
@@ -225,7 +225,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           direction="row"
           justify="space-between"
           alignItems="center"
-          style={{ ...cardStyle,padding:isMobile?'20px':'40px' }}
+          style={{ ...cardStyle, padding: isMobile ? "20px" : "10px" }}
         >
           <Grid
             container
@@ -272,7 +272,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }) => {
           >
             <Grid item>
               <Typography
-                variant={isMobile?"h6":'h5'}
+                variant={isMobile ? "h6" : "h5"}
                 style={{
                   maxWidth: isMobile ? "300px" : "238px",
                   ...Styles.colorCharcoalDark,
@@ -303,10 +303,13 @@ const CarouselItem = (props) => {
           sm={12}
           lg={10}
           container
-          justify="center"
+          justify="flex-start"
           alignItems="center"
-          style={isMobile?{  padding: "24px 20px" }
-                  :{ marginBottom: "40px", padding: isMobile ? "20px" : "0" }}
+          style={
+            isMobile
+              ? { padding: "24px 20px" }
+              : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
+          }
         >
           <Grid item>
             <Typography
@@ -327,7 +330,7 @@ const CarouselItem = (props) => {
           // style={{ maxWidth: "1360px" }}
         >
           <Carousel
-            interval={500000}
+            interval={5000000}
             indicatorIconButtonProps={{
               style: {
                 color: "#C2DCE2",
@@ -341,7 +344,13 @@ const CarouselItem = (props) => {
             }}
             indicatorContainerProps={{
               style: {
-                marginTop: "30px",
+                marginTop: "15px",
+              },
+            }}
+            navButtonsProps={{
+              // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
+              style: {
+                backgroundColor: "#4595A4",
               },
             }}
           >
@@ -355,7 +364,13 @@ const CarouselItem = (props) => {
             ))}
           </Carousel>
         </Grid>
-        <Grid item container justify="center" alignItems="center" onClick={props.scrollToSignUp}>
+        <Grid
+          item
+          container
+          justify="center"
+          alignItems="center"
+          onClick={props.scrollToSignUp}
+        >
           <button
             style={{
               ...Styles.landingButton,
@@ -363,7 +378,11 @@ const CarouselItem = (props) => {
               width: `${isMobile ? "90%" : "273px"}`,
             }}
           >
-            <span style={isMobile?{fontSize:'20px'}:{fontSize:'24px'}}>GET STARTED!</span>
+            <span
+              style={isMobile ? { fontSize: "20px" } : { fontSize: "24px" }}
+            >
+              GET STARTED!
+            </span>
           </button>
         </Grid>
       </Grid>

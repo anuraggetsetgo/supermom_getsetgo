@@ -15,7 +15,7 @@ const Landingvideobanner = () => {
         justify="center"
         style={{
           marginTop: isMobile ? "380px" : "400px",
-          marginBottom: isMobile ? "0" : "130px",
+          marginBottom: isMobile ? "0" : "0px",
           padding: isMobile ? "20px" : "0",
         }}
       >
@@ -60,8 +60,8 @@ const Landingvideobanner = () => {
             container
             style={{
               margin: "0px",
-              minHeight: "40vh",
-              maxHeight: "40vh",
+              //minHeight: "40vh",
+              //maxHeight: "40vh",
             }}
           >
             <Grid
@@ -75,9 +75,9 @@ const Landingvideobanner = () => {
               }
             >
               {/* <img src={Styles.backCoverImg("mother_holding_img.png")} /> */}
-              <Iframe //style={{width:'80vw'}}
+              <Iframe 
                 wd={window.screen.width * 0.7 + "px"}
-                ht={window.screen.height * 0.4 + "px"}
+                ht={window.screen.height * 0.45 + "px"}
                 title="full body home workout"
                 src="https://www.youtube.com/embed/u3RRJBrcr-w"
               />

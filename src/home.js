@@ -16,7 +16,7 @@ export default function Home(props) {
     api_google_Reviews(data => { console.log(data); setReviewdata(data.data.reviews) }, err => { console.log(err) })
   }
   const scrollToSignUp=()=>{
-    signUpRef.current.scrollIntoView({ behavior: 'smooth' })
+    signUpRef.current.scrollIntoView({ behavior: 'smooth' }) 
   }
   React.useEffect(() => {
     getReview();

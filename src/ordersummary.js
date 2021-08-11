@@ -9,8 +9,16 @@ import MenuItem from "@material-ui/core/MenuItem";
 //import Refercomponents from "./components/FormView";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
-import {api_set_reminder} from './gsgAPI/api'
-
+import { api_set_reminder } from './gsgAPI/api'
+import { Style, WhatsApp } from "@material-ui/icons";
+const errMsgs = {
+  requried: "Uh oh! It's a required field",
+  name: "Wait, that doesn't sound like a valid name",
+  email: "Please enter a valid email id",
+  mobile: "That is certainly not a valid number. ",
+  country: "Did you miss the country code?",
+  age: "Please enter a valid age.",
+};
 const empty = [
   {
     displayname: "Name",
@@ -115,10 +123,57 @@ const useStyles = makeStyles((theme) => ({
 
 export const Ordersummary = (props) => {
   const classes = useStyles();
+  const userData = JSON.parse(get('userDetails'))
   const [hour, setHour] = React.useState("");
-
+  const [err, setErr] = React.useState(false);
+  const [minute, setMinute] = React.useState("");
+  const [meridian, setMeridian] = React.useState('AM');
+  const [phone, setPhone] = React.useState("");
+  const [phoneErr, setErrPhone] = React.useState("");
+  const [whatapp, setWhatsapp] = React.useState("");
+  //const [submitEnable, setUserMessage] = React.useState("");
+  const [userMessage, setUserMessage] = React.useState("");
+  const [userMessageErr, setUserMessageErr] = React.useState("");
+  const currency = JSON.parse(get('products')).currency
+  const region=(currency=="₹")?'ind': (currency=="$")?'row':'aed'
+  const validate = function (value, regex, type) {
+    let error;
+    if (!value) {
+      error = !(type === "country") ? errMsgs.requried : errMsgs.country;
+    } else if (!regex.test(value)) {
+      error = errMsgs[type];
+    } else {
+      error = null;
+    }
+    return error;
+  };
+  function validateMobile(value) {
+    return validate(
+      value,
+      /([+]?\d{1,2}[.-\s]?)?(\d{3}[.-]?){2}\d{4}$/g,
+      "mobile"
+    );
+  }
   const handleChange = (event) => {
     setHour(event.target.value);
+  };
+  const handleChangeHour = (event) => {
+    console.log(hour);
+    setHour(event.target.value);
+    
+  };
+  const handleChangeMinute = (event) => {
+    console.log(minute)
+    setMinute(event.target.value);
+  };
+  const handleChangePhone = (event) => {
+    setPhone(event.target.value);
+  };
+  const handleChangeWhatsApp = (event) => {
+    setWhatsapp(event.target.value);
+  };
+  const handleChangeMeridian = (val) => {
+    setMeridian(val);
   };
   //   this.state = {
   //     orderStatus: "waiting",
@@ -127,7 +182,7 @@ export const Ordersummary = (props) => {
   const [orderStatus, setOrderStatus] = React.useState("waiting")
   const [name, setName] = React.useState("")
   const [email, setEmail] = React.useState("")
-
+const [submitting, setSubmitting] = React.useState(false)
   React.useEffect(() => {
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     //        callAPI(getURL('order_status'), 'post', (data)=>{this.orderData(data.data)}, (err)=>{this.orderStatus(err)}, {order_id:this.props.match.params.orderId})
@@ -140,7 +195,10 @@ export const Ordersummary = (props) => {
       (err) => {
         orderStats(err);
       },
-      { order_id: props.match.params.orderId, campaign_id: campaign_id }
+      {
+        order_id: props.match.params.orderId,
+        campaign_id: campaign_id
+      }
     );
   }, []);
 
@@ -208,7 +266,40 @@ export const Ordersummary = (props) => {
     setOrderStatus("err");
   }
   const handleSubmit = () => {
-    console.log("YOU")
+    let err = false;
+    if (hour === '' || minute === '') {
+      err = true;
+      setErr("Please select a time ")
+    }
+    let isPhoneValid= validateMobile(phone)
+    if (isPhoneValid) {
+      err = true;
+      setErrPhone(isPhoneValid)
+    }
+    console.log(err);
+    console.log(phone,whatapp,hour,minute,meridian,region)
+    if(!err)
+    {
+      setSubmitting(true);
+      api_set_reminder({
+        "mobile_number": phone, //"919821354464",
+        "whatsapp_number": whatapp,//"919821354464",
+        "preferred_hour": hour,//'10'
+        "preferred_min": minute,//"00",
+        "preferred_meridian": meridian,
+         "region":  region,
+      }
+        ,(data) => {    
+          setUserMessage(data.data.successmessage);
+              },
+
+      (err) => {
+        setSubmitting(false)
+        setUserMessageErr('Opps an error occurecd with selecting a slot.Please try again ')}
+    )
+  }
+
+
   }
   const backgroundColor = (orderStatus) => {
     // (orderStatus=='waiting')? 'blue':
@@ -499,127 +590,161 @@ export const Ordersummary = (props) => {
                     <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
                   </Typography>
                 </Grid>
-              </Grid>
-              <Grid
-                item
-                container
-                alignItems="center"
-                justify="center"
-                style={{ bottom: "-10px", position: "relative" }}
-              >
-                <Grid
-                  item
-                  container
-                  alignItems="center"
-                  justify="flex-start"
-                  direction="row"
-                  xs={12}
-                  sm={12}
-                  lg={8}
-                  style={{
-                    padding: "100px",
-                    ...Styles.whiteBG,
-                    boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
-                    borderRadius: "10px",
-                  }}
+                {!userMessage && <Grid
+        item
+        container
+        alignItems="center"
+        justify="center"
+        style={{ bottom: "-10px", position: "relative" }}
+      >
+        <Grid
+          item
+          container
+          alignItems="center"
+          justify="flex-start"
+          direction="row"
+          xs={12}
+          sm={12}
+          lg={8}
+          style={{
+            padding: "100px",
+            ...Styles.whiteBG,
+            boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+            borderRadius: "10px",
+          }}
+        >
+          <Grid item>
+            <Typography
+              variant="h3"
+              style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
+            >
+              Preferred time for call
+            </Typography>
+          </Grid>
+          <Grid item container>
+            <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
+              What’s the best time to call you for follow-up
+            </Typography>
+          </Grid>
+          <Grid item xs={12} direction="row" container justify="center">
+            <Grid item xs={4} >
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Select Hour
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={hour}
+                  onChange={handleChangeHour}
+                  label="Select Hour"
                 >
-                  <Grid item>
-                    <Typography
-                      variant="h3"
-                      style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
-                    >
-                      Preferred time for call
-                    </Typography>
-                  </Grid>
-                  <Grid item container>
-                    <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
-                      What’s the best time to call you for follow-up
-                    </Typography>
-                  </Grid>
-                  <Grid item direction="row" container justify="space-between">
-                    <Grid item direction="row">
-                      <FormControl variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">
-                          Select Hour
-                        </InputLabel>
-                        <Select
-                          labelId="demo-simple-select-outlined-label"
-                          id="demo-simple-select-outlined"
-                          value={hour}
-                          onChange={handleChange}
-                          label="Select Hour"
-                        >
-                          <MenuItem value="">
-                            <em>None</em>
-                          </MenuItem>
-                          {timeHour.map((key, val) => {
-                            return <MenuItem value={key.id}>{key.hour}</MenuItem>;
-                          })}
-                        </Select>
-                      </FormControl>
-                    </Grid>
-                    <Grid item direction="row">
-                      <FormControl variant="outlined" className={classes.formControl}>
-                        <InputLabel id="demo-simple-select-outlined-label">
-                          Select Hour
-                        </InputLabel>
-                        <Select
-                          labelId="demo-simple-select-outlined-label"
-                          id="demo-simple-select-outlined"
-                          value={hour}
-                          onChange={handleChange}
-                          label="Select Hour"
-                        >
-                          <MenuItem value="">
-                            <em>None</em>
-                          </MenuItem>
-                          {timeMinute.map((key, val) => {
-                            return <MenuItem value={key.id}>{key.Minute}</MenuItem>;
-                          })}
-                        </Select>
-                      </FormControl>
-                    </Grid>
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  {timeHour.map((key, val) => {
+                    return <MenuItem value={key.id}>{key.hour}</MenuItem>;
+                  })}
 
-                    <Grid item direction="row">
-                      <button style={{ ...Styles.amAndpmButton }}>AM</button>
-                    </Grid>
-                    <Grid item direction="row">
-                      <button style={{ ...Styles.amAndpmButton }}>PM</button>
-                    </Grid>
-                  </Grid>
-                  <Grid item style={{ marginTop: "20px" }}>
-                    <input
-                      placeholder="Please confirm your mobile number"
-                      style={{
-                        width: "690px",
-                        height: "65px",
-                        borderRadius: "10px",
-                        border: "1px solid rgba(102, 102, 102, 0.3)",
-                      }}
-                    />
-                  </Grid>
-                  <Grid item style={{ marginTop: "20px" }}>
-                    <input
-                      placeholder="Your whatsapp number:"
-                      style={{
-                        width: "690px",
-                        height: "65px",
-                        borderRadius: "10px",
-                        border: "1px solid rgba(102, 102, 102, 0.3)",
-                      }}
-                    />
-                  </Grid>
-                  <Grid item>
-                    <button
-                      style={{
-                        ...Styles.thankyousubmitButton,
-                      }}
-                    >
-                      SUBMIT
-                    </button>
-                  </Grid>
-                </Grid>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={4} >
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Select Minute
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  value={minute}
+                  onChange={handleChangeMinute}
+                  label="Select Minute"
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  {timeMinute.map((key, val) => {
+                    return <MenuItem value={key.id}>{key.Minute}</MenuItem>;
+                  })}
+                </Select>
+
+              </FormControl>
+              
+            </Grid>
+            <Grid xs={4} item container alignItems='flex-end' justify='space-between'>
+              <Grid item >
+                {/* <button ></button> */}
+                <Styles.ColorButton style={meridian == 'AM' ? Styles.amAndpmButton : { height: '65px' }} onClick={() => handleChangeMeridian('AM')}>
+                  AM
+                </Styles.ColorButton>
               </Grid>
+              <Grid item >
+                <Styles.ColorButton style={meridian == 'PM' ? Styles.amAndpmButton : { height: '65px' }} onClick={() => handleChangeMeridian('PM')}>
+                  PM
+                </Styles.ColorButton>
+                {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid xs={8} item container>
+            {err && (
+              <Typography style={{ ...Styles.err, ...Styles.centerTxt }}>{err}</Typography>)}</Grid>
+          <Grid xs={12} item style={{ marginTop: "20px" }}>
+            <input
+              type='number'
+              placeholder="Please confirm your mobile number"
+              defaultValue={phone}
+              style={{
+                width: "100%",
+                height: "65px",
+                borderRadius: "10px",
+                border: "1px solid rgba(102, 102, 102, 0.3)",
+              }}
+              value={phone}
+              onChange={(e) => { handleChangePhone(e) }}
+            />
+            {phoneErr &&<Typography style={Styles.err}>{phoneErr}</Typography>}
+          </Grid>
+          <Grid xs={12} item style={{ marginTop: "20px" }}>
+            <input
+              placeholder="Your whatsapp number:"
+              defaultValue={phone}
+              type='number'
+              style={{
+                width: "100%",
+                height: "65px",
+                borderRadius: "10px",
+                border: "1px solid rgba(102, 102, 102, 0.3)",
+              }}
+              value={whatapp}
+              onChange={handleChangeWhatsApp}
+            />
+
+          </Grid>
+          <Grid xs={12} item container direction='row' alignItems='center' justify='center' style={{ marginTop: "20px" }}>
+          </Grid>
+          <Grid item xs={12} >
+            <Styles.ColorButton type='submit' disabled={submitting} style={{
+              ...Styles.thankyousubmitButton,
+            }} onSubmit={handleSubmit} onClick={handleSubmit}>
+              SUBMIT
+            </Styles.ColorButton>
+          </Grid>
+        </Grid>
+      </Grid>
+
+}
+        {userMessage && <Grid>
+          <Typography variant='h2'>{userMessage}</Typography>
+        </Grid>
+        }
+              </Grid>
+
+         
+
+
+
 
             </>
             )
@@ -650,7 +775,6 @@ export const Ordersummary = (props) => {
                 <Typography variant="h5" style={{ ...Styles.colorWhite }}>
                   <br></br>Remember to quote your order id in the email:{" "}
                   {props.match.params.orderId}</Typography>
-
               </Grid>
             )
           }
@@ -658,10 +782,7 @@ export const Ordersummary = (props) => {
 
 
       </Grid>
-
-
-
-
+ 
 
     </Grid >
 

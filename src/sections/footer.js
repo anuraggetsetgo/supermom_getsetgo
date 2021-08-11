@@ -9,7 +9,7 @@ const Footer = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   let history =useHistory();
-  //console.log();
+  console.log(history);
   return (
     <>
       <Grid item container direction="row" alignItems="center" justify="center">
@@ -24,6 +24,7 @@ const Footer = (props) => {
           lg={10}
           style={{ padding: isMobile ? "20px" : "0" }}
         >
+          
           <Grid
             item
             container
@@ -115,22 +116,22 @@ const Footer = (props) => {
               })}
             </Grid>
           </Grid>
-          <Grid
+          {history.location.pathname=='/' &&(<> <Grid
             item
             container
             alignItems="center"
             justify="center"
             onClick={props.scrollToSignUp}
           >
-           {history.location.pathname=='/'&& <Styles.ColorButton
+            <Styles.ColorButton
               style={{
                 width: isMobile ? "90vw" : "22%",
                 marginTop: isMobile ? "40px" : "30px",
               }}
             >
               REGISTER NOW!
-            </Styles.ColorButton>}
-          </Grid>
+            </Styles.ColorButton>
+          </Grid></>)}
           <Grid item>
             <Typography
               variant={isMobile ? "body2" : "subtitle2"}

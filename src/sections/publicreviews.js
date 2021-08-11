@@ -18,7 +18,6 @@ const GoogleReview = ({ review }) => {
           alignContent: "space-between",
         }}
       >
-        {" "}
         <Grid
           item
           xs={12}
@@ -45,7 +44,7 @@ const GoogleReview = ({ review }) => {
               {review.reviewer_name}
             </Typography>
           </Grid>
-        </Grid>{" "}
+        </Grid>
         <br />
         <br />
         <br />

@@ -159,14 +159,14 @@ export default {
     marginTop: "20px",
   },
   landingButton: {
-    height: "93px",
+    height: "85px",
     backgroundColor: "#FFDD33",
     borderRadius: "10px",
     fontFamily: "Poppins",
     fontWeight: "bold",
     fontSize: "24px",
     border: "none",
-    margin: "40px 0 100px 0",
+    margin: "20px 0 100px 0",
     cursor: "pointer",
   },
   amAndpmButton: {
@@ -258,6 +258,9 @@ export default {
     marginBottom: "10px",
   },
   formInputField: {
+    borderColor: "#666666",
+    color: "#666666",
+    padding: "16px",
     height: "70px",
     border: "1px solid rgba(102, 102, 102, 0.3)",
     boxSizing: "border-box",

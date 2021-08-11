@@ -53,7 +53,7 @@ const Footer = (props) => {
               style={{
                 ...Styles.colorReef,
                 ...Styles.boldTxt,
-                margin: "0 18px",
+                margin: isMobile ? "0 5px" : "0 18px",
               }}
             >
               {customTxt.GSGInTheNews.mainheading}

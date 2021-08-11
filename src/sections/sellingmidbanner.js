@@ -55,9 +55,19 @@ const Sellingmidbanner = (props) => {
             <Grid
               justify="center"
               alignItems="center"
-              style={{ background: "#FFDD33", ...Styles.cardRadius2 }}
+              style={{
+                background: "#FFDD33",
+                ...Styles.cardRadius2,
+                cursor: "pointer",
+              }}
             >
-              <Grid item style={{ margin: "30px 60px" }} onClick={()=>{props.createOrder(props.product[0], 0)}}>
+              <Grid
+                item
+                style={{ margin: "30px 60px" }}
+                onClick={() => {
+                  props.createOrder(props.product[0], 0);
+                }}
+              >
                 <Typography
                   variant={isMobile ? "h5" : "h2"}
                   style={{ ...Styles.centerTxt, ...Styles.colorReef }}

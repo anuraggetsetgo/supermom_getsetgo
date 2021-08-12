@@ -107,6 +107,9 @@ export default {
   feildRadius: {
     borderRadius: "10px",
   },
+  fontSize16:{
+    fontSize:'16px',
+  },
   greyBG: {
     background: "#111",
   },

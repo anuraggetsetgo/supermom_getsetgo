@@ -437,11 +437,11 @@ const Signupform = (props) => {
                         <Field
                           name="name"
                           type="text"
-                          placeholder="Enter your name"
+                          placeholder="Enter your full name"
                           validate={validateName}
                           disabled={formSubmitting}
                           style={{
-                            ...Styles.formInputField,
+                            ...Styles.formInputField,...Styles.fontSize16,
                             width: isMobile ? "100%" : "95%",
                           }}
                         />
@@ -468,13 +468,13 @@ const Signupform = (props) => {
                           style={Styles.countryContainer}
                         >
                           <Field
-                            style={{ ...Styles.feildRadius }}
+                            //style={{ ...Styles.feildRadius,...Styles.fontSize16 }}
                             name="country"
                             type="number"
                             validate={validateCountry}
                             disabled={formSubmitting}
                             style={{
-                              ...Styles.formInputField,
+                              ...Styles.formInputField,...Styles.fontSize16,
                               width: isMobile ? "130%" : "85%",
                               // marginBottom: "16px",
                               marginLeft: "-5px",
@@ -494,14 +494,14 @@ const Signupform = (props) => {
                           }}
                         >
                           <Field
-                            style={{ ...Styles.formInputField }}
+                            //style={{ ...Styles.formInputField }}
                             placeholder="Enter your contact no"
                             name="mobile"
                             type="number"
                             disabled={formSubmitting}
                             validate={validateMobile}
                             style={{
-                              ...Styles.formInputField,
+                              ...Styles.formInputField,...Styles.fontSize16,
                               width: isMobile ? "90%" : "96%",
                               marginLeft: isMobile ? "17px" : "0",
                             }}
@@ -533,7 +533,7 @@ const Signupform = (props) => {
                         disabled={formSubmitting}
                         validate={validateEmail}
                         style={{
-                          ...Styles.formInputField,
+                          ...Styles.formInputField,...Styles.fontSize16,
                           width: isMobile ? "100%" : "98%",
                         }}
                       />

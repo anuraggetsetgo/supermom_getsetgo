@@ -86,6 +86,7 @@ const Banner = (props) => {
               padding: isMobile ? "13px 30px 13px 30px" : "30px 0px",
               textAlign: "center",
               cursor: "pointer",
+              marginTop:'-8px' 
             }}
             container
             justify="center"
@@ -97,7 +98,7 @@ const Banner = (props) => {
           >
             <Typography
               variant={isMobile ? "h5" : "h2"}
-              style={{ ...Styles.boldTxt, ...Styles.colorWhite }}
+              style={{ ...Styles.boldTxt, ...Styles.colorWhite}}
             >
               TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
             </Typography>

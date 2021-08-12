@@ -638,7 +638,7 @@ const [submitting, setSubmitting] = React.useState(false)
               What’s the best time to call you for follow-up
             </Typography>
           </Grid>
-          <Grid item xs={12} direction="row" container justify="center">
+          <Grid item xs={12} direction="row" container justify='space-between'>
             <Grid item xs={6} sm={4} lg={4} >
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">

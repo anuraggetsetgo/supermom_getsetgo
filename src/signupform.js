@@ -208,12 +208,25 @@ const InfoPopUp = ({
               setOpen(false);
               setIsContinue(true);
               setSignUpInfoMessage(false);
-              setSubmitButtonEnable(false);
+              //setSubmitButtonEnable(false);
             }}
           >
-            OK
+            YES
           </Styles.ColorButton>
         </Grid>
+        <Grid item>
+          <Styles.ColorButton style={isMobile?{width:'35vw'}:{width:'100%'}}
+            onClick={() => {
+              //setOpen(false);
+              //setIsContinue(true);
+              //setSignUpInfoMessage(false);
+              //setSubmitButtonEnable(false);
+            }}
+          >
+            Change Mobile number
+          </Styles.ColorButton>
+        </Grid>
+
       </Grid>
     </Dialog>
   );

@@ -148,10 +148,15 @@ export const Ordersummary = (props) => {
   const [phoneErr, setErrPhone] = React.useState("");
   const [whatapp, setWhatsapp] = React.useState("");
   //const [submitEnable, setUserMessage] = React.useState("");
-  const [userMessage, setUserMessage] = React.useState("");
-  const [userMessageErr, setUserMessageErr] = React.useState("");
   const currency = JSON.parse(get("products")).currency;
   const region = currency == "₹" ? "ind" : currency == "$" ? "row" : "aed";
+  const [orderStatus, setOrderStatus] = React.useState("waiting");
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [submitting, setSubmitting] = React.useState(false);
+  const [userMessage, setUserMessage] = React.useState(false);
+  const [userMessageErr, setUserMessageErr] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const validate = function (value, regex, type) {
     let error;
     if (!value) {
@@ -190,15 +195,8 @@ export const Ordersummary = (props) => {
   const handleChangeMeridian = (val) => {
     setMeridian(val);
   };
-  //   this.state = {
-  //     orderStatus: "waiting",
-  //   };
-  // }
-  const [orderStatus, setOrderStatus] = React.useState("waiting");
-  const [name, setName] = React.useState("");
-  const [email, setEmail] = React.useState("");
-  const [submitting, setSubmitting] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  
+
   React.useEffect(() => {
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     //        callAPI(getURL('order_status'), 'post', (data)=>{this.orderData(data.data)}, (err)=>{this.orderStatus(err)}, {order_id:this.props.match.params.orderId})
@@ -326,6 +324,24 @@ export const Ordersummary = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
+  const thumbsUP=(height,width,colourHex)=>{
+    return(
+      <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={colourHex}>
+       <path d="M0 0h24v24H0V0z" fill="none"/>
+       <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+    )
+    
+  }
+  const thumbsDown=(height,width,colourHex)=>{   
+    return(
+      <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={colourHex}>
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+      </svg>
+    )
+    
+
+  }
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
     <Grid>
@@ -373,135 +389,9 @@ export const Ordersummary = (props) => {
           </svg>
         </Grid>
         <Grid item container justify="center" style={{ marginTop: "40px" }}>
-          <svg
-            width="173"
-            height="102"
-            viewBox="0 0 173 102"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M148.974 0H145.236V3.755H148.974V0Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M145.237 3.75781H141.498V7.51281H145.236V11.2678H148.974V3.75781H145.237Z"
-              fill="white"
-            />
-            <path
-              d="M152.713 3.75781H148.975V7.51281H152.713V3.75781Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M8.88155 25.2266H4.63354V29.4936H8.88155V25.2266Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M4.6345 29.4922H0.385498V33.7592H4.6335V38.0262H8.8815V29.4922H4.6345Z"
-              fill="white"
-            />
-            <path
-              d="M13.1296 29.4922H8.88159V33.7592H13.1296V29.4922Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M17.7295 3.57031H14.9175V6.39531H17.7295V3.57031Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M14.9135 6.39844H12.1055V9.22343H14.9135V12.0484H17.7255V6.39844H14.9135Z"
-              fill="white"
-            />
-            <path
-              d="M20.5425 6.39844H17.7305V9.22344H20.5425V6.39844Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M46.0123 11.6016H42.5283V15.1006H46.0123V11.6016Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M42.5284 15.1016H39.0444V18.6016H42.5284V22.1016H46.0124V15.1016H42.5284Z"
-              fill="white"
-            />
-            <path
-              d="M49.4955 15.1016H46.0115V18.6006H49.4955V15.1016Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M169.944 2.0625H167.273V4.7445H169.944V2.0625Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M167.274 4.74219H164.603V7.42419H167.274V10.1022H169.945V4.74219H167.274Z"
-              fill="white"
-            />
-            <path
-              d="M172.615 4.74219H169.944V7.42419H172.615V4.74219Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M162.465 20.0078H160.327V22.1548H162.465V20.0078Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M160.327 22.1562H158.189V24.3032H160.327V26.4502H162.465V22.1562H160.327Z"
-              fill="white"
-            />
-            <path
-              d="M164.602 22.1562H162.464V24.3033H164.602V22.1562Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M156.414 50.8906H151.831V55.4936H156.414V50.8906Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M151.832 55.4922H147.248V60.0922H151.831V64.6922H156.414V55.4922H151.832Z"
-              fill="white"
-            />
-            <path
-              d="M160.997 55.4922H156.414V60.0952H160.997V55.4922Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M14.2136 62.6172H8.24561V68.6112H14.2136V62.6172Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M8.24659 68.6094H2.27759V74.6034H8.24559V80.5974H14.2136V68.6094H8.24659Z"
-              fill="white"
-            />
-            <path
-              d="M20.1816 68.6094H14.2136V74.6034H20.1816V68.6094Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M70.9492 43.7611L60.5415 50.7812L84.2339 85.9067L94.6417 78.8866L70.9492 43.7611Z"
-              fill="white"
-              fill-opacity="0.2"
-            />
-            <path
-              d="M138.887 43.6989C137.841 42.1118 136.218 40.9948 134.362 40.5849C134.887 39.586 135.175 38.4795 135.204 37.3512C135.233 36.2229 135.001 35.1031 134.528 34.0788C134.054 33.0544 133.35 32.153 132.472 31.4444C131.593 30.7358 130.563 30.2391 129.462 29.9929C130.074 28.8254 130.361 27.5149 130.294 26.1983C130.227 24.8817 129.808 23.6072 129.081 22.5079C128.035 20.9204 126.412 19.8032 124.556 19.3939C125.316 17.9483 125.574 16.2906 125.289 14.6822C125.003 13.0737 124.19 11.6061 122.978 10.5108C121.767 9.4154 120.224 8.75461 118.595 8.6326C116.966 8.51058 115.343 8.93429 113.982 9.8369L106.659 14.6869C102.758 12.7072 98.5942 11.2969 94.2936 10.4989C92.9327 8.43287 91.3503 6.52155 89.5746 4.7989L86.5446 1.8629C85.3713 0.724789 83.8188 0.0603284 82.1854 -0.00285471C80.552 -0.0660379 78.9528 0.476512 77.6951 1.52058C76.4374 2.56465 75.6097 4.03662 75.3712 5.65374C75.1326 7.27087 75.4999 8.91912 76.4026 10.2819C76.482 10.4026 76.56 10.5236 76.6366 10.6449C68.7466 12.2517 61.4144 15.8954 55.3689 21.2139C49.3233 26.5323 44.7748 33.3402 42.1754 40.9611C39.576 48.582 39.0163 56.7504 40.5518 64.6546C42.0874 72.5589 45.6647 79.9236 50.9283 86.017C56.1919 92.1103 62.9585 96.7201 70.5556 99.3882C78.1526 102.056 86.3157 102.69 94.2335 101.226C102.151 99.7616 109.548 96.251 115.689 91.0426C121.829 85.8343 126.5 79.1096 129.237 71.5369C129.312 71.34 129.347 71.1302 129.34 70.9196C129.333 70.709 129.285 70.5018 129.197 70.3103C129.109 70.1187 128.984 69.9466 128.829 69.8039C128.674 69.6613 128.492 69.5509 128.294 69.4794C128.095 69.4078 127.885 69.3765 127.674 69.3872C127.464 69.3979 127.258 69.4504 127.068 69.5417C126.878 69.633 126.708 69.7612 126.568 69.9188C126.429 70.0765 126.322 70.2604 126.254 70.4599C122.436 80.9979 114.657 89.6304 104.572 94.5207C94.4872 99.411 82.892 100.173 72.2536 96.6449L85.1596 88.0989L95.8846 80.9989C96.3593 80.6856 96.7675 80.2817 97.0859 79.8105C97.4044 79.3392 97.6267 78.8098 97.7403 78.2525C97.8539 77.6952 97.8565 77.121 97.7479 76.5627C97.6394 76.0044 97.4218 75.473 97.1076 74.9989L96.9656 74.7839L99.0486 73.4039C100.529 72.4204 102.327 72.0312 104.082 72.3139C106.623 72.7244 109.225 72.1616 111.37 70.7379L128.654 59.2989C128.537 60.7927 128.342 62.2794 128.07 63.7529C128.031 63.9577 128.034 64.168 128.077 64.3718C128.12 64.5757 128.203 64.769 128.321 64.9407C128.439 65.1124 128.59 65.2592 128.765 65.3727C128.939 65.4861 129.135 65.564 129.34 65.6019C129.436 65.6201 129.533 65.6291 129.631 65.6289C130.001 65.6282 130.36 65.4978 130.644 65.2603C130.929 65.0229 131.121 64.6933 131.188 64.3289C131.628 61.948 131.882 59.5363 131.946 57.1159L136.816 53.8909C137.622 53.3575 138.315 52.6705 138.855 51.8691C139.396 51.0677 139.773 50.1676 139.966 49.2203C140.158 48.273 140.162 47.2971 139.977 46.3483C139.792 45.3995 139.422 44.4965 138.888 43.6909L138.887 43.6989ZM103.582 16.7259L98.7356 19.9349L97.7816 17.3649C97.3814 16.2919 96.9272 15.2399 96.4206 14.2129C98.8777 14.8357 101.274 15.6768 103.582 16.7259ZM53.3546 27.7259C59.7683 20.3239 68.5181 15.3348 78.1546 13.5849C79.7072 17.3422 80.0525 21.4895 79.1426 25.4519L75.2766 42.1529C74.5788 41.4087 73.64 40.9357 72.6266 40.8176C71.6133 40.6996 70.5909 40.9441 69.7406 41.5079L58.7816 48.7599L42.9816 59.2229C42.8956 58.1089 42.8496 56.9859 42.8496 55.8639C42.8489 45.5246 46.5777 35.5321 53.3516 27.7209L53.3546 27.7259ZM94.6316 77.6139C94.6016 77.7627 94.5424 77.9041 94.4575 78.0299C94.3725 78.1558 94.2635 78.2635 94.1366 78.3469L84.7166 84.5839L67.2336 58.5119C66.9971 58.1679 66.6344 57.9311 66.2244 57.8528C65.8143 57.7744 65.3899 57.8609 65.0433 58.0935C64.6966 58.3261 64.4556 58.686 64.3725 59.0951C64.2895 59.5042 64.3711 59.9296 64.5996 60.2789L82.0716 86.3359L68.6236 95.2359C62.038 92.3464 56.2802 87.8549 51.8746 82.1706C47.4691 76.4864 44.556 69.7901 43.4006 62.6919L59.2176 52.2519L61.0376 54.9679C61.1538 55.141 61.3029 55.2895 61.4764 55.4049C61.65 55.5204 61.8446 55.6005 62.0491 55.6408C62.2536 55.6811 62.4641 55.6806 62.6684 55.6396C62.8728 55.5985 63.067 55.5176 63.2401 55.4014C63.4132 55.2852 63.5617 55.1361 63.6772 54.9626C63.7926 54.789 63.8728 54.5944 63.913 54.3899C63.9533 54.1854 63.9529 53.975 63.9118 53.7706C63.8707 53.5662 63.7898 53.372 63.6736 53.1989L61.8656 50.4989L71.4926 44.1449C71.6191 44.0612 71.7608 44.0032 71.9096 43.9742C72.0585 43.9453 72.2116 43.946 72.3602 43.9763C72.5088 44.0066 72.65 44.0658 72.7756 44.1507C72.9013 44.2356 73.009 44.3444 73.0926 44.4709L94.4656 76.7409C94.5502 76.868 94.6084 77.0107 94.6369 77.1606C94.6654 77.3105 94.6636 77.4647 94.6316 77.6139ZM136.854 48.5909C136.746 49.1301 136.532 49.6425 136.224 50.0984C135.917 50.5543 135.522 50.9447 135.063 51.2469L129.496 54.9329H129.491L109.621 68.0939C108.138 69.0786 106.338 69.4672 104.582 69.1819C102.041 68.7719 99.4383 69.3347 97.2936 70.7579L95.2106 72.1379L77.7106 45.7079L82.2356 26.1639C83.3899 21.1325 82.8014 15.8582 80.5666 11.2049C80.5467 11.1568 80.5243 11.1097 80.4996 11.0639C80.0717 10.1872 79.587 9.33945 79.0486 8.5259C78.5774 7.81523 78.3854 6.95547 78.5096 6.11186C78.6339 5.26824 79.0655 4.5003 79.7215 3.95562C80.3776 3.41094 81.2119 3.12795 82.0639 3.16104C82.916 3.19413 83.7258 3.54097 84.3376 4.1349L87.3676 7.0719C90.6609 10.2737 93.2012 14.1677 94.8046 18.4719L96.4546 22.9159L96.4636 22.9389L96.4756 22.9699C96.4876 22.9969 96.4986 23.0219 96.5096 23.0429C96.541 23.1121 96.5775 23.179 96.6186 23.2429C96.7335 23.417 96.8816 23.5666 97.0545 23.6833C97.2273 23.8 97.4215 23.8815 97.6258 23.923C97.8302 23.9645 98.0408 23.9653 98.2455 23.9253C98.4501 23.8853 98.6449 23.8053 98.8186 23.6899L115.736 12.4899C116.661 11.8771 117.792 11.657 118.879 11.8779C119.967 12.0988 120.922 12.7427 121.535 13.6679C122.147 14.5931 122.368 15.7238 122.147 16.8114C121.926 17.8989 121.282 18.8541 120.357 19.4669L118.888 20.4399L115.609 22.5989L115.597 22.6079C115.578 22.6209 115.56 22.6339 115.546 22.6459C115.201 22.8867 114.966 23.2546 114.892 23.6687C114.819 24.0828 114.913 24.5091 115.154 24.8539C115.394 25.1987 115.762 25.4337 116.176 25.5072C116.591 25.5807 117.017 25.4867 117.362 25.2459L120.64 23.0749C121.565 22.4682 122.694 22.2528 123.778 22.4759C124.862 22.6991 125.813 23.3425 126.424 24.2655C127.035 25.1884 127.255 26.3158 127.037 27.4008C126.818 28.4858 126.179 29.4401 125.259 30.0549L120.512 33.1989C120.333 33.3116 120.179 33.4589 120.058 33.632C119.937 33.8052 119.852 34.0008 119.807 34.2073C119.763 34.4138 119.76 34.6271 119.8 34.8346C119.839 35.0421 119.919 35.2397 120.036 35.4158C120.152 35.5919 120.303 35.7429 120.479 35.86C120.655 35.9771 120.852 36.058 121.059 36.0977C121.267 36.1375 121.48 36.1355 121.687 36.0917C121.893 36.0479 122.089 35.9634 122.263 35.8429L122.998 35.3569L125.54 33.6739C125.998 33.3623 126.513 33.1448 127.056 33.0339C127.598 32.9231 128.158 32.921 128.701 33.028C129.245 33.1349 129.762 33.3487 130.222 33.6569C130.682 33.9652 131.077 34.3617 131.383 34.8236C131.689 35.2854 131.9 35.8034 132.004 36.3475C132.108 36.8916 132.103 37.4509 131.989 37.993C131.876 38.5352 131.655 39.0494 131.342 39.5058C131.028 39.9622 130.626 40.3518 130.161 40.6519L127.79 42.2219L127.753 42.2469L125.415 43.7949C125.241 43.9099 125.092 44.0579 124.975 44.2306C124.859 44.4033 124.777 44.5972 124.736 44.8013C124.694 45.0054 124.693 45.2157 124.733 45.4202C124.773 45.6246 124.853 45.8192 124.968 45.9929C125.083 46.1666 125.231 46.3159 125.403 46.4324C125.576 46.5488 125.77 46.6301 125.974 46.6716C126.178 46.7131 126.388 46.714 126.593 46.6743C126.797 46.6345 126.992 46.5549 127.166 46.4399L127.901 45.9539L130.443 44.2719C131.132 43.8143 131.942 43.5717 132.77 43.5748C133.598 43.5778 134.406 43.8264 135.093 44.2891C135.779 44.7517 136.313 45.4076 136.626 46.1737C136.94 46.9399 137.019 47.7818 136.854 48.5929V48.5909Z"
-              fill="white"
-            />
-          </svg>
+          <Grid item style={{...Styles.whiteBG,padding:'20px',borderRadius:'80px'}}>
+          {orderStatus==='success'&& orderStatus!=='waiting'? thumbsUP('100px','100px','#00FF00'):thumbsDown('100px','100px','#FF0000')}
+          </Grid>
         </Grid>
         <Grid item container justify="center" style={{ marginTop: "20px" }}>
           {orderStatus === "waiting" && (
@@ -635,351 +525,7 @@ export const Ordersummary = (props) => {
                     </a>
                   </Typography>
                 </Grid>
-                {!userMessage && (
-                  <Grid
-                    item
-                    container
-                    alignItems="center"
-                    justify="center"
-                    style={{
-                      bottom: isMobile ? "-25px" : "-60px",
-                      position: "relative",
-                      padding: isMobile ? "20px" : "0",
-                    }}
-                  >
-                    <Grid
-                      item
-                      container
-                      alignItems="center"
-                      justify="flex-start"
-                      direction="row"
-                      xs={12}
-                      sm={12}
-                      lg={6}
-                      style={{
-                        padding: isMobile ? "30px" : "100px",
-                        ...Styles.whiteBG,
-                        boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
-                        borderRadius: "10px",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      <Grid item>
-                        <Typography
-                          variant={isMobile ? "h4" : "h3"}
-                          style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
-                        >
-                          Preferred time for call
-                        </Typography>
-                      </Grid>
-                      <Grid item container>
-                        <Typography
-                          variant="h6"
-                          style={{ fontFamily: "Roboto", marginTop: "8px" }}
-                        >
-                          What’s the best time to call you for follow-up
-                        </Typography>
-                      </Grid>
-                      <Grid
-                        item
-                        xs={12}
-                        direction="row"
-                        container
-                        justify="center"
-                        alignItems={isMobile ? "center" : "null"}
-                      >
-                        <Grid item xs={6} sm={4} lg={4}>
-                          <FormControl
-                            variant="outlined"
-                            className={classes.formControl}
-                            style={{
-                              // marginRight: "10px",
-                              marginBottom: isMobile ? "16px" : "0",
-                              // minWidth: isMobile ? "95%" : "100%",
-                            }}
-                          >
-                            {isMobile ? (
-                              <InputLabel id="demo-simple-select-outlined-label">
-                                Hour
-                              </InputLabel>
-                            ) : (
-                              <InputLabel id="demo-simple-select-outlined-label">
-                                Select Hour
-                              </InputLabel>
-                            )}
-                            <Select
-                              labelId="demo-simple-select-outlined-label"
-                              id="demo-simple-select-outlined"
-                              value={hour}
-                              onChange={handleChangeHour}
-                              label="Select Hour"
-                              style={{
-                                height: isMobile ? "62px" : "79px",
-                                borderRadius: "10px",
-                                width: "90%",
-                              }}
-                            >
-                              <MenuItem value="">
-                                <em>None</em>
-                              </MenuItem>
-                              {timeHour.map((key, val) => {
-                                return (
-                                  <MenuItem value={key.id}>{key.hour}</MenuItem>
-                                );
-                              })}
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid item xs={6} sm={4} lg={4}>
-                          <FormControl
-                            variant="outlined"
-                            className={classes.formControl}
-                            style={{
-                              // marginLeft: isMobile ? "0" : "20px",
-                              marginBottom: isMobile ? "16px" : "0",
-                              // minWidth: isMobile ? "95%" : "100%",
-                            }}
-                          >
-                            {isMobile ? (
-                              <InputLabel id="demo-simple-select-outlined-label">
-                                Minute
-                              </InputLabel>
-                            ) : (
-                              <InputLabel id="demo-simple-select-outlined-label">
-                                Select Minute
-                              </InputLabel>
-                            )}
-                            <Select
-                              labelId="demo-simple-select-outlined-label"
-                              id="demo-simple-select-outlined"
-                              value={minute}
-                              onChange={handleChangeMinute}
-                              label="Select Minute"
-                              style={{
-                                height: isMobile ? "62px" : "79px",
-                                borderRadius: "10px",
-                                width: "90%",
-                              }}
-                            >
-                              <MenuItem value="">
-                                <em>None</em>
-                              </MenuItem>
-                              {timeMinute.map((key, val) => {
-                                return (
-                                  <MenuItem value={key.id}>
-                                    {key.Minute}
-                                  </MenuItem>
-                                );
-                              })}
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid
-                          md={4}
-                          sm={4}
-                          lg={4}
-                          xs={12}
-                          item
-                          container
-                          alignItems="flex-end"
-                          justify="space-between"
-                        >
-                          <Grid
-                            item
-                            sm={4}
-                            xs={12}
-                            md={6}
-                            container
-                            style={{
-                              // marginLeft: isMobile ? "0" : "40px",
-                              // width: isMobile ? "50%" : "null",
-                              marginBottom: isMobile ? "16px" : "0",
-                            }}
-                          >
-                            {/* <button ></button> */}
-                            <Styles.ColorButton
-                              style={
-                                meridian == "AM"
-                                  ? { height: isMobile ? "62px" : "79px" }
-                                  : {
-                                      height: isMobile ? "62px" : "79px",
-                                      ...Styles.amAndpmButton,
-                                    }
-                              }
-                              onClick={() => handleChangeMeridian("AM")}
-                            >
-                              AM
-                            </Styles.ColorButton>
-                          </Grid>
-                          <Grid
-                            item
-                            sm={4}
-                            xs={12}
-                            md={6}
-                            container
-                            // style={{ width: isMobile ? "50%" : "null" }}
-                          >
-                            <Styles.ColorButton
-                              style={
-                                meridian == "PM"
-                                  ? { height: isMobile ? "62px" : "79px" }
-                                  : {
-                                      height: isMobile ? "62px" : "79px",
-                                      ...Styles.amAndpmButton,
-                                    }
-                              }
-                              onClick={() => handleChangeMeridian("PM")}
-                            >
-                              PM
-                            </Styles.ColorButton>
-                            {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid xs={8} item container>
-                        {err && (
-                          <Typography
-                            style={{ ...Styles.err, ...Styles.centerTxt }}
-                          >
-                            {err}
-                          </Typography>
-                        )}
-                      </Grid>
-                      <Grid xs={12} item style={{ marginTop: "20px" }}>
-                        <Grid item container justify="space-between">
-                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
-                            <input
-                              type="number"
-                              placeholder="+91"
-                              defaultValue={91}
-                              style={{
-                                width: "80%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                            />
-                          </Grid>
-                          {/* <Grid
-                            item
-                            container
-                            xs={1}
-                            alignItems="center"
-                            justify="center"
-                          >
-                            <Typography style={{ textAlign: "center" }}>
-                              -
-                            </Typography>
-                          </Grid> */}
-                          <Grid item md={isMobile ? 8 : 10} xs={8}>
-                            <input
-                              type="number"
-                              placeholder="Please confirm your mobile number"
-                              defaultValue={phone}
-                              style={{
-                                width: "100%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                              value={phone}
-                              onChange={(e) => {
-                                handleChangePhone(e);
-                              }}
-                            />
-                            {phoneErr && (
-                              <Typography style={Styles.err}>
-                                {phoneErr}
-                              </Typography>
-                            )}
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid xs={12} item style={{ marginTop: "20px" }}>
-                        <Grid item container justify="space-between">
-                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
-                            <input
-                              type="number"
-                              placeholder="+91"
-                              defaultValue={91}
-                              style={{
-                                width: "80%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                            />
-                          </Grid>
-                          {/* <Grid
-                            item
-                            container
-                            xs={1}
-                            alignItems="center"
-                            justify="center"
-                          >
-                            <Typography style={{ textAlign: "center" }}>
-                              -
-                            </Typography>
-                          </Grid> */}
-                          <Grid item md={isMobile ? 8 : 10} xs={8}>
-                            <input
-                              placeholder="Your whatsapp number"
-                              defaultValue={phone}
-                              type="number"
-                              style={{
-                                width: "100%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                              value={whatapp}
-                              onChange={handleChangeWhatsApp}
-                            />
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid
-                        xs={12}
-                        item
-                        container
-                        direction="row"
-                        alignItems="center"
-                        justify="center"
-                        style={{ marginTop: "20px" }}
-                      ></Grid>
-                      <Grid item xs={12}>
-                        <Styles.ColorButton
-                          type="submit"
-                          disabled={submitting}
-                          style={{
-                            ...Styles.thankyousubmitButton,
-                          }}
-                          onSubmit={handleSubmit}
-                          onClick={handleSubmit}
-                        >
-                          SUBMIT
-                        </Styles.ColorButton>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                )}
-                {userMessage && (
-                  <Grid>
-                    <Typography variant="h2">{userMessage}</Typography>
-                  </Grid>
-                )}
+                
               </Grid>
             </>
           )}
@@ -1035,17 +581,25 @@ export const Ordersummary = (props) => {
         </DialogActions>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {userMessage}
+            {userMessage||userMessageErr}
           </DialogContentText>
           <Grid container direction="row" alignItems="center" justify="center">
             <Styles.ColorButton
-              style={isMobile ? { width: "35vw" } : { width: "30%" }}
+              style={isMobile ? { width: "20vw" } : { width: "20%" }}
               onClick={() => {
                 setOpen(false);
               }}
             >
               Ok
             </Styles.ColorButton>
+            {userMessageErr&&<Styles.ColorButton
+              style={isMobile ? { width: "20vw" } : { width: "20%" }}
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              Try again !!!
+            </Styles.ColorButton>}
           </Grid>
         </DialogContent>
       </Dialog>

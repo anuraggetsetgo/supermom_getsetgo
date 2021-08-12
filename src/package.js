@@ -291,7 +291,9 @@ class Package extends Component {
             />
             <Sellingreviews />
             <Mediabanner />
-            <Success />
+            <Success 
+            product={products}
+            createOrder={(data) => this.createOrder(data)}/>
             {/* {products && (
               <Grid
                 item

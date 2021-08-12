@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Typography } from "@material-ui/core";
+import { DialogActions, DialogContent,DialogContentText,Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import Styles from "./app-style";
@@ -14,6 +14,10 @@ import Footer from "./sections/footer";
 import { Style, WhatsApp } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
+import { Dialog } from "@material-ui/core";
+import HighlightOff from "@material-ui/icons/HighlightOff";
+import BannerImage from './images/landingpage_banner.png'
+
 const errMsgs = {
   requried: "Uh oh! It's a required field",
   name: "Wait, that doesn't sound like a valid name",
@@ -187,6 +191,7 @@ export const Ordersummary = (props) => {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   React.useEffect(() => {
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     //        callAPI(getURL('order_status'), 'post', (data)=>{this.orderData(data.data)}, (err)=>{this.orderStatus(err)}, {order_id:this.props.match.params.orderId})
@@ -294,6 +299,7 @@ export const Ordersummary = (props) => {
         },
         (data) => {
           setUserMessage(data.data.successmessage);
+          setOpen(true)
         },
 
         (err) => {
@@ -305,27 +311,14 @@ export const Ordersummary = (props) => {
       );
     }
   };
-  const backgroundColor = (orderStatus) => {
-    // (orderStatus=='waiting')? 'blue':
-    let color = "#24A64A";
-    switch (orderStatus) {
-      case "waiting":
-        color = "white";
-        break;
-      case "success":
-        color = "#24A64A";
-        break;
-      case "err":
-        color = "orange";
-        break;
-      case "fail":
-        color = "orange";
-        break;
-      default:
-        color = "white";
-        break;
-    }
-    return color;
+  
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
   };
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
@@ -337,7 +330,7 @@ export const Ordersummary = (props) => {
         alignItems="center"
         style={{
           height: isMobile ? "150%" : "100vh",
-          backgroundColor: backgroundColor(orderStatus),
+          background: `url(${BannerImage})`,
           position: "absolute",
           top: "0",
         }}
@@ -778,11 +771,7 @@ export const Ordersummary = (props) => {
                           >
                             {/* <button ></button> */}
                             <Styles.ColorButton
-                              style={
-                                (meridian == "AM"
-                                  ? { height: isMobile ? "62" : "79px" }
-                                  : Styles.amAndpmButton,
-                                { height: isMobile ? "62px" : "79px" })
+                              style={(meridian == "AM"? {height: isMobile ? "62" : "79px" }: { height: isMobile ? "62px" : "79px", ...Styles.amAndpmButton })
                               }
                               onClick={() => handleChangeMeridian("AM")}
                             >
@@ -794,11 +783,7 @@ export const Ordersummary = (props) => {
                             style={{ width: isMobile ? "50%" : "null" }}
                           >
                             <Styles.ColorButton
-                              style={
-                                (meridian == "PM"
-                                  ? { height: isMobile ? "62" : "79px" }
-                                  : Styles.amAndpmButton,
-                                { height: isMobile ? "62px" : "79px" })
+                              style={(meridian == "PM"? { height: isMobile ? "62" : "79px" }: { height: isMobile ? "62px" : "79px",...Styles.amAndpmButton, })
                               }
                               onClick={() => handleChangeMeridian("PM")}
                             >
@@ -937,6 +922,29 @@ export const Ordersummary = (props) => {
           </Typography>
         </Grid>
       </Grid>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+      >
+                <DialogActions>
+          <HighlightOff onClick={handleClose}>
+
+          </HighlightOff>
+        </DialogActions>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {userMessage}
+          </DialogContentText>
+          <Grid  container direction='row' alignItems='center' justify='center'>
+          <Styles.ColorButton style={isMobile?{width:'35vw'}:{width:'30%'}}
+            onClick={() => {
+              setOpen(false);}}>
+                Ok
+              </Styles.ColorButton>
+              </Grid>
+        </DialogContent>
+
+      </Dialog>
     </Grid>
   );
 };

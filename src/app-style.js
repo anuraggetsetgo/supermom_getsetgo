@@ -20,6 +20,7 @@ const ColorButton = withStyles((theme) => ({
     },
   },
 }))(Button);
+
 const backCoverImg = (image) => {
   return `./img/${image}`;
 };

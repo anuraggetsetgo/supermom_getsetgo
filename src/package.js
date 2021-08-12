@@ -52,16 +52,16 @@ class Package extends Component {
       discountDetails: false,
       discountActivated: false,
       activatingDiscount: false,
-      products: null,
+      //products: null,
     };
   }
 
   createOrder(product, index) {
     let userDetails = JSON.parse(get("userDetails"));
-    console.log("index", index);
+    //console.log("index", index);
     let package_id = product.service_id;
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
-    let affiliate_id = get("affiliate_id") === null ? 2 : get("affiliate_id");
+    let affiliate_id = get("affiliate_id") === null ? 1 : get("affiliate_id");
     this.setState({ bored: false });
     if (!userDetails) this.setState({ userData: false });
     else {
@@ -76,12 +76,12 @@ class Package extends Component {
           this.errorOrderCreated(err);
         },
         {
-          orderNote: `Super Mom ${index + 1} people`,
+          orderNote: `Super Mom ${product.no_of_users+1} people`,
           package_id: package_id,
           customer_name: userDetails.name,
           customer_email: userDetails.email,
           customer_phone: `${userDetails.country}-${userDetails.mobile}`,
-          affiliate_id: affiliate_id,
+          //affiliate_id: affiliate_id,
           redirect_url: baseurl + "/thank_you",
           campaign_id: campaign_id,
         }
@@ -127,19 +127,19 @@ class Package extends Component {
     //setServices(services);
     baseurl = data.data.redirect_base_url;
     this.setState({ products: services });
-    let row = [],
-      fields = [];
-    let desc;
-    services.map((product) => {
-      desc = JSON.parse(product.pack_des);
-      row.push(desc);
-      for (const key in desc) {
-        row.push(desc);
-      }
-    });
-    var uniqueRow = [...new Set(row)];
-    console.log("UNIQUE ROW -->>", uniqueRow);
-    this.setState({ serviceInclusions: uniqueRow });
+    // let row = [],
+    //   fields = [];
+    // let desc;
+    // services.map((product) => {
+    //   desc = JSON.parse(product.pack_des);
+    //   row.push(desc);
+    //   for (const key in desc) {
+    //     row.push(desc);
+    //   }
+    // });
+    //var uniqueRow = [...new Set(row)];
+    //console.log("UNIQUE ROW -->>", uniqueRow);
+    //this.setState({ serviceInclusions: uniqueRow });
   };
   getproducts = () => {
     let currency = this.state.currency;
@@ -218,7 +218,7 @@ class Package extends Component {
       discountDetails,
       discountActivated,
       activatingDiscount,
-      serviceInclusions,
+      //serviceInclusions,
     } = this.state;
     // let desc = [
     //   "Stranded alone at home? Well, no more. Join thousands of others and turn it into a great at-home-staycation for you!",
@@ -235,7 +235,7 @@ class Package extends Component {
     //   `${retrievePath()}happyCouple.jpg`,
     //   `${retrievePath()}happyFamily.jpg`,
     // ];
-    console.log("PRODUCTS -->>", serviceInclusions);
+    //console.log("PRODUCTS -->>", serviceInclusions);
     return (
       <Grid
         container
@@ -291,7 +291,9 @@ class Package extends Component {
             />
             <Sellingreviews />
             <Mediabanner />
-            <Success />
+            <Success 
+            product={products}
+            createOrder={(data) => this.createOrder(data)}/>
             {/* {products && (
               <Grid
                 item

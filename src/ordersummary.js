@@ -318,6 +318,9 @@ export const Ordersummary = (props) => {
       case "err":
         color = "orange";
         break;
+      case "fail":
+        color = "orange";
+        break;
       default:
         color = "white";
         break;
@@ -957,3 +960,6 @@ export default Ordersummary;
 //     ></Refercomponents>
 //   </Grid>
 // )}
+// ransform: scaleX(-1) rotateZ(
+//   186deg
+//   )

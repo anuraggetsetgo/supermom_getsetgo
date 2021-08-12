@@ -9,8 +9,8 @@ import MenuItem from "@material-ui/core/MenuItem";
 //import Refercomponents from "./components/FormView";
 import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
-import { api_set_reminder } from './gsgAPI/api'
-import Footer from './sections/footer'
+import { api_set_reminder } from "./gsgAPI/api";
+import Footer from "./sections/footer";
 import { Style, WhatsApp } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
   },
   formControl: {
     marginTop: "20px",
-    minWidth: 150,
+    minWidth: "100%",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -125,22 +125,22 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Ordersummary = (props) => {
-  const theme =useTheme();
+  const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
-  const userData = JSON.parse(get('userDetails'))
+  const userData = JSON.parse(get("userDetails"));
   const [hour, setHour] = React.useState("");
   const [err, setErr] = React.useState(false);
   const [minute, setMinute] = React.useState("");
-  const [meridian, setMeridian] = React.useState('AM');
+  const [meridian, setMeridian] = React.useState("AM");
   const [phone, setPhone] = React.useState("");
   const [phoneErr, setErrPhone] = React.useState("");
   const [whatapp, setWhatsapp] = React.useState("");
   //const [submitEnable, setUserMessage] = React.useState("");
   const [userMessage, setUserMessage] = React.useState("");
   const [userMessageErr, setUserMessageErr] = React.useState("");
-  const currency = JSON.parse(get('products')).currency
-  const region=(currency=="₹")?'ind': (currency=="$")?'row':'aed'
+  const currency = JSON.parse(get("products")).currency;
+  const region = currency == "₹" ? "ind" : currency == "$" ? "row" : "aed";
   const validate = function (value, regex, type) {
     let error;
     if (!value) {
@@ -165,10 +165,9 @@ export const Ordersummary = (props) => {
   const handleChangeHour = (event) => {
     console.log(hour);
     setHour(event.target.value);
-    
   };
   const handleChangeMinute = (event) => {
-    console.log(minute)
+    console.log(minute);
     setMinute(event.target.value);
   };
   const handleChangePhone = (event) => {
@@ -184,10 +183,10 @@ export const Ordersummary = (props) => {
   //     orderStatus: "waiting",
   //   };
   // }
-  const [orderStatus, setOrderStatus] = React.useState("waiting")
-  const [name, setName] = React.useState("")
-  const [email, setEmail] = React.useState("")
-const [submitting, setSubmitting] = React.useState(false)
+  const [orderStatus, setOrderStatus] = React.useState("waiting");
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [submitting, setSubmitting] = React.useState(false);
   React.useEffect(() => {
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     //        callAPI(getURL('order_status'), 'post', (data)=>{this.orderData(data.data)}, (err)=>{this.orderStatus(err)}, {order_id:this.props.match.params.orderId})
@@ -202,17 +201,17 @@ const [submitting, setSubmitting] = React.useState(false)
       },
       {
         order_id: props.match.params.orderId,
-        campaign_id: campaign_id
+        campaign_id: campaign_id,
       }
     );
   }, []);
 
   const emailSent = (data) => {
     setOrderStatus("success");
-  }
+  };
   const emailErr = (err) => {
     setOrderStatus("successEmailErr");
-  }
+  };
   const orderData = (data) => {
     console.log("Order successful");
     let {
@@ -230,8 +229,8 @@ const [submitting, setSubmitting] = React.useState(false)
 
     if (parseInt(order_status) === 1) {
       setOrderStatus("sendingEmail");
-      setName(customer_name)
-      setEmail(customer_email)
+      setName(customer_name);
+      setEmail(customer_email);
 
       //new_affiliate_id: new_affiliate_id,
       //});
@@ -261,90 +260,96 @@ const [submitting, setSubmitting] = React.useState(false)
       );
     } else {
       setOrderStatus("fail");
-      setName(customer_name)
-      setEmail(customer_email)
+      setName(customer_name);
+      setEmail(customer_email);
     }
-
-  }
+  };
   const orderStats = (err) => {
     console.log("Ran into errors");
     setOrderStatus("err");
-  }
+  };
   const handleSubmit = () => {
     let err = false;
-    if (hour === '' || minute === '') {
+    if (hour === "" || minute === "") {
       err = true;
-      setErr("Please select a time ")
+      setErr("Please select a time ");
     }
-    let isPhoneValid= validateMobile(phone)
+    let isPhoneValid = validateMobile(phone);
     if (isPhoneValid) {
       err = true;
-      setErrPhone(isPhoneValid)
+      setErrPhone(isPhoneValid);
     }
     console.log(err);
-    console.log(phone,whatapp,hour,minute,meridian,region)
-    if(!err)
-    {
+    console.log(phone, whatapp, hour, minute, meridian, region);
+    if (!err) {
       setSubmitting(true);
-      api_set_reminder({
-        "mobile_number": phone, //"919821354464",
-        "whatsapp_number": whatapp,//"919821354464",
-        "preferred_hour": hour,//'10'
-        "preferred_min": minute,//"00",
-        "preferred_meridian": meridian,
-         "region":  region,
-      }
-        ,(data) => {    
+      api_set_reminder(
+        {
+          mobile_number: phone, //"919821354464",
+          whatsapp_number: whatapp, //"919821354464",
+          preferred_hour: hour, //'10'
+          preferred_min: minute, //"00",
+          preferred_meridian: meridian,
+          region: region,
+        },
+        (data) => {
           setUserMessage(data.data.successmessage);
-              },
+        },
 
-      (err) => {
-        setSubmitting(false)
-        setUserMessageErr('Opps an error occurecd with selecting a slot.Please try again ')}
-    )
-  }
-
-
-  }
+        (err) => {
+          setSubmitting(false);
+          setUserMessageErr(
+            "Opps an error occurecd with selecting a slot.Please try again "
+          );
+        }
+      );
+    }
+  };
   const backgroundColor = (orderStatus) => {
     // (orderStatus=='waiting')? 'blue':
     let color = "#24A64A";
     switch (orderStatus) {
-      case 'waiting':
-        color = 'white';
+      case "waiting":
+        color = "white";
         break;
-      case 'success':
+      case "success":
         color = "#24A64A";
         break;
-      case 'err':
+      case "err":
         color = "orange";
         break;
       default:
-        color = 'white';
+        color = "white";
         break;
-
     }
-    return color
-  }
+    return color;
+  };
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
-    <Grid >
+    <Grid>
       <Grid
         item
         container
         justify="center"
         alignItems="center"
         style={{
-          height: "100vh",
+          height: isMobile ? "150%" : "100vh",
           backgroundColor: backgroundColor(orderStatus),
           position: "absolute",
-          top: '0'
+          top: "0",
         }}
       >
-
-        <Grid item container justify="center" style={{ marginTop: "20px" }}>
+        <Grid
+          item
+          container
+          justify={isMobile ? "flex-start" : "center"}
+          style={{
+            marginTop: isMobile ? "0" : "40px",
+            padding: isMobile ? "20px" : "0",
+          }}
+        >
           <svg
-            width="265"
+            width={isMobile ? "211" : "265"}
             height="60"
             viewBox="0 0 265 60"
             fill="none"
@@ -365,7 +370,7 @@ const [submitting, setSubmitting] = React.useState(false)
             </defs>
           </svg>
         </Grid>
-        <Grid item container justify="center" style={{ marginTop: "20px" }}>
+        <Grid item container justify="center" style={{ marginTop: "40px" }}>
           <svg
             width="173"
             height="102"
@@ -497,50 +502,57 @@ const [submitting, setSubmitting] = React.useState(false)
           </svg>
         </Grid>
         <Grid item container justify="center" style={{ marginTop: "20px" }}>
-          {
-            orderStatus === "waiting" && (
-              <Typography variant="h5" style={Styles.colorWhite}>
-                Give us a minute. Completing your registration ...
-              </Typography>
-            )
-          }
-          {
-            orderStatus === "sendingEmail" && (
-              <Typography variant="h5" style={Styles.colorWhite}>
-                Okay, payment complete. Sending you an email acknowledgement ...
-              </Typography>
-            )
-          }
-          {
-            orderStatus === "successEmailErr" && (
-              <Grid
-                item
-                style={{
+          {orderStatus === "waiting" && (
+            <Typography variant="h5" style={Styles.colorWhite}>
+              Give us a minute. Completing your registration ...
+            </Typography>
+          )}
+          {orderStatus === "sendingEmail" && (
+            <Typography variant="h5" style={Styles.colorWhite}>
+              Okay, payment complete. Sending you an email acknowledgement ...
+            </Typography>
+          )}
+          {orderStatus === "successEmailErr" && (
+            <Grid
+              item
+              style={
+                {
                   //...{ padding: "0 50px", width: "50%" },
                   //...Styles.centerTxt,
-                }}
+                }
+              }
+            >
+              <Typography
+                variant="h3"
+                style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
               >
-                <Typography
-                  variant="h3"
-                  style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+                Your registration is complete!!!
+              </Typography>
+              <Typography
+                variant="h5"
+                style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
+              >
+                Congratulations {name.split(" ")[0]}! There has been a small
+                glitch: we haven't been able to drop you an email. Don't worry
+                though.
+              </Typography>
+              <Typography
+                variant="h5"
+                style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
+              >
+                Our backend team qill quickly review this. For your
+                registration, our representatives will get in touch with you
+                within 2 working days. Feel free to drop us an email in case you
+                have any queries:{" "}
+                <a
+                  href="mailto: info@getsetgo.fitness"
+                  style={Styles.colorYellow}
                 >
-                  Your registration is complete!!!
-                </Typography>
-                <Typography variant="h5" style={{ ...Styles.colorWhite, lineHeight: '2.2rem' }}>
-                  Congratulations {name.split(" ")[0]}! There has been a small
-                  glitch: we haven't been able to drop you an email. Don't worry
-                  though. 
-                  </Typography>
-                  <Typography variant="h5" style={{ ...Styles.colorWhite, lineHeight: '2.2rem' }}>
-                  Our backend team qill quickly review this. For your
-                  registration, our representatives will get in touch with you
-                  within 2 working days. Feel free to drop us an email in case you
-                  have any queries:{" "}
-                  <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
-                </Typography>
-              </Grid>
-            )
-          }
+                  info@getsetgo.fitness
+                </a>
+              </Typography>
+            </Grid>
+          )}
           {/* {
             orderStatus === "successEmailErr" && (
               <Grid
@@ -570,8 +582,8 @@ const [submitting, setSubmitting] = React.useState(false)
               </Grid>
             )
           } */}
-          {
-            orderStatus === "success" && (<>
+          {orderStatus === "success" && (
+            <>
               <Grid
                 item
                 style={{
@@ -579,241 +591,352 @@ const [submitting, setSubmitting] = React.useState(false)
                   ...Styles.centerTxt,
                 }}
               >
-                <Grid item container justify="center" style={{ marginTop: "20px" }}>
+                <Grid
+                  item
+                  container
+                  justify="center"
+                  style={{ marginTop: "20px" }}
+                >
                   <Typography
-                    variant="h1"
+                    variant={isMobile ? "h3" : "h1"}
                     style={{ ...Styles.colorWhite, ...Styles.boldTxt }}
                   >
                     THANK YOU
                   </Typography>
                 </Grid>
-                <Grid item container justify="center" style={{ marginTop: "20px" }}>
+                <Grid
+                  item
+                  container
+                  justify="center"
+                  style={{
+                    marginTop: "20px",
+                    padding: isMobile ? "20px" : "0",
+                  }}
+                >
                   <Typography
-                    variant="h5"
+                    variant={isMobile ? "h6" : "h5"}
                     style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
                   >
-                    Congratulations {name.split(" ")[0]}! Our representatives will get
-                    in touch with you within 2 working days. 
-                    </Typography>
-                    <Typography variant="h5" style={{ ...Styles.colorWhite, lineHeight: '2.2rem' }}>
-                    Feel free to drop us an
-                    email in case you have any queries:{" "}
-                    <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
+                    Congratulations {name.split(" ")[0]}! Our representatives
+                    will get in touch with you within 2 working days.
+                  </Typography>
+                  <Typography
+                    variant="h5"
+                    style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
+                  >
+                    Feel free to drop us an email in case you have any queries:{" "}
+                    <a
+                      href="mailto: info@getsetgo.fitness"
+                      style={Styles.colorYellow}
+                    >
+                      info@getsetgo.fitness
+                    </a>
                   </Typography>
                 </Grid>
-                {!userMessage && <Grid
-        item
-        container
-        alignItems="center"
-        justify="center"
-        style={{ bottom: "-10px", position: "relative" }}
-      >
-        <Grid
-          item
-          container
-          alignItems="center"
-          justify="flex-start"
-          direction="row"
-          xs={12}
-          sm={12}
-          lg={8}
-          style={{
-            padding: isMobile?"30px":"100px" ,
-            ...Styles.whiteBG,
-            boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
-            borderRadius: "10px",
-            marginBottom:'20px'
-          }}
-        >
-          <Grid item>
-            <Typography
-              variant="h3"
-              style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
-            >
-              Preferred time for call
-            </Typography>
-          </Grid>
-          <Grid item container>
-            <Typography variant="h6" style={{ fontFamily: "Roboto" }}>
-              What’s the best time to call you for follow-up
-            </Typography>
-          </Grid>
-          <Grid item xs={12} direction="row" container justify="center">
-            <Grid item xs={6} sm={4} lg={4} >
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Select Hour
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={hour}
-                  onChange={handleChangeHour}
-                  label="Select Hour"
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  {timeHour.map((key, val) => {
-                    return <MenuItem value={key.id}>{key.hour}</MenuItem>;
-                  })}
-
-                </Select>
-              </FormControl>
-            </Grid>
-            <Grid item xs={6} sm={4} lg={4} >
-              <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">
-                  Select Minute
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={minute}
-                  onChange={handleChangeMinute}
-                  label="Select Minute"
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  {timeMinute.map((key, val) => {
-                    return <MenuItem value={key.id}>{key.Minute}</MenuItem>;
-                  })}
-                </Select>
-
-              </FormControl>
-              
-            </Grid>
-            <Grid xs={12} sm={4} lg={4} item container alignItems='flex-end' justify='space-between'>
-              <Grid item >
-                {/* <button ></button> */}
-                <Styles.ColorButton style={meridian == 'AM' ?  { height: '65px' }:Styles.amAndpmButton} onClick={() => handleChangeMeridian('AM')}>
-                  AM
-                </Styles.ColorButton>
+                {!userMessage && (
+                  <Grid
+                    item
+                    container
+                    alignItems="center"
+                    justify="center"
+                    style={{
+                      bottom: isMobile ? "-25px" : "-60px",
+                      position: "relative",
+                      padding: isMobile ? "20px" : "0",
+                    }}
+                  >
+                    <Grid
+                      item
+                      container
+                      alignItems="center"
+                      justify="flex-start"
+                      direction="row"
+                      xs={12}
+                      sm={12}
+                      lg={6}
+                      style={{
+                        padding: isMobile ? "30px" : "100px",
+                        ...Styles.whiteBG,
+                        boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+                        borderRadius: "10px",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <Grid item>
+                        <Typography
+                          variant={isMobile ? "h4" : "h3"}
+                          style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
+                        >
+                          Preferred time for call
+                        </Typography>
+                      </Grid>
+                      <Grid item container>
+                        <Typography
+                          variant="h6"
+                          style={{ fontFamily: "Roboto", marginTop: "8px" }}
+                        >
+                          What’s the best time to call you for follow-up
+                        </Typography>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        direction="row"
+                        container
+                        justify="center"
+                      >
+                        <Grid item xs={6} sm={4} lg={4}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                            style={{
+                              marginRight: "10px",
+                              marginBottom: isMobile ? "16px" : "0",
+                              minWidth: isMobile ? "95%" : "100%",
+                            }}
+                          >
+                            <InputLabel id="demo-simple-select-outlined-label">
+                              Select Hour
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-outlined-label"
+                              id="demo-simple-select-outlined"
+                              value={hour}
+                              onChange={handleChangeHour}
+                              label="Select Hour"
+                              style={{
+                                height: isMobile ? "62px" : "79px",
+                                borderRadius: "10px",
+                              }}
+                            >
+                              <MenuItem value="">
+                                <em>None</em>
+                              </MenuItem>
+                              {timeHour.map((key, val) => {
+                                return (
+                                  <MenuItem value={key.id}>{key.hour}</MenuItem>
+                                );
+                              })}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={6} sm={4} lg={4}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                            style={{
+                              marginLeft: isMobile ? "0" : "20px",
+                              marginBottom: isMobile ? "16px" : "0",
+                              minWidth: isMobile ? "95%" : "100%",
+                            }}
+                          >
+                            <InputLabel id="demo-simple-select-outlined-label">
+                              Select Minute
+                            </InputLabel>
+                            <Select
+                              labelId="demo-simple-select-outlined-label"
+                              id="demo-simple-select-outlined"
+                              value={minute}
+                              onChange={handleChangeMinute}
+                              label="Select Minute"
+                              style={{
+                                height: isMobile ? "62px" : "79px",
+                                borderRadius: "10px",
+                              }}
+                            >
+                              <MenuItem value="">
+                                <em>None</em>
+                              </MenuItem>
+                              {timeMinute.map((key, val) => {
+                                return (
+                                  <MenuItem value={key.id}>
+                                    {key.Minute}
+                                  </MenuItem>
+                                );
+                              })}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid
+                          xs={12}
+                          sm={4}
+                          lg={4}
+                          item
+                          container
+                          alignItems="flex-end"
+                          justify="space-between"
+                        >
+                          <Grid
+                            item
+                            style={{
+                              marginLeft: isMobile ? "0" : "40px",
+                              width: isMobile ? "50%" : "null",
+                            }}
+                          >
+                            {/* <button ></button> */}
+                            <Styles.ColorButton
+                              style={
+                                (meridian == "AM"
+                                  ? { height: isMobile ? "62" : "79px" }
+                                  : Styles.amAndpmButton,
+                                { height: isMobile ? "62px" : "79px" })
+                              }
+                              onClick={() => handleChangeMeridian("AM")}
+                            >
+                              AM
+                            </Styles.ColorButton>
+                          </Grid>
+                          <Grid
+                            item
+                            style={{ width: isMobile ? "50%" : "null" }}
+                          >
+                            <Styles.ColorButton
+                              style={
+                                (meridian == "PM"
+                                  ? { height: isMobile ? "62" : "79px" }
+                                  : Styles.amAndpmButton,
+                                { height: isMobile ? "62px" : "79px" })
+                              }
+                              onClick={() => handleChangeMeridian("PM")}
+                            >
+                              PM
+                            </Styles.ColorButton>
+                            {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid xs={8} item container>
+                        {err && (
+                          <Typography
+                            style={{ ...Styles.err, ...Styles.centerTxt }}
+                          >
+                            {err}
+                          </Typography>
+                        )}
+                      </Grid>
+                      <Grid xs={12} item style={{ marginTop: "20px" }}>
+                        <input
+                          type="number"
+                          placeholder="Please confirm your mobile number"
+                          defaultValue={phone}
+                          style={{
+                            width: "100%",
+                            height: "68px",
+                            borderRadius: "10px",
+                            border: "1px solid rgba(102, 102, 102, 0.3)",
+                            padding: "20px",
+                            fontSize: "16px",
+                            color: "rgba(102, 102, 102, 0.75)",
+                          }}
+                          value={phone}
+                          onChange={(e) => {
+                            handleChangePhone(e);
+                          }}
+                        />
+                        {phoneErr && (
+                          <Typography style={Styles.err}>{phoneErr}</Typography>
+                        )}
+                      </Grid>
+                      <Grid xs={12} item style={{ marginTop: "20px" }}>
+                        <input
+                          placeholder="Your whatsapp number:"
+                          defaultValue={phone}
+                          type="number"
+                          style={{
+                            width: "100%",
+                            height: "68px",
+                            borderRadius: "10px",
+                            border: "1px solid rgba(102, 102, 102, 0.3)",
+                            padding: "20px",
+                            fontSize: "16px",
+                            color: "rgba(102, 102, 102, 0.75)",
+                          }}
+                          value={whatapp}
+                          onChange={handleChangeWhatsApp}
+                        />
+                      </Grid>
+                      <Grid
+                        xs={12}
+                        item
+                        container
+                        direction="row"
+                        alignItems="center"
+                        justify="center"
+                        style={{ marginTop: "20px" }}
+                      ></Grid>
+                      <Grid item xs={12}>
+                        <Styles.ColorButton
+                          type="submit"
+                          disabled={submitting}
+                          style={{
+                            ...Styles.thankyousubmitButton,
+                          }}
+                          onSubmit={handleSubmit}
+                          onClick={handleSubmit}
+                        >
+                          SUBMIT
+                        </Styles.ColorButton>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                )}
+                {userMessage && (
+                  <Grid>
+                    <Typography variant="h2">{userMessage}</Typography>
+                  </Grid>
+                )}
               </Grid>
-              <Grid item >
-                <Styles.ColorButton style={meridian == 'PM' ?   { height: '65px' }:Styles.amAndpmButton} onClick={() => handleChangeMeridian('PM')}>
-                  PM
-                </Styles.ColorButton>
-                {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid xs={8} item container>
-            {err && (
-              <Typography style={{ ...Styles.err, ...Styles.centerTxt }}>{err}</Typography>)}</Grid>
-          <Grid xs={12} item style={{ marginTop: "20px" }}>
-            <input
-              type='number'
-              placeholder="Please confirm your mobile number"
-              defaultValue={phone}
-              style={{
-                width: "100%",
-                height: "65px",
-                borderRadius: "10px",
-                border: "1px solid rgba(102, 102, 102, 0.3)",
-                padding:'20px',
-                fontSize:'16px'
-              }}
-              value={phone}
-              onChange={(e) => { handleChangePhone(e) }}
-            />
-            {phoneErr &&<Typography style={Styles.err}>{phoneErr}</Typography>}
-          </Grid>
-          <Grid xs={12} item style={{ marginTop: "20px" }}>
-            <input
-              placeholder="Your whatsapp number:"
-              defaultValue={phone}
-              type='number'
-              style={{
-                width: "100%",
-                height: "65px",
-                borderRadius: "10px",
-                border: "1px solid rgba(102, 102, 102, 0.3)",
-                padding:'20px',
-                fontSize:'16px'
-              }}
-              value={whatapp}
-              onChange={handleChangeWhatsApp}
-            />
-
-          </Grid>
-          <Grid xs={12} item container direction='row' alignItems='center' justify='center' style={{ marginTop: "20px" }}>
-          </Grid>
-          <Grid item xs={12} >
-            <Styles.ColorButton type='submit' disabled={submitting} style={{
-              ...Styles.thankyousubmitButton,
-            }} onSubmit={handleSubmit} onClick={handleSubmit}>
-              SUBMIT
-            </Styles.ColorButton>
-          </Grid>
-        </Grid>
-      </Grid>
-
-}
-        {userMessage && <Grid>
-          <Typography variant='h2'>{userMessage}</Typography>
-        </Grid>
-        }
-              </Grid>
-
-         
-
-
-
-
             </>
-            )
-          }
+          )}
 
-          {
-            (orderStatus === "fail" || orderStatus === "err") && (
-              <Grid
-                item
-
-                style={{
-                  //...{ padding: "0 50px", width: "50%" },
-                  ...Styles.centerTxt,
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
-                >
-                  Uh oh, seems like your order got stuck somewhere. Do not worry
-                  though
-                </Typography>
-                <Typography variant="h5" style={{ ...Styles.colorWhite }}>
-                  Your package is totally secure. Simply drop
-                  us an email at:{" "}
-                  <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>.
-                </Typography>
-                <Typography variant="h5" style={{ ...Styles.colorWhite }}>
-                  <br></br>Remember to quote your order id in the email:{" "}
-                  {props.match.params.orderId}</Typography>
-              </Grid>
-            )
-          }
-        </Grid>
-        <Grid item>
-            <Typography
-              variant={isMobile ? "body2" : "subtitle2"}
+          {(orderStatus === "fail" || orderStatus === "err") && (
+            <Grid
+              item
               style={{
-                ...Styles.colorCharcoalLight,
-                margin: isMobile ? "10px 0 47px" : "20px 0 47px",
+                //...{ padding: "0 50px", width: "50%" },
                 ...Styles.centerTxt,
               }}
             >
-              © {new Date().getFullYear()} GetSetGo Fitness. All Rights
-              Reserved.
-            </Typography>
-          </Grid>
-
+              <Typography
+                variant="h3"
+                style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+              >
+                Uh oh, seems like your order got stuck somewhere. Do not worry
+                though
+              </Typography>
+              <Typography variant="h5" style={{ ...Styles.colorWhite }}>
+                Your package is totally secure. Simply drop us an email at:{" "}
+                <a
+                  href="mailto: info@getsetgo.fitness"
+                  style={Styles.colorYellow}
+                >
+                  info@getsetgo.fitness
+                </a>
+                .
+              </Typography>
+              <Typography variant="h5" style={{ ...Styles.colorWhite }}>
+                <br></br>Remember to quote your order id in the email:{" "}
+                {props.match.params.orderId}
+              </Typography>
+            </Grid>
+          )}
+        </Grid>
+        <Grid item style={{ padding: isMobile ? "20px" : "0" }}>
+          <Typography
+            variant={isMobile ? "body2" : "subtitle2"}
+            style={{
+              ...Styles.colorCharcoalLight,
+              margin: isMobile ? "10px 0 47px" : "80px 0 47px",
+              ...Styles.centerTxt,
+            }}
+          >
+            © {new Date().getFullYear()} GetSetGo Fitness. All Rights Reserved.
+          </Typography>
+        </Grid>
       </Grid>
-    </Grid >
-
+    </Grid>
   );
-}
+};
 
 export default Ordersummary;
 

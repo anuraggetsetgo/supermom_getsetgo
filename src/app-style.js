@@ -172,9 +172,9 @@ export default {
   amAndpmButton: {
     color: "black",
     background: "white",
-    height:'65px'
   },
   thankyousubmitButton: {
+    width: "100%",
     minHeight: "75px",
     cursor: "pointer",
     marginTop: "20px",

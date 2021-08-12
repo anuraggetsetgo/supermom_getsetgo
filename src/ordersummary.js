@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { DialogActions, DialogContent,DialogContentText,Grid, Typography } from "@material-ui/core";
+import {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  Grid,
+  Typography,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import Styles from "./app-style";
@@ -16,7 +22,7 @@ import { useTheme } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
 import { Dialog } from "@material-ui/core";
 import HighlightOff from "@material-ui/icons/HighlightOff";
-import BannerImage from './images/landingpage_banner.png'
+import BannerImage from "./images/landingpage_banner.png";
 
 const errMsgs = {
   requried: "Uh oh! It's a required field",
@@ -131,6 +137,7 @@ const useStyles = makeStyles((theme) => ({
 export const Ordersummary = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   const classes = useStyles();
   const userData = JSON.parse(get("userDetails"));
   const [hour, setHour] = React.useState("");
@@ -299,7 +306,7 @@ export const Ordersummary = (props) => {
         },
         (data) => {
           setUserMessage(data.data.successmessage);
-          setOpen(true)
+          setOpen(true);
         },
 
         (err) => {
@@ -311,7 +318,6 @@ export const Ordersummary = (props) => {
       );
     }
   };
-  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -680,20 +686,27 @@ export const Ordersummary = (props) => {
                         direction="row"
                         container
                         justify="center"
+                        alignItems={isMobile ? "center" : "null"}
                       >
                         <Grid item xs={6} sm={4} lg={4}>
                           <FormControl
                             variant="outlined"
                             className={classes.formControl}
                             style={{
-                              marginRight: "10px",
+                              // marginRight: "10px",
                               marginBottom: isMobile ? "16px" : "0",
-                              minWidth: isMobile ? "95%" : "100%",
+                              // minWidth: isMobile ? "95%" : "100%",
                             }}
                           >
-                            <InputLabel id="demo-simple-select-outlined-label">
-                              Select Hour
-                            </InputLabel>
+                            {isMobile ? (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Hour
+                              </InputLabel>
+                            ) : (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Select Hour
+                              </InputLabel>
+                            )}
                             <Select
                               labelId="demo-simple-select-outlined-label"
                               id="demo-simple-select-outlined"
@@ -703,6 +716,7 @@ export const Ordersummary = (props) => {
                               style={{
                                 height: isMobile ? "62px" : "79px",
                                 borderRadius: "10px",
+                                width: "90%",
                               }}
                             >
                               <MenuItem value="">
@@ -721,14 +735,20 @@ export const Ordersummary = (props) => {
                             variant="outlined"
                             className={classes.formControl}
                             style={{
-                              marginLeft: isMobile ? "0" : "20px",
+                              // marginLeft: isMobile ? "0" : "20px",
                               marginBottom: isMobile ? "16px" : "0",
-                              minWidth: isMobile ? "95%" : "100%",
+                              // minWidth: isMobile ? "95%" : "100%",
                             }}
                           >
-                            <InputLabel id="demo-simple-select-outlined-label">
-                              Select Minute
-                            </InputLabel>
+                            {isMobile ? (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Minute
+                              </InputLabel>
+                            ) : (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Select Minute
+                              </InputLabel>
+                            )}
                             <Select
                               labelId="demo-simple-select-outlined-label"
                               id="demo-simple-select-outlined"
@@ -738,6 +758,7 @@ export const Ordersummary = (props) => {
                               style={{
                                 height: isMobile ? "62px" : "79px",
                                 borderRadius: "10px",
+                                width: "90%",
                               }}
                             >
                               <MenuItem value="">
@@ -754,9 +775,10 @@ export const Ordersummary = (props) => {
                           </FormControl>
                         </Grid>
                         <Grid
-                          xs={12}
+                          md={4}
                           sm={4}
                           lg={4}
+                          xs={12}
                           item
                           container
                           alignItems="flex-end"
@@ -764,14 +786,25 @@ export const Ordersummary = (props) => {
                         >
                           <Grid
                             item
+                            sm={4}
+                            xs={12}
+                            md={6}
+                            container
                             style={{
-                              marginLeft: isMobile ? "0" : "40px",
-                              width: isMobile ? "50%" : "null",
+                              // marginLeft: isMobile ? "0" : "40px",
+                              // width: isMobile ? "50%" : "null",
+                              marginBottom: isMobile ? "16px" : "0",
                             }}
                           >
                             {/* <button ></button> */}
                             <Styles.ColorButton
-                              style={(meridian == "AM"? {height: isMobile ? "62" : "79px" }: { height: isMobile ? "62px" : "79px", ...Styles.amAndpmButton })
+                              style={
+                                meridian == "AM"
+                                  ? { height: isMobile ? "62px" : "79px" }
+                                  : {
+                                      height: isMobile ? "62px" : "79px",
+                                      ...Styles.amAndpmButton,
+                                    }
                               }
                               onClick={() => handleChangeMeridian("AM")}
                             >
@@ -780,10 +813,20 @@ export const Ordersummary = (props) => {
                           </Grid>
                           <Grid
                             item
-                            style={{ width: isMobile ? "50%" : "null" }}
+                            sm={4}
+                            xs={12}
+                            md={6}
+                            container
+                            // style={{ width: isMobile ? "50%" : "null" }}
                           >
                             <Styles.ColorButton
-                              style={(meridian == "PM"? { height: isMobile ? "62" : "79px" }: { height: isMobile ? "62px" : "79px",...Styles.amAndpmButton, })
+                              style={
+                                meridian == "PM"
+                                  ? { height: isMobile ? "62px" : "79px" }
+                                  : {
+                                      height: isMobile ? "62px" : "79px",
+                                      ...Styles.amAndpmButton,
+                                    }
                               }
                               onClick={() => handleChangeMeridian("PM")}
                             >
@@ -803,45 +846,109 @@ export const Ordersummary = (props) => {
                         )}
                       </Grid>
                       <Grid xs={12} item style={{ marginTop: "20px" }}>
-                        <input
-                          type="number"
-                          placeholder="Please confirm your mobile number"
-                          defaultValue={phone}
-                          style={{
-                            width: "100%",
-                            height: "68px",
-                            borderRadius: "10px",
-                            border: "1px solid rgba(102, 102, 102, 0.3)",
-                            padding: "20px",
-                            fontSize: "16px",
-                            color: "rgba(102, 102, 102, 0.75)",
-                          }}
-                          value={phone}
-                          onChange={(e) => {
-                            handleChangePhone(e);
-                          }}
-                        />
-                        {phoneErr && (
-                          <Typography style={Styles.err}>{phoneErr}</Typography>
-                        )}
+                        <Grid item container justify="space-between">
+                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
+                            <input
+                              type="number"
+                              placeholder="+91"
+                              defaultValue={91}
+                              style={{
+                                width: "80%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                            />
+                          </Grid>
+                          {/* <Grid
+                            item
+                            container
+                            xs={1}
+                            alignItems="center"
+                            justify="center"
+                          >
+                            <Typography style={{ textAlign: "center" }}>
+                              -
+                            </Typography>
+                          </Grid> */}
+                          <Grid item md={isMobile ? 8 : 10} xs={8}>
+                            <input
+                              type="number"
+                              placeholder="Please confirm your mobile number"
+                              defaultValue={phone}
+                              style={{
+                                width: "100%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                              value={phone}
+                              onChange={(e) => {
+                                handleChangePhone(e);
+                              }}
+                            />
+                            {phoneErr && (
+                              <Typography style={Styles.err}>
+                                {phoneErr}
+                              </Typography>
+                            )}
+                          </Grid>
+                        </Grid>
                       </Grid>
                       <Grid xs={12} item style={{ marginTop: "20px" }}>
-                        <input
-                          placeholder="Your whatsapp number:"
-                          defaultValue={phone}
-                          type="number"
-                          style={{
-                            width: "100%",
-                            height: "68px",
-                            borderRadius: "10px",
-                            border: "1px solid rgba(102, 102, 102, 0.3)",
-                            padding: "20px",
-                            fontSize: "16px",
-                            color: "rgba(102, 102, 102, 0.75)",
-                          }}
-                          value={whatapp}
-                          onChange={handleChangeWhatsApp}
-                        />
+                        <Grid item container justify="space-between">
+                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
+                            <input
+                              type="number"
+                              placeholder="+91"
+                              defaultValue={91}
+                              style={{
+                                width: "80%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                            />
+                          </Grid>
+                          {/* <Grid
+                            item
+                            container
+                            xs={1}
+                            alignItems="center"
+                            justify="center"
+                          >
+                            <Typography style={{ textAlign: "center" }}>
+                              -
+                            </Typography>
+                          </Grid> */}
+                          <Grid item md={isMobile ? 8 : 10} xs={8}>
+                            <input
+                              placeholder="Your whatsapp number"
+                              defaultValue={phone}
+                              type="number"
+                              style={{
+                                width: "100%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                              value={whatapp}
+                              onChange={handleChangeWhatsApp}
+                            />
+                          </Grid>
+                        </Grid>
                       </Grid>
                       <Grid
                         xs={12}
@@ -922,28 +1029,25 @@ export const Ordersummary = (props) => {
           </Typography>
         </Grid>
       </Grid>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-      >
-                <DialogActions>
-          <HighlightOff onClick={handleClose}>
-
-          </HighlightOff>
+      <Dialog open={open} onClose={handleClose}>
+        <DialogActions>
+          <HighlightOff onClick={handleClose}></HighlightOff>
         </DialogActions>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             {userMessage}
           </DialogContentText>
-          <Grid  container direction='row' alignItems='center' justify='center'>
-          <Styles.ColorButton style={isMobile?{width:'35vw'}:{width:'30%'}}
-            onClick={() => {
-              setOpen(false);}}>
-                Ok
-              </Styles.ColorButton>
-              </Grid>
+          <Grid container direction="row" alignItems="center" justify="center">
+            <Styles.ColorButton
+              style={isMobile ? { width: "35vw" } : { width: "30%" }}
+              onClick={() => {
+                setOpen(false);
+              }}
+            >
+              Ok
+            </Styles.ColorButton>
+          </Grid>
         </DialogContent>
-
       </Dialog>
     </Grid>
   );

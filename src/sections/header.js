@@ -25,7 +25,7 @@ const Header = () => {
         lg={10}
         style={
           isMobile
-            ? { height: "70px", padding: "20px" }
+            ? {  padding: "25px 20px 8px 20px" }
             : { height: "90px", padding: "0" }
         }
       >
@@ -35,7 +35,7 @@ const Header = () => {
             alt="Logo"
             height={isMobile ? "50px" : "50px"}
             width={isMobile ? "50px" : "50px"}
-            style={isMobile ? { height: "8vh" } : null}
+            style={isMobile ? { height: isMobile?'7vh':"8vh" } : null}
           />
         </Link>
       </Grid>

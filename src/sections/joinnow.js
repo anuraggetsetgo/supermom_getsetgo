@@ -13,7 +13,7 @@ const Joinnow = (props) => {
         alignItems="center"
         justify="center"
         style={{
-          padding: isMobile ? "70px 0 0" : "150px 0 100px",
+          padding: isMobile ? "50px 10px 10px 10px" : "150px 10px 100px 10px",
           marginBottom: isMobile ? "30px" : "100px",
           background: "rgba(255, 221, 51, 0.1)",
         }}
@@ -77,6 +77,7 @@ const Joinnow = (props) => {
                     <Grid item container alignItems="center">
                       <Grid
                         item
+                        xs={11}
                         container
                         justify="flex-start"
                         alignItems="flex-start"
@@ -86,10 +87,12 @@ const Joinnow = (props) => {
                         <Grid
                           item
                           xs={1}
+                          sm={1}
+                          lg={1}
                           //justify="flex-start"
                           //alignItems="flex-start"
                           //direction="row"
-                          style={{ marginRight: "16px" }}
+                          style={{ marginRight: isMobile?'0px': '16px' }}
                         >
                           <svg
                             width="32"
@@ -129,8 +132,8 @@ const Joinnow = (props) => {
           </Grid>
           <Grid
             item
-            xs={12}
-            sm={12}
+            xs={11}
+            sm={11}
             lg={4}
             container
             direction="column"
@@ -222,7 +225,7 @@ const Joinnow = (props) => {
                     
                   > */}
                     <Styles.ColorButton 
-                     style={isMobile?{width:'90vw'}:{width:'120%'}}>
+                     style={isMobile?{width:'100%',padding:'0px 20px'}:{width:'100%',padding:'0px 20px'}}>
                     JOIN NOW
                     </Styles.ColorButton>
                   {/* </Typography> */}

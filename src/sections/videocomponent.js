@@ -15,7 +15,7 @@ const Videocomponent = () => {
       alignItems="center"
       justify="center"
       style={{
-        margin: isMobile ? "-192px 0 0" : "0 0",
+        margin: isMobile ? "-150px 0 0 0" : "0 0",
         padding: isMobile ? "20px" : "0",
       }}
     >
@@ -32,7 +32,7 @@ const Videocomponent = () => {
             textAlign: "center",
           }}
         >
-          LIVE THE LIFE YOU LOVE.
+          LIVE THE LIFE {isMobile?<br/>:""}YOU LOVE.
           <br /> SUPER HEALTHY, HAPPY, AND FIT.
         </Typography>
       </Grid>

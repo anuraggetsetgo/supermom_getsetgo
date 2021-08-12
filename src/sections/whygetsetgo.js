@@ -17,7 +17,7 @@ const Whygetsetgo = () => {
           xs={12}
           sm={12}
           lg={10}
-          style={{ margin: "0 0 60px 0", padding: isMobile ? "20px" : "0" }}
+          style={{ margin: "0 0 60px 0", padding: isMobile ? "0px 20px 0px 20px" : "0" }}
         >
           <Grid item style={{ marginBottom: "35px" }}>
             <Typography

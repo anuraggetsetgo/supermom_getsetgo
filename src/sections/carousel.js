@@ -316,11 +316,11 @@ const CarouselItem = (props) => {
           alignItems="center"
           style={
             isMobile
-              ? { padding: "24px 20px" }
+              ? { padding: "8px 20px 24px 20px" }
               : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
           }
         >
-          <Grid item style={isMobile ? null : { margin: '0 0 0 10px' }}>
+          <Grid item container alignItems='center' justify={isMobile?'flex-start':'center'} style={isMobile ? null : { margin: '0 0 0 10px' }}>
             <Typography
               variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.colorRed }}
@@ -381,6 +381,7 @@ const CarouselItem = (props) => {
 
           {isMobile && <Carousel
             interval={2500}
+            animation='slide'
             indicatorIconButtonProps={{
               style: {
                 color: "#C2DCE2",

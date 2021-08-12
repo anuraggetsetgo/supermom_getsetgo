@@ -320,7 +320,7 @@ const CarouselItem = (props) => {
               : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
           }
         >
-          <Grid item style={isMobile ? null : { margin: '0 0 0 10px' }}>
+          <Grid item container alignItems='center' justify={isMobile?'flex-start':'center'} style={isMobile ? null : { margin: '0 0 0 10px' }}>
             <Typography
               variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.colorRed }}

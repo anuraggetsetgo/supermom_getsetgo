@@ -18,7 +18,7 @@ const Mediabanner = () => {
         justify="center"
         style={{
           marginBottom: isMobile ? "5px" : "100px",
-          padding: isMobile ? "20px" : "0",
+          padding: isMobile ? "8px 20px 20px 20px" : "0",
         }}
       >
         <Grid

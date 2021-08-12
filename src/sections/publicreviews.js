@@ -4,7 +4,10 @@ import Styles from "../app-style.js";
 import { Typography } from "@material-ui/core";
 import { colors } from "../services";
 import Rating from "@material-ui/lab/Rating";
+import { useTheme,useMediaQuery } from "@material-ui/core";
 const GoogleReview = ({ review }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
@@ -14,7 +17,7 @@ const GoogleReview = ({ review }) => {
         alignItems="center"
         style={{
           background: Styles.colorWhite.color,
-          padding: "40px 30px 26px 24px",
+          padding: "6px 24px 6px 24px",
           alignContent: "space-between",
         }}
       >
@@ -67,9 +70,10 @@ const GoogleReview = ({ review }) => {
   );
 };
 
-class Publicreviews extends Component {
-  render() {
-    const { reviewData } = this.props;
+const  Publicreviews =(props)=> {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+    const { reviewData } = props;
     return (
       <Grid
         item
@@ -78,7 +82,7 @@ class Publicreviews extends Component {
         justify="center"
         alignItems="center"
         style={{
-          padding: "100px 0 50px",
+          padding: isMobile?"50px 0 50px":"100px 0 50px",
           marginBottom: "30px",
           background: "rgba(16, 58, 66, 0.1)",
         }}
@@ -181,7 +185,6 @@ class Publicreviews extends Component {
         </Grid>
       </Grid>
     );
-  }
 }
 
 export default Publicreviews;

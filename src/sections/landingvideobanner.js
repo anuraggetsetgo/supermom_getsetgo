@@ -13,8 +13,9 @@ const Landingvideobanner = () => {
         container
         direction="row"
         justify="center"
+        className="margintopMedia"
         style={{
-          marginTop: isMobile ? "380px" : "400px",
+          marginTop: isMobile ? "355px" : "400px",
           marginBottom: isMobile ? "0" : "0px",
           padding: isMobile ? "20px" : "0",
         }}
@@ -37,7 +38,8 @@ const Landingvideobanner = () => {
                 ...Styles.boldTxt,
               }}
             >
-              More than 5,000 Mom’s
+              More than{isMobile?(<br></br>):' '}
+              5,000 Moms
             </Typography>
           </Grid>
           <Grid item>

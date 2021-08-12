@@ -25,7 +25,7 @@ const Header = () => {
         lg={10}
         style={
           isMobile
-            ? { height: "57px", padding: "25px 20px 20px 20px" }
+            ? {  padding: "25px 20px 8px 20px" }
             : { height: "90px", padding: "0" }
         }
       >

@@ -96,13 +96,13 @@ const Footer = (props) => {
                   <Grid
                     item
                     xs={6}
-                    sm={12}
+                    sm={6}
                     lg={3}
                     key={key}
                     container
                     justify="center"
                   >
-                    <Grid item style={{ padding: "45px 15px" }}>
+                    <Grid item style={{ padding:isMobile?"45px 25px" : "45px 15px" }}>
                       <a
                         href={val[1]}
                         target="_blank"

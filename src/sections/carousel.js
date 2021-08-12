@@ -316,7 +316,7 @@ const CarouselItem = (props) => {
           alignItems="center"
           style={
             isMobile
-              ? { padding: "24px 20px" }
+              ? { padding: "8px 20px 24px 20px" }
               : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
           }
         >
@@ -381,6 +381,7 @@ const CarouselItem = (props) => {
 
           {isMobile && <Carousel
             interval={2500}
+            animation='slide'
             indicatorIconButtonProps={{
               style: {
                 color: "#C2DCE2",

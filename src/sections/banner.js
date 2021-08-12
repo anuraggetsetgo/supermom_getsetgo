@@ -32,7 +32,7 @@ const Banner = (props) => {
           sm={12}
           lg={5}
         >
-          <Typography variant={isMobile ? "h3" : "h1"} style={Styles.colorRed}>
+          <Typography variant={isMobile ? "h4" : "h1"} style={Styles.colorRed}>
             <span style={Styles.boldTxt}>Awesome, </span>you’re just 1 step away
             from a <span style={Styles.boldTxt}>kickass transformation.</span>
           </Typography>

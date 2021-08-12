@@ -319,6 +319,9 @@ const [submitting, setSubmitting] = React.useState(false)
       case 'err':
         color = "orange";
         break;
+        case 'fail':
+        color = "orange";
+        break;
       default:
         color = 'white';
         break;
@@ -778,17 +781,18 @@ const [submitting, setSubmitting] = React.useState(false)
               >
                 <Typography
                   variant="h3"
-                  style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+                  style={{ ...Styles.marginBottom,...Styles.whiteColor }}
                 >
                   Uh oh, seems like your order got stuck somewhere. Do not worry
                   though
                 </Typography>
-                <Typography variant="h5" style={{ ...Styles.colorWhite }}>
+                <Typography variant="h5"
+                style={{ ...Styles.marginBottom,...Styles.whiteColor }} >
                   Your package is totally secure. Simply drop
                   us an email at:{" "}
                   <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>.
                 </Typography>
-                <Typography variant="h5" style={{ ...Styles.colorWhite }}>
+                <Typography variant="h5" style={{ ...Styles.marginBottom,...Styles.whiteColor }}  >
                   <br></br>Remember to quote your order id in the email:{" "}
                   {props.match.params.orderId}</Typography>
               </Grid>
@@ -834,3 +838,6 @@ export default Ordersummary;
 //     ></Refercomponents>
 //   </Grid>
 // )}
+// ransform: scaleX(-1) rotateZ(
+//   186deg
+//   )

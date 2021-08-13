@@ -196,7 +196,7 @@ export const Ordersummary = (props) => {
   const handleChangeMeridian = (val) => {
     setMeridian(val);
   };
-  
+
 
   React.useEffect(() => {
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
@@ -274,12 +274,12 @@ export const Ordersummary = (props) => {
       setName(customer_name);
       setEmail(customer_email);
     }
-    setOrderStatus("waiting");
+    setOrderStatus("waiting"); //FORCE
   };
   const orderStats = (err) => {
     console.log("Ran into errors");
     setOrderStatus("err");
-    setOrderStatus("waiting");
+    setOrderStatus("waiting"); //FORCE
   };
   const handleSubmit = () => {
     let err = false;
@@ -327,39 +327,39 @@ export const Ordersummary = (props) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const thumbsUP=(height,width,colourHex)=>{
-    return(
+  const thumbsUP = (height, width, colourHex) => {
+    return (
       <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={colourHex}>
-       <path d="M0 0h24v24H0V0z" fill="none"/>
-       <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" /></svg>
     )
-    
+
   }
-  const thumbsDown=(height,width,colourHex)=>{   
-    return(
+  const thumbsDown = (height, width, colourHex) => {
+    return (
       <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={colourHex}>
-      <path d="M0 0h24v24H0z" fill="none"/>
-      <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z"/>
+        <path d="M0 0h24v24H0z" fill="none" />
+        <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z" />
       </svg>
     )
-    
+
 
   }
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
-    <Grid>
+    <>
       <Grid
-        item
         container
-        justify="center"
-        alignItems="center"
+        //justify="center"
+        //alignItems="center"
         style={{
-          height: isMobile ? "100%" : "100%",
+          height: isMobile ? "100vh" : "100%",
           background: `url(${BannerImage})`,
-          position: "absolute",
-          top: "0",
-          left:'0',
-          backgroundRepeat:'no-repeat',
+          //position: "absolute",
+          //top: "0",
+          //left: '0',
+          backgroundRepeat: 'no-repeat',
+          marginTop:'-90px'
         }}
       >
         <Grid
@@ -394,13 +394,13 @@ export const Ordersummary = (props) => {
           </svg>
         </Grid>
         <Grid item container justify="center" style={{ marginTop: "40px" }}>
-        {orderStatus!=='waiting'&&<Grid item style={{...Styles.whiteBG,padding:'20px',borderRadius:'80px'}}>
-          {orderStatus==='success'&& thumbsUP('100px','100px','#00FF00')}
-          {orderStatus==='fail'&& thumbsUP('100px','100px','#FF0000')}
+          {orderStatus !== 'waiting' && <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px' }}>
+            {orderStatus === 'success' && thumbsUP('100px', '100px', '#00FF00')}
+            {orderStatus === 'fail' && thumbsUP('100px', '100px', '#FF0000')}
           </Grid>}
-          {orderStatus==='waiting'&& <CircularProgress color='secondary'/>}
+          {orderStatus === 'waiting' && <CircularProgress color='secondary' />}
         </Grid>
-        <Grid item container justify="center" style={{ marginTop: "20px" }}>
+        <Grid item container justify="center" alignItems='flex-start' style={{ marginTop: "20px" }}>
           {orderStatus === "waiting" && (
             <Typography variant="h5" style={Styles.colorWhite}>
               Give us a minute. Completing your registration ...
@@ -542,7 +542,7 @@ export const Ordersummary = (props) => {
                       bottom: isMobile ? "-25px" : "-60px",
                       position: "relative",
                       padding: isMobile ? "20px" : "0",
-                      marginBottom:'20px'
+                      marginBottom: '20px'
                     }}
                   >
                     <Grid
@@ -700,9 +700,9 @@ export const Ordersummary = (props) => {
                                 meridian == "AM"
                                   ? { height: isMobile ? "62px" : "79px" }
                                   : {
-                                      height: isMobile ? "62px" : "79px",
-                                      ...Styles.amAndpmButton,
-                                    }
+                                    height: isMobile ? "62px" : "79px",
+                                    ...Styles.amAndpmButton,
+                                  }
                               }
                               onClick={() => handleChangeMeridian("AM")}
                             >
@@ -715,16 +715,16 @@ export const Ordersummary = (props) => {
                             xs={12}
                             md={6}
                             container
-                            // style={{ width: isMobile ? "50%" : "null" }}
+                          // style={{ width: isMobile ? "50%" : "null" }}
                           >
                             <Styles.ColorButton
                               style={
                                 meridian == "PM"
                                   ? { height: isMobile ? "62px" : "79px" }
                                   : {
-                                      height: isMobile ? "62px" : "79px",
-                                      ...Styles.amAndpmButton,
-                                    }
+                                    height: isMobile ? "62px" : "79px",
+                                    ...Styles.amAndpmButton,
+                                  }
                               }
                               onClick={() => handleChangeMeridian("PM")}
                             >
@@ -928,7 +928,7 @@ export const Ordersummary = (props) => {
         </DialogActions>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {userMessage||userMessageErr}
+            {userMessage || userMessageErr}
           </DialogContentText>
           <Grid container direction="row" alignItems="center" justify="center">
             <Styles.ColorButton
@@ -939,7 +939,7 @@ export const Ordersummary = (props) => {
             >
               Ok
             </Styles.ColorButton>
-            {userMessageErr&&<Styles.ColorButton
+            {userMessageErr && <Styles.ColorButton
               style={isMobile ? { width: "20vw" } : { width: "20%" }}
               onClick={() => {
                 setOpen(false);
@@ -950,7 +950,7 @@ export const Ordersummary = (props) => {
           </Grid>
         </DialogContent>
       </Dialog>
-    </Grid>
+    </>
   );
 };
 

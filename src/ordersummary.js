@@ -146,6 +146,8 @@ export const Ordersummary = (props) => {
   const [minute, setMinute] = React.useState("");
   const [meridian, setMeridian] = React.useState("AM");
   const [phone, setPhone] = React.useState("");
+  const [countryCode, setCountryCode] = React.useState("91");
+  const [countryCodeWAPP, setCountryCodeWAPP] = React.useState("91");
   const [phoneErr, setErrPhone] = React.useState("");
   const [whatapp, setWhatsapp] = React.useState("");
   //const [submitEnable, setUserMessage] = React.useState("");
@@ -176,15 +178,13 @@ export const Ordersummary = (props) => {
       "mobile"
     );
   }
-  const handleChange = (event) => {
-    setHour(event.target.value);
-  };
+  
   const handleChangeHour = (event) => {
-    console.log(hour);
+    //console.log(hour);
     setHour(event.target.value);
   };
   const handleChangeMinute = (event) => {
-    console.log(minute);
+    //console.log(minute);
     setMinute(event.target.value);
   };
   const handleChangePhone = (event) => {
@@ -274,12 +274,12 @@ export const Ordersummary = (props) => {
       setName(customer_name);
       setEmail(customer_email);
     }
-    setOrderStatus("waiting"); //FORCE
+    //setOrderStatus("waiting"); //FORCE
   };
   const orderStats = (err) => {
     console.log("Ran into errors");
     setOrderStatus("err");
-    setOrderStatus("waiting"); //FORCE
+    //setOrderStatus("waiting"); //FORCE
   };
   const handleSubmit = () => {
     let err = false;
@@ -298,8 +298,8 @@ export const Ordersummary = (props) => {
       setSubmitting(true);
       api_set_reminder(
         {
-          mobile_number: phone, //"919821354464",
-          whatsapp_number: whatapp, //"919821354464",
+          mobile_number: countryCode+phone, //"919821354464",
+          whatsapp_number: countryCodeWAPP+whatapp, //"919821354464",
           preferred_hour: hour, //'10'
           preferred_min: minute, //"00",
           preferred_meridian: meridian,
@@ -307,13 +307,14 @@ export const Ordersummary = (props) => {
         },
         (data) => {
           setUserMessage(data.data.successmessage);
-          setOpen(true);
         },
 
         (err) => {
           setSubmitting(false);
+          setOpen(true);
+          console.log(err.response)
           setUserMessageErr(
-            "Opps an error occurecd with selecting a slot.Please try again "
+            err.response.data.errormessage
           );
         }
       );
@@ -350,15 +351,16 @@ export const Ordersummary = (props) => {
     <>
       <Grid
         container
-        //justify="center"
+        justify="center"
         //alignItems="center"
         style={{
-          height: isMobile ? "100vh" : "100%",
+          height: isMobile ? "100vh" : "100vh",
           background: `url(${BannerImage})`,
           //position: "absolute",
           //top: "0",
           //left: '0',
           backgroundRepeat: 'no-repeat',
+          backgroundSize:'cover',
           marginTop:'-90px'
         }}
       >
@@ -393,13 +395,15 @@ export const Ordersummary = (props) => {
             </defs>
           </svg>
         </Grid>
-        <Grid item container justify="center" style={{ marginTop: "40px" }}>
-          {orderStatus !== 'waiting' && <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px' }}>
+        <Grid item container justify="center" style={{ marginTop: "40px",maxHeight:'150px' }}>
+          {orderStatus !== 'waiting' && orderStatus !== 'sendingEmail' &&
+          <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px'}}>
             {orderStatus === 'success' && thumbsUP('100px', '100px', '#00FF00')}
-            {orderStatus === 'fail' && thumbsUP('100px', '100px', '#FF0000')}
+            {orderStatus === 'fail' || orderStatus==='err' && thumbsDown('100px', '100px', '#FF0000')}
           </Grid>}
-          {orderStatus === 'waiting' && <CircularProgress color='secondary' />}
+          {orderStatus === 'waiting'||orderStatus === 'sendingEmail' && <CircularProgress color='secondary' />}
         </Grid>
+
         <Grid item container justify="center" alignItems='flex-start' style={{ marginTop: "20px" }}>
           {orderStatus === "waiting" && (
             <Typography variant="h5" style={Styles.colorWhite}>
@@ -759,6 +763,10 @@ export const Ordersummary = (props) => {
                                 fontSize: "16px",
                                 color: "rgba(102, 102, 102, 0.75)",
                               }}
+                              value={countryCodeWAPP}
+                              onChange={(e) => {
+                                setCountryCodeWAPP(e.target.value);
+                              }}
                             />
                           </Grid>
                           {/* <Grid
@@ -775,7 +783,7 @@ export const Ordersummary = (props) => {
                           <Grid item md={isMobile ? 8 : 10} xs={8}>
                             <input
                               type="number"
-                              placeholder="Please confirm your mobile number"
+                              placeholder="Confirm your mobile number"
                               defaultValue={phone}
                               style={{
                                 width: "100%",
@@ -814,6 +822,10 @@ export const Ordersummary = (props) => {
                                 padding: "20px",
                                 fontSize: "16px",
                                 color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                              value={countryCodeWAPP}
+                              onChange={(e) => {
+                                setCountryCodeWAPP(e.target.value);
                               }}
                             />
                           </Grid>
@@ -873,41 +885,96 @@ export const Ordersummary = (props) => {
                     </Grid>
                   </Grid>
                 )}
+                {userMessage &&(
+                  <Grid
+                  item
+                  container
+                  justify="center"
+                  alignItems='center'
+                  style={{
+                    marginTop: "20px",
+                    padding: isMobile ? "20px" : "0",
+                  }}
+                >
+                  <Typography
+                    variant={isMobile ? "h4" : "h4"}
+                    style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
+                  >
+                 {userMessage}
+                  </Typography>
+                </Grid>
+                )}
               </Grid>
             </>
           )}
 
           {(orderStatus === "fail" || orderStatus === "err") && (
+            <>
             <Grid
               item
               style={{
-                //...{ padding: "0 50px", width: "50%" },
+                // ...{ padding: "0 50px", width: "50%" },
+                marginTop:isMobile?"0px":'-100px',
                 ...Styles.centerTxt,
               }}
             >
-              <Typography
-                variant="h3"
-                style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+              <Grid
+                item
+                container
+                justify="center"
+                style={{ marginTop: "20px" }}
               >
-                Uh oh, seems like your order got stuck somewhere. Do not worry
-                though
-              </Typography>
-              <Typography variant="h5" style={{ ...Styles.colorWhite }}>
-                Your package is totally secure. Simply drop us an email at:{" "}
-                <a
-                  href="mailto: info@getsetgo.fitness"
-                  style={Styles.colorYellow}
+                <Typography
+                  variant={isMobile ? "h3" : "h1"}
+                  style={{ ...Styles.colorWhite, ...Styles.boldTxt}}
                 >
-                  info@getsetgo.fitness
-                </a>
-                .
-              </Typography>
-              <Typography variant="h5" style={{ ...Styles.colorWhite }}>
-                <br></br>Remember to quote your order id in the email:{" "}
-                {props.match.params.orderId}
-              </Typography>
+                   Uh oh
+                </Typography>
+              </Grid>
+              <Grid
+                item
+                container
+                justify="center"
+                style={{
+                  marginTop: "20px",
+                  padding: isMobile ? "20px" : "0",
+                }}
+              >
+                <Typography
+                  variant={isMobile ? "h6" : "h5"}
+                  style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
+                >
+                  Seems like your order got stuck somewhere. Do not worry
+                though.
+                </Typography>
+                </Grid>
+               <Grid item
+                container
+                justify="center"
+                style={{
+                  marginTop: "20px",
+                  padding: isMobile ? "20px" : "0",
+                }}> 
+                <Typography
+                  variant={isMobile ? "h6" : "h5"}
+                  style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
+                >
+                  Your package is totally secure. Simply drop us an email at:{" "}
+                    <a
+                      href="mailto: info@getsetgo.fitness"
+                      style={Styles.colorYellow}
+                    >
+                      info@getsetgo.fitness
+                    </a>
+                    <br></br>Remember to quote your order id in the email:{" "}
+                  {props.match.params.orderId}
+                </Typography>
+              </Grid>
+              
+              
             </Grid>
-          )}
+          </>
+        )}
         </Grid>
         {/* <Grid item style={{ padding: isMobile ? "20px" : "0" }}>
           <Typography
@@ -928,25 +995,18 @@ export const Ordersummary = (props) => {
         </DialogActions>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            {userMessage || userMessageErr}
+            { userMessageErr}
           </DialogContentText>
           <Grid container direction="row" alignItems="center" justify="center">
-            <Styles.ColorButton
-              style={isMobile ? { width: "20vw" } : { width: "20%" }}
-              onClick={() => {
-                setOpen(false);
-              }}
-            >
-              Ok
-            </Styles.ColorButton>
-            {userMessageErr && <Styles.ColorButton
+            
+             <Styles.ColorButton
               style={isMobile ? { width: "20vw" } : { width: "20%" }}
               onClick={() => {
                 setOpen(false);
               }}
             >
               Try again !!!
-            </Styles.ColorButton>}
+            </Styles.ColorButton>
           </Grid>
         </DialogContent>
       </Dialog>

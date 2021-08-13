@@ -525,7 +525,346 @@ export const Ordersummary = (props) => {
                     </a>
                   </Typography>
                 </Grid>
-                
+                {!userMessage && (
+                  <Grid
+                    item
+                    container
+                    alignItems="center"
+                    justify="center"
+                    style={{
+                      bottom: isMobile ? "-25px" : "-60px",
+                      position: "relative",
+                      padding: isMobile ? "20px" : "0",
+                    }}
+                  >
+                    <Grid
+                      item
+                      container
+                      alignItems="center"
+                      justify="flex-start"
+                      direction="row"
+                      xs={12}
+                      sm={12}
+                      lg={6}
+                      style={{
+                        padding: isMobile ? "30px" : "100px",
+                        ...Styles.whiteBG,
+                        boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+                        borderRadius: "10px",
+                        marginBottom: "20px",
+                      }}
+                    >
+                      <Grid item>
+                        <Typography
+                          variant={isMobile ? "h4" : "h3"}
+                          style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
+                        >
+                          Preferred time for call
+                        </Typography>
+                      </Grid>
+                      <Grid item container>
+                        <Typography
+                          variant="h6"
+                          style={{ fontFamily: "Roboto", marginTop: "8px" }}
+                        >
+                          What’s the best time to call you for follow-up
+                        </Typography>
+                      </Grid>
+                      <Grid
+                        item
+                        xs={12}
+                        direction="row"
+                        container
+                        justify="center"
+                        alignItems={isMobile ? "center" : "null"}
+                      >
+                        <Grid item xs={6} sm={4} lg={4}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                            style={{
+                              // marginRight: "10px",
+                              marginBottom: isMobile ? "16px" : "0",
+                              // minWidth: isMobile ? "95%" : "100%",
+                            }}
+                          >
+                            {isMobile ? (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Hour
+                              </InputLabel>
+                            ) : (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Select Hour
+                              </InputLabel>
+                            )}
+                            <Select
+                              labelId="demo-simple-select-outlined-label"
+                              id="demo-simple-select-outlined"
+                              value={hour}
+                              onChange={handleChangeHour}
+                              label="Select Hour"
+                              style={{
+                                height: isMobile ? "62px" : "79px",
+                                borderRadius: "10px",
+                                width: "90%",
+                              }}
+                            >
+                              <MenuItem value="">
+                                <em>None</em>
+                              </MenuItem>
+                              {timeHour.map((key, val) => {
+                                return (
+                                  <MenuItem value={key.id}>{key.hour}</MenuItem>
+                                );
+                              })}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid item xs={6} sm={4} lg={4}>
+                          <FormControl
+                            variant="outlined"
+                            className={classes.formControl}
+                            style={{
+                              // marginLeft: isMobile ? "0" : "20px",
+                              marginBottom: isMobile ? "16px" : "0",
+                              // minWidth: isMobile ? "95%" : "100%",
+                            }}
+                          >
+                            {isMobile ? (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Minute
+                              </InputLabel>
+                            ) : (
+                              <InputLabel id="demo-simple-select-outlined-label">
+                                Select Minute
+                              </InputLabel>
+                            )}
+                            <Select
+                              labelId="demo-simple-select-outlined-label"
+                              id="demo-simple-select-outlined"
+                              value={minute}
+                              onChange={handleChangeMinute}
+                              label="Select Minute"
+                              style={{
+                                height: isMobile ? "62px" : "79px",
+                                borderRadius: "10px",
+                                width: "90%",
+                              }}
+                            >
+                              <MenuItem value="">
+                                <em>None</em>
+                              </MenuItem>
+                              {timeMinute.map((key, val) => {
+                                return (
+                                  <MenuItem value={key.id}>
+                                    {key.Minute}
+                                  </MenuItem>
+                                );
+                              })}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                        <Grid
+                          md={4}
+                          sm={4}
+                          lg={4}
+                          xs={12}
+                          item
+                          container
+                          alignItems="flex-end"
+                          justify="space-between"
+                        >
+                          <Grid
+                            item
+                            sm={4}
+                            xs={12}
+                            md={6}
+                            container
+                            style={{
+                              // marginLeft: isMobile ? "0" : "40px",
+                              // width: isMobile ? "50%" : "null",
+                              marginBottom: isMobile ? "16px" : "0",
+                            }}
+                          >
+                            {/* <button ></button> */}
+                            <Styles.ColorButton
+                              style={
+                                meridian == "AM"
+                                  ? { height: isMobile ? "62px" : "79px" }
+                                  : {
+                                      height: isMobile ? "62px" : "79px",
+                                      ...Styles.amAndpmButton,
+                                    }
+                              }
+                              onClick={() => handleChangeMeridian("AM")}
+                            >
+                              AM
+                            </Styles.ColorButton>
+                          </Grid>
+                          <Grid
+                            item
+                            sm={4}
+                            xs={12}
+                            md={6}
+                            container
+                            // style={{ width: isMobile ? "50%" : "null" }}
+                          >
+                            <Styles.ColorButton
+                              style={
+                                meridian == "PM"
+                                  ? { height: isMobile ? "62px" : "79px" }
+                                  : {
+                                      height: isMobile ? "62px" : "79px",
+                                      ...Styles.amAndpmButton,
+                                    }
+                              }
+                              onClick={() => handleChangeMeridian("PM")}
+                            >
+                              PM
+                            </Styles.ColorButton>
+                            {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid xs={8} item container>
+                        {err && (
+                          <Typography
+                            style={{ ...Styles.err, ...Styles.centerTxt }}
+                          >
+                            {err}
+                          </Typography>
+                        )}
+                      </Grid>
+                      <Grid xs={12} item style={{ marginTop: "20px" }}>
+                        <Grid item container justify="space-between">
+                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
+                            <input
+                              type="number"
+                              placeholder="+91"
+                              defaultValue={91}
+                              style={{
+                                width: "80%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                            />
+                          </Grid>
+                          {/* <Grid
+                            item
+                            container
+                            xs={1}
+                            alignItems="center"
+                            justify="center"
+                          >
+                            <Typography style={{ textAlign: "center" }}>
+                              -
+                            </Typography>
+                          </Grid> */}
+                          <Grid item md={isMobile ? 8 : 10} xs={8}>
+                            <input
+                              type="number"
+                              placeholder="Please confirm your mobile number"
+                              defaultValue={phone}
+                              style={{
+                                width: "100%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                              value={phone}
+                              onChange={(e) => {
+                                handleChangePhone(e);
+                              }}
+                            />
+                            {phoneErr && (
+                              <Typography style={Styles.err}>
+                                {phoneErr}
+                              </Typography>
+                            )}
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid xs={12} item style={{ marginTop: "20px" }}>
+                        <Grid item container justify="space-between">
+                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
+                            <input
+                              type="number"
+                              placeholder="+91"
+                              defaultValue={91}
+                              style={{
+                                width: "80%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                            />
+                          </Grid>
+                          {/* <Grid
+                            item
+                            container
+                            xs={1}
+                            alignItems="center"
+                            justify="center"
+                          >
+                            <Typography style={{ textAlign: "center" }}>
+                              -
+                            </Typography>
+                          </Grid> */}
+                          <Grid item md={isMobile ? 8 : 10} xs={8}>
+                            <input
+                              placeholder="Your whatsapp number"
+                              defaultValue={phone}
+                              type="number"
+                              style={{
+                                width: "100%",
+                                height: "68px",
+                                borderRadius: "10px",
+                                border: "1px solid rgba(102, 102, 102, 0.3)",
+                                padding: "20px",
+                                fontSize: "16px",
+                                color: "rgba(102, 102, 102, 0.75)",
+                              }}
+                              value={whatapp}
+                              onChange={handleChangeWhatsApp}
+                            />
+                          </Grid>
+                        </Grid>
+                      </Grid>
+                      <Grid
+                        xs={12}
+                        item
+                        container
+                        direction="row"
+                        alignItems="center"
+                        justify="center"
+                        style={{ marginTop: "20px" }}
+                      ></Grid>
+                      <Grid item xs={12}>
+                        <Styles.ColorButton
+                          type="submit"
+                          disabled={submitting}
+                          style={{
+                            ...Styles.thankyousubmitButton,
+                          }}
+                          onSubmit={handleSubmit}
+                          onClick={handleSubmit}
+                        >
+                          SUBMIT
+                        </Styles.ColorButton>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                )}
               </Grid>
             </>
           )}

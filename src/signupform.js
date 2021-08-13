@@ -143,6 +143,7 @@ const InfoPopUp = ({
   //For Mobile Devices
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Dialog
@@ -203,7 +204,8 @@ const InfoPopUp = ({
           </Typography>
         </Grid>
         <Grid item>
-          <Styles.ColorButton style={isMobile?{width:'35vw'}:{width:'100%'}}
+          <Styles.ColorButton
+            style={isMobile ? { width: "35vw" } : { width: "100%" }}
             onClick={() => {
               setOpen(false);
               setIsContinue(true);
@@ -215,7 +217,8 @@ const InfoPopUp = ({
           </Styles.ColorButton>
         </Grid>
         <Grid item>
-          <Styles.ColorButton style={isMobile?{width:'35vw'}:{width:'100%'}}
+          <Styles.ColorButton
+            style={isMobile ? { width: "35vw" } : { width: "100%" }}
             onClick={() => {
               //setOpen(false);
               //setIsContinue(true);
@@ -226,7 +229,6 @@ const InfoPopUp = ({
             Change Mobile number
           </Styles.ColorButton>
         </Grid>
-
       </Grid>
     </Dialog>
   );
@@ -234,6 +236,7 @@ const InfoPopUp = ({
 const Signupform = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("md"));
   console.log(props);
   let history = useHistory();
   let [err, updateErr] = useState(false);
@@ -439,7 +442,7 @@ const Signupform = (props) => {
                         item
                         xs={12}
                         sm={12}
-                        lg={6}
+                        lg={5}
                         container
                         style={{
                           ...Styles.formFieldContainer,
@@ -454,8 +457,9 @@ const Signupform = (props) => {
                           validate={validateName}
                           disabled={formSubmitting}
                           style={{
-                            ...Styles.formInputField,...Styles.fontSize16,
-                            width: isMobile ? "100%" : "95%",
+                            ...Styles.formInputField,
+                            ...Styles.fontSize16,
+                            width: isMobile2 ? "100%" : "96%",
                           }}
                         />
                         {touched.name && errors.name && (
@@ -468,15 +472,15 @@ const Signupform = (props) => {
                         item
                         xs={12}
                         sm={12}
-                        lg={6}
+                        lg={7}
                         container
                         direction="row"
                         style={Styles.formFieldContainer}
                       >
                         <Grid
                           item
-                          xs={2}
-                          sm={12}
+                          xs={isMobile ? 3 : 2}
+                          sm={2}
                           lg={2}
                           style={Styles.countryContainer}
                         >
@@ -487,22 +491,23 @@ const Signupform = (props) => {
                             validate={validateCountry}
                             disabled={formSubmitting}
                             style={{
-                              ...Styles.formInputField,...Styles.fontSize16,
-                              width: isMobile ? "130%" : "85%",
+                              ...Styles.formInputField,
+                              ...Styles.fontSize16,
+                              width: isMobile ? "90%" : "85%",
                               // marginBottom: "16px",
-                              marginLeft: "-5px",
+                              // marginLeft: "-5px",
                             }}
                           />
                         </Grid>
                         <Grid
                           item
-                          xs={10}
-                          sm={12}
+                          xs={isMobile ? 9 : 10}
+                          sm={10}
                           lg={10}
                           style={{
                             ...Styles.mobileContainer,
                             // marginLeft: isMobile ? "0" : "10px",
-                            width: isMobile ? "100%" : "98%",
+                            width: isMobile ? "100%" : "100%",
                             // marginBottom: "16px",
                           }}
                         >
@@ -514,8 +519,9 @@ const Signupform = (props) => {
                             disabled={formSubmitting}
                             validate={validateMobile}
                             style={{
-                              ...Styles.formInputField,...Styles.fontSize16,
-                              width: isMobile ? "90%" : "96%",
+                              ...Styles.formInputField,
+                              ...Styles.fontSize16,
+                              width: isMobile ? "97%" : "100%",
                               marginLeft: isMobile ? "17px" : "0",
                             }}
                           />
@@ -546,8 +552,9 @@ const Signupform = (props) => {
                         disabled={formSubmitting}
                         validate={validateEmail}
                         style={{
-                          ...Styles.formInputField,...Styles.fontSize16,
-                          width: isMobile ? "100%" : "98%",
+                          ...Styles.formInputField,
+                          ...Styles.fontSize16,
+                          width: isMobile ? "100%" : "100%",
                         }}
                       />
                       {touched.email && errors.email && (
@@ -581,7 +588,7 @@ const Signupform = (props) => {
                       variant="contained"
                       disabled={submitButtonEnable}
                       style={{
-                        width: isMobile ? "100%" : "98%",
+                        width: isMobile ? "100%" : "100%",
                         marginTop: "20px",
                       }}
                       // onClick={(e) => setSubmitButtonEnable(true)}

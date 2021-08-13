@@ -56,7 +56,7 @@ const Videocomponent = () => {
         <Grid
           item
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
           container
           alignItems="center"

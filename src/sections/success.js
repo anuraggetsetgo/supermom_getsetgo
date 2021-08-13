@@ -15,7 +15,7 @@ const Success = (props) => {
           justify="center"
           direction="column"
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
           style={{ padding: isMobile ? "20px" : "0" }}
         >

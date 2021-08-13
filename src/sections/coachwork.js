@@ -43,8 +43,8 @@ const Coachwork = () => {
           item
           justify="flex-start"
           alignItems="center"
-          xs={12}
-          sm={12}
+          xs={10}
+          sm={10}
           lg={10}
           style={{ margin: "158px 0 60px 0" }}
         >

@@ -55,7 +55,12 @@ const Banner = (props) => {
           alignItems="flex-end"
           style={{ position: "relative" }}
         >
-          <Grid item style={isMobile ? { margin: "0 17vw 0 15vw" } : null}>
+          <Grid
+            item
+            style={{
+              width: isMobile2 ? "0 17vw 0 15vw" : isMobile ? "null" : null,
+            }}
+          >
             <img
               src={Styles.backCoverImg(
                 "excited-beautiful-girl-smiling-pointing-fingers-small 2.png"
@@ -74,7 +79,7 @@ const Banner = (props) => {
             style={{
               position: "absolute",
               top: isMobile ? "0px" : "0px",
-              right: isMobile3 ? "-70px" : "0px",
+              right: isMobile ? "0" : isMobile3 ? "-70px" : "0px",
             }}
           >
             <svg

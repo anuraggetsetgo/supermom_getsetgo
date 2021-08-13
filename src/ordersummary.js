@@ -23,6 +23,7 @@ import { useMediaQuery } from "@material-ui/core";
 import { Dialog } from "@material-ui/core";
 import HighlightOff from "@material-ui/icons/HighlightOff";
 import BannerImage from "./images/landingpage_banner.png";
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const errMsgs = {
   requried: "Uh oh! It's a required field",
@@ -273,10 +274,12 @@ export const Ordersummary = (props) => {
       setName(customer_name);
       setEmail(customer_email);
     }
+    setOrderStatus("waiting");
   };
   const orderStats = (err) => {
     console.log("Ran into errors");
     setOrderStatus("err");
+    setOrderStatus("waiting");
   };
   const handleSubmit = () => {
     let err = false;
@@ -351,10 +354,12 @@ export const Ordersummary = (props) => {
         justify="center"
         alignItems="center"
         style={{
-          height: isMobile ? "150%" : "100vh",
+          height: isMobile ? "100%" : "100%",
           background: `url(${BannerImage})`,
           position: "absolute",
           top: "0",
+          left:'0',
+          backgroundRepeat:'no-repeat',
         }}
       >
         <Grid
@@ -389,9 +394,11 @@ export const Ordersummary = (props) => {
           </svg>
         </Grid>
         <Grid item container justify="center" style={{ marginTop: "40px" }}>
-          <Grid item style={{...Styles.whiteBG,padding:'20px',borderRadius:'80px'}}>
-          {orderStatus==='success'&& orderStatus!=='waiting'? thumbsUP('100px','100px','#00FF00'):thumbsDown('100px','100px','#FF0000')}
-          </Grid>
+        {orderStatus!=='waiting'&&<Grid item style={{...Styles.whiteBG,padding:'20px',borderRadius:'80px'}}>
+          {orderStatus==='success'&& thumbsUP('100px','100px','#00FF00')}
+          {orderStatus==='fail'&& thumbsUP('100px','100px','#FF0000')}
+          </Grid>}
+          {orderStatus==='waiting'&& <CircularProgress color='secondary'/>}
         </Grid>
         <Grid item container justify="center" style={{ marginTop: "20px" }}>
           {orderStatus === "waiting" && (
@@ -535,6 +542,7 @@ export const Ordersummary = (props) => {
                       bottom: isMobile ? "-25px" : "-60px",
                       position: "relative",
                       padding: isMobile ? "20px" : "0",
+                      marginBottom:'20px'
                     }}
                   >
                     <Grid
@@ -901,7 +909,7 @@ export const Ordersummary = (props) => {
             </Grid>
           )}
         </Grid>
-        <Grid item style={{ padding: isMobile ? "20px" : "0" }}>
+        {/* <Grid item style={{ padding: isMobile ? "20px" : "0" }}>
           <Typography
             variant={isMobile ? "body2" : "subtitle2"}
             style={{
@@ -912,7 +920,7 @@ export const Ordersummary = (props) => {
           >
             © {new Date().getFullYear()} GetSetGo Fitness. All Rights Reserved.
           </Typography>
-        </Grid>
+        </Grid> */}
       </Grid>
       <Dialog open={open} onClose={handleClose}>
         <DialogActions>

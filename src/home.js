@@ -8,7 +8,7 @@ import Joinnow from "./sections/joinnow";
 import Whygetsetgo from "./sections/whygetsetgo";
 import Mediabanner from "./sections/mediabanner";
 import Publicreviews from './sections/publicreviews'
-
+import NewsBanner from './sections/news';
 export default function Home(props) {
   const signUpRef=props.signUpRef;
   const [reviewData, setReviewdata] = React.useState([]);
@@ -33,6 +33,7 @@ export default function Home(props) {
       <Whygetsetgo />
       <Publicreviews reviewData={reviewData} />
       <Mediabanner />
+      <NewsBanner scrollToSignUp={props.scrollToSignUp}/>
     </>
   );
 }

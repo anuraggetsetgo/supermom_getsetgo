@@ -7,6 +7,8 @@ import customTxt from "./customTxt.json";
 const Mediabanner = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <>
@@ -34,7 +36,7 @@ const Mediabanner = () => {
             ...Styles.padding40,
           }}
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
         >
           <Grid item>
@@ -49,7 +51,7 @@ const Mediabanner = () => {
               style={{
                 ...Styles.colorWhite,
                 marginTop: "8px",
-                marginBottom: `${isMobile ? "15px" : "0"}`,
+                marginBottom: `${isMobile3 ? "15px" : "0"}`,
               }}
             >
               Online community across social media
@@ -67,7 +69,12 @@ const Mediabanner = () => {
           >
             {customTxt.GSGSocialMedia.images.map((val, key) => {
               return (
-                <a key={key} href={val[1]} target="_blank" rel="noopener noreferrer">
+                <a
+                  key={key}
+                  href={val[1]}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img
                     src={Styles.backCoverImg(val[0])}
                     alt="social Media Icons"

@@ -20,7 +20,7 @@ const Landingvideobanner = () => {
           padding: isMobile ? "20px" : "0",
         }}
       >
-        <Grid item justify="center" xs={12} sm={10} lg={10}>
+        <Grid item justify="center" xs={12} sm={10} lg={12}>
           <Grid item>
             <Typography
               variant={isMobile ? "h4" : "h3"}
@@ -38,7 +38,7 @@ const Landingvideobanner = () => {
                 ...Styles.boldTxt,
               }}
             >
-              More than{isMobile?(<br></br>):' '}
+              More than{isMobile ? <br></br> : " "}
               5,000 Moms
             </Typography>
           </Grid>
@@ -77,7 +77,7 @@ const Landingvideobanner = () => {
               }
             >
               {/* <img src={Styles.backCoverImg("mother_holding_img.png")} /> */}
-              <Iframe 
+              <Iframe
                 wd={window.screen.width * 0.7 + "px"}
                 ht={window.screen.height * 0.45 + "px"}
                 title="full body home workout"

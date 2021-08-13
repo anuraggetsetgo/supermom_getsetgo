@@ -32,7 +32,7 @@ const Videocomponent = () => {
             textAlign: "center",
           }}
         >
-          LIVE THE LIFE {isMobile?<br/>:""}YOU LOVE.
+          LIVE THE LIFE {isMobile ? <br /> : ""}YOU LOVE.
           <br /> SUPER HEALTHY, HAPPY, AND FIT.
         </Typography>
       </Grid>
@@ -72,7 +72,9 @@ const Videocomponent = () => {
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
-              src="https://www.youtube.com/embed/u3RRJBrcr-w"
+              src="https://www.youtube.com/embed/jziXjc2Lw00"
+              frameborder="0"
+              allowfullscreen
             />
             <Typography
               variant="h5"
@@ -91,7 +93,7 @@ const Videocomponent = () => {
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
-              src="https://www.youtube.com/embed/u3RRJBrcr-w"
+              src="https://www.youtube.com/embed/yNl6ypbfWdI"
             />
             <Typography
               variant="h5"
@@ -110,7 +112,7 @@ const Videocomponent = () => {
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
-              src="https://www.youtube.com/embed/u3RRJBrcr-w"
+              src="https://www.youtube.com/embed/u_wzaDCu_c8"
             />
             <Typography
               variant="h5"

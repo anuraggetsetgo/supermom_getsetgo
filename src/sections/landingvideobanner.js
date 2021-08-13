@@ -6,6 +6,8 @@ import Iframe from "./iframe";
 const Landingvideobanner = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Grid
@@ -15,7 +17,7 @@ const Landingvideobanner = () => {
         justify="center"
         className="margintopMedia"
         style={{
-          marginTop: isMobile ? "355px" : "400px",
+          marginTop: isMobile ? "355px" : isMobile3 ? "550px" : "400px",
           marginBottom: isMobile ? "0" : "0px",
           padding: isMobile ? "20px" : "0",
         }}
@@ -81,7 +83,7 @@ const Landingvideobanner = () => {
                 wd={window.screen.width * 0.7 + "px"}
                 ht={window.screen.height * 0.45 + "px"}
                 title="full body home workout"
-                src="https://www.youtube.com/embed/u3RRJBrcr-w"
+                src="https://www.youtube.com/embed/jziXjc2Lw00"
               />
             </Grid>
             {/* <Grid

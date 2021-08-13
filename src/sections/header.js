@@ -12,7 +12,6 @@ const Header = () => {
   //let history=useHistory();
   //console.log(history)
   return (
-
     <Grid item container direction="row" alignItems="center" justify="center">
       <Grid
         item
@@ -21,11 +20,11 @@ const Header = () => {
         justify="space-between"
         direction="row"
         xs={12}
-        sm={12}
+        sm={10}
         lg={10}
         style={
           isMobile
-            ? {  padding: "25px 20px 8px 20px" }
+            ? { padding: "25px 20px 8px 20px" }
             : { height: "90px", padding: "0" }
         }
       >
@@ -35,7 +34,7 @@ const Header = () => {
             alt="Logo"
             height={isMobile ? "50px" : "50px"}
             width={isMobile ? "50px" : "50px"}
-            style={isMobile ? { height: isMobile?'7vh':"8vh" } : null}
+            style={isMobile ? { height: isMobile ? "7vh" : "8vh" } : null}
           />
         </Link>
       </Grid>

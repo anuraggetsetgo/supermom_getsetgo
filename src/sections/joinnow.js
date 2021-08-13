@@ -5,6 +5,8 @@ import customTxt from "./customTxt.json";
 const Joinnow = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Grid
@@ -27,7 +29,7 @@ const Joinnow = (props) => {
           xs={12}
           sm={12}
           lg={10}
-          style={{ padding: isMobile ? "20px" : "0" }}
+          style={{ padding: isMobile3 ? "20px" : "0" }}
         >
           <Grid
             item
@@ -67,7 +69,7 @@ const Joinnow = (props) => {
               {customTxt.GSGAskQuestions.questionsset1.map((val, key) => {
                 return (
                   <Grid
-                  key={key}
+                    key={key}
                     item
                     container
                     direction="row"
@@ -92,7 +94,7 @@ const Joinnow = (props) => {
                           //justify="flex-start"
                           //alignItems="flex-start"
                           //direction="row"
-                          style={{ marginRight: isMobile?'0px': '16px' }}
+                          style={{ marginRight: isMobile ? "16px" : "16px" }}
                         >
                           <svg
                             width="32"
@@ -143,7 +145,7 @@ const Joinnow = (props) => {
             {customTxt.GSGAskQuestions.questionsset2.map((val, key) => {
               return (
                 <Grid
-                key={key}
+                  key={key}
                   item
                   container
                   direction="row"
@@ -219,15 +221,25 @@ const Joinnow = (props) => {
                   display: "flex",
                 }}
               >
-                <Grid item alignItems="center" justify="center" onClick={props.scrollToSignUp}>
+                <Grid
+                  item
+                  alignItems="center"
+                  justify="center"
+                  onClick={props.scrollToSignUp}
+                >
                   {/* <Typography
                     variant="h4"
                     
                   > */}
-                    <Styles.ColorButton 
-                     style={isMobile?{width:'100%',padding:'0px 20px'}:{width:'100%',padding:'0px 20px'}}>
+                  <Styles.ColorButton
+                    style={
+                      isMobile
+                        ? { width: "100%", padding: "0px 20px" }
+                        : { width: "100%", padding: "0px 20px" }
+                    }
+                  >
                     JOIN NOW
-                    </Styles.ColorButton>
+                  </Styles.ColorButton>
                   {/* </Typography> */}
                 </Grid>
               </Grid>

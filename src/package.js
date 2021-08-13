@@ -34,7 +34,7 @@ import Mediabanner from "./sections/mediabanner";
 import Sellingreviews from "./sections/sellingreviews";
 import Sellingmidbanner from "./sections/sellingmidbanner";
 import Coachwork from "./sections/coachwork";
-
+import NewsBanner from './sections/news'
 let baseurl = "https://getsetgo.fitness";
 class Package extends Component {
   constructor(props) {
@@ -294,6 +294,7 @@ class Package extends Component {
             <Success 
             product={products}
             createOrder={(data) => this.createOrder(data)}/>
+            <NewsBanner/>
             {/* {products && (
               <Grid
                 item

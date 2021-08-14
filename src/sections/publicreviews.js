@@ -93,6 +93,8 @@ const Publicreviews = (props) => {
   };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   const { reviewData, allreviewData } = props;
   return (
     <Grid
@@ -114,6 +116,7 @@ const Publicreviews = (props) => {
         justify="center"
         direction="row"
         xs={12}
+        style={{ padding: isMobile ? "20px" : "0" }}
       >
         <Grid
           item
@@ -122,8 +125,8 @@ const Publicreviews = (props) => {
           alignItems="flex-start"
           xs={12}
           lg={8}
-          sm={12}
-          md={12}
+          sm={8}
+          md={8}
           justify="flex-start"
         >
           <Typography
@@ -135,7 +138,7 @@ const Publicreviews = (props) => {
           <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
             4.9/5 on Google Ratings
           </Typography>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={6} sm={6} md={6} sm={6}>
             <svg
               width="160"
               height="32"
@@ -166,12 +169,12 @@ const Publicreviews = (props) => {
             </svg>
           </Grid>
         </Grid>
-        <Grid item xs={6} sm={3} lg={1} justify="flex-end" container>
+        <Grid item xs={6} sm={1} lg={1} md={1} justify="flex-end" container>
           <Typography variant="body2" style={{ ...Styles.colorCharcoalDark }}>
             100+ reviews
           </Typography>
         </Grid>
-        <Grid item xs={3} lg={1} justify="flex-end" container>
+        <Grid item xs={3} lg={1} md={1} sm={1} justify="flex-end" container>
           <button
             variant="body2"
             style={{

@@ -20,6 +20,27 @@ const ColorButton = withStyles((theme) => ({
     },
   },
 }))(Button);
+
+const ColorButton2 = withStyles((theme) => ({
+  root: {
+    width: "95%",
+    height: "80px",
+    borderRadius: "10px",
+    fontSize: "24px",
+    fontFamily: "Poppins",
+    color: colors.reef,
+    backgroundColor: colors.transparent,
+    border: `1px solid ${colors.primary}`,
+    "&:hover": {
+      color: 'white',
+      backgroundColor: colors.reef,
+      border: `1px solid ${colors.primary}`,
+      fontWeight: "bold",
+    },
+    
+  },
+}))(Button);
+
 const backCoverImg = (image) => {
   return `./img/${image}`;
 };
@@ -43,6 +64,7 @@ export default {
   backCoverImg,
   handleScroll,
   ColorButton,
+  ColorButton2,
   cardRadius: {
     borderRadius: "5px",
   },
@@ -105,6 +127,9 @@ export default {
   },
   feildRadius: {
     borderRadius: "10px",
+  },
+  fontSize16:{
+    fontSize:'16px',
   },
   greyBG: {
     background: "#111",
@@ -170,11 +195,15 @@ export default {
     cursor: "pointer",
   },
   amAndpmButton: {
-    color: "black",
-    background: "white",
-    height:'65px'
+    "&:focus": {
+      color: 'white',
+      backgroundColor: colors.reef,
+      border: `1px solid ${colors.primary}`,
+      fontWeight: "bold",
+    },
   },
   thankyousubmitButton: {
+    width: "100%",
     minHeight: "75px",
     cursor: "pointer",
     marginTop: "20px",

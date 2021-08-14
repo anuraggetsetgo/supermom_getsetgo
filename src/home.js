@@ -1,5 +1,5 @@
-import React,{useRef} from 'react'
-import { api_google_Reviews } from "./gsgAPI/api";
+import React, { useRef } from "react";
+import { api_google_Reviews, api_google_All_Reviews } from "./gsgAPI/api";
 import Carousel from "./sections/carousel";
 import Signupbanner from "./sections/signupbanner";
 //import Videocomponent from "./sections/videocomponent";
@@ -7,39 +7,62 @@ import Landingvideobanner from "./sections/landingvideobanner";
 import Joinnow from "./sections/joinnow";
 import Whygetsetgo from "./sections/whygetsetgo";
 import Mediabanner from "./sections/mediabanner";
-import Publicreviews from './sections/publicreviews'
-
+import Publicreviews from "./sections/publicreviews";
+import NewsBanner from "./sections/news";
 export default function Home(props) {
-  const signUpRef=props.signUpRef;
+  const signUpRef = props.signUpRef;
   const [reviewData, setReviewdata] = React.useState([]);
+  const [allreviewData, setAllReviewdata] = React.useState([]);
   const getReview = () => {
-    api_google_Reviews(data => { console.log(data); setReviewdata(data.data.reviews) }, err => { console.log(err) })
-  }
+    api_google_Reviews(
+      (data) => {
+        console.log(data);
+        setReviewdata(data.data.reviews);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
   // const scrollToSignUp=()=>{
   //   signUpRef.current.scrollIntoView({ behavior: 'smooth' })
   // }
   React.useEffect(() => {
     getReview();
   }, []);
+  const getAllReview = () => {
+    api_google_All_Reviews(
+      (data) => {
+        console.log(data);
+        setAllReviewdata(data.data.reviews);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  };
+  // const scrollToSignUp=()=>{
+  //   signUpRef.current.scrollIntoView({ behavior: 'smooth' })
+  // }
+  React.useEffect(() => {
+    getAllReview();
+  }, []);
 
   return (
     <>
-      <Carousel scrollToSignUp={props.scrollToSignUp}/>
-      <Signupbanner ref={signUpRef}/>
+      <Carousel scrollToSignUp={props.scrollToSignUp} />
+      <Signupbanner ref={signUpRef} />
       {/* <Signupform /> */}
       {/* <Socialmedia /> */}
       <Landingvideobanner />
-      <Joinnow  scrollToSignUp={props.scrollToSignUp}/>
+      <Joinnow scrollToSignUp={props.scrollToSignUp} />
       <Whygetsetgo />
-      <Publicreviews reviewData={reviewData} />
+      <Publicreviews reviewData={reviewData} allreviewData={allreviewData} />
       <Mediabanner />
+      <NewsBanner scrollToSignUp={props.scrollToSignUp} />
     </>
   );
 }
-
-
-
-
 
 // import React, { Component } from "react";
 // import "./App.css";

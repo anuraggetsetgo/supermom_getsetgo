@@ -15,7 +15,7 @@ const Videocomponent = () => {
       alignItems="center"
       justify="center"
       style={{
-        margin: isMobile ? "-192px 0 0" : "0 0",
+        margin: isMobile ? "-150px 0 0 0" : "0 0",
         padding: isMobile ? "20px" : "0",
       }}
     >
@@ -32,7 +32,7 @@ const Videocomponent = () => {
             textAlign: "center",
           }}
         >
-          LIVE THE LIFE YOU LOVE.
+          LIVE THE LIFE {isMobile ? <br /> : ""}YOU LOVE.
           <br /> SUPER HEALTHY, HAPPY, AND FIT.
         </Typography>
       </Grid>
@@ -56,7 +56,7 @@ const Videocomponent = () => {
         <Grid
           item
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
           container
           alignItems="center"
@@ -72,7 +72,9 @@ const Videocomponent = () => {
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
-              src="https://www.youtube.com/embed/u3RRJBrcr-w"
+              src="https://www.youtube.com/embed/jziXjc2Lw00"
+              frameborder="0"
+              allowfullscreen
             />
             <Typography
               variant="h5"
@@ -91,7 +93,7 @@ const Videocomponent = () => {
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
-              src="https://www.youtube.com/embed/u3RRJBrcr-w"
+              src="https://www.youtube.com/embed/yNl6ypbfWdI"
             />
             <Typography
               variant="h5"
@@ -110,7 +112,7 @@ const Videocomponent = () => {
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
               title="full body home workout"
-              src="https://www.youtube.com/embed/u3RRJBrcr-w"
+              src="https://www.youtube.com/embed/u_wzaDCu_c8"
             />
             <Typography
               variant="h5"

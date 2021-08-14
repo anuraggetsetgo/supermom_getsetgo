@@ -184,7 +184,7 @@ const AvtarName = ({ name, profile }, key) => {
       justify="flex-start"
       style={{ marginTop: "32px" }}
     >
-      <Grid item container xs={12} sm={12} lg={3}>
+      <Grid item container xs={3} sm={3} lg={3}>
         <Grid
           item
           style={{
@@ -242,6 +242,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             lg={6}
             sm={6}
             xs={12}
+            md={6}
             direction="row"
             justify="center"
             style={{
@@ -250,11 +251,12 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
               overflow: "hidden",
             }}
           >
-            <Grid container item xs={12}>
+            <Grid container item xs={12} sm={10}>
               {imagePath.map((image) => (
                 <Grid
                   item
                   xs={6}
+                  sm={6}
                   style={{
                     backgroundRepeat: "no-repeat",
                     height: "360px",
@@ -274,8 +276,9 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             container
             item
             xs={12}
-            sm={12}
+            sm={6}
             lg={5}
+            md={5}
             direction="column"
             justify="center"
           >
@@ -303,24 +306,32 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
 const CarouselItem = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Grid item container alignItems="center" justify="center">
         <Grid
           item
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
           container
           justify="flex-start"
           alignItems="center"
           style={
             isMobile
-              ? { padding: "24px 20px" }
+              ? { padding: "8px 20px 24px 20px" }
               : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
           }
         >
-          <Grid item style={isMobile ? null : { margin: '0 0 0 10px' }}>
+          <Grid
+            item
+            container
+            alignItems="center"
+            justify={isMobile ? "flex-start" : "center"}
+            style={isMobile ? null : { margin: "0 0 0 10px" }}
+          >
             <Typography
               variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.colorRed }}
@@ -334,82 +345,118 @@ const CarouselItem = (props) => {
         <Grid
           item
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
+          md={10}
           container
           direction="row"
           justify="center"
-        // style={{ maxWidth: "1360px" }}
+          // style={{ maxWidth: "1360px" }}
         >
-          {!isMobile && <Swiper
-            effect={"coverflow"}
-            grabCursor={true}
-            centeredSlides={false}
-            slidesPerView={"auto"}
-            coverflowEffect={{
-              rotate: 0,
-              stretch: 0,
-              depth: 50,
-              modifier: 0,
-              slideShadows: true,
-            }}
-            slidesPerView={isMobile ? 1 : 1.5}
-            loop={true}
-            centeredSlides={isMobile ? true : false}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            className="mySwiper"
-            pagination={true}
-          >
-            {DataItem.map(({ image, text, name, profile }, key) => (
-              <Grid key={key + name}>
-                <SwiperSlide>
-
-                  <CarouselContainer
-                    profile={profile}
-                    name={name}
-                    imagePath={image}
-                    text={text}
-                  />
-                </SwiperSlide>
-              </Grid>
-            ))}
-          </Swiper>
-          }
-
-          {isMobile && <Carousel
-            interval={2500}
-            indicatorIconButtonProps={{
-              style: {
-                color: "#C2DCE2",
-                marginRight: "10px",
-              },
-            }}
-            activeIndicatorIconButtonProps={{
-              style: {
-                ...Styles.colorPrimary,
-              },
-            }}
-            indicatorContainerProps={{
-              style: {
-                marginTop: "30px",
-              },
-            }}
-          >
-            {DataItem.map(({ image, text, name, profile }, key) => (
-              <CarouselContainer
-                key={key + text + name}
-                profile={profile}
-                name={name}
-                imagePath={image}
-                text={text}
-              />
-            ))}
-          </Carousel>
-          }
-
+          {isMobile ? (
+            <Carousel
+              interval={2500}
+              animation="slide"
+              indicatorIconButtonProps={{
+                style: {
+                  color: "#C2DCE2",
+                  marginRight: "10px",
+                },
+              }}
+              activeIndicatorIconButtonProps={{
+                style: {
+                  ...Styles.colorPrimary,
+                },
+              }}
+              indicatorContainerProps={{
+                style: {
+                  marginTop: "30px",
+                },
+              }}
+            >
+              {DataItem.map(({ image, text, name, profile }, key) => (
+                <CarouselContainer
+                  key={key + text + name}
+                  profile={profile}
+                  name={name}
+                  imagePath={image}
+                  text={text}
+                />
+              ))}
+            </Carousel>
+          ) : isMobile3 ? (
+            <Swiper
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={false}
+              slidesPerView={"auto"}
+              coverflowEffect={{
+                rotate: 0,
+                stretch: 0,
+                depth: 50,
+                modifier: 0,
+                slideShadows: true,
+              }}
+              slidesPerView={1}
+              loop={true}
+              centeredSlides={false}
+              autoplay={{
+                delay: 250000000,
+                disableOnInteraction: false,
+              }}
+              className="mySwiper"
+              pagination={true}
+            >
+              {DataItem.map(({ image, text, name, profile }, key) => (
+                <Grid key={key + name}>
+                  <SwiperSlide>
+                    <CarouselContainer
+                      profile={profile}
+                      name={name}
+                      imagePath={image}
+                      text={text}
+                    />
+                  </SwiperSlide>
+                </Grid>
+              ))}
+            </Swiper>
+          ) : (
+            <Swiper
+              effect={"coverflow"}
+              grabCursor={true}
+              centeredSlides={false}
+              slidesPerView={"auto"}
+              coverflowEffect={{
+                rotate: 0,
+                stretch: 0,
+                depth: 50,
+                modifier: 0,
+                slideShadows: true,
+              }}
+              slidesPerView={1.5}
+              loop={true}
+              centeredSlides={false}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+              }}
+              className="mySwiper"
+              pagination={true}
+            >
+              {DataItem.map(({ image, text, name, profile }, key) => (
+                <Grid key={key + name}>
+                  <SwiperSlide>
+                    <CarouselContainer
+                      profile={profile}
+                      name={name}
+                      imagePath={image}
+                      text={text}
+                    />
+                  </SwiperSlide>
+                </Grid>
+              ))}
+            </Swiper>
+          )}
         </Grid>
         <Grid
           item

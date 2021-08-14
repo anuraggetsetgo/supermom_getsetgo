@@ -44,7 +44,7 @@ input[type="number"] {
   border: 1px solid #000;
   padding: 10px;
   background: none;
-
+  
   width: 100%;
   margin: 5px 0 0;
 }
@@ -80,4 +80,17 @@ form > label {
 }
 #filled {
   border-radius: 5px;
+}
+.margintopMedia{
+  margin-top: '400px';
+}
+@media only screen and (max-width: 320px){
+  .margintopMedia {
+    margin-top:0px;
+  }
+}
+@media only screen and (max-width: 410px){
+  .margintopMedia {
+    margin-top: '340px';
+  }
 }

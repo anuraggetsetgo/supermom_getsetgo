@@ -21,6 +21,8 @@ const useStyles = makeStyles({
 const Sellingreviews = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyles();
   return (
     <Grid
@@ -31,7 +33,7 @@ const Sellingreviews = () => {
       justify="center"
       style={{
         position: "relative",
-        marginBottom: isMobile ? "2250px" : "785px",
+        marginBottom: isMobile3 ? "1300px" : isMobile ? "2250px" : "785px",
       }}
     >
       <Grid
@@ -49,7 +51,7 @@ const Sellingreviews = () => {
           justify="flex-start"
           alignItems="center"
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
           style={{ padding: isMobile ? "20px" : "0" }}
         >
@@ -75,10 +77,10 @@ const Sellingreviews = () => {
           borderRadius: "10px",
         }}
         xs={12}
-        sm={12}
+        sm={10}
         lg={10}
       >
-        <Grid item container alignContent="flex-start" xs={12} sm={12} lg={4}>
+        <Grid item container alignContent="flex-start" xs={12} sm={6} lg={4}>
           {customTxt.reviewImages.reviews1.map((txt, i) => (
             <Grid
               item
@@ -101,7 +103,7 @@ const Sellingreviews = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid item container alignContent="flex-start" xs={12} sm={12} lg={4}>
+        <Grid item container alignContent="flex-start" xs={12} sm={6} lg={4}>
           {customTxt.reviewImages.reviews2.map((txt, i) => (
             <Grid
               item
@@ -124,7 +126,7 @@ const Sellingreviews = () => {
             </Grid>
           ))}
         </Grid>
-        <Grid item container alignContent="flex-start" xs={12} sm={12} lg={4}>
+        <Grid item container alignContent="flex-start" xs={12} sm={4} lg={4}>
           {customTxt.reviewImages.reviews3.map((txt, i) => (
             <Grid
               item

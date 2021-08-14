@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
-const Success = () => {
+const Success = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -15,7 +15,7 @@ const Success = () => {
           justify="center"
           direction="column"
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
           style={{ padding: isMobile ? "20px" : "0" }}
         >
@@ -51,6 +51,9 @@ const Success = () => {
               cursor: "pointer",
             }}
             justify="center"
+            onClick={() => {
+              props.createOrder(props.product[0], 0);
+            }}
           >
             <Typography
               variant={isMobile ? "h5" : "h3"}

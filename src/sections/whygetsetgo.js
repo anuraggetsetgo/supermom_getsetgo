@@ -6,6 +6,8 @@ import customTxt from "./customTxt.json";
 const Whygetsetgo = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Grid item container direction="row" justify="center">
@@ -15,9 +17,12 @@ const Whygetsetgo = () => {
           justify="center"
           alignItems="center"
           xs={12}
-          sm={12}
+          sm={10}
           lg={10}
-          style={{ margin: "0 0 60px 0", padding: isMobile ? "20px" : "0" }}
+          style={{
+            margin: "0 0 60px 0",
+            padding: isMobile ? "0px 20px 0px 20px" : "0",
+          }}
         >
           <Grid item style={{ marginBottom: "35px" }}>
             <Typography
@@ -37,7 +42,7 @@ const Whygetsetgo = () => {
             <Grid item container xs={12} sm={12} lg={4}>
               {customTxt.whyGetSetGo.column1.map((item, i) => (
                 <Grid
-                key={i+item.title}
+                  key={i + item.title}
                   item
                   xs={12}
                   container
@@ -85,7 +90,7 @@ const Whygetsetgo = () => {
             <Grid item container xs={12} sm={12} lg={4}>
               {customTxt.whyGetSetGo.column2.map((item, i) => (
                 <Grid
-                key={i+item.title}
+                  key={i + item.title}
                   item
                   xs={12}
                   container

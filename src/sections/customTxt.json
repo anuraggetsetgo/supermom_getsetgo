@@ -211,20 +211,23 @@
         "https://yourstory.com/2017/02/keep-eyes-prize-getsetgo-ready-flag-off-fitness-journey/amp"
       ],
       ["cnbc_logo.png", "https://www.youtube.com/watch?v=T_So6fZaAk0"],
-      ["the_hindu_logo.png"],
+      ["the_hindu_logo.png", "https://www.getsetgo.fitness"],
 
       [
         "mensxp_logo.png",
         "https://www.mensxp.com/health/motivation/49207-31-days-of-fitness-teased-for-being-fat-melvin-rsquo-s-transformation-shut-down-all-his-bullies.html"
       ],
-      ["ihrsa_logo.png"],
-      ["toi_logo.png"],
+      ["ihrsa_logo.png", "https://www.getsetgo.fitness"],
+      [
+        "toi_logo.png",
+        "https://m.timesofindia.com/life-style/health-fitness/weight-loss/fat-buster-engineering-pressure-made-me-gain-30-kilos/amp_articleshow/58995239.cms"
+      ],
       [
         "e_business_logo.png",
         "https://ebusinessindia.wordpress.com/2018/01/25/getsetgo-an-online-fitness-solutions-startup-helps-people-to-stay-fit-on-the-go/"
       ],
 
-      ["radiomirchiusa_logo.png"]
+      ["radiomirchiusa_logo.png", "https://www.getsetgo.fitness"]
     ]
   },
   "GSGAskQuestions": {
@@ -256,7 +259,7 @@
   },
   "GSGSocialMedia": {
     "images": [
-      ["FacebookGroup.png", "https://www.facebook.com/getsetgofit/"],
+      ["FacebookGroup.png", "https://www.facebook.com/groups/getsetgofitness/"],
       ["Facebook.png", "https://www.facebook.com/getsetgofit/"],
       ["Instagram.png", "https://www.instagram.com/getsetgofit/"],
       [

@@ -4,7 +4,22 @@ import Styles from "../app-style.js";
 import { Typography } from "@material-ui/core";
 import { colors } from "../services";
 import Rating from "@material-ui/lab/Rating";
+import { useTheme, useMediaQuery, Slide } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { blue } from "@material-ui/core/colors";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 const GoogleReview = ({ review }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
@@ -14,7 +29,7 @@ const GoogleReview = ({ review }) => {
         alignItems="center"
         style={{
           background: Styles.colorWhite.color,
-          padding: "40px 30px 26px 24px",
+          padding: "6px 24px 6px 24px",
           alignContent: "space-between",
         }}
       >
@@ -67,47 +82,63 @@ const GoogleReview = ({ review }) => {
   );
 };
 
-class Publicreviews extends Component {
-  render() {
-    const { reviewData } = this.props;
-    return (
+const Publicreviews = (props) => {
+  const [showGoogleReview, setShowGoogleReview] = React.useState(false);
+  const [scroll, setScroll] = React.useState("paper");
+  const openDialog = () => {
+    setShowGoogleReview(true);
+  };
+  const closeDialog = () => {
+    setShowGoogleReview(false);
+  };
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
+  const { reviewData, allreviewData } = props;
+  return (
+    <Grid
+      item
+      container
+      direction="column"
+      justify="center"
+      alignItems="center"
+      style={{
+        padding: isMobile ? "50px 0 50px" : "100px 0 50px",
+        marginBottom: "30px",
+        background: "rgba(16, 58, 66, 0.1)",
+      }}
+    >
       <Grid
         item
         container
-        direction="column"
-        justify="center"
         alignItems="center"
-        style={{
-          padding: "100px 0 50px",
-          marginBottom: "30px",
-          background: "rgba(16, 58, 66, 0.1)",
-        }}
+        justify="center"
+        direction="row"
+        xs={12}
+        style={{ padding: isMobile ? "20px" : "0" }}
       >
         <Grid
           item
           container
-          alignItems="center"
-          justify="center"
-          direction="row"
+          direction="column"
+          alignItems="flex-start"
           xs={12}
+          lg={8}
+          sm={8}
+          md={8}
+          justify="flex-start"
         >
-          <Grid
-            item
-            container
-            direction="column"
-            alignItems="flex-start"
-            xs={10}
-            justify="flex-start"
+          <Typography
+            variant="h3"
+            style={{ ...Styles.boldTxt, ...Styles.colorReef }}
           >
-            <Typography
-              variant="h3"
-              style={{ ...Styles.boldTxt, ...Styles.colorReef }}
-            >
-              Google Rating and Review
-            </Typography>
-            <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
-              4.9/5 on Google Ratings
-            </Typography>
+            Google Rating and Review
+          </Typography>
+          <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
+            4.9/5 on Google Ratings
+          </Typography>
+          <Grid item xs={6} sm={6} md={6} sm={6}>
             <svg
               width="160"
               height="32"
@@ -138,50 +169,142 @@ class Publicreviews extends Component {
             </svg>
           </Grid>
         </Grid>
-        <Grid
-          item
-          container
-          direction="column"
-          xs={12}
-          justify="center"
-          alignItems="center"
-        >
-          <Grid
-            item
-            direction="column"
-            xs={10}
-            justify="center"
-            alignItems="center"
-            container
+        <Grid item xs={6} sm={1} lg={1} md={1} justify="flex-end" container>
+          <Typography variant="body2" style={{ ...Styles.colorCharcoalDark }}>
+            100+ reviews
+          </Typography>
+        </Grid>
+        <Grid item xs={3} lg={1} md={1} sm={1} justify="flex-end" container>
+          <button
+            variant="body2"
             style={{
-              background: "#FFFFFF",
-              boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
-              borderRadius: "10px",
-              marginTop: "30px",
-              position: "relative",
+              background: "none",
+              border: "none",
+              ...Styles.colorPrimary,
+              cursor: "pointer",
             }}
+            onClick={openDialog}
           >
-            {reviewData.map((review, key) => {
-              return (
+            See All &gt;
+          </button>
+          <Dialog
+            open={showGoogleReview}
+            onClose={closeDialog}
+            fullWidth={true}
+            maxWidth={"md"}
+            scroll="body"
+            TransitionComponent={Transition}
+            keepMounted
+            style={{ overflow: "auto" }}
+          >
+            <Grid item>
+              <HighlightOffIcon
+                onClick={closeDialog}
+                style={{
+                  top: "10",
+                  position: "absolute",
+                  cursor: "pointer",
+                  right: "10",
+                }}
+              />
+            </Grid>
+            <DialogTitle
+              id="scroll-dialog-title"
+              style={{ ...Styles.colorReef }}
+            >
+              All Google Reviews
+            </DialogTitle>
+            <DialogContentText>
+              <DialogContent
+                dividers={scroll === "paper"}
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  display: "flex",
+                }}
+              >
                 <Grid
-                  container
-                  key={key}
                   item
-                  sm={12}
-                  justify="center"
-                  md={8}
+                  direction="column"
                   xs={12}
-                  style={{ padding: "14px 14px" }}
+                  justify="center"
+                  alignItems="center"
+                  container
+                  style={{
+                    marginTop: "10px",
+                    position: "relative",
+                  }}
                 >
-                  <GoogleReview review={review} />
+                  {allreviewData.map((review, key) => {
+                    return (
+                      <Grid
+                        container
+                        key={key}
+                        item
+                        sm={12}
+                        justify="center"
+                        md={12}
+                        xs={12}
+                        style={{ padding: "14px 14px" }}
+                      >
+                        <GoogleReview review={review} />
+                      </Grid>
+                    );
+                  })}
                 </Grid>
-              );
-            })}
-          </Grid>
+              </DialogContent>
+            </DialogContentText>
+            <DialogActions>
+              <Button onClick={closeDialog} color="primary">
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
         </Grid>
       </Grid>
-    );
-  }
-}
+      <Grid
+        item
+        container
+        direction="column"
+        xs={12}
+        justify="center"
+        alignItems="center"
+      >
+        <Grid
+          item
+          direction="column"
+          xs={10}
+          justify="center"
+          alignItems="center"
+          container
+          style={{
+            background: "#FFFFFF",
+            boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
+            borderRadius: "10px",
+            marginTop: "30px",
+            position: "relative",
+          }}
+        >
+          {reviewData.map((review, key) => {
+            return (
+              <Grid
+                container
+                key={key}
+                item
+                sm={12}
+                justify="center"
+                md={8}
+                xs={12}
+                style={{ padding: "14px 14px" }}
+              >
+                <GoogleReview review={review} />
+              </Grid>
+            );
+          })}
+        </Grid>
+      </Grid>
+    </Grid>
+  );
+};
 
 export default Publicreviews;

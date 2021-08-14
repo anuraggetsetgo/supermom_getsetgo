@@ -9,7 +9,6 @@ const Signupbanner = forwardRef((props, ref) => {
   return (
     <>
       <Grid
-
         item
         container
         direction="row"
@@ -34,7 +33,7 @@ const Signupbanner = forwardRef((props, ref) => {
           <Grid
             item
             xs={12}
-            sm={12}
+            sm={10}
             lg={10}
             container
             direction="row"

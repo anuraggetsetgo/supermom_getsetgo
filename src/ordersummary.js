@@ -6,6 +6,7 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
+import { colors } from "./services";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import Styles from "./app-style";
@@ -406,12 +407,12 @@ export const Ordersummary = (props) => {
 
         <Grid item container justify="center" alignItems='flex-start' style={{ marginTop: "20px" }}>
           {orderStatus === "waiting" && (
-            <Typography variant="h5" style={Styles.colorWhite}>
+            <Typography variant="h5" style={{...Styles.colorWhite,...Styles.centerTxt}}>
               Give us a minute. Completing your registration ...
             </Typography>
           )}
           {orderStatus === "sendingEmail" && (
-            <Typography variant="h5" style={Styles.colorWhite}>
+            <Typography variant="h5" style={{...Styles.colorWhite,...Styles.centerTxt}}>
               Okay, payment complete. Sending you an email acknowledgement ...
             </Typography>
           )}
@@ -432,7 +433,7 @@ export const Ordersummary = (props) => {
                 Your registration is complete!!!
               </Typography>
               <Typography
-                variant="h5"
+                variant= {isMobile?'h6':"h5"}
                 style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
               >
                 Congratulations {name.split(" ")[0]}! There has been a small
@@ -440,7 +441,7 @@ export const Ordersummary = (props) => {
                 though.
               </Typography>
               <Typography
-                variant="h5"
+                variant= {isMobile?'h6':"h5"}
                 style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
               >
                 Our backend team qill quickly review this. For your
@@ -488,17 +489,17 @@ export const Ordersummary = (props) => {
           {orderStatus === "success" && (
             <>
               <Grid
-                item
+                container
                 style={{
                   // ...{ padding: "0 50px", width: "50%" },
-                  ...Styles.centerTxt,
+                  ...Styles.centerTxt,paddingBottom:'10vh' 
                 }}
               >
                 <Grid
                   item
                   container
                   justify="center"
-                  style={{ marginTop: "20px" }}
+                  style={{ marginTop: "20px"}}
                 >
                   <Typography
                     variant={isMobile ? "h3" : "h1"}
@@ -524,7 +525,7 @@ export const Ordersummary = (props) => {
                     will get in touch with you within 2 working days.
                   </Typography>
                   <Typography
-                    variant="h5"
+                    variant= {isMobile?'h6':"h5"}
                     style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
                   >
                     Feel free to drop us an email in case you have any queries:{" "}
@@ -546,7 +547,8 @@ export const Ordersummary = (props) => {
                       bottom: isMobile ? "-25px" : "-60px",
                       position: "relative",
                       padding: isMobile ? "20px" : "0",
-                      marginBottom: '20px'
+                      marginBottom: '20px',
+                      
                     }}
                   >
                     <Grid
@@ -564,6 +566,7 @@ export const Ordersummary = (props) => {
                         boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
                         borderRadius: "10px",
                         marginBottom: "20px",
+                        
                       }}
                     >
                       <Grid item>
@@ -699,19 +702,21 @@ export const Ordersummary = (props) => {
                             }}
                           >
                             {/* <button ></button> */}
-                            <Styles.ColorButton
+                            <Styles.ColorButton2
                               style={
                                 meridian == "AM"
-                                  ? { height: isMobile ? "62px" : "79px" }
+                                  ? {height: isMobile ? "62px" : "79px",color: 'white',
+                                  backgroundColor: colors.reef
+                                }
                                   : {
                                     height: isMobile ? "62px" : "79px",
-                                    ...Styles.amAndpmButton,
                                   }
                               }
                               onClick={() => handleChangeMeridian("AM")}
                             >
+                              {/* (isMobile?Styles.amAndpmButtonMobile:Styles.amAndpmButton) */}
                               AM
-                            </Styles.ColorButton>
+                            </Styles.ColorButton2>
                           </Grid>
                           <Grid
                             item
@@ -719,21 +724,23 @@ export const Ordersummary = (props) => {
                             xs={12}
                             md={6}
                             container
-                          // style={{ width: isMobile ? "50%" : "null" }}
+                           //style={{ width: isMobile ? "50%" : "null" }}
                           >
-                            <Styles.ColorButton
+                            <Styles.ColorButton2
                               style={
                                 meridian == "PM"
-                                  ? { height: isMobile ? "62px" : "79px" }
+                                  ? {height: isMobile ? "62px" : "79px", 
+                                  color: 'white',
+                                  backgroundColor: colors.reef,}
                                   : {
                                     height: isMobile ? "62px" : "79px",
-                                    ...Styles.amAndpmButton,
-                                  }
+                                 }
+                                  
                               }
                               onClick={() => handleChangeMeridian("PM")}
                             >
                               PM
-                            </Styles.ColorButton>
+                            </Styles.ColorButton2>
                             {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
                           </Grid>
                         </Grid>
@@ -916,6 +923,7 @@ export const Ordersummary = (props) => {
                 // ...{ padding: "0 50px", width: "50%" },
                 marginTop:isMobile?"0px":'-100px',
                 ...Styles.centerTxt,
+                paddingBottom:'10vh' 
               }}
             >
               <Grid
@@ -947,14 +955,6 @@ export const Ordersummary = (props) => {
                   Seems like your order got stuck somewhere. Do not worry
                 though.
                 </Typography>
-                </Grid>
-               <Grid item
-                container
-                justify="center"
-                style={{
-                  marginTop: "20px",
-                  padding: isMobile ? "20px" : "0",
-                }}> 
                 <Typography
                   variant={isMobile ? "h6" : "h5"}
                   style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
@@ -969,7 +969,7 @@ export const Ordersummary = (props) => {
                     <br></br>Remember to quote your order id in the email:{" "}
                   {props.match.params.orderId}
                 </Typography>
-              </Grid>
+                </Grid>
               
               
             </Grid>

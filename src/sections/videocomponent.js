@@ -7,6 +7,8 @@ import Iframe from "./iframe";
 const Videocomponent = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <Grid
       item
@@ -58,9 +60,10 @@ const Videocomponent = () => {
           xs={12}
           sm={10}
           lg={10}
+          md={8}
           container
           alignItems="center"
-          justify="space-between"
+          justify={isMobile2 ? "center" : "space-between"}
           direction="row"
           style={{
             marginBottom: isMobile ? "24px" : "80px",

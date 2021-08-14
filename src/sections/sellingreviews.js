@@ -77,8 +77,9 @@ const Sellingreviews = () => {
           borderRadius: "10px",
         }}
         xs={12}
-        sm={10}
+        sm={12}
         lg={10}
+        md={10}
       >
         <Grid item container alignContent="flex-start" xs={12} sm={6} lg={4}>
           {customTxt.reviewImages.reviews1.map((txt, i) => (
@@ -141,7 +142,11 @@ const Sellingreviews = () => {
               <Card className={classes.root}>
                 <CardContent>
                   <Grid item container justify="center">
-                    <img src={Styles.backCoverImg(txt)} alt="Logo" />
+                    <img
+                      src={Styles.backCoverImg(txt)}
+                      alt="Logo"
+                      style={{ width: "100%", height: "100%" }}
+                    />
                   </Grid>
                 </CardContent>
               </Card>

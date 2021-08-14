@@ -12,6 +12,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { blue } from "@material-ui/core/colors";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
@@ -92,6 +93,8 @@ const Publicreviews = (props) => {
   };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   const { reviewData, allreviewData } = props;
   return (
     <Grid
@@ -113,6 +116,7 @@ const Publicreviews = (props) => {
         justify="center"
         direction="row"
         xs={12}
+        style={{ padding: isMobile ? "20px" : "0" }}
       >
         <Grid
           item
@@ -121,8 +125,8 @@ const Publicreviews = (props) => {
           alignItems="flex-start"
           xs={12}
           lg={8}
-          sm={12}
-          md={12}
+          sm={8}
+          md={8}
           justify="flex-start"
         >
           <Typography
@@ -134,7 +138,7 @@ const Publicreviews = (props) => {
           <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
             4.9/5 on Google Ratings
           </Typography>
-          <Grid item xs={6} sm={6}>
+          <Grid item xs={6} sm={6} md={6} sm={6}>
             <svg
               width="160"
               height="32"
@@ -165,12 +169,12 @@ const Publicreviews = (props) => {
             </svg>
           </Grid>
         </Grid>
-        <Grid item xs={6} sm={3} lg={1} justify="flex-end" container>
+        <Grid item xs={6} sm={1} lg={1} md={1} justify="flex-end" container>
           <Typography variant="body2" style={{ ...Styles.colorCharcoalDark }}>
             100+ reviews
           </Typography>
         </Grid>
-        <Grid item xs={3} lg={1} justify="flex-end" container>
+        <Grid item xs={3} lg={1} md={1} sm={1} justify="flex-end" container>
           <button
             variant="body2"
             style={{
@@ -194,47 +198,20 @@ const Publicreviews = (props) => {
             style={{ overflow: "auto" }}
           >
             <Grid item>
-              <svg
-                style={{
-                  position: "absolute",
-                  right: 5,
-                  top: 5,
-                  cursor: "pointer",
-                  zIndex: 1301,
-                  backgroundColor: "#4595A4",
-                  borderRadius: "50%",
-                }}
+              <HighlightOffIcon
                 onClick={closeDialog}
-                width="25"
-                height="25"
-                viewBox="0 0 32 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16 29.3333C23.3638 29.3333 29.3333 23.3638 29.3333 16C29.3333 8.63621 23.3638 2.66667 16 2.66667C8.63616 2.66667 2.66663 8.63621 2.66663 16C2.66663 23.3638 8.63616 29.3333 16 29.3333Z"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M20 12L12 20"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M12 12L20 20"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
+                style={{
+                  top: "10",
+                  position: "absolute",
+                  cursor: "pointer",
+                  right: "10",
+                }}
+              />
             </Grid>
-            <DialogTitle id="scroll-dialog-title">
+            <DialogTitle
+              id="scroll-dialog-title"
+              style={{ ...Styles.colorReef }}
+            >
               All Google Reviews
             </DialogTitle>
             <DialogContentText>
@@ -254,7 +231,7 @@ const Publicreviews = (props) => {
                   alignItems="center"
                   container
                   style={{
-                    marginTop: "20px",
+                    marginTop: "10px",
                     position: "relative",
                   }}
                 >

@@ -12,7 +12,7 @@ const Sellingmidbanner = (props) => {
           justify="flex-start"
           alignItems="center"
           style={{
-            height: isMobile?"400":"444px",
+            height: isMobile ? "400" : "444px",
             width: "100%",
             backgroundImage: `url(${Styles.backCoverImg(
               "selling_mid_img.png"
@@ -63,7 +63,7 @@ const Sellingmidbanner = (props) => {
             >
               <Grid
                 item
-                style={{ margin: isMobile?"15px 28px":"30px 60px" }}
+                style={{ margin: isMobile ? "15px 28px" : "30px 60px" }}
                 onClick={() => {
                   props.createOrder(props.product[0], 0);
                 }}
@@ -75,7 +75,7 @@ const Sellingmidbanner = (props) => {
                   Try before you invest.
                   <br />
                   <span style={{ ...Styles.boldTxt }}>
-                    JUST ₹ 999 {isMobile?<br/>:""}FOR 2 WEEKS
+                    JUST ₹ 999 {isMobile ? <br /> : ""}FOR 2 WEEKS
                   </span>
                 </Typography>
               </Grid>

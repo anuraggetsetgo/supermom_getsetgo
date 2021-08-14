@@ -133,6 +133,8 @@ const InfoPopUp = ({
   setIsContinue,
   setSubmitButtonEnable,
   setSignUpInfoMessage,
+  submitForm,
+
 }) => {
   const handleClose = () => {
     setOpen(false);
@@ -203,12 +205,14 @@ const InfoPopUp = ({
             {signUpInfoMessage}
           </Typography>
         </Grid>
+        <Grid item container direction='row' justify='space-evenly' alignItems='center'>
         <Grid item>
           <Styles.ColorButton
             style={isMobile ? { width: "35vw" } : { width: "100%" }}
             onClick={() => {
-              setOpen(false);
               setIsContinue(true);
+              submitForm(JSON.parse(get('userDetails')),1)
+              setOpen(false);
               setSignUpInfoMessage(false);
               //setSubmitButtonEnable(false);
             }}
@@ -224,10 +228,12 @@ const InfoPopUp = ({
               //setIsContinue(true);
               //setSignUpInfoMessage(false);
               //setSubmitButtonEnable(false);
+              handleClose();
             }}
           >
             Change Mobile number
           </Styles.ColorButton>
+        </Grid>
         </Grid>
       </Grid>
     </Dialog>
@@ -304,9 +310,9 @@ const Signupform = (props) => {
       moveNxt();
     }
   };
-  let submitForm = (values) => {
+  let submitForm = (values,isCont) => {
     setSubmitButtonEnable(true);
-    set("userDetails", values);
+    set("userDetails", values)
     updateFormSubmitting(true);
     const campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     const affiliate_id = get("affiliate_id") === null ? 2 : get("affiliate_id");
@@ -326,7 +332,7 @@ const Signupform = (props) => {
           : values.name.split(" ")[1],
       mobile: `${values.country}${values.mobile}`,
       email: values.email,
-      skip_mobile: isContinue ? 1 : 0,
+      skip_mobile: isCont?isCont:isContinue ? 1 : 0,
     }); //ANV
 
     //formSubmitted();
@@ -375,6 +381,7 @@ const Signupform = (props) => {
             setIsContinue={setIsContinue}
             setSubmitButtonEnable={setSubmitButtonEnable}
             setSignUpInfoMessage={setSignUpInfoMessage}
+            submitForm={submitForm}
           />
         }
 

@@ -69,7 +69,7 @@ class App extends Component {
                 component={Ordersummary}
               />
             </Switch>
-            <Footer />
+            <Footer scrollToSignUp={this.scrollToSignUp}/>
             {/* </Grid> */}
           </CssBaseline>
         </ThemeProvider>

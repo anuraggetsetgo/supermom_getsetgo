@@ -170,7 +170,7 @@ const InfoPopUp = ({
       </DialogActions>{" "}
       <Grid
         style={{
-          padding: "48px 0",
+          padding: "16px 0 20px 0",
         }}
         item
         container
@@ -195,7 +195,7 @@ const InfoPopUp = ({
           item
           style={{
             width: "90%",
-            marginBottom: Styles.spacing(3),
+            marginBottom: Styles.spacing(2),
           }}
         >
           <Typography
@@ -205,35 +205,35 @@ const InfoPopUp = ({
             {signUpInfoMessage}
           </Typography>
         </Grid>
-        <Grid item container direction='row' justify='space-evenly' alignItems='center'>
-        <Grid item>
-          <Styles.ColorButton
-            style={isMobile ? { width: "35vw" } : { width: "100%" }}
-            onClick={() => {
-              setIsContinue(true);
-              submitForm(JSON.parse(get('userDetails')),1)
-              setOpen(false);
-              setSignUpInfoMessage(false);
-              //setSubmitButtonEnable(false);
-            }}
-          >
-            YES
-          </Styles.ColorButton>
-        </Grid>
-        <Grid item>
-          <Styles.ColorButton
-            style={isMobile ? { width: "35vw" } : { width: "100%" }}
-            onClick={() => {
-              //setOpen(false);
-              //setIsContinue(true);
-              //setSignUpInfoMessage(false);
-              //setSubmitButtonEnable(false);
-              handleClose();
-            }}
-          >
-            Change Mobile number
-          </Styles.ColorButton>
-        </Grid>
+        <Grid item  container direction={isMobile?'column':'row'} spacing={2} justify='center' alignItems='center'>
+          <Grid item >
+            <Styles.ColorButton
+              style={isMobile ? { width: "60vw" } : { width: "100%",paddingLeft:'30px',paddingRight:'30px' }}
+              onClick={() => {
+                setIsContinue(true);
+                submitForm(JSON.parse(get('userDetails')), 1)
+                setOpen(false);
+                setSignUpInfoMessage(false);
+                //setSubmitButtonEnable(false);
+              }}
+            >
+               YES  
+            </Styles.ColorButton>
+          </Grid>
+          <Grid item >
+            <Styles.ColorButton
+              style={isMobile ? { width: "60vw", margin:'10px 0px' } : { width: "100%" }}
+              onClick={() => {
+                //setOpen(false);
+                //setIsContinue(true);
+                //setSignUpInfoMessage(false);
+                //setSubmitButtonEnable(false);
+                handleClose();
+              }}
+            >
+              Change Mobile number
+            </Styles.ColorButton>
+          </Grid>
         </Grid>
       </Grid>
     </Dialog>
@@ -310,7 +310,7 @@ const Signupform = (props) => {
       moveNxt();
     }
   };
-  let submitForm = (values,isCont) => {
+  let submitForm = (values, isCont) => {
     setSubmitButtonEnable(true);
     set("userDetails", values)
     updateFormSubmitting(true);
@@ -332,15 +332,15 @@ const Signupform = (props) => {
           : values.name.split(" ")[1],
       mobile: `${values.country}${values.mobile}`,
       email: values.email,
-      skip_mobile: isCont?isCont:isContinue ? 1 : 0,
+      skip_mobile: isCont ? isCont : isContinue ? 1 : 0,
     }); //ANV
 
     //formSubmitted();
   };
   if (err) {
     return (
-      <Grid item style={{ padding: "20px 0" }}>
-        <Typography variant="subtitle2" style={{ ...Styles.centerTxt }}>
+      <Grid item style={{ padding: "20px 0",marginTop:'30px' }}>
+        <Typography variant="h3" style={{ ...Styles.centerTxt,...Styles.colorWhite }}>
           Uh oh! We ran into an unexpected error. Please reload and try again.
         </Typography>
       </Grid>
@@ -535,10 +535,10 @@ const Signupform = (props) => {
                         </Grid>
                         {((touched.mobile && errors.mobile) ||
                           (touched.country && errors.country)) && (
-                          <Grid item style={Styles.err} variant="body2">
-                            {errors.mobile} {errors.country}
-                          </Grid>
-                        )}
+                            <Grid item style={Styles.err} variant="body2">
+                              {errors.mobile} {errors.country}
+                            </Grid>
+                          )}
                       </Grid>
                     </Grid>
 
@@ -598,7 +598,7 @@ const Signupform = (props) => {
                         width: isMobile ? "100%" : "100%",
                         marginTop: "20px",
                       }}
-                      // onClick={(e) => setSubmitButtonEnable(true)}
+                    // onClick={(e) => setSubmitButtonEnable(true)}
                     >
                       YES I AM
                     </Styles.ColorButton>

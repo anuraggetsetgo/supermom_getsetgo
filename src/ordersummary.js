@@ -492,7 +492,7 @@ export const Ordersummary = (props) => {
                 container
                 style={{
                   // ...{ padding: "0 50px", width: "50%" },
-                  ...Styles.centerTxt,paddingBottom:'10vh', 
+                  ...Styles.centerTxt,//paddingBottom:'10vh', 
                 }}
               >
                 <Grid

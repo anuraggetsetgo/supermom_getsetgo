@@ -16,7 +16,7 @@ import ReactPixel from "react-facebook-pixel";
 import './fonts/fonts.css'
 //import Secret from './secretworkout';
 
-ReactGA.initialize("UA-86957619-1");
+ReactGA.initialize("UA-86957619-2");
 ReactGA.pageview(window.location.pathname + window.location.search);
 ReactGA.pageview("/");
 ReactGA.pageview("/trynow");

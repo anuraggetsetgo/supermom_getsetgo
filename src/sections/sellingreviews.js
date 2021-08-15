@@ -33,7 +33,13 @@ const Sellingreviews = () => {
       justify="center"
       style={{
         position: "relative",
-        marginBottom: isMobile3 ? "1300px" : isMobile ? "2250px" : "785px",
+        marginBottom: isMobile2
+          ? "2250px"
+          : isMobile
+          ? "1135px"
+          : isMobile3
+          ? "1200px"
+          : "785px",
       }}
     >
       <Grid
@@ -77,7 +83,7 @@ const Sellingreviews = () => {
           borderRadius: "10px",
         }}
         xs={12}
-        sm={12}
+        sm={11}
         lg={10}
         md={10}
       >

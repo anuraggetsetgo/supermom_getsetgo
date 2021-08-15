@@ -134,7 +134,6 @@ const InfoPopUp = ({
   setSubmitButtonEnable,
   setSignUpInfoMessage,
   submitForm,
-
 }) => {
   const handleClose = () => {
     setOpen(false);
@@ -205,24 +204,39 @@ const InfoPopUp = ({
             {signUpInfoMessage}
           </Typography>
         </Grid>
-        <Grid item  container direction={isMobile?'column':'row'} spacing={2} justify='center' alignItems='center'>
-          <Grid item >
+        <Grid
+          item
+          container
+          direction={isMobile ? "column" : "row"}
+          spacing={2}
+          justify="center"
+          alignItems="center"
+        >
+          <Grid item>
             <Styles.ColorButton
-              style={isMobile ? { width: "60vw" } : { width: "100%",paddingLeft:'30px',paddingRight:'30px' }}
+              style={
+                isMobile
+                  ? { width: "60vw" }
+                  : { width: "100%", paddingLeft: "30px", paddingRight: "30px" }
+              }
               onClick={() => {
                 setIsContinue(true);
-                submitForm(JSON.parse(get('userDetails')), 1)
+                submitForm(JSON.parse(get("userDetails")), 1);
                 setOpen(false);
                 setSignUpInfoMessage(false);
                 //setSubmitButtonEnable(false);
               }}
             >
-               YES  
+              YES
             </Styles.ColorButton>
           </Grid>
-          <Grid item >
+          <Grid item>
             <Styles.ColorButton
-              style={isMobile ? { width: "60vw", margin:'10px 0px' } : { width: "100%" }}
+              style={
+                isMobile
+                  ? { width: "60vw", margin: "10px 0px" }
+                  : { width: "100%" }
+              }
               onClick={() => {
                 //setOpen(false);
                 //setIsContinue(true);
@@ -312,7 +326,7 @@ const Signupform = (props) => {
   };
   let submitForm = (values, isCont) => {
     setSubmitButtonEnable(true);
-    set("userDetails", values)
+    set("userDetails", values);
     updateFormSubmitting(true);
     const campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     const affiliate_id = get("affiliate_id") === null ? 2 : get("affiliate_id");
@@ -339,8 +353,11 @@ const Signupform = (props) => {
   };
   if (err) {
     return (
-      <Grid item style={{ padding: "20px 0",marginTop:'30px' }}>
-        <Typography variant="h3" style={{ ...Styles.centerTxt,...Styles.colorWhite }}>
+      <Grid item style={{ padding: "20px 0", marginTop: "30px" }}>
+        <Typography
+          variant="h3"
+          style={{ ...Styles.centerTxt, ...Styles.colorWhite }}
+        >
           Uh oh! We ran into an unexpected error. Please reload and try again.
         </Typography>
       </Grid>
@@ -528,17 +545,16 @@ const Signupform = (props) => {
                             style={{
                               ...Styles.formInputField,
                               ...Styles.fontSize16,
-                              width: isMobile ? "97%" : "100%",
-                              marginLeft: isMobile ? "17px" : "0",
+                              width: "100%",
                             }}
                           />
                         </Grid>
                         {((touched.mobile && errors.mobile) ||
                           (touched.country && errors.country)) && (
-                            <Grid item style={Styles.err} variant="body2">
-                              {errors.mobile} {errors.country}
-                            </Grid>
-                          )}
+                          <Grid item style={Styles.err} variant="body2">
+                            {errors.mobile} {errors.country}
+                          </Grid>
+                        )}
                       </Grid>
                     </Grid>
 
@@ -598,7 +614,7 @@ const Signupform = (props) => {
                         width: isMobile ? "100%" : "100%",
                         marginTop: "20px",
                       }}
-                    // onClick={(e) => setSubmitButtonEnable(true)}
+                      // onClick={(e) => setSubmitButtonEnable(true)}
                     >
                       YES I AM
                     </Styles.ColorButton>

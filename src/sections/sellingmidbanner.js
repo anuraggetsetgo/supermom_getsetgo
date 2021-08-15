@@ -75,7 +75,7 @@ const Sellingmidbanner = (props) => {
                   Try before you invest.
                   <br />
                   <span style={{ ...Styles.boldTxt }}>
-                    JUST ₹ 999 {isMobile ? <br /> : ""}FOR 2 WEEKS
+                    JUST ₹ 999 FOR 2 WEEKS
                   </span>
                 </Typography>
               </Grid>

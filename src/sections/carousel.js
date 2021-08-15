@@ -7,7 +7,6 @@ import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from "swiper/core";
-
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 const DataItem = [
   {
@@ -67,13 +66,12 @@ const cardStyle = {
   // height: "480px",
   padding: "40px",
 };
-
 const LogoSvg = () => {
   return (
     <div>
       <svg
         width="207"
-        height="364"
+        height="320"
         viewBox="0 0 207 364"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +182,7 @@ const AvtarName = ({ name, profile }, key) => {
       justify="flex-start"
       style={{ marginTop: "32px" }}
     >
-      <Grid item container xs={3} sm={3} lg={3}>
+      <Grid item container xs={3} sm={3} lg={3} md={5}>
         <Grid
           item
           style={{
@@ -226,7 +224,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: isMobile ? "89vw" : "800px" }}
+        style={{ width: isMobile ? "89vw" : "51.5vw" }}
       >
         <Grid
           item
@@ -239,28 +237,31 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
           <Grid
             container
             item
-            lg={6}
-            sm={6}
+            lg={7}
+            sm={5}
             xs={12}
-            md={6}
+            md={7}
             direction="row"
             justify="center"
             style={{
               position: "relative",
               borderRadius: "25% 0",
               overflow: "hidden",
+              padding: "20px",
             }}
           >
-            <Grid container item xs={12} sm={10}>
+            <Grid container item xs={12} sm={12} lg={12} md={12}>
               {imagePath.map((image) => (
                 <Grid
                   item
                   xs={6}
                   sm={6}
+                  lg={6}
+                  md={6}
                   style={{
                     backgroundRepeat: "no-repeat",
-                    height: "360px",
-                    width: "100%",
+                    height: "320px",
+                    width: isMobile ? "100%" : "400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
                   }}
@@ -271,16 +272,16 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
               <LogoSvg />
             </Grid>
           </Grid>
-
           <Grid
             container
             item
             xs={12}
-            sm={6}
+            sm={7}
             lg={5}
             md={5}
             direction="column"
-            justify="center"
+            justify="flex-end"
+            style={{ padding: "20px" }}
           >
             <Grid item>
               <Typography
@@ -302,7 +303,6 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
     </>
   );
 };
-
 const CarouselItem = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -351,6 +351,7 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
+          style={{ height: isMobile ? "" : "428px" }}
           // style={{ maxWidth: "1360px" }}
         >
           {isMobile ? (
@@ -397,11 +398,11 @@ const CarouselItem = (props) => {
                 modifier: 0,
                 slideShadows: true,
               }}
-              slidesPerView={1}
+              slidesPerView={1.5}
               loop={true}
               centeredSlides={false}
               autoplay={{
-                delay: 250000000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
               className="mySwiper"
@@ -429,7 +430,7 @@ const CarouselItem = (props) => {
               coverflowEffect={{
                 rotate: 0,
                 stretch: 0,
-                depth: 50,
+                depth: 30,
                 modifier: 0,
                 slideShadows: true,
               }}
@@ -442,10 +443,11 @@ const CarouselItem = (props) => {
               }}
               className="mySwiper"
               pagination={true}
+              style={{ padding: "10px" }}
             >
               {DataItem.map(({ image, text, name, profile }, key) => (
                 <Grid key={key + name}>
-                  <SwiperSlide>
+                  <SwiperSlide style={{ width: isMobile ? "" : "750px" }}>
                     <CarouselContainer
                       profile={profile}
                       name={name}
@@ -468,6 +470,7 @@ const CarouselItem = (props) => {
           <button
             style={{
               ...Styles.landingButton,
+              marginTop: isMobile ? "20px" : "",
               ...Styles.colorReef,
               width: `${isMobile ? "90%" : "273px"}`,
             }}

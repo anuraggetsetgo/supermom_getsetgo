@@ -10,7 +10,7 @@ const Footer = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Grid item container direction="row" alignItems="center" justify="center">
+      <Grid item container direction="row" alignItems="center" justify="center" >
           <Grid item>
             <Typography
               variant={isMobile ? "body2" : "subtitle2"}

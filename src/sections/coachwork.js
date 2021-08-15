@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
@@ -6,6 +6,8 @@ import customTxt from "./customTxt.json";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const useStyles = makeStyles({
   root: {
     borderRadius: "10px",
@@ -20,6 +22,11 @@ const useStyles = makeStyles({
   },
 });
 const Coachwork = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
@@ -70,7 +77,14 @@ const Coachwork = () => {
               >
                 {customTxt.howDoesGetSetGoWorkTxtMobile.phases1.map(
                   (txt, i) => (
-                    <Grid item xs={12} sm={12} lg={12} key={i}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      lg={12}
+                      key={i}
+                      data-aos="fade-left"
+                    >
                       <Card
                         className={i === 5 ? classes.darkCard : classes.root}
                       >
@@ -188,7 +202,14 @@ const Coachwork = () => {
                 justify="center"
               >
                 {customTxt.howDoesGetSetGoWorkTxt.phases1.map((txt, i) => (
-                  <Grid item xs={12} sm={12} lg={12} key={i}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={12}
+                    key={i}
+                    data-aos="fade-right"
+                  >
                     <Card className={classes.root}>
                       <CardContent>
                         <Typography
@@ -281,7 +302,14 @@ const Coachwork = () => {
                 alignContent="flex-start"
               >
                 {customTxt.howDoesGetSetGoWorkTxt.phases2.map((txt, i) => (
-                  <Grid item xs={12} sm={12} lg={12} key={i}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={12}
+                    key={i}
+                    data-aos="fade-left"
+                  >
                     <Card className={i === 2 ? classes.darkCard : classes.root}>
                       <CardContent>
                         <Typography

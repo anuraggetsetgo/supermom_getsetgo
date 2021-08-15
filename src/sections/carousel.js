@@ -73,7 +73,7 @@ const LogoSvg = () => {
     <div>
       <svg
         width="207"
-        height="364"
+        height="320"
         viewBox="0 0 207 364"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -226,7 +226,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: isMobile ? "89vw" : "715px" }}
+        style={{ width: isMobile ? "89vw" : "702px" }}
       >
         <Grid
           item
@@ -239,16 +239,17 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
           <Grid
             container
             item
-            lg={6}
+            lg={7}
             sm={5}
             xs={12}
-            md={6}
+            md={7}
             direction="row"
             justify="center"
             style={{
               position: "relative",
               borderRadius: "25% 0",
               overflow: "hidden",
+              padding: "20px",
             }}
           >
             <Grid container item xs={12} sm={12} lg={12}>
@@ -260,7 +261,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                   lg={6}
                   style={{
                     backgroundRepeat: "no-repeat",
-                    height: "360px",
+                    height: "320px",
                     width: isMobile ? "100%" : "400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
@@ -277,11 +278,12 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             container
             item
             xs={12}
-            sm={6}
+            sm={7}
             lg={5}
             md={5}
             direction="column"
             justify="flex-end"
+            style={{ padding: "20px" }}
           >
             <Grid item>
               <Typography
@@ -444,6 +446,7 @@ const CarouselItem = (props) => {
               }}
               className="mySwiper"
               pagination={true}
+              style={{ padding: "10px" }}
             >
               {DataItem.map(({ image, text, name, profile }, key) => (
                 <Grid key={key + name}>
@@ -470,6 +473,7 @@ const CarouselItem = (props) => {
           <button
             style={{
               ...Styles.landingButton,
+              marginTop: isMobile ? "20px" : "",
               ...Styles.colorReef,
               width: `${isMobile ? "90%" : "273px"}`,
             }}

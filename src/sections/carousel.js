@@ -41,8 +41,8 @@ const DataItem = [
     text: "Simran shed over 10 kilos, learned in-depth about nutrition and now coaches other women to live a healthy life.",
   },
   {
-    image: ["ClientTras/Soumya.png"],
-    name: "Soumya",
+    image: ["ClientTras/Somya.png"],
+    name: "Somya",
     profile: "ClientTras/avater_img1.png",
     text: "Somya was looking to get back to how she looked before her pregnancy. Losing over 10 kilos made it happen for her.",
   },

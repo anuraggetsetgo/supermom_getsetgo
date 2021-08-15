@@ -58,7 +58,7 @@ const Videocomponent = () => {
         <Grid
           item
           xs={12}
-          sm={10}
+          sm={11}
           lg={11}
           md={8}
           container

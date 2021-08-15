@@ -68,7 +68,7 @@ const Banner = (props) => {
             }}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} style={{marginTop:'-2px',zIndex:'1'}}>
           <Grid
             item
             style={{

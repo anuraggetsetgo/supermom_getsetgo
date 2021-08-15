@@ -7,6 +7,7 @@ import emailTemplates from "./emailTemplate.json";
 import { useHistory } from "react-router-dom";
 import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+
 import {
   Dialog,
   DialogActions,

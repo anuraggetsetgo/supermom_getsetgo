@@ -8,58 +8,49 @@ import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from "swiper/core";
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
+
+
+
+
+
+
+
 const DataItem = [
   {
-    image: ["ClientTras/client1-1.png", "ClientTras/client1-2.png"],
-    name: "Sana Shika",
+    image: ["ClientTras/Nima.png"],
+    name: "Nima",
     profile: "ClientTras/avater_img1.png",
-    text: "had a great experience with Getsetgo and the feeling was mutual. She did everything she was asked for and hence got exactly the same results she signed up for. ",
+    text: "Nima lost 20 kilos and now with her whole new energy levels, she keeps up with her super-active baby girl",
   },
   {
-    image: ["ClientTras/client2-1.png", "ClientTras/client2-2.png"],
+    image: ["ClientTras/Manisha.png"],
     name: "Manish Nambiar",
     profile: "ClientTras/avater_img2.png",
-    text: "signed up with Nabiya for post-partum weight loss and Nabiya made sure her diet and training was on point while taking care of her and the baby's needs. ",
+    text: "Manisha lost 15 kilos post-pregnancy weight in 12 weeks and now loves eating a balanced diet.",
   },
   {
-    image: ["ClientTras/client1-1.png", "ClientTras/client1-2.png"],
-    name: "Sana Shika",
+    image: ["ClientTras/Richa.png"],
+    name: "Richa",
     profile: "ClientTras/avater_img1.png",
-    text: "had a great experience with Getsetgo and the feeling was mutual. She did everything she was asked for and hence got exactly the same results she signed up for. ",
+    text: "From 90kgs to 68kgs, Richa overcame her post-delivery knee and back pain. She now manages her 2 kids and family with ease.",
   },
   {
-    image: ["ClientTras/client2-1.png", "ClientTras/client2-2.png"],
-    name: "Manish Nambiar",
+    image: ["ClientTras/Simran.png"],
+    name: "Simran",
     profile: "ClientTras/avater_img2.png",
-    text: "signed up with Nabiya for post-partum weight loss and Nabiya made sure her diet and training was on point while taking care of her and the baby's needs. ",
+    text: "Simran shed over 10 kilos, learned in-depth about nutrition and now coaches other women to live a healthy life.",
   },
   {
-    image: ["ClientTras/client1-1.png", "ClientTras/client1-2.png"],
-    name: "Sana Shika",
+    image: ["ClientTras/Soumya.png"],
+    name: "Soumya",
     profile: "ClientTras/avater_img1.png",
-    text: "had a great experience with Getsetgo and the feeling was mutual. She did everything she was asked for and hence got exactly the same results she signed up for. ",
+    text: "Somya was looking to get back to how she looked before her pregnancy. Losing over 10 kilos made it happen for her.",
   },
-  {
-    image: ["ClientTras/client2-1.png", "ClientTras/client2-2.png"],
-    name: "Manish Nambiar",
-    profile: "ClientTras/avater_img2.png",
-    text: "signed up with Nabiya for post-partum weight loss and Nabiya made sure her diet and training was on point while taking care of her and the baby's needs. ",
-  },
-  {
-    image: ["ClientTras/client1-1.png", "ClientTras/client1-2.png"],
-    name: "Sana Shika",
-    profile: "ClientTras/avater_img1.png",
-    text: "had a great experience with Getsetgo and the feeling was mutual. She did everything she was asked for and hence got exactly the same results she signed up for. ",
-  },
-  {
-    image: ["ClientTras/client2-1.png", "ClientTras/client2-2.png"],
-    name: "Manish Nambiar",
-    profile: "ClientTras/avater_img2.png",
-    text: "signed up with Nabiya for post-partum weight loss and Nabiya made sure her diet and training was on point while taking care of her and the baby's needs. ",
-  },
+  
+  
 ];
 const cardStyle = {
-  width: "770px",
+  width: "760px",
   backgroundColor: "#FFFFFF",
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
   borderRadius: "10px",
@@ -224,7 +215,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: isMobile ? "89vw" : "51.5vw" }}
+        style={{ width: isMobile ? "89vw" : "51.5vw", }}
       >
         <Grid
           item
@@ -232,7 +223,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
           direction="row"
           justify="space-between"
           alignItems="center"
-          style={{ ...cardStyle, padding: isMobile ? "20px" : "10px" }}
+          style={{ ...cardStyle,padding: isMobile ? "20px 16px 20px 16px" : "10px" }}
         >
           <Grid
             container
@@ -247,30 +238,31 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
               position: "relative",
               borderRadius: "25% 0",
               overflow: "hidden",
-              padding: "20px",
+              padding: "20px 16px 20px 16px",
             }}
           >
             <Grid container item xs={12} sm={12} lg={12} md={12}>
               {imagePath.map((image) => (
                 <Grid
                   item
-                  xs={6}
-                  sm={6}
-                  lg={6}
-                  md={6}
+                  xs={12}
+                  sm={12}
+                  lg={12}
+                  md={12}
                   style={{
                     backgroundRepeat: "no-repeat",
                     height: "320px",
                     width: isMobile ? "100%" : "400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
+                    borderRadius: '100px 0px 100px 0px'
                   }}
                 ></Grid>
               ))}
             </Grid>
-            <Grid item style={{ position: "absolute" }}>
+            {/* <Grid item style={{ position: "absolute" }}>
               <LogoSvg />
-            </Grid>
+            </Grid> */}
           </Grid>
           <Grid
             container

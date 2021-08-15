@@ -35,12 +35,14 @@ import Sellingreviews from "./sections/sellingreviews";
 import Sellingmidbanner from "./sections/sellingmidbanner";
 import Coachwork from "./sections/coachwork";
 import NewsBanner from './sections/news'
+import {ga_clicked_Payment} from './reactGA'
 let baseurl = "https://getsetgo.fitness";
 class Package extends Component {
   constructor(props) {
     super(props);
     if (!get("products")) {
       updateLoc();
+      window.location.replace('/')
     }
     let products = JSON.parse(get("products"));
     this.state = {
@@ -52,11 +54,12 @@ class Package extends Component {
       discountDetails: false,
       discountActivated: false,
       activatingDiscount: false,
-      //products: null,
+      products: null,
     };
   }
 
   createOrder(product, index) {
+    ga_clicked_Payment();
     let userDetails = JSON.parse(get("userDetails"));
     //console.log("index", index);
     let package_id = product.service_id;
@@ -127,19 +130,6 @@ class Package extends Component {
     //setServices(services);
     baseurl = data.data.redirect_base_url;
     this.setState({ products: services });
-    // let row = [],
-    //   fields = [];
-    // let desc;
-    // services.map((product) => {
-    //   desc = JSON.parse(product.pack_des);
-    //   row.push(desc);
-    //   for (const key in desc) {
-    //     row.push(desc);
-    //   }
-    // });
-    //var uniqueRow = [...new Set(row)];
-    //console.log("UNIQUE ROW -->>", uniqueRow);
-    //this.setState({ serviceInclusions: uniqueRow });
   };
   getproducts = () => {
     let currency = this.state.currency;
@@ -203,8 +193,9 @@ class Package extends Component {
     return element;
   };
   componentDidMount() {
-    window.scrollTo(0, 0);
+    
     this.getproducts();
+    window.scrollTo(0, 0);
   }
 
   render() {
@@ -220,22 +211,7 @@ class Package extends Component {
       activatingDiscount,
       //serviceInclusions,
     } = this.state;
-    // let desc = [
-    //   "Stranded alone at home? Well, no more. Join thousands of others and turn it into a great at-home-staycation for you!",
-    //   "Running out of ideas about things to do together? Tired of binge-watching series and movies? How about getting fit together?",
-    //   "They say the more the merrier. We can tell you it's true! Join with your complete family. It doesn't get better than this.",
-    // ];
-    // let imgs = [
-    //   `${retrievePath()}boredMan.jpg`,
-    //   `${retrievePath()}boredCouple.jpg`,
-    //   `${retrievePath()}boredFamily.jpg`,
-    // ];
-    // let imgsHappy = [
-    //   `${retrievePath()}happyMan.jpg`,
-    //   `${retrievePath()}happyCouple.jpg`,
-    //   `${retrievePath()}happyFamily.jpg`,
-    // ];
-    //console.log("PRODUCTS -->>", serviceInclusions);
+    
     return (
       <Grid
         container
@@ -243,28 +219,13 @@ class Package extends Component {
           minHeight: `${docHt() - 100}px`,
           // paddingTop: Styles.spacing(10),
           //...Styles.blueBG,
+          overflowX:'hidden'
         }}
         direction="column"
         alignItems="center"
         justify="space-evenly"
       >
-        {!userData && (
-          <Grid item style={{ padding: "0 50px", textAlign: "center" }}>
-            <Typography variant="h2" style={Styles.colorWhite}>
-              Uh oh, we don't have your user details. Please go back to home and
-              fill your details
-            </Typography>
-            <Link to="/">
-              <Button variant="contained" color="primary">
-                <Typography variant="subtitle1" style={Styles.colorWhite}>
-                  Click here to go to home
-                </Typography>
-              </Button>
-            </Link>
-          </Grid>
-        )}
-
-        {userData && !products && (
+        {!products && (
           <Grid
             item
             style={{
@@ -276,8 +237,25 @@ class Package extends Component {
             Loading services. Please wait ...
           </Grid>
         )}
+        {!userData && (
+          <Grid item style={{ padding: "0 50px", textAlign: "center" }}>
+            <Typography variant="h2" >
+              Uh oh, we don't have your user details. Please go back to home and
+              fill your details
+            </Typography>
+            <Link to="/">
+              <Button variant="contained" color="primary">
+                <Typography variant="subtitle1" >
+                  Click here to go to home
+                </Typography>
+              </Button>
+            </Link>
+          </Grid>
+        )}
 
-        {userData && products && (
+        
+
+        { products && (
           <React.Fragment>
             <Banner
               product={products}
@@ -295,73 +273,8 @@ class Package extends Component {
             product={products}
             createOrder={(data) => this.createOrder(data)}/>
             <NewsBanner/>
-            {/* {products && (
-              <Grid
-                item
-                container
-                alignItems="center"
-                justify="center"
-              //style={{ ...Styles.marginTop }}
-              >
-                {
-                  //Object.keys(this.state.amount).map((key, indx)=>
-                  // products &&
-                  //   products.map((product, index) => {
-                  //     return (
-                  <TableContainer component={Paper} style={{ width: '80%', padding: '10px', borderRadius: '20px', minWidth: '680px' }}>
-                    <Table size="small" aria-label="a dense table">
-                      <TableHead>
-                        <TableRow>
-                          <TableCell><div style={{ background: colors.yellow, borderRadius: '20px', padding: '20px' }}><Typography variant="subtitle2">Plans</Typography></div></TableCell>
-                          {products.map(el => (
-                            <TableCell align="center"><div style={{ background: colors.primary, borderRadius: '20px', padding: '20px', color: colors.secondary }}><Typography variant="body1">{el.service_caption}</Typography></div></TableCell>
-                          ))}
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {serviceInclusions && Object.keys(serviceInclusions[0]).map((key, indx) => (
-                          <TableRow key={`${key}-${indx}`}>
-                            <TableCell component="td" scope="row"><Typography variant="body2">{key}</Typography></TableCell>
-                            {serviceInclusions.map(el => (
-                              <TableCell align="center" component="td" scope="row">
-                                <Typography variant="body2">{this.renderVal(el[key])}</Typography>
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                        <TableRow>
-                          <TableCell align="left" component="td" scope="row">&nbsp;</TableCell>
-                          {products.map(el => (<TableCell align="center" component="td" scope="row"><Grid container direction="column">
-                            <Grid item><Typography variant="body1">{this.returnCurrencySymbol(el.pack_currency)} {el.pack_price}</Typography></Grid><Grid item><Typography variant="body2" style={{ color: colors.grey }}>{"12 weeks"}</Typography></Grid></Grid></TableCell>))}
-                        </TableRow>
-                        <TableRow>
-                          <TableCell align="left" component="td" scope="row"></TableCell>
-                          {products.map((product, indx) => (
-                            <TableCell align="center" component="td" scope="row">
-                              <Styles.ColorButton
-                                variant="contained"
-                                style={Styles.deafultButton}
-                                color="primary"
-                                onClick={() => this.createOrder(product, indx)}
-                                disabled={!bored}
-                                style={{ width: '100%' }}
-                              >
-                                <Typography
-                                  variant="body1"
-                                  style={Styles.colorBlue}
-                                >
-                                  {!bored ? "Please wait ..." : "Sign up"}
-                                </Typography>
-                              </Styles.ColorButton>
-                            </TableCell>
-                          ))}
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                }
-              </Grid>
-            )} */}
+            
+                
           </React.Fragment>
         )}
       </Grid>

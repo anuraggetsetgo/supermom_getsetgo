@@ -9,6 +9,8 @@ import Whygetsetgo from "./sections/whygetsetgo";
 import Mediabanner from "./sections/mediabanner";
 import Publicreviews from "./sections/publicreviews";
 import NewsBanner from "./sections/news";
+import {ga_viewed_HomePage} from './reactGA'
+
 export default function Home(props) {
   const signUpRef = props.signUpRef;
   const [reviewData, setReviewdata] = React.useState([]);
@@ -29,6 +31,7 @@ export default function Home(props) {
   // }
   React.useEffect(() => {
     getReview();
+    ga_viewed_HomePage();
   }, []);
   const getAllReview = () => {
     api_google_All_Reviews(

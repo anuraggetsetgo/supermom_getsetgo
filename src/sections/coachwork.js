@@ -43,7 +43,7 @@ const Coachwork = () => {
           top: isMobile ? "-140px" : "-58px",
           zIndex: "-2",
           background: "rgba(255, 221, 51, 0.1)",
-          padding: isMobile ? "20px" : "0",
+          padding: isMobile ? "0px" : "0px",
         }}
       >
         <Grid

@@ -114,152 +114,158 @@ const Publicreviews = (props) => {
         container
         alignItems="center"
         justify="center"
-        direction="row"
+        direction="column"
         xs={12}
         style={{ padding: isMobile ? "20px" : "0" }}
       >
-        <Grid
-          item
-          container
-          direction="column"
-          alignItems="flex-start"
-          xs={12}
-          lg={8}
-          sm={8}
-          md={8}
-          justify="flex-start"
+        <Grid xs={12} lg={10} sm={10} md={10} item container direction="column" alignItems="flex-start" justify="flex-start"
         >
+
           <Typography
             variant="h3"
             style={{ ...Styles.boldTxt, ...Styles.colorReef }}
           >
             Google Rating and Review
           </Typography>
-          <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
-            4.9/5 on Google Ratings
-          </Typography>
-          <Grid item xs={6} sm={6} md={6} sm={6}>
-            <svg
-              width="160"
-              height="32"
-              viewBox="0 0 160 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16 23L7.75 28L9.9375 18.625L2.6875 12.3125L12.25 11.5L16 2.6875L19.75 11.5L29.3125 12.3125L22.0625 18.625L24.25 28L16 23Z"
-                fill="#FF9900"
-              />
-              <path
-                d="M48 23L39.75 28L41.9375 18.625L34.6875 12.3125L44.25 11.5L48 2.6875L51.75 11.5L61.3125 12.3125L54.0625 18.625L56.25 28L48 23Z"
-                fill="#FF9900"
-              />
-              <path
-                d="M80 23L71.75 28L73.9375 18.625L66.6875 12.3125L76.25 11.5L80 2.6875L83.75 11.5L93.3125 12.3125L86.0625 18.625L88.25 28L80 23Z"
-                fill="#FF9900"
-              />
-              <path
-                d="M112 23L103.75 28L105.938 18.625L98.6875 12.3125L108.25 11.5L112 2.6875L115.75 11.5L125.312 12.3125L118.062 18.625L120.25 28L112 23Z"
-                fill="#FF9900"
-              />
-              <path
-                d="M144 20.5625L149 23.5625L147.688 17.875L152.125 14L146.25 13.5L144 8.125V20.5625ZM157.312 12.3125L150.062 18.625L152.25 28L144 23L135.75 28L137.938 18.625L130.688 12.3125L140.25 11.5L144 2.6875L147.75 11.5L157.312 12.3125Z"
-                fill="#FF9900"
-              />
-            </svg>
-          </Grid>
+
         </Grid>
-        <Grid item xs={6} sm={1} lg={1} md={1} justify="flex-end" container>
-          <Typography variant="body2" style={{ ...Styles.colorCharcoalDark }}>
-            100+ reviews
-          </Typography>
-        </Grid>
-        <Grid item xs={3} lg={1} md={1} sm={1} justify="flex-end" container>
-          <Typography
-            variant="body2"
-            style={{
-              background: "none",
-              border: "none",
-              ...Styles.colorPrimary,
-              cursor: "pointer",
-            }}
-            onClick={openDialog}
-          >
-            See All &gt;
-          </Typography>
-          <Dialog
-            open={showGoogleReview}
-            onClose={closeDialog}
-            fullWidth={true}
-            maxWidth={"md"}
-            scroll="body"
-            TransitionComponent={Transition}
-            keepMounted
-            style={{ overflow: "auto" }}
-          >
-            <Grid item>
-              <HighlightOffIcon
-                onClick={closeDialog}
-                style={{
-                  top: "10",
-                  position: "absolute",
-                  cursor: "pointer",
-                  right: "10",
-                }}
-              />
+
+        <Grid xs={12} lg={10} sm={10} md={10} item container direction="row" alignItems="flex-start" justify="flex-start">
+          <Grid xs={12} lg={12} sm={12} md={12} item container direction="column" alignItems="flex-start" justify="flex-start">
+            <Grid item xs={12} lg={12} sm={12} md={12}>
+              <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
+                4.9/5 on Google Ratings
+              </Typography>
             </Grid>
-            <DialogTitle
-              id="scroll-dialog-title"
-              style={{ ...Styles.colorReef }}
-            >
-              All Google Reviews
-            </DialogTitle>
-            <DialogContentText>
-              <DialogContent
-                dividers={scroll === "paper"}
-                style={{
-                  alignItems: "center",
-                  justifyContent: "center",
-                  display: "flex",
-                }}
-              >
-                <Grid
-                  item
-                  direction="column"
-                  xs={12}
-                  justify="center"
-                  alignItems="center"
-                  container
-                  style={{
-                    marginTop: "10px",
-                    position: "relative",
-                  }}
+
+            <Grid xs={12} lg={12} sm={12} md={12} item container direction="row"  alignItems='flex-end' justify='flex-end'>
+              <Grid xs={5} lg={10} sm={7} md={9} item container alignItems='flex-start'>
+                <svg
+                  width={isMobile ? '120' : "160"}
+                  height={isMobile ? '24' : "32"}
+                  viewBox="0 0 160 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                  {allreviewData.map((review, key) => {
-                    return (
+                  <path
+                    d="M16 23L7.75 28L9.9375 18.625L2.6875 12.3125L12.25 11.5L16 2.6875L19.75 11.5L29.3125 12.3125L22.0625 18.625L24.25 28L16 23Z"
+                    fill="#FF9900"
+                  />
+                  <path
+                    d="M48 23L39.75 28L41.9375 18.625L34.6875 12.3125L44.25 11.5L48 2.6875L51.75 11.5L61.3125 12.3125L54.0625 18.625L56.25 28L48 23Z"
+                    fill="#FF9900"
+                  />
+                  <path
+                    d="M80 23L71.75 28L73.9375 18.625L66.6875 12.3125L76.25 11.5L80 2.6875L83.75 11.5L93.3125 12.3125L86.0625 18.625L88.25 28L80 23Z"
+                    fill="#FF9900"
+                  />
+                  <path
+                    d="M112 23L103.75 28L105.938 18.625L98.6875 12.3125L108.25 11.5L112 2.6875L115.75 11.5L125.312 12.3125L118.062 18.625L120.25 28L112 23Z"
+                    fill="#FF9900"
+                  />
+                  <path
+                    d="M144 20.5625L149 23.5625L147.688 17.875L152.125 14L146.25 13.5L144 8.125V20.5625ZM157.312 12.3125L150.062 18.625L152.25 28L144 23L135.75 28L137.938 18.625L130.688 12.3125L140.25 11.5L144 2.6875L147.75 11.5L157.312 12.3125Z"
+                    fill="#FF9900"
+                  />
+                </svg>
+              </Grid>
+
+              <Grid item xs={4} lg={1} sm={3} md={2} container justify='flex-end' style={isMobile?{}:{paddingBottom:'16px'}} >
+                <Typography variant="body2" style={{ ...Styles.colorCharcoalDark }}>
+                  100+ reviews
+                </Typography>
+              </Grid>
+              <Grid item xs={3} lg={1} sm={2} md={1} container justify='flex-end' style={isMobile?{}:{paddingBottom:'16px'}}>
+                <Typography
+                  variant="body2"
+                  style={{
+                    background: "none",
+                    border: "none",
+                    ...Styles.colorPrimary,
+                    cursor: "pointer",
+                  }}
+                  onClick={openDialog}
+                >
+                  See All &gt;
+                </Typography>
+                <Dialog
+                  open={showGoogleReview}
+                  onClose={closeDialog}
+                  fullWidth={true}
+                  maxWidth={"md"}
+                  scroll="body"
+                  TransitionComponent={Transition}
+                  keepMounted
+                  style={{ overflow: "auto" }}
+                >
+                  <Grid item>
+                    <HighlightOffIcon
+                      onClick={closeDialog}
+                      style={{
+                        top: "10",
+                        position: "absolute",
+                        cursor: "pointer",
+                        right: "10",
+                      }}
+                    />
+                  </Grid>
+                  <DialogTitle
+                    id="scroll-dialog-title"
+                    style={{ ...Styles.colorReef }}
+                  >
+                    All Google Reviews
+                  </DialogTitle>
+                  <DialogContentText>
+                    <DialogContent
+                      dividers={scroll === "paper"}
+                      style={{
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                      }}
+                    >
                       <Grid
-                        container
-                        key={key}
                         item
-                        sm={12}
-                        justify="center"
-                        md={12}
+                        direction="column"
                         xs={12}
-                        style={{ padding: "14px 14px" }}
+                        justify="center"
+                        alignItems="center"
+                        container
+                        style={{
+                          marginTop: "10px",
+                          position: "relative",
+                        }}
                       >
-                        <GoogleReview review={review} />
+                        {allreviewData.map((review, key) => {
+                          return (
+                            <Grid
+                              container
+                              key={key}
+                              item
+                              sm={12}
+                              justify="center"
+                              md={12}
+                              xs={12}
+                              style={{ padding: "14px 14px" }}
+                            >
+                              <GoogleReview review={review} />
+                            </Grid>
+                          );
+                        })}
                       </Grid>
-                    );
-                  })}
-                </Grid>
-              </DialogContent>
-            </DialogContentText>
-            <DialogActions>
-              <Button onClick={closeDialog} color="primary">
-                Close
-              </Button>
-            </DialogActions>
-          </Dialog>
+                    </DialogContent>
+                  </DialogContentText>
+                  <DialogActions>
+                    <Button onClick={closeDialog} color="primary">
+                      Close
+                    </Button>
+                  </DialogActions>
+                </Dialog>
+              </Grid>
+
+            </Grid>
+
+          </Grid>
         </Grid>
       </Grid>
       <Grid

@@ -275,12 +275,11 @@ export const Ordersummary = (props) => {
       setName(customer_name);
       setEmail(customer_email);
     }
-    //setOrderStatus("waiting"); //FORCE
+    
   };
   const orderStats = (err) => {
     console.log("Ran into errors");
     setOrderStatus("err");
-    //setOrderStatus("waiting"); //FORCE
   };
   const handleSubmit = () => {
     let err = false;
@@ -350,6 +349,7 @@ export const Ordersummary = (props) => {
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
     <>
+    
       <Grid
         container
         justify="center"
@@ -360,6 +360,7 @@ export const Ordersummary = (props) => {
           //position: "absolute",
           //top: "0",
           //left: '0',
+          //zIndex:0,
           backgroundRepeat: 'no-repeat',
           backgroundSize:'cover',
           marginTop:'-90px'
@@ -399,13 +400,13 @@ export const Ordersummary = (props) => {
         <Grid item container justify="center" style={{ marginTop: "40px",maxHeight:'150px' }}>
           {orderStatus !== 'waiting' && orderStatus !== 'sendingEmail' &&
           <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px'}}>
-            {orderStatus === 'success' && thumbsUP('100px', '100px', '#00FF00')}
-            {orderStatus === 'fail' || orderStatus==='err' && thumbsDown('100px', '100px', '#FF0000')}
+            {orderStatus === 'success'?thumbsUP('100px', '100px', '#00FF00'):thumbsDown('100px', '100px', '#FF0000')}
+            {/* {orderStatus == 'fail' || orderStatus==='err' && } */}
           </Grid>}
           {orderStatus === 'waiting'||orderStatus === 'sendingEmail' && <CircularProgress color='secondary' />}
         </Grid>
 
-        <Grid item container justify="center" alignItems='flex-start' style={{ marginTop: "20px" }}>
+        <Grid item container justify="center" alignItems='flex-start' style={{ marginTop: "20px",position:'relative' }}>
           {orderStatus === "waiting" && (
             <Typography variant="h5" style={{...Styles.colorWhite,...Styles.centerTxt}}>
               Give us a minute. Completing your registration ...
@@ -492,7 +493,7 @@ export const Ordersummary = (props) => {
                 container
                 style={{
                   // ...{ padding: "0 50px", width: "50%" },
-                  ...Styles.centerTxt,paddingBottom:'10vh' 
+                  ...Styles.centerTxt,paddingBottom:'10vh', 
                 }}
               >
                 <Grid
@@ -604,11 +605,11 @@ export const Ordersummary = (props) => {
                             }}
                           >
                             {isMobile ? (
-                              <InputLabel id="demo-simple-select-outlined-label">
+                              <InputLabel id="demo-simple-select-outlined-label" >
                                 Hour
                               </InputLabel>
                             ) : (
-                              <InputLabel id="demo-simple-select-outlined-label">
+                              <InputLabel id="demo-simple-select-outlined-label" style={{paddingTop:'10px'}}>
                                 Select Hour
                               </InputLabel>
                             )}
@@ -650,7 +651,7 @@ export const Ordersummary = (props) => {
                                 Minute
                               </InputLabel>
                             ) : (
-                              <InputLabel id="demo-simple-select-outlined-label">
+                              <InputLabel id="demo-simple-select-outlined-label" style={{paddingTop:'10px'}}>
                                 Select Minute
                               </InputLabel>
                             )}
@@ -1010,6 +1011,7 @@ export const Ordersummary = (props) => {
           </Grid>
         </DialogContent>
       </Dialog>
+      
     </>
   );
 };

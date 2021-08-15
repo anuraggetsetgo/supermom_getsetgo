@@ -275,7 +275,7 @@ export default {
     background: "#000",
   },
   footer: {
-    padding: "22px",
+    //padding: "22px",
     background: "#fff",
     textAlign: "center",
   },

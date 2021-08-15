@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
@@ -6,6 +6,8 @@ import customTxt from "./customTxt.json";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const useStyles = makeStyles({
   root: {
     borderRadius: "10px",
@@ -20,6 +22,11 @@ const useStyles = makeStyles({
   },
 });
 const Coachwork = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const classes = useStyles();
@@ -57,7 +64,13 @@ const Coachwork = () => {
             </Typography>
           </Grid>
           {isMobile ? (
-            <Grid item container spacing={4} justify="center">
+            <Grid
+              data-aos="fade-left"
+              item
+              container
+              spacing={4}
+              justify="center"
+            >
               <Grid
                 item
                 container
@@ -179,6 +192,7 @@ const Coachwork = () => {
             <Grid item container spacing={4} justify="center">
               <Grid
                 item
+                data-aos="fade-right"
                 container
                 spacing={3}
                 xs={12}
@@ -272,6 +286,7 @@ const Coachwork = () => {
                 ))}
               </Grid>
               <Grid
+                data-aos="fade-left"
                 item
                 container
                 spacing={3}

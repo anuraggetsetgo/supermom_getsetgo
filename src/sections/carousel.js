@@ -226,7 +226,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: isMobile ? "89vw" : "800px" }}
+        style={{ width: isMobile ? "89vw" : "700px" }}
       >
         <Grid
           item
@@ -240,7 +240,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             container
             item
             lg={6}
-            sm={6}
+            sm={5}
             xs={12}
             md={6}
             direction="row"
@@ -251,12 +251,13 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
               overflow: "hidden",
             }}
           >
-            <Grid container item xs={12} sm={10}>
+            <Grid container item xs={12} sm={12} lg={12}>
               {imagePath.map((image) => (
                 <Grid
                   item
                   xs={6}
                   sm={6}
+                  lg={6}
                   style={{
                     backgroundRepeat: "no-repeat",
                     height: "360px",
@@ -280,7 +281,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             lg={5}
             md={5}
             direction="column"
-            justify="center"
+            justify="flex-end"
           >
             <Grid item>
               <Typography
@@ -351,6 +352,7 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
+          style={{ height: isMobile ? "" : "385px" }}
           // style={{ maxWidth: "1360px" }}
         >
           {isMobile ? (

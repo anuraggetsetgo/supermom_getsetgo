@@ -352,7 +352,7 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
-          style={{ height: isMobile ? "" : "385px" }}
+          style={{ height: isMobile ? "" : "428px" }}
           // style={{ maxWidth: "1360px" }}
         >
           {isMobile ? (

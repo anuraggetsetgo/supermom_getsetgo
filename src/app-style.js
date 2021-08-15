@@ -32,12 +32,11 @@ const ColorButton2 = withStyles((theme) => ({
     backgroundColor: colors.transparent,
     border: `1px solid ${colors.primary}`,
     "&:hover": {
-      color: 'white',
+      color: "white",
       backgroundColor: colors.reef,
       border: `1px solid ${colors.primary}`,
       fontWeight: "bold",
     },
-    
   },
 }))(Button);
 
@@ -128,8 +127,8 @@ export default {
   feildRadius: {
     borderRadius: "10px",
   },
-  fontSize16:{
-    fontSize:'16px',
+  fontSize16: {
+    fontSize: "16px",
   },
   greyBG: {
     background: "#111",
@@ -191,12 +190,12 @@ export default {
     fontWeight: "bold",
     fontSize: "24px",
     border: "none",
-    margin: "20px 0 100px 0",
+    margin: "0 0 100px 0",
     cursor: "pointer",
   },
   amAndpmButton: {
     "&:focus": {
-      color: 'white',
+      color: "white",
       backgroundColor: colors.reef,
       border: `1px solid ${colors.primary}`,
       fontWeight: "bold",

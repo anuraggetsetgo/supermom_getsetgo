@@ -313,7 +313,7 @@ const CarouselItem = (props) => {
           alignItems="center"
           style={
             isMobile
-              ? { padding: "8px 20px 24px 20px" }
+              ? { padding: "8px 20px 8px 20px" }
               : { marginBottom: "10px", padding: isMobile ? "20px" : "0" }
           }
         >

@@ -349,7 +349,6 @@ export const Ordersummary = (props) => {
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
     <>
-    
       <Grid
         container
         justify="center"
@@ -913,6 +912,9 @@ export const Ordersummary = (props) => {
                 </Grid>
                 )}
               </Grid>
+              {!userMessage&&<Footer/>}
+
+              
             </>
           )}
 
@@ -1001,7 +1003,7 @@ export const Ordersummary = (props) => {
           <Grid container direction="row" alignItems="center" justify="center">
             
              <Styles.ColorButton
-              style={isMobile ? { width: "20vw" } : { width: "20%" }}
+              style={isMobile ? { width: "45vw" } : { width: "60%" }}
               onClick={() => {
                 setOpen(false);
               }}

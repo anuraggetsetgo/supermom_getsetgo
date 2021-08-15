@@ -73,7 +73,7 @@ const Videocomponent = () => {
           <Grid item alignItems="center" justify="center" direction="column">
             <Iframe //style={{width:'80vw'}}
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
-              ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
+              ht={isMobile ? "100%" : window.screen.width * 0.2 + "px"}
               title="full body home workout"
               src="https://www.youtube.com/embed/jziXjc2Lw00"
               frameborder="0"
@@ -94,7 +94,7 @@ const Videocomponent = () => {
           <Grid item alignItems="center" justify="center" direction="column">
             <Iframe //style={{width:'80vw'}}
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
-              ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
+              ht={isMobile ? "100%" : window.screen.width * 0.2 + "px"}
               title="full body home workout"
               src="https://www.youtube.com/embed/yNl6ypbfWdI"
             />
@@ -113,7 +113,7 @@ const Videocomponent = () => {
           <Grid item alignItems="center" justify="center" direction="column">
             <Iframe //style={{width:'80vw'}}
               wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
-              ht={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
+              ht={isMobile ? "100%" : window.screen.width * 0.2 + "px"}
               title="full body home workout"
               src="https://www.youtube.com/embed/u_wzaDCu_c8"
             />

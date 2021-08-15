@@ -182,7 +182,7 @@ const AvtarName = ({ name, profile }, key) => {
       justify="flex-start"
       style={{ marginTop: "32px" }}
     >
-      <Grid item container xs={3} sm={3} lg={3}>
+      <Grid item container xs={3} sm={3} lg={3} md={5}>
         <Grid
           item
           style={{
@@ -250,13 +250,14 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
               padding: "20px",
             }}
           >
-            <Grid container item xs={12} sm={12} lg={12}>
+            <Grid container item xs={12} sm={12} lg={12} md={12}>
               {imagePath.map((image) => (
                 <Grid
                   item
                   xs={6}
                   sm={6}
                   lg={6}
+                  md={6}
                   style={{
                     backgroundRepeat: "no-repeat",
                     height: "320px",
@@ -397,7 +398,7 @@ const CarouselItem = (props) => {
                 modifier: 0,
                 slideShadows: true,
               }}
-              slidesPerView={1}
+              slidesPerView={1.5}
               loop={true}
               centeredSlides={false}
               autoplay={{

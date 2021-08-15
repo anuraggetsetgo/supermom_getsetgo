@@ -64,13 +64,7 @@ const Coachwork = () => {
             </Typography>
           </Grid>
           {isMobile ? (
-            <Grid
-              data-aos="fade-left"
-              item
-              container
-              spacing={4}
-              justify="center"
-            >
+            <Grid item container spacing={4} justify="center">
               <Grid
                 item
                 container
@@ -83,7 +77,14 @@ const Coachwork = () => {
               >
                 {customTxt.howDoesGetSetGoWorkTxtMobile.phases1.map(
                   (txt, i) => (
-                    <Grid item xs={12} sm={12} lg={12} key={i}>
+                    <Grid
+                      item
+                      xs={12}
+                      sm={12}
+                      lg={12}
+                      key={i}
+                      data-aos="fade-left"
+                    >
                       <Card
                         className={i === 5 ? classes.darkCard : classes.root}
                       >
@@ -192,7 +193,6 @@ const Coachwork = () => {
             <Grid item container spacing={4} justify="center">
               <Grid
                 item
-                data-aos="fade-right"
                 container
                 spacing={3}
                 xs={12}
@@ -202,7 +202,14 @@ const Coachwork = () => {
                 justify="center"
               >
                 {customTxt.howDoesGetSetGoWorkTxt.phases1.map((txt, i) => (
-                  <Grid item xs={12} sm={12} lg={12} key={i}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={12}
+                    key={i}
+                    data-aos="fade-right"
+                  >
                     <Card className={classes.root}>
                       <CardContent>
                         <Typography
@@ -286,7 +293,6 @@ const Coachwork = () => {
                 ))}
               </Grid>
               <Grid
-                data-aos="fade-left"
                 item
                 container
                 spacing={3}
@@ -296,7 +302,14 @@ const Coachwork = () => {
                 alignContent="flex-start"
               >
                 {customTxt.howDoesGetSetGoWorkTxt.phases2.map((txt, i) => (
-                  <Grid item xs={12} sm={12} lg={12} key={i}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    lg={12}
+                    key={i}
+                    data-aos="fade-left"
+                  >
                     <Card className={i === 2 ? classes.darkCard : classes.root}>
                       <CardContent>
                         <Typography

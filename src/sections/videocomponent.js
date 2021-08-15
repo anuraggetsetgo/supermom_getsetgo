@@ -59,7 +59,7 @@ const Videocomponent = () => {
           item
           xs={12}
           sm={10}
-          lg={10}
+          lg={11}
           md={8}
           container
           alignItems="center"

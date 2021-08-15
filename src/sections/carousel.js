@@ -226,7 +226,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: isMobile ? "89vw" : "700px" }}
+        style={{ width: isMobile ? "89vw" : "715px" }}
       >
         <Grid
           item
@@ -261,7 +261,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                   style={{
                     backgroundRepeat: "no-repeat",
                     height: "360px",
-                    width: isMobile?"100%":'400px',
+                    width: isMobile ? "100%" : "400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
                   }}
@@ -403,7 +403,7 @@ const CarouselItem = (props) => {
               loop={true}
               centeredSlides={false}
               autoplay={{
-                delay: 250000000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
               className="mySwiper"
@@ -431,7 +431,7 @@ const CarouselItem = (props) => {
               coverflowEffect={{
                 rotate: 0,
                 stretch: 0,
-                depth: 50,
+                depth: 30,
                 modifier: 0,
                 slideShadows: true,
               }}
@@ -447,7 +447,7 @@ const CarouselItem = (props) => {
             >
               {DataItem.map(({ image, text, name, profile }, key) => (
                 <Grid key={key + name}>
-                  <SwiperSlide>
+                  <SwiperSlide style={{ width: isMobile ? "" : "750px" }}>
                     <CarouselContainer
                       profile={profile}
                       name={name}

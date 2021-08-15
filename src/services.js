@@ -101,6 +101,7 @@ function changeLocation(data, cb) {
   cb(get("products").currency);
 }
 
+
 function askLocation(err) {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(setLoc);

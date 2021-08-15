@@ -25,6 +25,7 @@ import { Dialog } from "@material-ui/core";
 import HighlightOff from "@material-ui/icons/HighlightOff";
 import BannerImage from "./images/landingpage_banner.png";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { ga_payment_failed, ga_payment_Success,ga_appointment_scheduled } from "./reactGA";
 
 const errMsgs = {
   requried: "Uh oh! It's a required field",
@@ -225,6 +226,7 @@ export const Ordersummary = (props) => {
     setOrderStatus("successEmailErr");
   };
   const orderData = (data) => {
+    ga_payment_Success();
     console.log("Order successful");
     let {
       order_status,
@@ -272,6 +274,7 @@ export const Ordersummary = (props) => {
       );
     } else {
       setOrderStatus("fail");
+      ga_payment_failed();
       setName(customer_name);
       setEmail(customer_email);
     }
@@ -282,6 +285,7 @@ export const Ordersummary = (props) => {
     setOrderStatus("err");
   };
   const handleSubmit = () => {
+    ga_appointment_scheduled();
     let err = false;
     if (hour === "" || minute === "") {
       err = true;

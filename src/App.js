@@ -7,7 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import theme from "./theme";
 import { updateLoc } from "./services";
-import ReactGA from "react-ga";
+import {initReactGA,ga_clicked_JoinNow} from './reactGA'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./home";
 import Package from "./package";
@@ -16,12 +16,7 @@ import ReactPixel from "react-facebook-pixel";
 import './fonts/fonts.css'
 //import Secret from './secretworkout';
 
-ReactGA.initialize("UA-86957619-2");
-ReactGA.pageview(window.location.pathname + window.location.search);
-ReactGA.pageview("/");
-ReactGA.pageview("/trynow");
-//ReactGA.pageview('/secret');
-ReactGA.pageview("/summary");
+initReactGA();
 const options = {
   autoConfig: true, // set pixel's autoConfig
   debug: false, // enable logs
@@ -48,6 +43,7 @@ class App extends Component {
   }
    scrollToSignUp=()=>{
     this.signUpRef.current.scrollIntoView({ behavior: 'smooth' })
+    ga_clicked_JoinNow()
   }
   //  component={props=> <Home freezeScroll={(val)=>{this.freezeScroll(val)}} {...props}/>}/>
   render() {
@@ -68,6 +64,10 @@ class App extends Component {
                 path="/thank_you/summary/:orderId"
                 component={Ordersummary}
               />
+              <Route
+                path="/"
+              ><Home signUpRef={this.signUpRef} scrollToSignUp={this.scrollToSignUp}/>
+              </Route>
             </Switch>
             <Footer scrollToSignUp={this.scrollToSignUp}/>
             {/* </Grid> */}

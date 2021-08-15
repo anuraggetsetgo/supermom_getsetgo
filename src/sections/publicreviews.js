@@ -133,12 +133,12 @@ const Publicreviews = (props) => {
         <Grid xs={12} lg={10} sm={10} md={10} item container direction="row" alignItems="flex-start" justify="flex-start">
           <Grid xs={12} lg={12} sm={12} md={12} item container direction="column" alignItems="flex-start" justify="flex-start">
             <Grid item xs={12} lg={12} sm={12} md={12}>
-              <Typography variant="h5" style={{ ...Styles.colorCharcoalLight }}>
+              <Typography variant="h5" style={{ ...Styles.colorCharcoalLight,marginTop:'8px' }}>
                 4.9/5 on Google Ratings
               </Typography>
             </Grid>
 
-            <Grid xs={12} lg={12} sm={12} md={12} item container direction="row"  alignItems='flex-end' justify='flex-end'>
+            <Grid xs={12} lg={12} sm={12} md={12} item container direction="row"  alignItems='flex-end' justify='flex-end' style={{marginTop:'8px' }}>
               <Grid xs={5} lg={10} sm={7} md={9} item container alignItems='flex-start'>
                 <svg
                   width={isMobile ? '120' : "160"}

@@ -260,7 +260,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                   style={{
                     backgroundRepeat: "no-repeat",
                     height: "360px",
-                    width: "100%",
+                    width: isMobile?"100%":'400px',
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
                   }}

@@ -175,7 +175,7 @@ const Publicreviews = (props) => {
           </Typography>
         </Grid>
         <Grid item xs={3} lg={1} md={1} sm={1} justify="flex-end" container>
-          <button
+          <Typography
             variant="body2"
             style={{
               background: "none",
@@ -186,7 +186,7 @@ const Publicreviews = (props) => {
             onClick={openDialog}
           >
             See All &gt;
-          </button>
+          </Typography>
           <Dialog
             open={showGoogleReview}
             onClose={closeDialog}

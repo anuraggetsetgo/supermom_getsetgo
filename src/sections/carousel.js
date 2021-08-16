@@ -19,31 +19,31 @@ const DataItem = [
   {
     image: ["ClientTras/Nima.png"],
     name: "Nima",
-    profile: "ClientTras/avater_img1.png",
+    profile: "ClientTras/Nima.jpeg",
     text: "Nima lost 20 kilos and now with her whole new energy levels, she keeps up with her super-active baby girl",
   },
   {
     image: ["ClientTras/Manisha.png"],
     name: "Manish Nambiar",
-    profile: "ClientTras/avater_img2.png",
+    profile: "ClientTras/Manisha.jpeg",
     text: "Manisha lost 15 kilos post-pregnancy weight in 12 weeks and now loves eating a balanced diet.",
   },
   {
     image: ["ClientTras/Richa.png"],
     name: "Richa",
-    profile: "ClientTras/avater_img1.png",
+    profile: "ClientTras/Richa.jpeg",
     text: "From 90kgs to 68kgs, Richa overcame her post-delivery knee and back pain. She now manages her 2 kids and family with ease.",
   },
   {
     image: ["ClientTras/Simran.png"],
     name: "Simran",
-    profile: "ClientTras/avater_img2.png",
+    profile: "ClientTras/Simran.jpeg",
     text: "Simran shed over 10 kilos, learned in-depth about nutrition and now coaches other women to live a healthy life.",
   },
   {
     image: ["ClientTras/Somya.png"],
     name: "Somya",
-    profile: "ClientTras/avater_img1.png",
+    profile: "ClientTras/Somya.jpeg",
     text: "Somya was looking to get back to how she looked before her pregnancy. Losing over 10 kilos made it happen for her.",
   },
   

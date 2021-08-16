@@ -409,7 +409,7 @@ export const Ordersummary = (props) => {
           {orderStatus === 'waiting' || orderStatus === 'sendingEmail' && <CircularProgress color='secondary' />}
         </Grid>
 
-        <Grid xs={12} direction='column' item container justify="center" alignItems='flex-start' style={{ marginTop: "20px", position: 'relative' }}>
+        <Grid xs={12} direction='column' item container justify="center" alignItems='center' style={{ marginTop: "20px", position: 'relative' }}>
           {orderStatus === "waiting" && (<Grid item>
             <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
               Give us a minute. Completing your registration ...

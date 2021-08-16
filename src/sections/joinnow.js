@@ -219,6 +219,7 @@ const Joinnow = (props) => {
                   //...Styles.reefBG,
                   borderRadius: "10px",
                   display: "flex",
+                  width: isMobile ? "100%" : "",
                 }}
               >
                 <Grid
@@ -226,6 +227,7 @@ const Joinnow = (props) => {
                   alignItems="center"
                   justify="center"
                   onClick={props.scrollToSignUp}
+                  style={{ width: isMobile ? "100%" : "" }}
                 >
                   {/* <Typography
                     variant="h4"
@@ -235,7 +237,7 @@ const Joinnow = (props) => {
                     style={
                       isMobile
                         ? { width: "100%", padding: "0px 20px" }
-                        : { width: "100%", padding: "0px 20px" }
+                        : { width: "100%", padding: "0px 60px" }
                     }
                   >
                     JOIN NOW

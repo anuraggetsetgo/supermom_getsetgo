@@ -87,8 +87,7 @@ const Videocomponent = () => {
                 margin: isMobile ? "16px 0" : "24px 0",
               }}
             >
-              Nima lost more than 10 kgs
-              <br /> post-pregnancy.
+              Nima
             </Typography>
           </Grid>
           <Grid item alignItems="center" justify="center" direction="column">
@@ -106,8 +105,7 @@ const Videocomponent = () => {
                 margin: isMobile ? "16px 0" : "24px 0",
               }}
             >
-              Nima lost more than 10 kgs
-              <br /> post-pregnancy.
+              Padmani
             </Typography>
           </Grid>
           <Grid item alignItems="center" justify="center" direction="column">
@@ -125,8 +123,7 @@ const Videocomponent = () => {
                 margin: isMobile ? "16px 0" : "24px 0",
               }}
             >
-              Nima lost more than 10 kgs
-              <br /> post-pregnancy.
+              Suman
             </Typography>
           </Grid>
         </Grid>

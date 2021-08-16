@@ -25,7 +25,7 @@ import { Dialog } from "@material-ui/core";
 import HighlightOff from "@material-ui/icons/HighlightOff";
 import BannerImage from "./images/landingpage_banner.png";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { ga_payment_failed, ga_payment_Success,ga_appointment_scheduled } from "./reactGA";
+import { ga_payment_failed, ga_payment_Success, ga_appointment_scheduled } from "./reactGA";
 
 const errMsgs = {
   requried: "Uh oh! It's a required field",
@@ -180,7 +180,7 @@ export const Ordersummary = (props) => {
       "mobile"
     );
   }
-  
+
   const handleChangeHour = (event) => {
     //console.log(hour);
     setHour(event.target.value);
@@ -278,7 +278,7 @@ export const Ordersummary = (props) => {
       setName(customer_name);
       setEmail(customer_email);
     }
-    
+
   };
   const orderStats = (err) => {
     console.log("Ran into errors");
@@ -302,8 +302,8 @@ export const Ordersummary = (props) => {
       setSubmitting(true);
       api_set_reminder(
         {
-          mobile_number: countryCode+phone, //"919821354464",
-          whatsapp_number: countryCodeWAPP+whatapp, //"919821354464",
+          mobile_number: countryCode + phone, //"919821354464",
+          whatsapp_number: countryCodeWAPP + whatapp, //"919821354464",
           preferred_hour: hour, //'10'
           preferred_min: minute, //"00",
           preferred_meridian: meridian,
@@ -365,8 +365,8 @@ export const Ordersummary = (props) => {
           //left: '0',
           //zIndex:0,
           backgroundRepeat: 'no-repeat',
-          backgroundSize:'cover',
-          marginTop:'-90px'
+          backgroundSize: 'cover',
+          marginTop: '-90px'
         }}
       >
         <Grid
@@ -400,52 +400,55 @@ export const Ordersummary = (props) => {
             </defs>
           </svg>
         </Grid>
-        <Grid item container justify="center" style={{ marginTop: "40px",maxHeight:'150px' }}>
+        <Grid item container justify="center" style={{ marginTop: "40px", maxHeight: '150px' }}>
           {orderStatus !== 'waiting' && orderStatus !== 'sendingEmail' &&
-          <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px'}}>
-            {orderStatus === 'success'?thumbsUP('100px', '100px', '#00FF00'):thumbsDown('100px', '100px', '#FF0000')}
-            {/* {orderStatus == 'fail' || orderStatus==='err' && } */}
-          </Grid>}
-          {orderStatus === 'waiting'||orderStatus === 'sendingEmail' && <CircularProgress color='secondary' />}
+            <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px' }}>
+              {orderStatus === 'success' ? thumbsUP('100px', '100px', '#00FF00') : thumbsDown('100px', '100px', '#FF0000')}
+              {/* {orderStatus == 'fail' || orderStatus==='err' && } */}
+            </Grid>}
+          {orderStatus === 'waiting' || orderStatus === 'sendingEmail' && <CircularProgress color='secondary' />}
         </Grid>
 
-        <Grid item container justify="center" alignItems='flex-start' style={{ marginTop: "20px",position:'relative' }}>
-          {orderStatus === "waiting" && (
-            <Typography variant="h5" style={{...Styles.colorWhite,...Styles.centerTxt}}>
+        <Grid xs={12} direction='column' item container justify="center" alignItems='flex-start' style={{ marginTop: "20px", position: 'relative' }}>
+          {orderStatus === "waiting" && (<Grid item>
+            <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
               Give us a minute. Completing your registration ...
-            </Typography>
+            </Typography></Grid>
           )}
-          {orderStatus === "sendingEmail" && (
-            <Typography variant="h5" style={{...Styles.colorWhite,...Styles.centerTxt}}>
+          {orderStatus === "sendingEmail" && (<Grid item>
+            <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
               Okay, payment complete. Sending you an email acknowledgement ...
-            </Typography>
+            </Typography></Grid>
           )}
           {orderStatus === "successEmailErr" && (
             <Grid
-              item
+              item container direction='column'
               style={
                 {
                   //...{ padding: "0 50px", width: "50%" },
                   //...Styles.centerTxt,
                 }
               }
-            >
-              <Typography
-                variant="h3"
-                style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
-              >
-                Your registration is complete!!!
-              </Typography>
-              <Typography
-                variant= {isMobile?'h6':"h5"}
+            > <Grid item>
+                <Typography
+                  variant="h3"
+                  style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
+                >
+                  Your registration is complete!!!
+                </Typography>
+              </Grid>
+              <Grid item><Typography
+                variant={isMobile ? 'h6' : "h5"}
                 style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
               >
                 Congratulations {name.split(" ")[0]}! There has been a small
                 glitch: we haven't been able to drop you an email. Don't worry
                 though.
               </Typography>
+              </Grid>
+              <Grid item>
               <Typography
-                variant= {isMobile?'h6':"h5"}
+                variant={isMobile ? 'h6' : "h5"}
                 style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
               >
                 Our backend team qill quickly review this. For your
@@ -459,6 +462,7 @@ export const Ordersummary = (props) => {
                   info@getsetgo.fitness
                 </a>
               </Typography>
+              </Grid>
             </Grid>
           )}
           {/* {
@@ -503,7 +507,7 @@ export const Ordersummary = (props) => {
                   item
                   container
                   justify="center"
-                  style={{ marginTop: "20px"}}
+                  style={{ marginTop: "20px" }}
                 >
                   <Typography
                     variant={isMobile ? "h3" : "h1"}
@@ -529,7 +533,7 @@ export const Ordersummary = (props) => {
                     will get in touch with you within 2 working days.
                   </Typography>
                   <Typography
-                    variant= {isMobile?'h6':"h5"}
+                    variant={isMobile ? 'h6' : "h5"}
                     style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
                   >
                     Feel free to drop us an email in case you have any queries:{" "}
@@ -552,7 +556,7 @@ export const Ordersummary = (props) => {
                       position: "relative",
                       padding: isMobile ? "20px" : "0",
                       marginBottom: '20px',
-                      
+
                     }}
                   >
                     <Grid
@@ -570,7 +574,7 @@ export const Ordersummary = (props) => {
                         boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
                         borderRadius: "10px",
                         marginBottom: "20px",
-                        
+
                       }}
                     >
                       <Grid item>
@@ -612,7 +616,7 @@ export const Ordersummary = (props) => {
                                 Hour
                               </InputLabel>
                             ) : (
-                              <InputLabel id="demo-simple-select-outlined-label" style={{paddingTop:'10px'}}>
+                              <InputLabel id="demo-simple-select-outlined-label" style={{ paddingTop: '10px' }}>
                                 Select Hour
                               </InputLabel>
                             )}
@@ -654,7 +658,7 @@ export const Ordersummary = (props) => {
                                 Minute
                               </InputLabel>
                             ) : (
-                              <InputLabel id="demo-simple-select-outlined-label" style={{paddingTop:'10px'}}>
+                              <InputLabel id="demo-simple-select-outlined-label" style={{ paddingTop: '10px' }}>
                                 Select Minute
                               </InputLabel>
                             )}
@@ -709,9 +713,10 @@ export const Ordersummary = (props) => {
                             <Styles.ColorButton2
                               style={
                                 meridian == "AM"
-                                  ? {height: isMobile ? "62px" : "79px",color: 'white',
-                                  backgroundColor: colors.reef
-                                }
+                                  ? {
+                                    height: isMobile ? "62px" : "79px", color: 'white',
+                                    backgroundColor: colors.reef
+                                  }
                                   : {
                                     height: isMobile ? "62px" : "79px",
                                   }
@@ -728,18 +733,20 @@ export const Ordersummary = (props) => {
                             xs={12}
                             md={6}
                             container
-                           //style={{ width: isMobile ? "50%" : "null" }}
+                          //style={{ width: isMobile ? "50%" : "null" }}
                           >
                             <Styles.ColorButton2
                               style={
                                 meridian == "PM"
-                                  ? {height: isMobile ? "62px" : "79px", 
-                                  color: 'white',
-                                  backgroundColor: colors.reef,}
+                                  ? {
+                                    height: isMobile ? "62px" : "79px",
+                                    color: 'white',
+                                    backgroundColor: colors.reef,
+                                  }
                                   : {
                                     height: isMobile ? "62px" : "79px",
-                                 }
-                                  
+                                  }
+
                               }
                               onClick={() => handleChangeMeridian("PM")}
                             >
@@ -896,77 +903,79 @@ export const Ordersummary = (props) => {
                     </Grid>
                   </Grid>
                 )}
-                {userMessage &&(
+                {userMessage && (
                   <Grid
+                    item
+                    container
+                    justify="center"
+                    alignItems='center'
+                    style={{
+                      marginTop: "20px",
+                      padding: isMobile ? "20px" : "0",
+                    }}
+                  >
+                    <Typography
+                      variant={isMobile ? "h4" : "h4"}
+                      style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
+                    >
+                      {userMessage}
+                    </Typography>
+                  </Grid>
+                )}
+              </Grid>
+              {!userMessage && <Footer />}
+
+
+            </>
+          )}
+
+          {(orderStatus === "fail" || orderStatus === "err") && (
+            <>
+              <Grid
+                item container direction='column'
+                style={{
+                  // ...{ padding: "0 50px", width: "50%" },
+                  marginTop: isMobile ? "0px" : '-100px',
+                  ...Styles.centerTxt,
+                  paddingBottom: '10vh'
+                }}
+              >
+                <Grid
+                  item
+                  container
+                  direction='column'
+                  justify="center"
+                  style={{ marginTop: "20px" }}
+                >
+                  <Typography
+                    variant={isMobile ? "h3" : "h1"}
+                    style={{ ...Styles.colorWhite, ...Styles.boldTxt }}
+                  >
+                    Uh oh
+                  </Typography>
+                </Grid>
+                <Grid
                   item
                   container
                   justify="center"
-                  alignItems='center'
                   style={{
                     marginTop: "20px",
                     padding: isMobile ? "20px" : "0",
                   }}
                 >
                   <Typography
-                    variant={isMobile ? "h4" : "h4"}
+                    variant={isMobile ? "h6" : "h5"}
                     style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
                   >
-                 {userMessage}
+                    Seems like your order got stuck somewhere. Do not worry
+                    though.
                   </Typography>
-                </Grid>
-                )}
-              </Grid>
-              {!userMessage&&<Footer/>}
-
-              
-            </>
-          )}
-
-          {(orderStatus === "fail" || orderStatus === "err") && (
-            <>
-            <Grid
-              item
-              style={{
-                // ...{ padding: "0 50px", width: "50%" },
-                marginTop:isMobile?"0px":'-100px',
-                ...Styles.centerTxt,
-                paddingBottom:'10vh' 
-              }}
-            >
-              <Grid
-                item
-                container
-                justify="center"
-                style={{ marginTop: "20px" }}
-              >
-                <Typography
-                  variant={isMobile ? "h3" : "h1"}
-                  style={{ ...Styles.colorWhite, ...Styles.boldTxt}}
-                >
-                   Uh oh
-                </Typography>
-              </Grid>
-              <Grid
-                item
-                container
-                justify="center"
-                style={{
-                  marginTop: "20px",
-                  padding: isMobile ? "20px" : "0",
-                }}
-              >
-                <Typography
-                  variant={isMobile ? "h6" : "h5"}
-                  style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
-                >
-                  Seems like your order got stuck somewhere. Do not worry
-                though.
-                </Typography>
-                <Typography
-                  variant={isMobile ? "h6" : "h5"}
-                  style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
-                >
-                  Your package is totally secure. Simply drop us an email at:{" "}
+                  <Grid item>
+                  <Typography
+                    variant={isMobile ? "h6" : "h5"}
+                    style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
+                  >
+                    Your package is totally secure. Simply drop us an email at:{" "}
                     <a
                       href="mailto: info@getsetgo.fitness"
                       style={Styles.colorYellow}
@@ -974,14 +983,15 @@ export const Ordersummary = (props) => {
                       info@getsetgo.fitness
                     </a>
                     <br></br>Remember to quote your order id in the email:{" "}
-                  {props.match.params.orderId}
-                </Typography>
+                    {props.match.params.orderId}
+                  </Typography>
+                  </Grid>
                 </Grid>
-              
-              
-            </Grid>
-          </>
-        )}
+
+
+              </Grid>
+            </>
+          )}
         </Grid>
         {/* <Grid item style={{ padding: isMobile ? "20px" : "0" }}>
           <Typography
@@ -1002,11 +1012,11 @@ export const Ordersummary = (props) => {
         </DialogActions>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            { userMessageErr}
+            {userMessageErr}
           </DialogContentText>
           <Grid container direction="row" alignItems="center" justify="center">
-            
-             <Styles.ColorButton
+
+            <Styles.ColorButton
               style={isMobile ? { width: "45vw" } : { width: "60%" }}
               onClick={() => {
                 setOpen(false);
@@ -1017,7 +1027,7 @@ export const Ordersummary = (props) => {
           </Grid>
         </DialogContent>
       </Dialog>
-      
+
     </>
   );
 };

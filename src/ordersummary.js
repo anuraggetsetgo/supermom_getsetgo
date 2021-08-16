@@ -958,6 +958,7 @@ export const Ordersummary = (props) => {
                   item
                   container
                   justify="center"
+                  direction='column'
                   style={{
                     marginTop: "20px",
                     padding: isMobile ? "20px" : "0",

@@ -9,12 +9,6 @@ import "swiper/components/pagination/pagination.min.css";
 import SwiperCore, { EffectCoverflow, Pagination, Autoplay } from "swiper/core";
 SwiperCore.use([EffectCoverflow, Pagination, Autoplay]);
 
-
-
-
-
-
-
 const DataItem = [
   {
     image: ["ClientTras/Nima.png"],
@@ -46,8 +40,6 @@ const DataItem = [
     profile: "ClientTras/Somya.jpeg",
     text: "Somya was looking to get back to how she looked before her pregnancy. Losing over 10 kilos made it happen for her.",
   },
-  
-  
 ];
 const cardStyle = {
   width: "760px",
@@ -173,7 +165,7 @@ const AvtarName = ({ name, profile }, key) => {
       justify="flex-start"
       style={{ marginTop: "32px" }}
     >
-      <Grid item container xs={3} sm={3} lg={3} md={5}>
+      <Grid item container xs={4} sm={3} lg={3} md={5}>
         <Grid
           item
           style={{
@@ -185,7 +177,13 @@ const AvtarName = ({ name, profile }, key) => {
           }}
         ></Grid>
       </Grid>
-      <Grid container xs={6} item direction="column">
+      <Grid
+        container
+        xs={6}
+        item
+        direction="column"
+        style={{ marginTop: "5px" }}
+      >
         {name.split(" ").map((name, key) => (
           <Grid key={key + name} item>
             <Typography
@@ -215,7 +213,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
         container
         justify="center"
         alignItems="center"
-        style={{ width: isMobile ? "89vw" : "51.5vw", }}
+        style={{ width: isMobile ? "80vw" : "51.5vw" }}
       >
         <Grid
           item
@@ -223,7 +221,10 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
           direction="row"
           justify="space-between"
           alignItems="center"
-          style={{ ...cardStyle,padding: isMobile ? "20px 16px 20px 16px" : "10px" }}
+          style={{
+            ...cardStyle,
+            padding: isMobile ? "20px 16px 20px 16px" : "10px",
+          }}
         >
           <Grid
             container

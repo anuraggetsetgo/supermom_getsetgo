@@ -80,8 +80,10 @@ const Landingvideobanner = () => {
             >
               {/* <img src={Styles.backCoverImg("mother_holding_img.png")} /> */}
               <Iframe
-                wd={window.screen.width * 0.7 + "px"}
-                ht={window.screen.height * 0.45 + "px"}
+                // wd={window.screen.width * 0.7 + "px"}
+                // ht={window.screen.height * 0.45 + "px"}
+                wd={isMobile2 ? "100%" : window.screen.width * 0.62 + "px"}
+                ht={isMobile2 ? "100%" : window.screen.width * 0.35 + "px"}
                 title="full body home workout"
                 src="https://www.youtube.com/embed/jziXjc2Lw00"
               />

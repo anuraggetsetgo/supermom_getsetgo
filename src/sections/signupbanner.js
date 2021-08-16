@@ -6,6 +6,8 @@ import Signupform from "../signupform";
 const Signupbanner = forwardRef((props, ref) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Grid
@@ -22,7 +24,7 @@ const Signupbanner = forwardRef((props, ref) => {
           justify="center"
           alignItems="center"
           style={{
-            height: "614px",
+            height: isMobile2 ? "620px" : isMobile ? "430px" : "614px",
             width: "100%",
             backgroundImage: `url(${Styles.backCoverImg(
               "landingpage_banner.png"

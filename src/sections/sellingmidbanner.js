@@ -5,6 +5,7 @@ import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 const Sellingmidbanner = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <>
       <Grid item container>
@@ -12,7 +13,7 @@ const Sellingmidbanner = (props) => {
           justify="flex-start"
           alignItems="center"
           style={{
-            height: isMobile ? "400" : "444px",
+            height: isMobile ? "380px" : "444px",
             width: "100%",
             backgroundImage: `url(${Styles.backCoverImg(
               "selling_mid_img.png"

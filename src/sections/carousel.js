@@ -163,7 +163,7 @@ const AvtarName = ({ name, profile }, key) => {
       item
       direction="row"
       justify="flex-start"
-      style={{ marginTop: "32px" }}
+      style={{ marginTop: "16px" }}
     >
       <Grid item container xs={4} sm={3} lg={3} md={5}>
         <Grid
@@ -205,6 +205,7 @@ const AvtarName = ({ name, profile }, key) => {
 const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <>
       <Grid
@@ -274,7 +275,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             md={5}
             direction="column"
             justify="flex-end"
-            style={{ padding: "20px" }}
+            style={{ padding: isMobile2 ? "0 20px 20px 20px" : "20px" }}
           >
             <Grid item>
               <Typography
@@ -283,7 +284,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                   maxWidth: isMobile ? "300px" : "238px",
                   ...Styles.colorCharcoalDark,
                   fontFamily: "Roboto",
-                  marginTop: isMobile ? "16px" : "0",
+                  // marginTop: isMobile ? "16px" : "0",
                 }}
               >
                 {text}

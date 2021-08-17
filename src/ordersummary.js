@@ -519,6 +519,7 @@ export const Ordersummary = (props) => {
                 <Grid
                   item
                   container
+                  direction='column'
                   justify="center"
                   style={{
                     marginTop: "20px",

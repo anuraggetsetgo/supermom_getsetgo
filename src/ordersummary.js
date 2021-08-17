@@ -601,6 +601,7 @@ export const Ordersummary = (props) => {
                         container
                         justify="center"
                         alignItems={isMobile ? "center" : "null"}
+
                       >
                         <Grid item xs={6} sm={4} lg={4}>
                           <FormControl
@@ -610,6 +611,7 @@ export const Ordersummary = (props) => {
                               // marginRight: "10px",
                               marginBottom: isMobile ? "16px" : "0",
                               // minWidth: isMobile ? "95%" : "100%",
+                              paddingRight:'10px'
                             }}
                           >
                             {isMobile ? (
@@ -630,7 +632,7 @@ export const Ordersummary = (props) => {
                               style={{
                                 height: isMobile ? "62px" : "79px",
                                 borderRadius: "10px",
-                                width: "90%",
+                                width: "100%",
                               }}
                             >
                               <MenuItem value="">
@@ -652,14 +654,16 @@ export const Ordersummary = (props) => {
                               // marginLeft: isMobile ? "0" : "20px",
                               marginBottom: isMobile ? "16px" : "0",
                               // minWidth: isMobile ? "95%" : "100%",
+                              paddingLeft:'10px',
+                              paddingRight:isMobile?'0px':"10px",
                             }}
                           >
                             {isMobile ? (
-                              <InputLabel id="demo-simple-select-outlined-label">
+                              <InputLabel id="demo-simple-select-outlined-label" style={{paddingLeft:'10px' }}>
                                 Minute
                               </InputLabel>
                             ) : (
-                              <InputLabel id="demo-simple-select-outlined-label" style={{ paddingTop: '10px' }}>
+                              <InputLabel id="demo-simple-select-outlined-label" style={{ paddingTop: '10px',paddingLeft:'10px' }}>
                                 Select Minute
                               </InputLabel>
                             )}
@@ -672,7 +676,7 @@ export const Ordersummary = (props) => {
                               style={{
                                 height: isMobile ? "62px" : "79px",
                                 borderRadius: "10px",
-                                width: "90%",
+                                width: "100%",
                               }}
                             >
                               <MenuItem value="">
@@ -701,13 +705,15 @@ export const Ordersummary = (props) => {
                           <Grid
                             item
                             sm={4}
-                            xs={12}
+                            xs={6}
                             md={6}
+                            alignItems='center'
+                            justify='center'
                             container
                             style={{
                               // marginLeft: isMobile ? "0" : "40px",
                               // width: isMobile ? "50%" : "null",
-                              marginBottom: isMobile ? "16px" : "0",
+                              paddingRight: isMobile ? "8px" : "0",
                             }}
                           >
                             {/* <button ></button> */}
@@ -731,10 +737,12 @@ export const Ordersummary = (props) => {
                           <Grid
                             item
                             sm={4}
-                            xs={12}
+                            xs={6}
                             md={6}
                             container
-                          //style={{ width: isMobile ? "50%" : "null" }}
+                            alignItems='center'
+                            justify='center'
+                          style={{ paddingLeft: isMobile ? "8px" : "0",}}
                           >
                             <Styles.ColorButton2
                               style={

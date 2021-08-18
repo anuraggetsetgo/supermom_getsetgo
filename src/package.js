@@ -36,6 +36,9 @@ import Sellingmidbanner from "./sections/sellingmidbanner";
 import Coachwork from "./sections/coachwork";
 import NewsBanner from './sections/news'
 import {ga_clicked_Payment} from './reactGA'
+import Header from "./sections/header";
+import Footer from "./sections/footer";
+
 let baseurl = "https://getsetgo.fitness";
 class Package extends Component {
   constructor(props) {
@@ -212,7 +215,8 @@ class Package extends Component {
       //serviceInclusions,
     } = this.state;
     
-    return (
+    return (<>
+      <Header />
       <Grid
         container
         style={{
@@ -278,7 +282,8 @@ class Package extends Component {
           </React.Fragment>
         )}
       </Grid>
-    );
+    <Footer/>
+    </>);
   }
 }
 export default Package;

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Header from "./sections/header";
-import Footer from "./sections/footer";
+
 import ScrollToTop from "./scrolltotop";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -14,7 +13,8 @@ import Package from "./package";
 import Ordersummary from "./ordersummary";
 import ReactPixel from "react-facebook-pixel";
 import './fonts/fonts.css'
-import './date.css'
+
+//import './date.css'
 //import Secret from './secretworkout';
 
 initReactGA();
@@ -53,7 +53,7 @@ class App extends Component {
       <Router>
         <ThemeProvider theme={theme}>
           <CssBaseline>
-            <Header />
+            
             <Switch>
               <Route exact path="/">
                 <Home signUpRef={this.signUpRef} scrollToSignUp={this.scrollToSignUp}/>
@@ -70,7 +70,7 @@ class App extends Component {
               ><Home signUpRef={this.signUpRef} scrollToSignUp={this.scrollToSignUp}/>
               </Route>
             </Switch>
-            <Footer scrollToSignUp={this.scrollToSignUp}/>
+            
             {/* </Grid> */}
           </CssBaseline>
         </ThemeProvider>

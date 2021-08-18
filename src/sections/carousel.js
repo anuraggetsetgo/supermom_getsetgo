@@ -240,7 +240,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
               position: "relative",
               borderRadius: "20% 0",
               overflow: "hidden",
-              padding: "20px 16px 20px 16px",
+              padding: "20px 0px 20px 0px",
             }}
           >
             <Grid container item xs={12} sm={12} lg={12} md={12}>
@@ -253,7 +253,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                   md={12}
                   style={{
                     backgroundRepeat: "no-repeat",
-                    height: "320px",
+                    height: isMobile?"280px":'360px',
                     width: isMobile ? "100%" : "400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
@@ -345,7 +345,7 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
-          style={{ height: isMobile ? "" : "428px" }}
+          style={{ height: isMobile ? "" : "470px" }}
           // style={{ maxWidth: "1360px" }}
         >
           {isMobile ? (
@@ -421,6 +421,7 @@ const CarouselItem = (props) => {
               grabCursor={true}
               centeredSlides={false}
               slidesPerView={"auto"}
+              autoHeight={true}
               coverflowEffect={{
                 rotate: 0,
                 stretch: 0,
@@ -436,8 +437,11 @@ const CarouselItem = (props) => {
                 disableOnInteraction: false,
               }}
               className="mySwiper"
-              pagination={true}
-              style={{ padding: "10px" }}
+              pagination={ {clickable:true
+              } }
+              style={{ 
+                padding: "10px",
+                 }}
             >
               {DataItem.map(({ image, text, name, profile }, key) => (
                 <Grid key={key + name}>
@@ -459,6 +463,7 @@ const CarouselItem = (props) => {
           container
           justify="center"
           alignItems="center"
+          // style={{paddingTop:isMobile? '0px':'30px' }}
           onClick={props.scrollToSignUp}
         >
           <button

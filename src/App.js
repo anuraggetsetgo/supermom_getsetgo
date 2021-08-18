@@ -14,6 +14,7 @@ import Package from "./package";
 import Ordersummary from "./ordersummary";
 import ReactPixel from "react-facebook-pixel";
 import './fonts/fonts.css'
+import './date.css'
 //import Secret from './secretworkout';
 
 initReactGA();

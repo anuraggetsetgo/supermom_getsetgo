@@ -84,6 +84,9 @@ form > label {
 .margintopMedia{
   margin-top: '400px';
 }
+.mySwiperCustom{
+  margin-top: 10px;
+}
 @media only screen and (max-width: 320px){
   .margintopMedia {
     margin-top:0px;

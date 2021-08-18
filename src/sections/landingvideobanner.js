@@ -84,8 +84,8 @@ const Landingvideobanner = () => {
                 // ht={window.screen.height * 0.45 + "px"}
                 wd={isMobile2 ? "100%" : window.screen.width * 0.62 + "px"}
                 ht={isMobile2 ? "100%" : window.screen.width * 0.35 + "px"}
-                title="full body home workout"
-                src="https://www.youtube.com/embed/jziXjc2Lw00"
+                title="GetSetGo Fitness Super Moms"
+                src="https://www.youtube.com/embed/Je_cS24G1JI"
               />
             </Grid>
             {/* <Grid

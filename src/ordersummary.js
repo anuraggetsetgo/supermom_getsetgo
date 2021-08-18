@@ -27,6 +27,7 @@ import BannerImage from "./images/landingpage_banner.png";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { ga_payment_failed, ga_payment_Success, ga_appointment_scheduled } from "./reactGA";
 import { DateTimePicker } from "@progress/kendo-react-dateinputs";
+import { TrendingUpTwoTone, WhatsApp } from "@material-ui/icons";
 
 
 const errMsgs = {
@@ -71,20 +72,22 @@ export const Ordersummary = (props) => {
   const re = /^([-+] ?)?[0-9]+(,[0-9]+)?$/;
   const classes = useStyles();
   const userData = JSON.parse(get("userDetails"));
-  const [err, setErr] = React.useState(false);
+  //const [err, setErr] = React.useState(false);
+  let err=false;
+  let validDate=false;
   const [phone, setPhone] = React.useState("");
   const [countryCode, setCountryCode] = React.useState("91");
   const [countryCodeWAPP, setCountryCodeWAPP] = React.useState("91");
   const [phoneErr, setErrPhone] = React.useState("");
   const [whatapp, setWhatsapp] = React.useState("");
-  const [whatappErr, setErrWhatsapp] = React.useState("");
+  const [whatsappErr, setErrWhatsapp] = React.useState("");
   //const [submitEnable, setUserMessage] = React.useState("");
   const currency = JSON.parse(get("products")).currency;
   const region = currency == "₹" ? "ind" : currency == "$" ? "row" : "aed";
   const [orderStatus, setOrderStatus] = React.useState("waiting");
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
-  const [errorForm, setErrorForm] = React.useState(null);
+  const [errorForm, setErrorForm] = React.useState(false);
   const [submitting, setSubmitting] = React.useState(false);
   const [userMessage, setUserMessage] = React.useState(false);
   const [userMessageErr, setUserMessageErr] = React.useState(false);
@@ -109,27 +112,36 @@ export const Ordersummary = (props) => {
     );
   }
   const validatePhone=()=>{
+    let er=false
     setErrPhone("");
     let isPhoneValid = validateMobile(phone);
     if (isPhoneValid) {
       setErrPhone(isPhoneValid);
-      setSubmitting(false)
       setErrorForm(true)
+      er=true;  //invalid
     }
+    else //valid
+     er= false
+  return !er
   }
     const validateWhatsApp=()=>{
       setErrWhatsapp("");
-    let isWhatsappValid = validateMobile(whatapp);
-    if (isWhatsappValid) {
-      setErrWhatsapp(isWhatsappValid);
-      setSubmitting(false)
-      setErrorForm(true)
-    }
+      let er=false
+      let isWhatsappValid = validateMobile(whatapp);
+      if (isWhatsappValid) {
+       setErrWhatsapp(isWhatsappValid);
+        setErrorForm(true)
+        er=true; //invalid
+      } 
+      else //valid
+      er= false
+    return !er
   }
 
   const handleChangePhone = (e) => {
     if (e.target.value === '' || re.test(e.target.value)) 
      setPhone(e.target.value);
+     
   };
   const handleChangeWhatsApp = (e) => {
     if (e.target.value === '' || re.test(e.target.value)) 
@@ -228,35 +240,57 @@ export const Ordersummary = (props) => {
     setOrderStatus("err");
   };
   
+const formatDate=(data)=>{
+  const hour = (data.getHours()>=12)? data.getHours()-12: data.getHours()
+  const AMPM = (data.getHours()>=12)? 'PM':'AM'
+  const date= data.getFullYear()+"-"+data.getMonth()+1+"-"+data.getDate() + " "+hour+":"+data.getMinutes()+AMPM
+  return date;
+}
+const compareDateWithToday=(d2)=>{
+  const currentdate=new Date().getTime();
+  if (d2.getTime()>currentdate)
+      validDate=true;
+  else
+    {validDate=false;
+      handleError({response:{data:{errormessage:"Date and time cannont be less than current date.Please try again!!! "}}})
+    }
+
+    return validDate;
+
+}
+const handleError=(err)=>{
+  setSubmitting(false);
+  setOpen(true);
+  //console.log(err.response)
+  setUserMessageErr(
+    err.response.data.errormessage
+  );
+
+}
+
+
   const handleSubmit = () => {
      //ga_appointment_scheduled();
-     if (submitting)
-     console.log('submitted')
-    // if (validateForm) {
-    //   setSubmitting(true);
-    //   api_set_reminder(
-    //     {
-    //       mobile_number: countryCode + phone, //"919821354464",
-    //       whatsapp_number: countryCodeWAPP + whatapp, //"919821354464",
-    //       preferred_hour: hour, //'10'
-    //       preferred_min: minute, //"00",
-    //       preferred_meridian: meridian,
-    //       region: region,
-    //     },
-    //     (data) => {
-    //       setUserMessage(data.data.successmessage);
-    //     },
-
-    //     (err) => {
-    //       setSubmitting(false);
-    //       setOpen(true);
-    //       console.log(err.response)
-    //       setUserMessageErr(
-    //         err.response.data.errormessage
-    //       );
-    //     }
-    //   );
-    // }
+  let valid = (validatePhone()) && (validateWhatsApp())
+  let dateValid=compareDateWithToday(dateTime);
+  //console.log(formatDate(dateTime))
+      if (valid&&dateValid) {
+      setSubmitting(true);
+      //console.log('Submitted')
+      api_set_reminder(
+        {
+          mobile_number: countryCode + phone, //"919821354464",
+          whatsapp_number: countryCodeWAPP + whatapp, //"919821354464",
+          region: region,
+         appoint_datetime:formatDate(dateTime),
+        },
+        (data) => {
+          setUserMessage(data.data.successmessage);
+        },
+        handleError,
+      );
+      
+    }
   };
 
   const handleClickOpen = () => {
@@ -394,35 +428,7 @@ export const Ordersummary = (props) => {
               </Grid>
             </Grid>
           )}
-          {/* {
-            orderStatus === "successEmailErr" && (
-              <Grid
-                item
-                style={{
-                  //...{ padding: "0 50px", width: "50%" },
-                  ...Styles.centerTxt,
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  style={{
-                    //...Styles.colorWhite, ...Styles.marginBottom 
-                  }}
-                >
-                  Your registration is complete!!!
-                </Typography>
-                <Typography variant="h5" style={{ ...Styles.colorWhite, }}>
-                  Congratulations {name.split(" ")[0]}! There has been a small
-                  glitch: we haven't been able to drop you an email. Don't worry
-                  though. Our backend team qill quickly review this. For your
-                  registration, our representatives will get in touch with you
-                  within 2 working days. Feel free to drop us an email in case you
-                  have any queries:{" "}
-                  <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
-                </Typography>
-              </Grid>
-            )
-          } */}
+       
           {orderStatus === "success" && (
             <>
               <Grid
@@ -504,7 +510,6 @@ export const Ordersummary = (props) => {
                         boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
                         borderRadius: "10px",
                         marginBottom: "20px",
-
                       }}
                     >
                       <Grid item>
@@ -540,13 +545,12 @@ export const Ordersummary = (props) => {
                         
                       </Grid>
                       <Grid xs={8} item container>
-                        {err && (
+                        {/* {!err && (
                           <Typography
                             style={{ ...Styles.err, ...Styles.centerTxt }}
                           >
-                            {err}
                           </Typography>
-                        )}
+                        )} */}
                       </Grid>
                       <Grid xs={12} item style={{ marginTop: "20px" }}>
                         <Grid item container justify="space-between">
@@ -554,7 +558,7 @@ export const Ordersummary = (props) => {
                             <input
                               type="number"
                               placeholder="+91"
-                              defaultValue={91}
+                              //defaultValue={91}
                               style={{
                                 width: "80%",
                                 height: "68px",
@@ -564,6 +568,7 @@ export const Ordersummary = (props) => {
                                 fontSize: "16px",
                                 color: "rgba(102, 102, 102, 0.75)",
                               }}
+                              autoComplete="off"
                               value={countryCode}
                               onChange={(e) => {
                                 setCountryCode(e.target.value);
@@ -585,7 +590,8 @@ export const Ordersummary = (props) => {
                             <input
                               type="number"
                               placeholder="Confirm your mobile number"
-                              defaultValue={phone}
+                              //defaultValue={phone}
+                              autoComplete="off"
                               style={{
                                 width: "100%",
                                 height: "68px",
@@ -614,8 +620,9 @@ export const Ordersummary = (props) => {
                           <Grid item md={isMobile ? 4 : 2} xs={4} container>
                             <input
                               type="number"
-                              placeholder="+91"
-                              defaultValue={91}
+                              placeholder="91"
+                              autoComplete="off"
+                              //defaultValue={91}
                               style={{
                                 width: "80%",
                                 height: "68px",
@@ -631,23 +638,12 @@ export const Ordersummary = (props) => {
                               }}
                             />
                           </Grid>
-                          {/* <Grid
-                            item
-                            container
-                            xs={1}
-                            alignItems="center"
-                            justify="center"
-                          >
-                            <Typography style={{ textAlign: "center" }}>
-                              -
-                            </Typography>
-                          </Grid> */}
+
                           <Grid item md={isMobile ? 8 : 10} xs={8}>
                             <input
                               placeholder="Your whatsapp number"
-                              defaultValue={phone}
+                              //defaultValue={phone}
                               type="number"
-                              onBlur={validateWhatsApp}
                               style={{
                                 width: "100%",
                                 height: "68px",
@@ -657,12 +653,16 @@ export const Ordersummary = (props) => {
                                 fontSize: "16px",
                                 color: "rgba(102, 102, 102, 0.75)",
                               }}
+                              autoComplete="off"
                               value={whatapp}
                               onChange={handleChangeWhatsApp}
+                              onBlur={validateWhatsApp}
+                              onFocus={validateWhatsApp}
                             />
-                            {whatappErr && (
+                            {whatsappErr && 
+                            (
                               <Typography style={Styles.err}>
-                                {whatappErr}
+                                {whatsappErr }
                               </Typography>)}
                           </Grid>
                         </Grid>
@@ -783,18 +783,6 @@ export const Ordersummary = (props) => {
             </>
           )}
         </Grid>
-        {/* <Grid item style={{ padding: isMobile ? "20px" : "0" }}>
-          <Typography
-            variant={isMobile ? "body2" : "subtitle2"}
-            style={{
-              ...Styles.colorCharcoalLight,
-              margin: isMobile ? "10px 0 47px" : "80px 0 47px",
-              ...Styles.centerTxt,
-            }}
-          >
-            © {new Date().getFullYear()} GetSetGo Fitness. All Rights Reserved.
-          </Typography>
-        </Grid> */}
       </Grid>
       <Dialog open={open} onClose={handleClose}>
         <DialogActions>
@@ -823,24 +811,3 @@ export const Ordersummary = (props) => {
 };
 
 export default Ordersummary;
-
-// {(orderStatus === "success" || orderStatus === "successEmailErr") && (
-//   <Grid
-//     item
-//     container
-//     style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
-//     alignItems="flex-end"
-//     justify="center"
-//     xs={12}
-//   >
-//     {/* <Refercomponents  fields = {empty} affiliate_name="Anurag Vishwakarma"affiliate_email = "vaibhav@getsetgo.fitess" affiliate_mobile = "+919821354464" campaign_id="1" ></Refercomponents> */}
-//     <Refercomponents
-//       fields={empty}
-//       affiliate_id={new_affiliate_id}
-//       campaign_id={get("campaign_id") === null ? 1 : get("campaign_id")}
-//     ></Refercomponents>
-//   </Grid>
-// )}
-// ransform: scaleX(-1) rotateZ(
-//   186deg
-//   )

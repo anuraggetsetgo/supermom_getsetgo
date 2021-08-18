@@ -18,7 +18,7 @@ import Select from "@material-ui/core/Select";
 import FormControl from "@material-ui/core/FormControl";
 import { api_set_reminder } from "./gsgAPI/api";
 import Footer from "./sections/footer";
-import { Style, WhatsApp } from "@material-ui/icons";
+//import { Style, WhatsApp } from "@material-ui/icons";
 import { useTheme } from "@material-ui/core";
 import { useMediaQuery } from "@material-ui/core";
 import { Dialog } from "@material-ui/core";
@@ -26,6 +26,9 @@ import HighlightOff from "@material-ui/icons/HighlightOff";
 import BannerImage from "./images/landingpage_banner.png";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { ga_payment_failed, ga_payment_Success, ga_appointment_scheduled } from "./reactGA";
+import { DateTimePicker } from "@progress/kendo-react-dateinputs";
+import { TrendingUpTwoTone, WhatsApp } from "@material-ui/icons";
+
 
 const errMsgs = {
   requried: "Uh oh! It's a required field",
@@ -46,81 +49,7 @@ const empty = [
   { displayname: "Email", value: "", error: null, type: "email", style: null },
   { displayname: "Phone", value: "", error: null, type: "mobile", style: null },
 ];
-const timeHour = [
-  { id: 1, hour: "1" },
-  { id: 2, hour: "2" },
-  { id: 3, hour: "3" },
-  { id: 4, hour: "4" },
-  { id: 5, hour: "5" },
-  { id: 6, hour: "6" },
-  { id: 7, hour: "7" },
-  { id: 8, hour: "8" },
-  { id: 9, hour: "9" },
-  { id: 10, hour: "10" },
-  { id: 11, hour: "11" },
-  { id: 12, hour: "12" },
-];
-const timeMinute = [
-  { id: 1, Minute: "1" },
-  { id: 2, Minute: "2" },
-  { id: 3, Minute: "3" },
-  { id: 4, Minute: "4" },
-  { id: 5, Minute: "5" },
-  { id: 6, Minute: "6" },
-  { id: 7, Minute: "7" },
-  { id: 8, Minute: "8" },
-  { id: 9, Minute: "9" },
-  { id: 10, Minute: "10" },
-  { id: 11, Minute: "11" },
-  { id: 12, Minute: "12" },
-  { id: 13, Minute: "13" },
-  { id: 14, Minute: "14" },
-  { id: 15, Minute: "15" },
-  { id: 16, Minute: "16" },
-  { id: 17, Minute: "17" },
-  { id: 18, Minute: "18" },
-  { id: 19, Minute: "19" },
-  { id: 20, Minute: "20" },
-  { id: 21, Minute: "21" },
-  { id: 22, Minute: "22" },
-  { id: 23, Minute: "23" },
-  { id: 24, Minute: "24" },
-  { id: 25, Minute: "26" },
-  { id: 26, Minute: "25" },
-  { id: 27, Minute: "27" },
-  { id: 28, Minute: "28" },
-  { id: 29, Minute: "29" },
-  { id: 30, Minute: "30" },
-  { id: 31, Minute: "31" },
-  { id: 32, Minute: "32" },
-  { id: 33, Minute: "33" },
-  { id: 34, Minute: "34" },
-  { id: 35, Minute: "35" },
-  { id: 36, Minute: "36" },
-  { id: 37, Minute: "37" },
-  { id: 38, Minute: "38" },
-  { id: 39, Minute: "39" },
-  { id: 40, Minute: "40" },
-  { id: 41, Minute: "41" },
-  { id: 42, Minute: "42" },
-  { id: 43, Minute: "43" },
-  { id: 44, Minute: "44" },
-  { id: 45, Minute: "45" },
-  { id: 46, Minute: "46" },
-  { id: 47, Minute: "47" },
-  { id: 48, Minute: "48" },
-  { id: 49, Minute: "49" },
-  { id: 50, Minute: "50" },
-  { id: 51, Minute: "51" },
-  { id: 52, Minute: "52" },
-  { id: 53, Minute: "53" },
-  { id: 54, Minute: "54" },
-  { id: 55, Minute: "55" },
-  { id: 56, Minute: "56" },
-  { id: 57, Minute: "57" },
-  { id: 58, Minute: "58" },
-  { id: 59, Minute: "59" },
-];
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
@@ -140,28 +69,30 @@ const useStyles = makeStyles((theme) => ({
 export const Ordersummary = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-
+  const re = /^([-+] ?)?[0-9]+(,[0-9]+)?$/;
   const classes = useStyles();
   const userData = JSON.parse(get("userDetails"));
-  const [hour, setHour] = React.useState("");
-  const [err, setErr] = React.useState(false);
-  const [minute, setMinute] = React.useState("");
-  const [meridian, setMeridian] = React.useState("AM");
+  //const [err, setErr] = React.useState(false);
+  let err=false;
+  let validDate=false;
   const [phone, setPhone] = React.useState("");
   const [countryCode, setCountryCode] = React.useState("91");
   const [countryCodeWAPP, setCountryCodeWAPP] = React.useState("91");
   const [phoneErr, setErrPhone] = React.useState("");
   const [whatapp, setWhatsapp] = React.useState("");
+  const [whatsappErr, setErrWhatsapp] = React.useState("");
   //const [submitEnable, setUserMessage] = React.useState("");
   const currency = JSON.parse(get("products")).currency;
   const region = currency == "₹" ? "ind" : currency == "$" ? "row" : "aed";
   const [orderStatus, setOrderStatus] = React.useState("waiting");
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const [errorForm, setErrorForm] = React.useState(false);
   const [submitting, setSubmitting] = React.useState(false);
   const [userMessage, setUserMessage] = React.useState(false);
   const [userMessageErr, setUserMessageErr] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const [dateTime, setDateTime] = React.useState(new Date());
   const validate = function (value, regex, type) {
     let error;
     if (!value) {
@@ -180,25 +111,48 @@ export const Ordersummary = (props) => {
       "mobile"
     );
   }
+  const validatePhone=()=>{
+    let er=false
+    setErrPhone("");
+    let isPhoneValid = validateMobile(phone);
+    if (isPhoneValid) {
+      setErrPhone(isPhoneValid);
+      setErrorForm(true)
+      er=true;  //invalid
+    }
+    else //valid
+     er= false
+  return !er
+  }
+    const validateWhatsApp=()=>{
+      setErrWhatsapp("");
+      let er=false
+      let isWhatsappValid = validateMobile(whatapp);
+      if (isWhatsappValid) {
+       setErrWhatsapp(isWhatsappValid);
+        setErrorForm(true)
+        er=true; //invalid
+      } 
+      else //valid
+      er= false
+    return !er
+  }
 
-  const handleChangeHour = (event) => {
-    //console.log(hour);
-    setHour(event.target.value);
+  const handleChangePhone = (e) => {
+    if (e.target.value === '' || re.test(e.target.value)) 
+     setPhone(e.target.value);
+     
   };
-  const handleChangeMinute = (event) => {
-    //console.log(minute);
-    setMinute(event.target.value);
-  };
-  const handleChangePhone = (event) => {
-    setPhone(event.target.value);
-  };
-  const handleChangeWhatsApp = (event) => {
-    setWhatsapp(event.target.value);
-  };
-  const handleChangeMeridian = (val) => {
-    setMeridian(val);
+  const handleChangeWhatsApp = (e) => {
+    if (e.target.value === '' || re.test(e.target.value)) 
+      setWhatsapp(e.target.value);
   };
 
+  const handleChangeDateTime = (event) => {
+    //console.log(event.value)
+    setDateTime(event.value);
+    
+  };
 
   React.useEffect(() => {
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
@@ -256,22 +210,23 @@ export const Ordersummary = (props) => {
         .replace(/#date/g, order_date)
         .replace(/#amount/g, `${currency} ${order_amount}`);
       console.log("Email template", emailBody);
-      callAPI(
-        getURL("sendEmail"),
-        "post",
-        (data) => {
-          emailSent(data);
-        },
-        (err) => {
-          emailErr(err);
-        },
-        {
-          to: customer_email,
-          cc: "info@getsetgo.fitness",
-          subject: "GetSetGo Fitness: Your fitness journey starts here",
-          message: emailBody,
-        }
-      );
+      // callAPI( //TEST1
+      //   getURL("sendEmail"),
+      //   "post",
+      //   (data) => {
+      //     emailSent(data);
+      //   },
+      //   (err) => {
+      //     emailErr(err);
+      //   },
+      //   {
+      //     to: customer_email,
+      //     cc: "info@getsetgo.fitness",
+      //     subject: "GetSetGo Fitness: Your fitness journey starts here",
+      //     message: emailBody,
+      //   }
+      // );
+      emailSent('TEST1');
     } else {
       setOrderStatus("fail");
       ga_payment_failed();
@@ -284,44 +239,57 @@ export const Ordersummary = (props) => {
     console.log("Ran into errors");
     setOrderStatus("err");
   };
+  
+const formatDate=(data)=>{
+  const hour = (data.getHours()>=12)? data.getHours()-12: data.getHours()
+  const AMPM = (data.getHours()>=12)? 'PM':'AM'
+  const date= data.getFullYear()+"-"+data.getMonth()+1+"-"+data.getDate() + " "+hour+":"+data.getMinutes()+AMPM
+  return date;
+}
+const compareDateWithToday=(d2)=>{
+  const currentdate=new Date().getTime();
+  if (d2.getTime()>currentdate)
+      validDate=true;
+  else
+    {validDate=false;
+      handleError({response:{data:{errormessage:"Date and time cannont be less than current date.Please try again!!! "}}})
+    }
+
+    return validDate;
+
+}
+const handleError=(err)=>{
+  setSubmitting(false);
+  setOpen(true);
+  //console.log(err.response)
+  setUserMessageErr(
+    err.response.data.errormessage
+  );
+
+}
+
+
   const handleSubmit = () => {
-    ga_appointment_scheduled();
-    let err = false;
-    if (hour === "" || minute === "") {
-      err = true;
-      setErr("Please select a time ");
-    }
-    let isPhoneValid = validateMobile(phone);
-    if (isPhoneValid) {
-      err = true;
-      setErrPhone(isPhoneValid);
-    }
-    console.log(err);
-    console.log(phone, whatapp, hour, minute, meridian, region);
-    if (!err) {
+     //ga_appointment_scheduled();
+  let valid = (validatePhone()) && (validateWhatsApp())
+  let dateValid=compareDateWithToday(dateTime);
+  //console.log(formatDate(dateTime))
+      if (valid&&dateValid) {
       setSubmitting(true);
+      //console.log('Submitted')
       api_set_reminder(
         {
           mobile_number: countryCode + phone, //"919821354464",
           whatsapp_number: countryCodeWAPP + whatapp, //"919821354464",
-          preferred_hour: hour, //'10'
-          preferred_min: minute, //"00",
-          preferred_meridian: meridian,
           region: region,
+         appoint_datetime:formatDate(dateTime),
         },
         (data) => {
           setUserMessage(data.data.successmessage);
         },
-
-        (err) => {
-          setSubmitting(false);
-          setOpen(true);
-          console.log(err.response)
-          setUserMessageErr(
-            err.response.data.errormessage
-          );
-        }
+        handleError,
       );
+      
     }
   };
 
@@ -356,14 +324,9 @@ export const Ordersummary = (props) => {
       <Grid
         container
         justify="center"
-        //alignItems="center"
         style={{
           height: isMobile ? "100vh" : "100vh",
           background: `url(${BannerImage})`,
-          //position: "absolute",
-          //top: "0",
-          //left: '0',
-          //zIndex:0,
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
           marginTop: '-90px'
@@ -465,35 +428,7 @@ export const Ordersummary = (props) => {
               </Grid>
             </Grid>
           )}
-          {/* {
-            orderStatus === "successEmailErr" && (
-              <Grid
-                item
-                style={{
-                  //...{ padding: "0 50px", width: "50%" },
-                  ...Styles.centerTxt,
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  style={{
-                    //...Styles.colorWhite, ...Styles.marginBottom 
-                  }}
-                >
-                  Your registration is complete!!!
-                </Typography>
-                <Typography variant="h5" style={{ ...Styles.colorWhite, }}>
-                  Congratulations {name.split(" ")[0]}! There has been a small
-                  glitch: we haven't been able to drop you an email. Don't worry
-                  though. Our backend team qill quickly review this. For your
-                  registration, our representatives will get in touch with you
-                  within 2 working days. Feel free to drop us an email in case you
-                  have any queries:{" "}
-                  <a href="mailto: info@getsetgo.fitness" style={Styles.colorYellow}>info@getsetgo.fitness</a>
-                </Typography>
-              </Grid>
-            )
-          } */}
+       
           {orderStatus === "success" && (
             <>
               <Grid
@@ -575,7 +510,6 @@ export const Ordersummary = (props) => {
                         boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
                         borderRadius: "10px",
                         marginBottom: "20px",
-
                       }}
                     >
                       <Grid item>
@@ -594,6 +528,7 @@ export const Ordersummary = (props) => {
                           What’s the best time to call you for follow-up
                         </Typography>
                       </Grid>
+                    
                       <Grid
                         item
                         xs={12}
@@ -603,176 +538,19 @@ export const Ordersummary = (props) => {
                         alignItems={isMobile ? "center" : "null"}
 
                       >
-                        <Grid item xs={6} sm={4} lg={4}>
-                          <FormControl
-                            variant="outlined"
-                            className={classes.formControl}
-                            style={{
-                              // marginRight: "10px",
-                              marginBottom: isMobile ? "16px" : "0",
-                              // minWidth: isMobile ? "95%" : "100%",
-                              paddingRight:'10px'
-                            }}
-                          >
-                            {isMobile ? (
-                              <InputLabel id="demo-simple-select-outlined-label" >
-                                Hour
-                              </InputLabel>
-                            ) : (
-                              <InputLabel id="demo-simple-select-outlined-label" style={{ paddingTop: '10px' }}>
-                                Select Hour
-                              </InputLabel>
-                            )}
-                            <Select
-                              labelId="demo-simple-select-outlined-label"
-                              id="demo-simple-select-outlined"
-                              value={hour}
-                              onChange={handleChangeHour}
-                              label="Select Hour"
-                              style={{
-                                height: isMobile ? "62px" : "79px",
-                                borderRadius: "10px",
-                                width: "100%",
-                              }}
-                            >
-                              <MenuItem value="">
-                                <em>None</em>
-                              </MenuItem>
-                              {timeHour.map((key, val) => {
-                                return (
-                                  <MenuItem value={key.id}>{key.hour}</MenuItem>
-                                );
-                              })}
-                            </Select>
-                          </FormControl>
+                        
+                        <Grid item xs={12} sm={12} lg={12}>
+                        <DateTimePicker onChange={handleChangeDateTime} value={dateTime} />
                         </Grid>
-                        <Grid item xs={6} sm={4} lg={4}>
-                          <FormControl
-                            variant="outlined"
-                            className={classes.formControl}
-                            style={{
-                              // marginLeft: isMobile ? "0" : "20px",
-                              marginBottom: isMobile ? "16px" : "0",
-                              // minWidth: isMobile ? "95%" : "100%",
-                              paddingLeft:'10px',
-                              paddingRight:isMobile?'0px':"10px",
-                            }}
-                          >
-                            {isMobile ? (
-                              <InputLabel id="demo-simple-select-outlined-label" style={{paddingLeft:'10px' }}>
-                                Minute
-                              </InputLabel>
-                            ) : (
-                              <InputLabel id="demo-simple-select-outlined-label" style={{ paddingTop: '10px',paddingLeft:'10px' }}>
-                                Select Minute
-                              </InputLabel>
-                            )}
-                            <Select
-                              labelId="demo-simple-select-outlined-label"
-                              id="demo-simple-select-outlined"
-                              value={minute}
-                              onChange={handleChangeMinute}
-                              label="Select Minute"
-                              style={{
-                                height: isMobile ? "62px" : "79px",
-                                borderRadius: "10px",
-                                width: "100%",
-                              }}
-                            >
-                              <MenuItem value="">
-                                <em>None</em>
-                              </MenuItem>
-                              {timeMinute.map((key, val) => {
-                                return (
-                                  <MenuItem value={key.id}>
-                                    {key.Minute}
-                                  </MenuItem>
-                                );
-                              })}
-                            </Select>
-                          </FormControl>
-                        </Grid>
-                        <Grid
-                          md={4}
-                          sm={4}
-                          lg={4}
-                          xs={12}
-                          item
-                          container
-                          alignItems="flex-end"
-                          justify="space-between"
-                        >
-                          <Grid
-                            item
-                            sm={4}
-                            xs={6}
-                            md={6}
-                            alignItems='center'
-                            justify='center'
-                            container
-                            style={{
-                              // marginLeft: isMobile ? "0" : "40px",
-                              // width: isMobile ? "50%" : "null",
-                              paddingRight: isMobile ? "8px" : "0",
-                            }}
-                          >
-                            {/* <button ></button> */}
-                            <Styles.ColorButton2
-                              style={
-                                meridian == "AM"
-                                  ? {
-                                    height: isMobile ? "62px" : "79px", color: 'white',
-                                    backgroundColor: colors.reef
-                                  }
-                                  : {
-                                    height: isMobile ? "62px" : "79px",
-                                  }
-                              }
-                              onClick={() => handleChangeMeridian("AM")}
-                            >
-                              {/* (isMobile?Styles.amAndpmButtonMobile:Styles.amAndpmButton) */}
-                              AM
-                            </Styles.ColorButton2>
-                          </Grid>
-                          <Grid
-                            item
-                            sm={4}
-                            xs={6}
-                            md={6}
-                            container
-                            alignItems='center'
-                            justify='center'
-                          style={{ paddingLeft: isMobile ? "8px" : "0",}}
-                          >
-                            <Styles.ColorButton2
-                              style={
-                                meridian == "PM"
-                                  ? {
-                                    height: isMobile ? "62px" : "79px",
-                                    color: 'white',
-                                    backgroundColor: colors.reef,
-                                  }
-                                  : {
-                                    height: isMobile ? "62px" : "79px",
-                                  }
-
-                              }
-                              onClick={() => handleChangeMeridian("PM")}
-                            >
-                              PM
-                            </Styles.ColorButton2>
-                            {/* <button style={{ ...Styles.amAndpmButton }}>PM</button> */}
-                          </Grid>
-                        </Grid>
+                        
                       </Grid>
                       <Grid xs={8} item container>
-                        {err && (
+                        {/* {!err && (
                           <Typography
                             style={{ ...Styles.err, ...Styles.centerTxt }}
                           >
-                            {err}
                           </Typography>
-                        )}
+                        )} */}
                       </Grid>
                       <Grid xs={12} item style={{ marginTop: "20px" }}>
                         <Grid item container justify="space-between">
@@ -780,7 +558,7 @@ export const Ordersummary = (props) => {
                             <input
                               type="number"
                               placeholder="+91"
-                              defaultValue={91}
+                              //defaultValue={91}
                               style={{
                                 width: "80%",
                                 height: "68px",
@@ -790,9 +568,10 @@ export const Ordersummary = (props) => {
                                 fontSize: "16px",
                                 color: "rgba(102, 102, 102, 0.75)",
                               }}
-                              value={countryCodeWAPP}
+                              autoComplete="off"
+                              value={countryCode}
                               onChange={(e) => {
-                                setCountryCodeWAPP(e.target.value);
+                                setCountryCode(e.target.value);
                               }}
                             />
                           </Grid>
@@ -811,7 +590,8 @@ export const Ordersummary = (props) => {
                             <input
                               type="number"
                               placeholder="Confirm your mobile number"
-                              defaultValue={phone}
+                              //defaultValue={phone}
+                              autoComplete="off"
                               style={{
                                 width: "100%",
                                 height: "68px",
@@ -822,6 +602,7 @@ export const Ordersummary = (props) => {
                                 color: "rgba(102, 102, 102, 0.75)",
                               }}
                               value={phone}
+                              onBlur={validatePhone}
                               onChange={(e) => {
                                 handleChangePhone(e);
                               }}
@@ -839,8 +620,9 @@ export const Ordersummary = (props) => {
                           <Grid item md={isMobile ? 4 : 2} xs={4} container>
                             <input
                               type="number"
-                              placeholder="+91"
-                              defaultValue={91}
+                              placeholder="91"
+                              autoComplete="off"
+                              //defaultValue={91}
                               style={{
                                 width: "80%",
                                 height: "68px",
@@ -856,21 +638,11 @@ export const Ordersummary = (props) => {
                               }}
                             />
                           </Grid>
-                          {/* <Grid
-                            item
-                            container
-                            xs={1}
-                            alignItems="center"
-                            justify="center"
-                          >
-                            <Typography style={{ textAlign: "center" }}>
-                              -
-                            </Typography>
-                          </Grid> */}
+
                           <Grid item md={isMobile ? 8 : 10} xs={8}>
                             <input
                               placeholder="Your whatsapp number"
-                              defaultValue={phone}
+                              //defaultValue={phone}
                               type="number"
                               style={{
                                 width: "100%",
@@ -881,9 +653,17 @@ export const Ordersummary = (props) => {
                                 fontSize: "16px",
                                 color: "rgba(102, 102, 102, 0.75)",
                               }}
+                              autoComplete="off"
                               value={whatapp}
                               onChange={handleChangeWhatsApp}
+                              onBlur={validateWhatsApp}
+                              onFocus={validateWhatsApp}
                             />
+                            {whatsappErr && 
+                            (
+                              <Typography style={Styles.err}>
+                                {whatsappErr }
+                              </Typography>)}
                           </Grid>
                         </Grid>
                       </Grid>
@@ -1003,18 +783,6 @@ export const Ordersummary = (props) => {
             </>
           )}
         </Grid>
-        {/* <Grid item style={{ padding: isMobile ? "20px" : "0" }}>
-          <Typography
-            variant={isMobile ? "body2" : "subtitle2"}
-            style={{
-              ...Styles.colorCharcoalLight,
-              margin: isMobile ? "10px 0 47px" : "80px 0 47px",
-              ...Styles.centerTxt,
-            }}
-          >
-            © {new Date().getFullYear()} GetSetGo Fitness. All Rights Reserved.
-          </Typography>
-        </Grid> */}
       </Grid>
       <Dialog open={open} onClose={handleClose}>
         <DialogActions>
@@ -1043,24 +811,3 @@ export const Ordersummary = (props) => {
 };
 
 export default Ordersummary;
-
-// {(orderStatus === "success" || orderStatus === "successEmailErr") && (
-//   <Grid
-//     item
-//     container
-//     style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
-//     alignItems="flex-end"
-//     justify="center"
-//     xs={12}
-//   >
-//     {/* <Refercomponents  fields = {empty} affiliate_name="Anurag Vishwakarma"affiliate_email = "vaibhav@getsetgo.fitess" affiliate_mobile = "+919821354464" campaign_id="1" ></Refercomponents> */}
-//     <Refercomponents
-//       fields={empty}
-//       affiliate_id={new_affiliate_id}
-//       campaign_id={get("campaign_id") === null ? 1 : get("campaign_id")}
-//     ></Refercomponents>
-//   </Grid>
-// )}
-// ransform: scaleX(-1) rotateZ(
-//   186deg
-//   )

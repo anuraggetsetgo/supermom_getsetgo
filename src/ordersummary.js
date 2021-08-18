@@ -26,9 +26,17 @@ import HighlightOff from "@material-ui/icons/HighlightOff";
 import BannerImage from "./images/landingpage_banner.png";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { ga_payment_failed, ga_payment_Success, ga_appointment_scheduled } from "./reactGA";
-import { DateTimePicker } from "@progress/kendo-react-dateinputs";
+//import { DateTimePicker } from "@progress/kendo-react-dateinputs";
 import { TrendingUpTwoTone, WhatsApp } from "@material-ui/icons";
-
+import 'date-fns';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import AccessTimeIcon from '@material-ui/icons/AccessTime';
+import PreloadImage from "./preloadImg";
 
 const errMsgs = {
   requried: "Uh oh! It's a required field",
@@ -55,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
       width: "25ch",
+
     },
   },
   formControl: {
@@ -63,6 +72,36 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  datetimeLabel: {
+
+    //   height:'68px',
+     borderRadius:'10px',
+    //   border: '1px solid rgba(102, 102, 102, 0.3)',
+    //   height:'68px',
+    //   paddingLeft:'20px',
+    //   paddingRight:'20px',
+    //   fontSize:'16px',
+    //   color: 'rgba(102, 102, 102, 0.75)',
+    '& label': {
+      padding: '0px 0px 0px 0px',
+      //marginBottom:'4px',
+      //border:'0px',
+
+    },
+    '& div': {
+      borderRadius:'10px',
+      //marginBottom:'4px',
+      //border:'0px',
+
+    },
+    margin: '16px 0px 0px 0px',
+    //padding:'0px 10px',
+    '& input': {
+      height: '30px',
+      fontSize: '16px',
+      color: 'rgba(102, 102, 102, 0.75)',
+    },
   },
 }));
 
@@ -73,8 +112,9 @@ export const Ordersummary = (props) => {
   const classes = useStyles();
   const userData = JSON.parse(get("userDetails"));
   //const [err, setErr] = React.useState(false);
-  let err=false;
-  let validDate=false;
+
+  let err = false;
+  let validDate = false;
   const [phone, setPhone] = React.useState("");
   const [countryCode, setCountryCode] = React.useState("91");
   const [countryCodeWAPP, setCountryCodeWAPP] = React.useState("91");
@@ -93,6 +133,11 @@ export const Ordersummary = (props) => {
   const [userMessageErr, setUserMessageErr] = React.useState(false);
   const [open, setOpen] = React.useState(false);
   const [dateTime, setDateTime] = React.useState(new Date());
+  const handleDateChange = (date) => {
+    console.log(date)
+    setDateTime(date);
+  };
+  //const [dateTime, setDateTime] = React.useState(new Date());
   const validate = function (value, regex, type) {
     let error;
     if (!value) {
@@ -111,47 +156,47 @@ export const Ordersummary = (props) => {
       "mobile"
     );
   }
-  const validatePhone=()=>{
-    let er=false
+  const validatePhone = () => {
+    let er = false
     setErrPhone("");
     let isPhoneValid = validateMobile(phone);
     if (isPhoneValid) {
       setErrPhone(isPhoneValid);
       setErrorForm(true)
-      er=true;  //invalid
+      er = true;  //invalid
     }
     else //valid
-     er= false
-  return !er
+      er = false
+    return !er
   }
-    const validateWhatsApp=()=>{
-      setErrWhatsapp("");
-      let er=false
-      let isWhatsappValid = validateMobile(whatapp);
-      if (isWhatsappValid) {
-       setErrWhatsapp(isWhatsappValid);
-        setErrorForm(true)
-        er=true; //invalid
-      } 
-      else //valid
-      er= false
+  const validateWhatsApp = () => {
+    setErrWhatsapp("");
+    let er = false
+    let isWhatsappValid = validateMobile(whatapp);
+    if (isWhatsappValid) {
+      setErrWhatsapp(isWhatsappValid);
+      setErrorForm(true)
+      er = true; //invalid
+    }
+    else //valid
+      er = false
     return !er
   }
 
   const handleChangePhone = (e) => {
-    if (e.target.value === '' || re.test(e.target.value)) 
-     setPhone(e.target.value);
-     
+    if (e.target.value === '' || re.test(e.target.value))
+      setPhone(e.target.value);
+
   };
   const handleChangeWhatsApp = (e) => {
-    if (e.target.value === '' || re.test(e.target.value)) 
+    if (e.target.value === '' || re.test(e.target.value))
       setWhatsapp(e.target.value);
   };
 
   const handleChangeDateTime = (event) => {
     //console.log(event.value)
     setDateTime(event.value);
-    
+
   };
 
   React.useEffect(() => {
@@ -239,42 +284,42 @@ export const Ordersummary = (props) => {
     console.log("Ran into errors");
     setOrderStatus("err");
   };
-  
-const formatDate=(data)=>{
-  const hour = (data.getHours()>=12)? data.getHours()-12: data.getHours()
-  const AMPM = (data.getHours()>=12)? 'PM':'AM'
-  const date= data.getFullYear()+"-"+data.getMonth()+1+"-"+data.getDate() + " "+hour+":"+data.getMinutes()+AMPM
-  return date;
-}
-const compareDateWithToday=(d2)=>{
-  const currentdate=new Date().getTime();
-  if (d2.getTime()>currentdate)
-      validDate=true;
-  else
-    {validDate=false;
-      handleError({response:{data:{errormessage:"Date and time cannont be less than current date.Please try again!!! "}}})
+
+  const formatDate = (data) => {
+    const hour = (data.getHours() >= 12) ? data.getHours() - 12 : data.getHours()
+    const AMPM = (data.getHours() >= 12) ? 'PM' : 'AM'
+    const date = data.getFullYear() + "-" + data.getMonth() + 1 + "-" + data.getDate() + " " + hour + ":" + data.getMinutes() + AMPM
+    return date;
+  }
+  const compareDateWithToday = (d2) => {
+    const currentdate = new Date().getTime();
+    if (d2.getTime() > currentdate)
+      validDate = true;
+    else {
+      validDate = false;
+      handleError({ response: { data: { errormessage: "Date and time cannont be less than current date.Please try again!!! " } } })
     }
 
     return validDate;
 
-}
-const handleError=(err)=>{
-  setSubmitting(false);
-  setOpen(true);
-  //console.log(err.response)
-  setUserMessageErr(
-    err.response.data.errormessage
-  );
+  }
+  const handleError = (err) => {
+    setSubmitting(false);
+    setOpen(true);
+    //console.log(err.response)
+    setUserMessageErr(
+      err.response.data.errormessage
+    );
 
-}
+  }
 
 
   const handleSubmit = () => {
-     //ga_appointment_scheduled();
-  let valid = (validatePhone()) && (validateWhatsApp())
-  let dateValid=compareDateWithToday(dateTime);
-  //console.log(formatDate(dateTime))
-      if (valid&&dateValid) {
+    //ga_appointment_scheduled();
+    let valid = (validatePhone()) && (validateWhatsApp())
+    let dateValid = compareDateWithToday(dateTime);
+    //console.log(formatDate(dateTime))
+    if (valid && dateValid) {
       setSubmitting(true);
       //console.log('Submitted')
       api_set_reminder(
@@ -282,14 +327,14 @@ const handleError=(err)=>{
           mobile_number: countryCode + phone, //"919821354464",
           whatsapp_number: countryCodeWAPP + whatapp, //"919821354464",
           region: region,
-         appoint_datetime:formatDate(dateTime),
+          appoint_datetime: formatDate(dateTime),
         },
         (data) => {
           setUserMessage(data.data.successmessage);
         },
         handleError,
       );
-      
+
     }
   };
 
@@ -321,26 +366,10 @@ const handleError=(err)=>{
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
     <>
-      <Grid
-        container
-        justify="center"
-        style={{
-          height: isMobile ? "100vh" : "100vh",
-          background: `url(${BannerImage})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'cover',
-          marginTop: '-90px'
-        }}
-      >
-        <Grid
-          item
-          container
-          justify={isMobile ? "flex-start" : "center"}
-          style={{
-            marginTop: isMobile ? "0" : "40px",
-            padding: isMobile ? "20px" : "0",
-          }}
-        >
+
+      {/* {header} */}
+      <Grid container direction='column' alignItems='center'>
+        <Grid item container alignItems='center' justify={isMobile ? "flex-start" : "center"} style={{ marginTop: isMobile ? "0" : "40px", padding: isMobile ? "20px" : "0" }}>
           <svg
             width={isMobile ? "211" : "265"}
             height="60"
@@ -363,7 +392,8 @@ const handleError=(err)=>{
             </defs>
           </svg>
         </Grid>
-        <Grid item container justify="center" style={{ marginTop: "40px", maxHeight: '150px' }}>
+        
+        <Grid item direction='column' justify="center" style={{ margin: isMobile?"30px 0px 20px 0px":"40px 0px 20px 0px", maxHeight: '150px' }}>
           {orderStatus !== 'waiting' && orderStatus !== 'sendingEmail' &&
             <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px' }}>
               {orderStatus === 'success' ? thumbsUP('100px', '100px', '#00FF00') : thumbsDown('100px', '100px', '#FF0000')}
@@ -371,12 +401,14 @@ const handleError=(err)=>{
             </Grid>}
           {orderStatus === 'waiting' || orderStatus === 'sendingEmail' && <CircularProgress color='secondary' />}
         </Grid>
-
-        <Grid xs={12} direction='column' item container justify="center" alignItems='center' style={{ marginTop: "20px", position: 'relative' }}>
-          {orderStatus === "waiting" && (<Grid item>
-            <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
-              Give us a minute. Completing your registration ...
-            </Typography></Grid>
+        
+        <Grid item container xs={12} direction='column' alignItems='center' justify="center"  style={{ marginTop: "20px"}}>
+          {orderStatus === "waiting" && (
+            <Grid item>
+              <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
+                Give us a minute. Completing your registration ...
+              </Typography>
+            </Grid>
           )}
           {orderStatus === "sendingEmail" && (<Grid item>
             <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
@@ -410,25 +442,25 @@ const handleError=(err)=>{
               </Typography>
               </Grid>
               <Grid item>
-              <Typography
-                variant={isMobile ? 'h6' : "h5"}
-                style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
-              >
-                Our backend team qill quickly review this. For your
-                registration, our representatives will get in touch with you
-                within 2 working days. Feel free to drop us an email in case you
-                have any queries:{" "}
-                <a
-                  href="mailto: info@getsetgo.fitness"
-                  style={Styles.colorYellow}
+                <Typography
+                  variant={isMobile ? 'h6' : "h5"}
+                  style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
                 >
-                  info@getsetgo.fitness
-                </a>
-              </Typography>
+                  Our backend team qill quickly review this. For your
+                  registration, our representatives will get in touch with you
+                  within 2 working days. Feel free to drop us an email in case you
+                  have any queries:{" "}
+                  <a
+                    href="mailto: info@getsetgo.fitness"
+                    style={Styles.colorYellow}
+                  >
+                    info@getsetgo.fitness
+                  </a>
+                </Typography>
               </Grid>
             </Grid>
           )}
-       
+
           {orderStatus === "success" && (
             <>
               <Grid
@@ -481,238 +513,9 @@ const handleError=(err)=>{
                     </a>
                   </Typography>
                 </Grid>
-                {!userMessage && (
-                  <Grid
-                    item
-                    container
-                    alignItems="center"
-                    justify="center"
-                    style={{
-                      bottom: isMobile ? "-25px" : "-60px",
-                      position: "relative",
-                      padding: isMobile ? "20px" : "0",
-                      marginBottom: '20px',
 
-                    }}
-                  >
-                    <Grid
-                      item
-                      container
-                      alignItems="center"
-                      justify="flex-start"
-                      direction="row"
-                      xs={12}
-                      sm={12}
-                      lg={6}
-                      style={{
-                        padding: isMobile ? "30px" : "100px",
-                        ...Styles.whiteBG,
-                        boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
-                        borderRadius: "10px",
-                        marginBottom: "20px",
-                      }}
-                    >
-                      <Grid item>
-                        <Typography
-                          variant={isMobile ? "h4" : "h3"}
-                          style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
-                        >
-                          Preferred time for call
-                        </Typography>
-                      </Grid>
-                      <Grid item container>
-                        <Typography
-                          variant="h6"
-                          style={{ fontFamily: "Roboto", marginTop: "8px" }}
-                        >
-                          What’s the best time to call you for follow-up
-                        </Typography>
-                      </Grid>
-                    
-                      <Grid
-                        item
-                        xs={12}
-                        direction="row"
-                        container
-                        justify="center"
-                        alignItems={isMobile ? "center" : "null"}
-
-                      >
-                        
-                        <Grid item xs={12} sm={12} lg={12}>
-                        <DateTimePicker onChange={handleChangeDateTime} value={dateTime} />
-                        </Grid>
-                        
-                      </Grid>
-                      <Grid xs={8} item container>
-                        {/* {!err && (
-                          <Typography
-                            style={{ ...Styles.err, ...Styles.centerTxt }}
-                          >
-                          </Typography>
-                        )} */}
-                      </Grid>
-                      <Grid xs={12} item style={{ marginTop: "20px" }}>
-                        <Grid item container justify="space-between">
-                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
-                            <input
-                              type="number"
-                              placeholder="+91"
-                              //defaultValue={91}
-                              style={{
-                                width: "80%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                              autoComplete="off"
-                              value={countryCode}
-                              onChange={(e) => {
-                                setCountryCode(e.target.value);
-                              }}
-                            />
-                          </Grid>
-                          {/* <Grid
-                            item
-                            container
-                            xs={1}
-                            alignItems="center"
-                            justify="center"
-                          >
-                            <Typography style={{ textAlign: "center" }}>
-                              -
-                            </Typography>
-                          </Grid> */}
-                          <Grid item md={isMobile ? 8 : 10} xs={8}>
-                            <input
-                              type="number"
-                              placeholder="Confirm your mobile number"
-                              //defaultValue={phone}
-                              autoComplete="off"
-                              style={{
-                                width: "100%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                              value={phone}
-                              onBlur={validatePhone}
-                              onChange={(e) => {
-                                handleChangePhone(e);
-                              }}
-                            />
-                            {phoneErr && (
-                              <Typography style={Styles.err}>
-                                {phoneErr}
-                              </Typography>
-                            )}
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid xs={12} item style={{ marginTop: "20px" }}>
-                        <Grid item container justify="space-between">
-                          <Grid item md={isMobile ? 4 : 2} xs={4} container>
-                            <input
-                              type="number"
-                              placeholder="91"
-                              autoComplete="off"
-                              //defaultValue={91}
-                              style={{
-                                width: "80%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                              value={countryCodeWAPP}
-                              onChange={(e) => {
-                                setCountryCodeWAPP(e.target.value);
-                              }}
-                            />
-                          </Grid>
-
-                          <Grid item md={isMobile ? 8 : 10} xs={8}>
-                            <input
-                              placeholder="Your whatsapp number"
-                              //defaultValue={phone}
-                              type="number"
-                              style={{
-                                width: "100%",
-                                height: "68px",
-                                borderRadius: "10px",
-                                border: "1px solid rgba(102, 102, 102, 0.3)",
-                                padding: "20px",
-                                fontSize: "16px",
-                                color: "rgba(102, 102, 102, 0.75)",
-                              }}
-                              autoComplete="off"
-                              value={whatapp}
-                              onChange={handleChangeWhatsApp}
-                              onBlur={validateWhatsApp}
-                              onFocus={validateWhatsApp}
-                            />
-                            {whatsappErr && 
-                            (
-                              <Typography style={Styles.err}>
-                                {whatsappErr }
-                              </Typography>)}
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                      <Grid
-                        xs={12}
-                        item
-                        container
-                        direction="row"
-                        alignItems="center"
-                        justify="center"
-                        style={{ marginTop: "20px" }}
-                      ></Grid>
-                      <Grid item xs={12}>
-                        <Styles.ColorButton
-                          type="submit"
-                          disabled={submitting}
-                          style={{
-                            ...Styles.thankyousubmitButton,
-                          }}
-                          onSubmit={handleSubmit}
-                          onClick={handleSubmit}
-                        >
-                          SUBMIT
-                        </Styles.ColorButton>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                )}
-                {userMessage && (
-                  <Grid
-                    item
-                    container
-                    justify="center"
-                    alignItems='center'
-                    style={{
-                      marginTop: "20px",
-                      padding: isMobile ? "20px" : "0",
-                    }}
-                  >
-                    <Typography
-                      variant={isMobile ? "h4" : "h4"}
-                      style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
-                    >
-                      {userMessage}
-                    </Typography>
-                  </Grid>
-                )}
               </Grid>
-              {!userMessage && <Footer />}
+              {/* {!userMessage && <Footer />} */}
 
 
             </>
@@ -724,9 +527,9 @@ const handleError=(err)=>{
                 item container direction='column'
                 style={{
                   // ...{ padding: "0 50px", width: "50%" },
-                  marginTop: isMobile ? "0px" : '-100px',
+                  marginTop: isMobile ? "0px" : '0px',
                   ...Styles.centerTxt,
-                  paddingBottom: '10vh'
+                  //paddingBottom: '10vh'
                 }}
               >
                 <Grid
@@ -734,13 +537,13 @@ const handleError=(err)=>{
                   container
                   direction='column'
                   justify="center"
-                  style={{ marginTop: "20px" }}
+                  style={{ marginTop: "0px" }}
                 >
                   <Typography
                     variant={isMobile ? "h3" : "h1"}
                     style={{ ...Styles.colorWhite, ...Styles.boldTxt }}
                   >
-                    Uh oh
+                    UH OH!
                   </Typography>
                 </Grid>
                 <Grid
@@ -761,20 +564,20 @@ const handleError=(err)=>{
                     though.
                   </Typography>
                   <Grid item>
-                  <Typography
-                    variant={isMobile ? "h6" : "h5"}
-                    style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
-                  >
-                    Your package is totally secure. Simply drop us an email at:{" "}
-                    <a
-                      href="mailto: info@getsetgo.fitness"
-                      style={Styles.colorYellow}
+                    <Typography
+                      variant={isMobile ? "h6" : "h5"}
+                      style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
                     >
-                      info@getsetgo.fitness
-                    </a>
-                    <br></br>Remember to quote your order id in the email:{" "}
-                    {props.match.params.orderId}
-                  </Typography>
+                      Your package is totally secure. Simply drop us an email at:{" "}
+                      <a
+                        href="mailto: info@getsetgo.fitness"
+                        style={Styles.colorYellow}
+                      >
+                        info@getsetgo.fitness
+                      </a>
+                      <br></br>Remember to quote your order id in the email:{" "}
+                      {props.match.params.orderId}
+                    </Typography>
                   </Grid>
                 </Grid>
 
@@ -783,7 +586,285 @@ const handleError=(err)=>{
             </>
           )}
         </Grid>
+      
+
       </Grid>
+      <Grid  container direction='column' alignItems='center'>
+        {!userMessage && orderStatus === 'success' && (
+          <Grid
+            item
+            container
+            alignItems="center"
+            justify="center"
+            style={{
+              bottom: isMobile ? "-25px" : "-60px",
+              position: "relative",
+              padding: isMobile ? "20px" : "0",
+              marginBottom: '20px',
+
+            }}
+          >
+            <Grid
+              item
+              container
+              alignItems="center"
+              justify="flex-start"
+              direction="row"
+              xs={12}
+              sm={12}
+              lg={6}
+              style={{
+                padding: isMobile ? "30px" : "100px",
+                ...Styles.whiteBG,
+                boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+                borderRadius: "10px",
+                marginBottom: "20px",
+              }}
+            >
+              <Grid item>
+                <Typography
+                  variant={isMobile ? "h4" : "h3"}
+                  style={{ ...Styles.boldTxt, ...Styles.colorPrimary }}
+                >
+                  Preferred time for call
+                </Typography>
+              </Grid>
+              <Grid item container>
+                <Typography
+                  variant="h6"
+                  style={{ fontFamily: "Roboto", marginTop: "8px" }}
+                >
+                  What’s the best time to call you for follow-up
+                </Typography>
+              </Grid>
+
+              <Grid
+                item
+                xs={12}
+                direction="row"
+                container
+                justify="center"
+                alignItems={isMobile ? "center" : "center"}
+
+              >
+
+                <Grid item container xs={12} sm={12} lg={12} >
+
+                  <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid item xs={12} container alignItems='center'>
+                      <Grid item container alignItems='flex-start' xs={12} sm={6} lg={6}>
+                        <KeyboardDatePicker
+                          className={classes.datetimeLabel}
+                          style={{ width: isMobile ? '100%' : '90%' }}
+                          id="date-picker-dialog"
+                          label="Date"
+                          format="dd-MMM-yyyy"
+                          value={dateTime}
+                          onChange={handleDateChange}
+                          inputVariant='outlined'
+
+                          KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                          }}
+                        />
+                      </Grid>
+                      <Grid item container alignItems='center' justify='flex-end' xs={12} sm={6} lg={6}>
+                        <KeyboardTimePicker
+                          className={classes.datetimeLabel}
+                          inputVariant='outlined'
+                          style={{ width: isMobile ? '100%' : '97%' }}
+                          //type="time"
+                          id="time-picker"
+                          label="Time"
+                          value={dateTime}
+
+                          onChange={handleDateChange}
+                          KeyboardButtonProps={{
+                            'aria-label': 'change time',
+                          }}
+                          keyboardIcon={<AccessTimeIcon />}
+                        /></Grid>
+                    </Grid>
+                  </MuiPickersUtilsProvider>
+                  {/* <DateTimePicker onChange={handleChangeDateTime} value={dateTime} /> */}
+                </Grid>
+
+              </Grid>
+              <Grid xs={8} item container>
+                {/* {!err && (
+                          <Typography
+                            style={{ ...Styles.err, ...Styles.centerTxt }}
+                          >
+                          </Typography>
+                        )} */}
+              </Grid>
+              <Grid xs={12} item style={{ marginTop: "20px" }}>
+                <Grid item container justify="space-between">
+                  <Grid item md={isMobile ? 4 : 2} xs={4} container>
+                    <input
+                      type="number"
+                      placeholder="+91"
+                      //defaultValue={91}
+                      style={{
+                        width: "80%",
+                        height: "68px",
+                        borderRadius: "10px",
+                        border: "1px solid rgba(102, 102, 102, 0.3)",
+                        padding: "20px",
+                        fontSize: "16px",
+                        color: "rgba(102, 102, 102, 0.75)",
+                      }}
+                      autoComplete="off"
+                      value={countryCode}
+                      onChange={(e) => {
+                        setCountryCode(e.target.value);
+                      }}
+                    />
+                  </Grid>
+                  {/* <Grid
+                            item
+                            container
+                            xs={1}
+                            alignItems="center"
+                            justify="center"
+                          >
+                            <Typography style={{ textAlign: "center" }}>
+                              -
+                            </Typography>
+                          </Grid> */}
+                  <Grid item md={isMobile ? 8 : 10} xs={8}>
+                    <input
+                      type="number"
+                      placeholder="Confirm your mobile number"
+                      //defaultValue={phone}
+                      autoComplete="off"
+                      style={{
+                        width: "100%",
+                        height: "68px",
+                        borderRadius: "10px",
+                        border: "1px solid rgba(102, 102, 102, 0.3)",
+                        padding: "20px",
+                        fontSize: "16px",
+                        color: "rgba(102, 102, 102, 0.75)",
+                      }}
+                      value={phone}
+                      onBlur={validatePhone}
+                      onChange={(e) => {
+                        handleChangePhone(e);
+                      }}
+                    />
+                    {phoneErr && (
+                      <Typography style={Styles.err}>
+                        {phoneErr}
+                      </Typography>
+                    )}
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid xs={12} item style={{ marginTop: "20px" }}>
+                <Grid item container justify="space-between">
+                  <Grid item md={isMobile ? 4 : 2} xs={4} container>
+                    <input
+                      type="number"
+                      placeholder="91"
+                      autoComplete="off"
+                      //defaultValue={91}
+                      style={{
+                        width: "80%",
+                        height: "68px",
+                        borderRadius: "10px",
+                        border: "1px solid rgba(102, 102, 102, 0.3)",
+                        padding: "20px",
+                        fontSize: "16px",
+                        color: "rgba(102, 102, 102, 0.75)",
+                      }}
+                      value={countryCodeWAPP}
+                      onChange={(e) => {
+                        setCountryCodeWAPP(e.target.value);
+                      }}
+                    />
+                  </Grid>
+
+                  <Grid item md={isMobile ? 8 : 10} xs={8}>
+                    <input
+                      placeholder="Your whatsapp number"
+                      //defaultValue={phone}
+                      type="number"
+                      style={{
+                        width: "100%",
+                        height: "68px",
+                        borderRadius: "10px",
+                        border: "1px solid rgba(102, 102, 102, 0.3)",
+                        padding: "20px",
+                        fontSize: "16px",
+                        color: "rgba(102, 102, 102, 0.75)",
+                      }}
+                      autoComplete="off"
+                      value={whatapp}
+                      onChange={handleChangeWhatsApp}
+                      onBlur={validateWhatsApp}
+                      onFocus={validateWhatsApp}
+                    />
+                    {whatsappErr &&
+                      (
+                        <Typography style={Styles.err}>
+                          {whatsappErr}
+                        </Typography>)}
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid
+                xs={12}
+                item
+                container
+                direction="row"
+                alignItems="center"
+                justify="center"
+                style={{ marginTop: "20px" }}
+              ></Grid>
+              <Grid item xs={12}>
+                <Styles.ColorButton
+                  type="submit"
+                  disabled={submitting}
+                  style={{
+                    ...Styles.thankyousubmitButton,
+                  }}
+                  onSubmit={handleSubmit}
+                  onClick={handleSubmit}
+                >
+                  SUBMIT
+                </Styles.ColorButton>
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+        <Grid item style={{zIndex:'-1'}}>
+        <PreloadImage src={BannerImage} height='100vh'/>
+        </Grid>
+        {userMessage && (
+          <Grid
+            item
+            container
+            justify="center"
+            alignItems='center'
+            style={{
+              marginTop: "20px",
+              padding: isMobile ? "20px" : "0",
+            }}
+          >
+            <Typography
+              variant={isMobile ? "h4" : "h4"}
+              style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
+            >
+              {userMessage}
+            </Typography>
+          </Grid>
+        )}
+          {orderStatus==='success'&&< Grid container >
+            <Footer />
+            </Grid>}
+      </Grid>
+
       <Dialog open={open} onClose={handleClose}>
         <DialogActions>
           <HighlightOff onClick={handleClose}></HighlightOff>
@@ -805,7 +886,12 @@ const handleError=(err)=>{
           </Grid>
         </DialogContent>
       </Dialog>
-
+      
+      
+        {orderStatus==='fail' || orderStatus==='err' &&(
+        < Grid  item container style={{position:'absolute',bottom:'0',...Styles.whiteBG}} >
+       <Footer />
+        </Grid>)}
     </>
   );
 };

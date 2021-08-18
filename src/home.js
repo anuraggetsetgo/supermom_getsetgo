@@ -10,7 +10,8 @@ import Mediabanner from "./sections/mediabanner";
 import Publicreviews from "./sections/publicreviews";
 import NewsBanner from "./sections/news";
 import {ga_viewed_HomePage} from './reactGA'
-
+import Header from "./sections/header";
+import Footer from "./sections/footer";
 export default function Home(props) {
   const signUpRef = props.signUpRef;
   const [reviewData, setReviewdata] = React.useState([]);
@@ -53,6 +54,7 @@ export default function Home(props) {
 
   return (
     <>
+    <Header />
       <Carousel scrollToSignUp={props.scrollToSignUp} />
       <Signupbanner ref={signUpRef} />
       {/* <Signupform /> */}
@@ -63,6 +65,7 @@ export default function Home(props) {
       <Publicreviews reviewData={reviewData} allreviewData={allreviewData} />
       <Mediabanner />
       <NewsBanner scrollToSignUp={props.scrollToSignUp} />
+      <Footer scrollToSignUp={props.scrollToSignUp}/>
     </>
   );
 }

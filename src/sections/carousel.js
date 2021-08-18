@@ -250,7 +250,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             justify="center"
             style={{
               position: "relative",
-              borderRadius: "20% 0",
+              //borderRadius: "15% 15%",
               overflow: "hidden",
               padding: "20px 0px 20px 0px",
             }}
@@ -269,7 +269,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                     width: isMobile ? "100%" : "53vw",//400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
-                    //borderRadius: '100px 0px 100px 0px'
+                    borderRadius: '30px'
                   }}
                 ></Grid>
               ))}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import { Form, Field, Formik } from "formik";
 import { Typography, Grid, useMediaQuery } from "@material-ui/core";
 import Styles from "./app-style";
@@ -135,6 +135,7 @@ const InfoPopUp = ({
   setSubmitButtonEnable,
   setSignUpInfoMessage,
   submitForm,
+  //shiftFocus
 }) => {
   const handleClose = () => {
     setOpen(false);
@@ -151,13 +152,14 @@ const InfoPopUp = ({
     <Dialog
       classes={{ paper: classes.paper }}
       fullWidth={true}
-      maxWidth="xs"
+      maxWidth={isMobile?'xs':'sm'}
       keepMounted
       open={open}
       onClose={handleClose}
       scroll="body"
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
+      
     >
       <DialogActions className="app-dialog-actions">
         <Grid item>
@@ -214,6 +216,27 @@ const InfoPopUp = ({
           alignItems="center"
         >
           <Grid item>
+            <Styles.ColorButton2
+              style={
+                isMobile
+                  ? { width: "60vw", margin: "10px 0px" }
+                  : { width: "100%" }
+              }
+              onClick={() => {
+                //setOpen(false);
+                //setIsContinue(true);
+                //setSignUpInfoMessage(false);
+                //setSubmitButtonEnable(false);
+                //shiftFocus();
+                handleClose();
+
+              }}
+            >
+              Change Email Address
+            </Styles.ColorButton2>
+          </Grid>
+        
+          <Grid item>
             <Styles.ColorButton
               style={
                 isMobile
@@ -231,31 +254,14 @@ const InfoPopUp = ({
               YES
             </Styles.ColorButton>
           </Grid>
-          <Grid item>
-            <Styles.ColorButton
-              style={
-                isMobile
-                  ? { width: "60vw", margin: "10px 0px" }
-                  : { width: "100%" }
-              }
-              onClick={() => {
-                //setOpen(false);
-                //setIsContinue(true);
-                //setSignUpInfoMessage(false);
-                //setSubmitButtonEnable(false);
-                handleClose();
-              }}
-            >
-              Change Mobile number
-            </Styles.ColorButton>
-          </Grid>
-        </Grid>
+         </Grid>
       </Grid>
     </Dialog>
   );
 };
 const Signupform = (props) => {
   const theme = useTheme();
+  const emailRef=useRef(null);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("md"));
   console.log(props);
@@ -364,7 +370,9 @@ const Signupform = (props) => {
       </Grid>
     );
   }
-
+//  const shiftFocusToRef=()=>{
+//   console.log(emailRef);//emailRef.current.focus();
+//  }
   // if (!err && !sendingEmail)
   //   return (
   //     <Grid item style={{ padding: "20px 0" }}>
@@ -400,6 +408,7 @@ const Signupform = (props) => {
             setSubmitButtonEnable={setSubmitButtonEnable}
             setSignUpInfoMessage={setSignUpInfoMessage}
             submitForm={submitForm}
+            //shiftFocus={shiftFocusToRef}
           />
         }
 
@@ -574,6 +583,7 @@ const Signupform = (props) => {
                       }}
                     >
                       <Field
+                        ref={emailRef}
                         name="email"
                         type="text"
                         placeholder="Email id"

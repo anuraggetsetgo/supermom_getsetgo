@@ -18,7 +18,7 @@ const DataItem = [
   },
   {
     image: ["ClientTras/Manisha.png"],
-    name: "Manish Nambiar",
+    name: "Manisha Nambiar",
     profile: "ClientTras/Manisha.jpeg",
     text: "Manisha lost 15 kilos post-pregnancy weight in 12 weeks and now loves eating a balanced diet.",
   },
@@ -42,6 +42,15 @@ const DataItem = [
   },
 ];
 const cardStyle = {
+  width: "48vw",
+  backgroundColor: "#FFFFFF",
+  boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
+  borderRadius: "10px",
+  // height: "480px",
+  padding: "40px",
+};
+
+const cardStyleMobile = {
   width: "760px",
   backgroundColor: "#FFFFFF",
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
@@ -162,10 +171,11 @@ const AvtarName = ({ name, profile }, key) => {
       container
       item
       direction="row"
-      justify="flex-start"
+      justify={isMobile? "flex-start":'center'}
+      alignItems='center'
       style={{ marginTop: "16px" }}
     >
-      <Grid item container xs={4} sm={3} lg={3} md={5}>
+      <Grid item container alignItems='center' justify={isMobile? "flex-start":'flex-end'} xs={3} sm={3} lg={3} md={5}>
         <Grid
           item
           style={{
@@ -174,6 +184,7 @@ const AvtarName = ({ name, profile }, key) => {
             borderRadius: "50%",
             backgroundImage: `url(${Styles.backCoverImg(profile)})`,
             backgroundSize: "100% 100%",
+            marginRight:isMobile?"0px":'10px,'
           }}
         ></Grid>
       </Grid>
@@ -189,9 +200,10 @@ const AvtarName = ({ name, profile }, key) => {
             <Typography
               variant={isMobile ? "h6" : "h5"}
               style={{
-                maxWidht: "238px",
+                maxWidth: "238px",
                 ...Styles.colorReef,
                 ...Styles.boldTxt,
+                paddingLeft:'16px'
               }}
             >
               {name}
@@ -220,10 +232,10 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
           item
           container
           direction="row"
-          justify="space-between"
+          justify="center"
           alignItems="center"
           style={{
-            ...cardStyle,
+            ...(isMobile ? cardStyleMobile : cardStyle),
             padding: isMobile ? "20px 16px 20px 16px" : "10px",
           }}
         >
@@ -253,8 +265,8 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                   md={12}
                   style={{
                     backgroundRepeat: "no-repeat",
-                    height: isMobile?"280px":'360px',
-                    width: isMobile ? "100%" : "400px",
+                    height: isMobile ? "280px" : "45vh",//'360px',
+                    width: isMobile ? "100%" : "53vw",//400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
                     //borderRadius: '100px 0px 100px 0px'
@@ -275,6 +287,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             md={5}
             direction="column"
             justify="flex-end"
+            alignItems='center'
             style={{ padding: isMobile2 ? "0 20px 20px 20px" : "20px" }}
           >
             <Grid item>
@@ -290,7 +303,9 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                 {text}
               </Typography>
             </Grid>
-            <AvtarName name={name} profile={profile} />
+            
+              <AvtarName name={name} profile={profile} />
+            
           </Grid>
         </Grid>
       </Grid>
@@ -345,8 +360,8 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
-          style={{ height: isMobile ? "" : "470px" }}
-          // style={{ maxWidth: "1360px" }}
+          style={{ height: isMobile ? "" : "58vh" }}
+        // style={{ maxWidth: "1360px" }}
         >
           {isMobile ? (
             <Carousel
@@ -437,15 +452,16 @@ const CarouselItem = (props) => {
                 disableOnInteraction: false,
               }}
               className="mySwiper"
-              pagination={ {clickable:true
-              } }
-              style={{ 
+              pagination={{
+                clickable: true
+              }}
+              style={{
                 padding: "10px",
-                 }}
+              }}
             >
               {DataItem.map(({ image, text, name, profile }, key) => (
                 <Grid key={key + name}>
-                  <SwiperSlide style={{ width: isMobile ? "" : "750px" }}>
+                  <SwiperSlide style={{ width: isMobile ? "" : "45vw" }}>
                     <CarouselContainer
                       profile={profile}
                       name={name}

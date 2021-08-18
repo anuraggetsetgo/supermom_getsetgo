@@ -154,7 +154,7 @@
     "column1": [
       {
         "title": "No Strict Dieting",
-        "text": "Say goodbye to strict dieting programs! GetSetGo Fitness was built to make fitness easy and fun for you.",
+        "text": "Simple meal plans to lose weight! GetSetGo Fitness was built to make fitness easy and fun for you.",
         "image": "Diet.png"
       },
       {
@@ -177,8 +177,8 @@
     ],
     "column3": [
       {
-        "title": "One- To- One Coach",
-        "text": "Dedicated coach to guide you on a weekly basis with a proper plan of action.",
+        "title": "Personalized fitness coach",
+        "text": "Dedicated fitness coach to guide you on a weekly basis with a proper plan of action.",
         "image": "Coach.png"
       },
       {
@@ -232,14 +232,14 @@
   },
   "GSGAskQuestions": {
     "questionsset1": [
-      ["You are unhappy with your looks and want to look better"],
+      ["You wish to reduce belly fat and want to look better."],
       ["Your lifestyle is bad."],
       [
-        "You have tried all kinds of diet and exercise programs but haven’t got the results."
+        "You have tried multiple weight loss diets but are still struggling to lose weight."
       ],
       ["You have a busy schedule and do not have a work-life balance."],
       ["You have a binge eating disorder."],
-      ["You want to workout but have no direction."],
+      ["You are looking for simple and effective weight loss exercises at home."],
       ["You want to learn how to manage your family’s health and fitness."]
     ],
     "questionsset2": [
@@ -253,7 +253,7 @@
         "You are tired of random fitness advice and are looking for genuine guidance that can make a difference in your life."
       ],
       [
-        "You have tried all kinds of diet and exercise, programs but haven’t got the results."
+        "You have tried multiple weight loss diets but are still struggling to lose weight."
       ]
     ]
   },

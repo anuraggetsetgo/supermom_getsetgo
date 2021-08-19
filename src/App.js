@@ -11,17 +11,13 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./home";
 import Package from "./package";
 import Ordersummary from "./ordersummary";
-import ReactPixel from "react-facebook-pixel";
 import './fonts/fonts.css'
-
+import {initFBPixel,fbpixel_track_Purchase} from './reactFBPixel'
 //import './date.css'
 //import Secret from './secretworkout';
 
+
 initReactGA();
-const options = {
-  autoConfig: true, // set pixel's autoConfig
-  debug: false, // enable logs
-};
 
 class App extends Component {
   constructor() {
@@ -35,9 +31,11 @@ class App extends Component {
     updateLoc(this.cb);
   }
   cb(currency) {
-    ReactPixel.init("394769665533617", options);
-    ReactPixel.pageView(); // For tracking page view
-    ReactPixel.track("Purchase", { currency: currency }); // For tracking default events, more info about events and data https://developers.facebook.com/docs/ads-for-websites/pixel-events/v2.9
+    //initReactGA();
+    //initReactGA();
+    //initFBPixel();
+    console.log(currency); 
+    // For tracking default events, more info about events and data https://developers.facebook.com/docs/ads-for-websites/pixel-events/v2.9
   }
   freezeScroll(val) {
     this.setState({ scrollStatus: val });

@@ -220,12 +220,13 @@ export const Ordersummary = (props) => {
 
   const emailSent = (data) => {
     setOrderStatus("success");
+    ga_payment_Success();
   };
   const emailErr = (err) => {
     setOrderStatus("successEmailErr");
   };
   const orderData = (data) => {
-    ga_payment_Success();
+    
     console.log("Order successful");
     let {
       order_status,

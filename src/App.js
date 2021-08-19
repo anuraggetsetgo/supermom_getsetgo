@@ -35,7 +35,7 @@ class App extends Component {
     updateLoc(this.cb);
   }
   cb(currency) {
-    ReactPixel.init("727377464279666", options);
+    ReactPixel.init("394769665533617", options);
     ReactPixel.pageView(); // For tracking page view
     ReactPixel.track("Purchase", { currency: currency }); // For tracking default events, more info about events and data https://developers.facebook.com/docs/ads-for-websites/pixel-events/v2.9
   }

@@ -5,6 +5,11 @@ import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 const Success = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const currency=()=>{
+    let currency= props.product[0].pack_currency;
+    let currText=(currency === "INR") ? "₹" : (currency === "USD"? "$" :'AED')    //د.إ 
+    return currText;
+  }
   return (
     <>
       <Grid item container alignItems="center" justify="center">
@@ -65,7 +70,7 @@ const Success = (props) => {
             >
               JOIN THE 2 WEEKS TRAIL NOW
               <br />
-              AT JUST INR 999
+              AT JUST {currency()} {props.product[0].pack_price}
             </Typography>
           </Grid>
           <Grid

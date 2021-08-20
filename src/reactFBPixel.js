@@ -8,7 +8,7 @@ const options = {
 
 
 export function initFBPixel() {
-    ReactPixel.init("394769665533617", options);
+    ReactPixel.init("531282234844998", options);
     ReactPixel.pageView(); // For tracking page view
     //ReactPixel.track('Lead','Anurag')
     //ReactPixel.track( 'Purchase', {currency: "USD", value: 30.00});

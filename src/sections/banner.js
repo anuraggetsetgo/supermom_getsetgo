@@ -11,6 +11,12 @@ const Banner = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
   const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
+
+  const currency=()=>{
+    let currency= props.product[0].pack_currency;
+    let currText=(currency === "INR") ? "₹" : (currency === "USD"? "$" :'AED')    //د.إ 
+    return currText;
+  }
   return (
     <Grid item container alignItems="center" justify="center">
       <Grid
@@ -91,7 +97,7 @@ const Banner = (props) => {
               variant={isMobile ? "h5" : "h2"}
               style={{ ...Styles.boldTxt, ...Styles.colorWhite }}
             >
-              TRY US FOR 2 WEEKS NOW AT JUST ₹ 999
+              TRY US FOR 2 WEEKS NOW AT JUST {currency()} {props.product[0].pack_price}
             </Typography>
           </Grid>
         </Grid>
@@ -99,5 +105,6 @@ const Banner = (props) => {
     </Grid>
   );
 };
+
 
 export default Banner;

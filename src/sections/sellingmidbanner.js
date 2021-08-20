@@ -6,6 +6,11 @@ const Sellingmidbanner = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  const currency=()=>{
+    let currency= props.product[0].pack_currency;
+    let currText=(currency === "INR") ? "₹" : (currency === "USD"? "$" :'AED')    //د.إ 
+    return currText;
+  }
   return (
     <>
       <Grid item container>
@@ -76,7 +81,7 @@ const Sellingmidbanner = (props) => {
                   Try before you invest.
                   <br />
                   <span style={{ ...Styles.boldTxt }}>
-                    JUST ₹ 999 FOR 2 WEEKS
+                    JUST {currency()} {props.product[0].pack_price} FOR 2 WEEKS
                   </span>
                 </Typography>
               </Grid>

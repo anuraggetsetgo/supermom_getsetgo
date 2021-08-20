@@ -256,23 +256,22 @@ export const Ordersummary = (props) => {
         .replace(/#date/g, order_date)
         .replace(/#amount/g, `${currency} ${order_amount}`);
       console.log("Email template", emailBody);
-      // callAPI( //TEST1
-      //   getURL("sendEmail"),
-      //   "post",
-      //   (data) => {
-      //     emailSent(data);
-      //   },
-      //   (err) => {
-      //     emailErr(err);
-      //   },
-      //   {
-      //     to: customer_email,
-      //     cc: "info@getsetgo.fitness",
-      //     subject: "GetSetGo Fitness: Your fitness journey starts here",
-      //     message: emailBody,
-      //   }
-      // );
-      emailSent('TEST1');
+      callAPI( 
+        getURL("sendEmail"),
+        "post",
+        (data) => {
+          emailSent(data);
+        },
+        (err) => {
+          emailErr(err);
+        },
+        {
+          to: customer_email,
+          cc: "info@getsetgo.fitness",
+          subject: "GetSetGo Fitness: Your fitness journey starts here",
+          message: emailBody,
+        }
+      );
     } else {
       setOrderStatus("fail");
       ga_payment_failed();

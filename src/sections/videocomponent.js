@@ -105,7 +105,7 @@ const Videocomponent = () => {
                 margin: isMobile ? "16px 0" : "24px 0",
               }}
             >
-              Padmani
+              Padmini
             </Typography>
           </Grid>
           <Grid item alignItems="center" justify="center" direction="column">

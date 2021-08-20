@@ -138,7 +138,7 @@ class Package extends Component {
     let currency = this.state.currency;
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     //"https://api.getsetgo.fitness/base_ind/API/v1/fetch_services",
-    let currencytext = (currency === "₹" ? "INR" : currency === "aed" ? "AED" :  "USD");
+    let currencytext = currency === "₹" ? "INR" : currency === "aed" ? "AED" :  "USD" ;
     callAPI(
       getURL("fetch_services"),
       "post",

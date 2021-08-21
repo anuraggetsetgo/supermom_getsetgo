@@ -265,7 +265,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                   md={12}
                   style={{
                     backgroundRepeat: "no-repeat",
-                    height: isMobile ? "280px" : "45vh",//'360px',
+                    height: isMobile ? "280px" : "49vh",//'360px',
                     width: isMobile ? "100%" : "53vw",//400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
@@ -360,7 +360,7 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
-          style={{ height: isMobile ? "" : "58vh" }}
+          style={{ height: isMobile ? "" : "62vh" }}
         // style={{ maxWidth: "1360px" }}
         >
           {isMobile ? (

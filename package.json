@@ -27,6 +27,8 @@
     "react-preload-image": "^1.0.7",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^4.0.3",
+    "react-slick": "^0.28.1",
+    "slick-carousel": "^1.8.1",
     "swiper": "^6.8.1"
   },
   "scripts": {

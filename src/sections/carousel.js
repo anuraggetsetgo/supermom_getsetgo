@@ -3,6 +3,7 @@ import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "../app-style.js";
 import Carousel from "react-material-ui-carousel";
 import { Swiper, SwiperSlide } from "swiper/react";
+import PreloadImage from '../preloadImg'
 import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "swiper/components/pagination/pagination.min.css";
@@ -42,7 +43,7 @@ const DataItem = [
   },
 ];
 const cardStyle = {
-  width: "48vw",
+  width: "48vw",  //51.5
   backgroundColor: "#FFFFFF",
   boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.25)",
   borderRadius: "10px",
@@ -220,36 +221,13 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
   const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <>
-      <Grid
-        key={key + name}
-        item
-        container
-        justify="center"
-        alignItems="center"
-        style={{ width: isMobile ? "80vw" : "51.5vw" }}
-      >
-        <Grid
-          item
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          style={{
-            ...(isMobile ? cardStyleMobile : cardStyle),
+      <Grid key={key + name} item container justify="center" alignItems="center"style={{ width: isMobile ? "80vw" : "unset" }}>
+        <Grid item container direction="row" justify="center" alignItems="center" style={{...(isMobile ? cardStyleMobile : cardStyle),
             padding: isMobile ? "20px 16px 20px 16px" : "10px",
           }}
         >
-          <Grid
-            container
-            item
-            lg={7}
-            sm={5}
-            xs={12}
-            md={7}
-            direction="row"
-            justify="center"
-            style={{
-              position: "relative",
+          <Grid container item lg={7} sm={5} xs={12} md={7} direction="row" justify="center" style={{
+              //position: "relative",
               //borderRadius: "15% 15%",
               overflow: "hidden",
               padding: "20px 0px 20px 0px",
@@ -257,21 +235,23 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
           >
             <Grid container item xs={12} sm={12} lg={12} md={12}>
               {imagePath.map((image) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={12}
-                  lg={12}
-                  md={12}
+                // !isMobile?(<PreloadImage alt={image} src={Styles.backCoverImg(image)}
+                // style={{
+                //   height: isMobile ? "280px" : "45vh",//'360px',
+                //   width: isMobile ? "100%" : "53vw",//400px",
+                //       borderRadius: '30px'
+                //     }}
+                // ></PreloadImage>):
+                (<Grid item xs={12} sm={12} lg={12} md={12}
                   style={{
                     backgroundRepeat: "no-repeat",
-                    height: isMobile ? "280px" : "49vh",//'360px',
-                    width: isMobile ? "100%" : "53vw",//400px",
+                    height: isMobile ? "280px" : "46vh",//'360px',
+                    width: isMobile ? "100%" : "50vw",//400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% 100%",
                     borderRadius: '30px'
                   }}
-                ></Grid>
+                ></Grid>)
               ))}
             </Grid>
             {/* <Grid item style={{ position: "absolute" }}>
@@ -360,7 +340,7 @@ const CarouselItem = (props) => {
           container
           direction="row"
           justify="center"
-          style={{ height: isMobile ? "" : "62vh" }}
+          style={{ height: isMobile ? "" : "60vh" }}
         // style={{ maxWidth: "1360px" }}
         >
           {isMobile ? (
@@ -434,9 +414,7 @@ const CarouselItem = (props) => {
             <Swiper
               effect={"coverflow"}
               grabCursor={true}
-              centeredSlides={false}
-              slidesPerView={"auto"}
-              autoHeight={true}
+              //autoHeight={true}
               coverflowEffect={{
                 rotate: 0,
                 stretch: 0,
@@ -444,7 +422,7 @@ const CarouselItem = (props) => {
                 modifier: 0,
                 slideShadows: true,
               }}
-              slidesPerView={1.5}
+              slidesPerView={1.65}
               loop={true}
               centeredSlides={false}
               autoplay={{
@@ -456,12 +434,12 @@ const CarouselItem = (props) => {
                 clickable: true
               }}
               style={{
-                padding: "10px",
+                padding: "10px 0px 0px 10px",
               }}
             >
               {DataItem.map(({ image, text, name, profile }, key) => (
-                <Grid key={key + name}>
-                  <SwiperSlide style={{ width: isMobile ? "" : "45vw" }}>
+                <Grid container justifyContent='center' key={key + name}>
+                  <SwiperSlide>
                     <CarouselContainer
                       profile={profile}
                       name={name}
@@ -472,6 +450,7 @@ const CarouselItem = (props) => {
                 </Grid>
               ))}
             </Swiper>
+            
           )}
         </Grid>
         <Grid

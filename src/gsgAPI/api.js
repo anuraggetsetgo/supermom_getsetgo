@@ -21,7 +21,7 @@ export function api_signUp(successCallback, errCallback) {
   callAPI(
     "https://api.getsetgo.fitness/base_ind/API/v1/get-google-reviews",
     "get",
-    successCallback, 
+    successCallback,
     errCallback
   );
 }

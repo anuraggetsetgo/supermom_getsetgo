@@ -1,6 +1,6 @@
 import React, { forwardRef, ref } from "react";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
-import Signupform from '../signupform'
+import Signupform from '../signupform.js'
 import Styles from "../app-style.js";
 
 

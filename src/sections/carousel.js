@@ -221,7 +221,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
   const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
   return (
     <>
-      <Grid key={key + name} item container justify="center" alignItems="center"style={{ width: isMobile ? "80vw" : "unset",marginRight:isMobile?"0px":'10px'}}>
+      <Grid key={key + name} item container justify="center" alignItems="center"style={{ width: isMobile ? "80vw" : "unset",marginRight:isMobile?"0px":'10px',padding: isMobile ? "0px" : "0px 10px",}}>
         <Grid item container direction="row" justify="center" alignItems="center" style={{...(isMobile ? cardStyleMobile : cardStyle),
             padding: isMobile ? "20px 16px 20px 16px" : "10px",
           }}

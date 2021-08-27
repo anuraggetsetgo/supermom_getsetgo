@@ -248,7 +248,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                     height: isMobile ? "280px" : "46vh",//'360px',
                     width: isMobile ? "100%" : "50vw",//400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
-                    backgroundSize: "100% 100%",
+                    backgroundSize: "100% auto",
                     borderRadius: '30px'
                   }}
                 ></Grid>)

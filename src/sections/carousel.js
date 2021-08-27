@@ -184,7 +184,7 @@ const AvtarName = ({ name, profile }, key) => {
             height: "50px",
             borderRadius: "50%",
             backgroundImage: `url(${Styles.backCoverImg(profile)})`,
-            backgroundSize: "100% 100%",
+            backgroundSize: "100% auto",
             marginRight:isMobile?"0px":'10px,'
           }}
         ></Grid>
@@ -249,7 +249,7 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                     width: isMobile ? "100%" : "50vw",//400px",
                     backgroundImage: `url(${Styles.backCoverImg(image)})`,
                     backgroundSize: "100% auto",
-                    borderRadius: '30px'
+                    //borderRadius: '30px'
                   }}
                 ></Grid>)
               ))}

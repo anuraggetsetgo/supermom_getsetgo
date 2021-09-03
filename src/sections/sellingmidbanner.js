@@ -14,87 +14,63 @@ const Sellingmidbanner = (props) => {
   return (
     <>
       <Grid
-        item
         container
         style={
           isMobile ? { ...Styles.marginTop40 } : { ...Styles.marginTop150 }
         }
       >
         <Grid
-          justify="flex-start"
-          alignItems="center"
+          className="signupBanner"
           style={{
-            width: "100%",
-            height: isMobile ? "60vh" : "614px",
             backgroundImage: `url(${Styles.backCoverImg(
               "selling_mid_img.png"
             )})`,
-            backgroundSize: "100% 100%",
-            padding: isMobile ? "20px" : "0",
+            width: "100% ",
+            height: isMobile ? "60vh" : "614px",
           }}
         >
           <Grid
-            item
-            container
-            direction="row"
-            alignItems="center"
-            justify="center"
+            // justifyContent="center"
+            // alignItems="center"
             style={
               isMobile ? { ...Styles.marginTop100 } : { ...Styles.marginTop150 }
             }
           >
-            <Grid justify="center" alignItems="center">
-              <Typography
-                variant={isMobile ? "h3" : "h1"}
-                style={{
-                  ...Styles.centerTxt,
-                  ...Styles.colorWhite,
-                  ...Styles.boldTxt,
-                }}
-              >
-                ARE YOU READY
-                <br />
-                TO TRANSFORM YOUR LIFE?
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid
-            item
-            container
-            direction="row"
-            alignItems="center"
-            justify="center"
-            style={
-              isMobile ? { ...Styles.marginTop24 } : { ...Styles.marginTop40 }
-            }
-          >
-            <Grid
-              justify="center"
-              alignItems="center"
+            <Typography
+              variant={isMobile ? "h3" : "h1"}
               style={{
-                background: "#FFDD33",
-                ...Styles.cardRadius2,
-                cursor: "pointer",
+                ...Styles.centerTxt,
+                ...Styles.colorWhite,
+                ...Styles.boldTxt,
               }}
             >
-              <Grid
-                item
-                style={{ margin: isMobile ? "15px 28px" : "30px 60px" }}
+              ARE YOU READY
+              <br />
+              TO TRANSFORM YOUR LIFE?
+            </Typography>
+          </Grid>
+          <Grid item container justifyContent="center">
+            <Grid item container justifyContent="center" lg={6} xs={11}>
+              <Styles.YellowColorButton
+                style={
+                  isMobile
+                    ? {
+                        fontSize: "20px",
+                        lineHeight: "28px",
+                        padding: "13px 30px",
+                        borderRadius: "10px",
+                      }
+                    : {}
+                }
                 onClick={() => {
                   props.createOrder(props.product[0], 0);
                 }}
               >
-                <Typography
-                  variant={isMobile ? "h5" : "h2"}
-                  style={{ ...Styles.centerTxt, ...Styles.colorReef }}
-                >
-                  Try before you invest.
-                  <br />
-                  <span style={{ ...Styles.boldTxt }}>
-                    JUST {currency()} {props.product[0].pack_price} FOR 2 WEEKS
-                  </span>
-                </Typography>
-              </Grid>
+                Try before you invest.
+                <span style={{ ...Styles.boldTxt }}>
+                  JUST {currency()} {props.product[0].pack_price} FOR 2 WEEKS
+                </span>
+              </Styles.YellowColorButton>
             </Grid>
           </Grid>
         </Grid>

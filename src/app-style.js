@@ -43,6 +43,28 @@ const ColorButton2 = withStyles((theme) => ({
     },
   },
 }))(Button);
+const YellowColorButton = withStyles((theme) => ({
+  root: {
+    textTransform: "uppercase",
+    marginTop: "40px",
+    cursor: "pointer",
+    padding: "30px 60px",
+    width: "100%",
+    borderRadius: "20px",
+    fontSize: "40px",
+    lineHeight: "54px",
+    fontFamily: "Poppins",
+    color: colors.reef,
+    display: "grid",
+    backgroundColor: colors.yellow,
+    border: `1px solid ${colors.primary}`,
+    "&:hover": {
+      backgroundColor: colors.yellow,
+      border: `1px solid ${colors.primary}`,
+      color: colors.reef,
+    },
+  },
+}))(Button);
 
 const backCoverImg = (image) => {
   return `./img/${image}`;
@@ -68,6 +90,7 @@ export default {
   handleScroll,
   ColorButton,
   ColorButton2,
+  YellowColorButton,
   cardRadius: {
     borderRadius: "5px",
   },

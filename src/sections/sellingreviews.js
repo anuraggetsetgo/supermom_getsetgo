@@ -55,6 +55,7 @@ const Sellingreviews = () => {
           container
           justify="flex-start"
           alignItems="center"
+          xl={8}
           xs={12}
           sm={10}
           lg={10}
@@ -81,6 +82,7 @@ const Sellingreviews = () => {
           boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.12)",
           borderRadius: "10px",
         }}
+        xl={8}
         xs={12}
         sm={11}
         lg={10}

@@ -15,6 +15,7 @@ const Header = () => {
           container
           alignItems="center"
           item
+          xl={8}
           lg={10}
           xs={11}
           sm={11}

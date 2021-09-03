@@ -27,6 +27,7 @@ const Coachwork = () => {
           item
           justify="flex-start"
           alignItems="center"
+          xl={8}
           xs={10}
           sm={10}
           lg={10}

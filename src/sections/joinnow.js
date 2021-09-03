@@ -23,6 +23,7 @@ const Joinnow = (props) => {
           alignItems="flex-start"
           justify="space-between"
           direction="row"
+          xl={8}
           xs={12}
           sm={12}
           lg={10}

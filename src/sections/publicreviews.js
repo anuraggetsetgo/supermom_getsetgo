@@ -35,6 +35,7 @@ const GoogleReview = ({ review }) => {
       >
         <Grid
           item
+          xl={8}
           xs={12}
           container
           direction="row"
@@ -116,33 +117,83 @@ const Publicreviews = (props) => {
         justify="center"
         direction="column"
         xs={12}
+        xl={9}
         style={{ padding: isMobile ? "20px" : "0" }}
       >
-        <Grid xs={12} lg={10} sm={10} md={10} item container direction="column" alignItems="flex-start" justify="flex-start"
+        <Grid
+          xs={12}
+          lg={10}
+          sm={10}
+          md={10}
+          item
+          container
+          direction="column"
+          alignItems="flex-start"
+          justify="flex-start"
         >
-
           <Typography
             variant="h3"
             style={{ ...Styles.boldTxt, ...Styles.colorReef }}
           >
             Google Rating and Review
           </Typography>
-
         </Grid>
 
-        <Grid xs={12} lg={10} sm={10} md={10} item container direction="row" alignItems="flex-start" justify="flex-start">
-          <Grid xs={12} lg={12} sm={12} md={12} item container direction="column" alignItems="flex-start" justify="flex-start">
+        <Grid
+          xs={12}
+          lg={10}
+          sm={10}
+          md={10}
+          item
+          container
+          direction="row"
+          alignItems="flex-start"
+          justify="flex-start"
+        >
+          <Grid
+            xs={12}
+            lg={12}
+            sm={12}
+            md={12}
+            item
+            container
+            direction="column"
+            alignItems="flex-start"
+            justify="flex-start"
+          >
             <Grid item xs={12} lg={12} sm={12} md={12}>
-              <Typography variant="h5" style={{ ...Styles.colorCharcoalLight,marginTop:'8px' }}>
+              <Typography
+                variant="h5"
+                style={{ ...Styles.colorCharcoalLight, marginTop: "8px" }}
+              >
                 4.9/5 on Google Ratings
               </Typography>
             </Grid>
 
-            <Grid xs={12} lg={12} sm={12} md={12} item container direction="row"  alignItems='flex-end' justify='flex-end' style={{marginTop:'8px' }}>
-              <Grid xs={5} lg={10} sm={7} md={9} item container alignItems='flex-start'>
+            <Grid
+              xs={12}
+              lg={12}
+              sm={12}
+              md={12}
+              item
+              container
+              direction="row"
+              alignItems="flex-end"
+              justify="flex-end"
+              style={{ marginTop: "8px" }}
+            >
+              <Grid
+                xs={5}
+                lg={10}
+                sm={7}
+                md={9}
+                item
+                container
+                alignItems="flex-start"
+              >
                 <svg
-                  width={isMobile ? '120' : "160"}
-                  height={isMobile ? '24' : "32"}
+                  width={isMobile ? "120" : "160"}
+                  height={isMobile ? "24" : "32"}
                   viewBox="0 0 160 32"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
@@ -170,12 +221,33 @@ const Publicreviews = (props) => {
                 </svg>
               </Grid>
 
-              <Grid item xs={4} lg={1} sm={3} md={2} container justify='flex-end' style={isMobile?{}:{paddingBottom:'16px'}} >
-                <Typography variant="body2" style={{ ...Styles.colorCharcoalDark }}>
+              <Grid
+                item
+                xs={4}
+                lg={1}
+                sm={3}
+                md={2}
+                container
+                justify="flex-end"
+                style={isMobile ? {} : { paddingBottom: "16px" }}
+              >
+                <Typography
+                  variant="body2"
+                  style={{ ...Styles.colorCharcoalDark }}
+                >
                   100+ reviews
                 </Typography>
               </Grid>
-              <Grid item xs={3} lg={1} sm={2} md={1} container justify='flex-end' style={isMobile?{}:{paddingBottom:'16px'}}>
+              <Grid
+                item
+                xs={3}
+                lg={1}
+                sm={2}
+                md={1}
+                container
+                justify="flex-end"
+                style={isMobile ? {} : { paddingBottom: "16px" }}
+              >
                 <Typography
                   variant="body2"
                   style={{
@@ -262,9 +334,7 @@ const Publicreviews = (props) => {
                   </DialogActions>
                 </Dialog>
               </Grid>
-
             </Grid>
-
           </Grid>
         </Grid>
       </Grid>
@@ -273,6 +343,7 @@ const Publicreviews = (props) => {
         container
         direction="column"
         xs={12}
+        xl={8}
         justify="center"
         alignItems="center"
       >
@@ -280,6 +351,7 @@ const Publicreviews = (props) => {
           item
           direction="column"
           xs={10}
+          xl={12}
           justify="center"
           alignItems="center"
           container

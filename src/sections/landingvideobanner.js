@@ -18,6 +18,7 @@ const Landingvideobanner = () => {
       >
         <Grid
           item
+          xl={8}
           lg={10}
           xs={12}
           container

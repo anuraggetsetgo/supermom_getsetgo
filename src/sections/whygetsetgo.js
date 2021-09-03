@@ -15,6 +15,7 @@ const Whygetsetgo = () => {
           container
           justify="center"
           alignItems="center"
+          xl={8}
           xs={12}
           sm={10}
           lg={10}

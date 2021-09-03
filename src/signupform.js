@@ -432,6 +432,7 @@ const Signupform = (props) => {
                   //justify="center"
                   //justify="center"
                   //alignItems="center"
+                  xl={12}
                   xs={12}
                   sm={12}
                   lg={12}

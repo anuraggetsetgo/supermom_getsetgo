@@ -20,6 +20,7 @@ const Banner = (props) => {
           alignItems="center"
           justifyContent="space-between"
           direction="row"
+          xl={8}
           xs={12}
           sm={10}
           lg={10}

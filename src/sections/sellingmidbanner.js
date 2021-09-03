@@ -50,7 +50,7 @@ const Sellingmidbanner = (props) => {
             </Typography>
           </Grid>
           <Grid item container justifyContent="center">
-            <Grid item container justifyContent="center" lg={6} xs={11}>
+            <Grid item container justifyContent="center" xl={5} lg={6} xs={11}>
               <Styles.YellowColorButton
                 style={
                   isMobile

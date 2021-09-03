@@ -41,7 +41,15 @@ const Videocomponent = () => {
           isMobile ? { ...Styles.marginTop40 } : { ...Styles.marginTop100 }
         }
       >
-        <Grid item lg={10} xs={11} md={11} container justifyContent="center">
+        <Grid
+          item
+          xl={8}
+          lg={10}
+          xs={11}
+          md={11}
+          container
+          justifyContent="center"
+        >
           <Typography
             variant={isMobile ? "h3" : "h1"}
             style={{
@@ -54,7 +62,15 @@ const Videocomponent = () => {
             HAPPY, AND FIT.
           </Typography>
         </Grid>
-        <Grid item lg={10} xs={11} md={11} container justifyContent="center">
+        <Grid
+          item
+          xl={8}
+          lg={10}
+          xs={11}
+          md={11}
+          container
+          justifyContent="center"
+        >
           <Typography
             variant={isMobile ? "h5" : "h3"}
             style={
@@ -83,7 +99,7 @@ const Videocomponent = () => {
         <Grid
           item
           lg={10}
-          xl={10}
+          xl={8}
           md={12}
           sm={11}
           container

@@ -20,6 +20,7 @@ const Mediabanner = () => {
         <Grid
           item
           container
+          xl={8}
           lg={10}
           xs={11}
           md={10}

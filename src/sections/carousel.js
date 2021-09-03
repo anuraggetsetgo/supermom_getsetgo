@@ -148,7 +148,7 @@ function CarouselItem(props) {
         <Grid
           item
           container
-          xl={10}
+          xl={8}
           lg={10}
           xs={12}
           md={10}

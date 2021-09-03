@@ -20,6 +20,7 @@ const Success = (props) => {
       >
         <Grid
           item
+          xl={5}
           lg={7}
           xs={11}
           container
@@ -39,7 +40,7 @@ const Success = (props) => {
             are waiting to hear your success story!
           </Typography>
         </Grid>
-        <Grid item xs={11} style={{ lineHeight: "0" }}>
+        <Grid item xl={8} xs={11} style={{ lineHeight: "0" }}>
           <img
             src={Styles.backCoverImg("link_below.png")}
             alt="Link Below Girl"
@@ -49,7 +50,7 @@ const Success = (props) => {
             }}
           />
         </Grid>
-        <Grid item lg={7} xs={11}>
+        <Grid item xl={5} lg={7} xs={11}>
           <Styles.ColorButton2
             style={
               isMobile

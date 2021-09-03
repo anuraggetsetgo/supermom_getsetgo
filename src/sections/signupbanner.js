@@ -34,6 +34,7 @@ const Signupbanner = forwardRef((props, ref) => {
         >
           <Grid
             item
+            xl={8}
             xs={12}
             sm={10}
             lg={10}

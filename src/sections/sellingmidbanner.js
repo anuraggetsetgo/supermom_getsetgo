@@ -26,6 +26,7 @@ const Sellingmidbanner = (props) => {
               "selling_mid_img.png"
             )})`,
             width: "100% ",
+            backgroundSize: "100% 100%",
             height: isMobile ? "60vh" : "614px",
           }}
         >

@@ -56,7 +56,10 @@ const GoogleReview = ({ review }) => {
               readOnly
               value={review.reviewer_rating}
             />
-            <Typography variant="h6" className="charcoal-dark2  bold">
+            <Typography
+              variant="h6"
+              style={{ ...Styles.colorReef, ...Styles.boldTxt }}
+            >
               {review.reviewer_name}
             </Typography>
           </Grid>
@@ -67,12 +70,11 @@ const GoogleReview = ({ review }) => {
         <br />
         <Grid item xs={12}>
           <Typography
-            variant="subtitle2"
-            className="charcoal-dark2 "
+            variant="subtitle1"
             style={{
+              color: "rgba(0, 0, 0, 0.87)",
               lineHeight: "24px",
               fontStyle: "italic",
-              fontWeight: "400",
             }}
           >
             {review.reviewer_comment}

@@ -79,7 +79,7 @@ const Landingvideobanner = () => {
           <Iframe
             title="GetSetGo Fitness Super Moms"
             src="https://www.youtube.com/embed/Je_cS24G1JI"
-            width="750px"
+            width="850px"
             height={isMobile2 ? "300px" : "480px"}
             id="myId"
           />

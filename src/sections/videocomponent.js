@@ -37,9 +37,7 @@ const Videocomponent = () => {
       <Grid
         container
         justifyContent="center"
-        style={
-          isMobile ? { ...Styles.marginTop40 } : { ...Styles.marginTop100 }
-        }
+        // style={isMobile ? { ...Styles.marginTop40 } : {}}
       >
         <Grid
           item
@@ -131,14 +129,15 @@ const Videocomponent = () => {
                     title={val.title}
                     src={val.videoLink}
                     width="93%"
-                    height="250px"
+                    height="300px"
                     id="myId"
                   />
                   <Typography
                     variant="h5"
                     style={{
+                      ...Styles.boldTxt,
                       ...Styles.centerTxt,
-                      ...Styles.colorCharcoalLight,
+                      ...Styles.colorReef,
                       ...Styles.marginTop24,
                     }}
                   >

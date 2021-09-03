@@ -38,7 +38,7 @@ const Coachwork = () => {
           <Grid item style={{ marginBottom: "30px" }}>
             <Typography
               variant={isMobile ? "h3" : "h1"}
-              style={{ ...Styles.boldTxt, ...Styles.colorReef }}
+              style={{ ...Styles.boldTxt, ...Styles.colorRed }}
             >
               {customTxt.howDoesGetSetGoWorkTxt.mainHeading}
             </Typography>

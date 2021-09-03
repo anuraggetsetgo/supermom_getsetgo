@@ -1,8 +1,7 @@
 import React, { forwardRef, ref } from "react";
 import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
-import Signupform from '../signupform';
+import Signupform from "../signupform";
 import Styles from "../app-style.js";
-
 
 const Signupbanner = forwardRef((props, ref) => {
   const theme = useTheme();
@@ -17,7 +16,7 @@ const Signupbanner = forwardRef((props, ref) => {
         direction="row"
         alignItems="center"
         justify="center"
-        style={{ marginBottom: "100px" }}
+        style={{ ...Styles.marginBottom100, ...Styles.marginTop100 }}
       >
         <Grid
           container

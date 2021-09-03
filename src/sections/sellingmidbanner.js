@@ -6,20 +6,26 @@ const Sellingmidbanner = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
-  const currency=()=>{
-    let currency= props.product[0].pack_currency;
-    let currText=(currency === "INR") ? "₹" : (currency === "USD"? "$" :'AED')    //د.إ 
+  const currency = () => {
+    let currency = props.product[0].pack_currency;
+    let currText = currency === "INR" ? "₹" : currency === "USD" ? "$" : "AED"; //د.إ
     return currText;
-  }
+  };
   return (
     <>
-      <Grid item container>
+      <Grid
+        item
+        container
+        style={
+          isMobile ? { ...Styles.marginTop40 } : { ...Styles.marginTop150 }
+        }
+      >
         <Grid
           justify="flex-start"
           alignItems="center"
           style={{
-            height: isMobile ? "380px" : "444px",
             width: "100%",
+            height: isMobile ? "60vh" : "614px",
             backgroundImage: `url(${Styles.backCoverImg(
               "selling_mid_img.png"
             )})`,
@@ -33,7 +39,9 @@ const Sellingmidbanner = (props) => {
             direction="row"
             alignItems="center"
             justify="center"
-            style={{ marginTop: "75px" }}
+            style={
+              isMobile ? { ...Styles.marginTop100 } : { ...Styles.marginTop150 }
+            }
           >
             <Grid justify="center" alignItems="center">
               <Typography
@@ -56,7 +64,9 @@ const Sellingmidbanner = (props) => {
             direction="row"
             alignItems="center"
             justify="center"
-            style={{ marginTop: "20px" }}
+            style={
+              isMobile ? { ...Styles.marginTop24 } : { ...Styles.marginTop40 }
+            }
           >
             <Grid
               justify="center"

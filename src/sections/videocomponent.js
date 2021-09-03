@@ -2,133 +2,139 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import Iframe from "./iframe";
+import Iframe from "react-iframe";
+
+const VideoData = {
+  GSGVideo: [
+    {
+      id: 1,
+      title: "full body home workout",
+      videoLink: "https://www.youtube.com/embed/jziXjc2Lw00",
+      descripation: "Nima",
+    },
+    {
+      id: 2,
+      title: "full body home workout",
+      videoLink: "https://www.youtube.com/embed/yNl6ypbfWdI",
+      descripation: " Padmini",
+    },
+    {
+      id: 3,
+      title: "full body home workout",
+      videoLink: "https://www.youtube.com/embed/u_wzaDCu_c8",
+      descripation: "Suman",
+    },
+  ],
+};
 
 const Videocomponent = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
-  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile2 = useMediaQuery(theme.breakpoints.down("md"));
+
   return (
-    <Grid
-      item
-      container
-      direction="row"
-      alignItems="center"
-      justify="center"
-      style={{
-        margin: isMobile ? "-150px 0 0 0" : "0 0",
-        padding: isMobile ? "20px" : "0",
-      }}
-    >
+    <>
       <Grid
-        justify="flex-start"
-        alignItems="center"
-        style={{ width: "1170px", marginBottom: "16px" }}
+        container
+        justifyContent="center"
+        style={
+          isMobile ? { ...Styles.marginTop40 } : { ...Styles.marginTop100 }
+        }
       >
-        <Typography
-          variant={isMobile ? "h3" : "h1"}
-          style={{
-            ...Styles.colorRed,
-            ...Styles.boldTxt,
-            textAlign: "center",
-          }}
-        >
-          LIVE THE LIFE {isMobile ? <br /> : ""}YOU LOVE.
-          <br /> SUPER HEALTHY, HAPPY, AND FIT.
-        </Typography>
-      </Grid>
-      <Grid
-        justify="flex-start"
-        alignItems="center"
-        style={{ width: "1170px", height: "40px" }}
-      >
-        <Typography
-          variant={isMobile ? "h5" : "h3"}
-          style={{
-            ...Styles.colorReef,
-            ...Styles.boldNormal,
-            textAlign: "center",
-          }}
-        >
-          Here's what our clients have to say..
-        </Typography>
-      </Grid>
-      <Grid item container alignItems="center" justify="center">
-        <Grid
-          item
-          xs={12}
-          sm={11}
-          lg={11}
-          md={8}
-          container
-          alignItems="center"
-          justify={isMobile2 ? "center" : "space-between"}
-          direction="row"
-          style={{
-            marginBottom: isMobile ? "24px" : "80px",
-            marginTop: "30px",
-          }}
-        >
-          <Grid item alignItems="center" justify="center" direction="column">
-            <Iframe //style={{width:'80vw'}}
-              wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
-              ht={isMobile ? "100%" : window.screen.width * 0.2 + "px"}
-              title="full body home workout"
-              src="https://www.youtube.com/embed/jziXjc2Lw00"
-              frameborder="0"
-              allowfullscreen
-            />
-            <Typography
-              variant="h5"
-              style={{
-                textAlign: "center",
-                ...Styles.colorCharcoalLight,
-                margin: isMobile ? "16px 0" : "24px 0",
-              }}
-            >
-              Nima
-            </Typography>
-          </Grid>
-          <Grid item alignItems="center" justify="center" direction="column">
-            <Iframe //style={{width:'80vw'}}
-              wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
-              ht={isMobile ? "100%" : window.screen.width * 0.2 + "px"}
-              title="full body home workout"
-              src="https://www.youtube.com/embed/yNl6ypbfWdI"
-            />
-            <Typography
-              variant="h5"
-              style={{
-                textAlign: "center",
-                ...Styles.colorCharcoalLight,
-                margin: isMobile ? "16px 0" : "24px 0",
-              }}
-            >
-              Padmini
-            </Typography>
-          </Grid>
-          <Grid item alignItems="center" justify="center" direction="column">
-            <Iframe //style={{width:'80vw'}}
-              wd={isMobile ? "100%" : window.screen.width * 0.28 + "px"}
-              ht={isMobile ? "100%" : window.screen.width * 0.2 + "px"}
-              title="full body home workout"
-              src="https://www.youtube.com/embed/u_wzaDCu_c8"
-            />
-            <Typography
-              variant="h5"
-              style={{
-                textAlign: "center",
-                ...Styles.colorCharcoalLight,
-                margin: isMobile ? "16px 0" : "24px 0",
-              }}
-            >
-              Suman
-            </Typography>
-          </Grid>
+        <Grid item lg={10} xs={11} md={11} container justifyContent="center">
+          <Typography
+            variant={isMobile ? "h3" : "h1"}
+            style={{
+              ...Styles.colorRed,
+              ...Styles.boldTxt,
+              ...Styles.centerTxt,
+            }}
+          >
+            LIVE THE LIFE YOU LOVE.{isMobile ? "" : <br />} SUPER HEALTHY,
+            HAPPY, AND FIT.
+          </Typography>
+        </Grid>
+        <Grid item lg={10} xs={11} md={11} container justifyContent="center">
+          <Typography
+            variant={isMobile ? "h5" : "h3"}
+            style={
+              isMobile
+                ? {
+                    ...Styles.colorReef,
+                    // ...Styles.paddingTextTop,
+                    ...Styles.centerTxt,
+                  }
+                : {
+                    ...Styles.colorReef,
+                    ...Styles.marginTop16,
+                  }
+            }
+          >
+            Here's what our clients have to say..
+          </Typography>
         </Grid>
       </Grid>
-    </Grid>
+      <Grid
+        container
+        justifyContent="center"
+        alignItems="center"
+        style={isMobile ? {} : { ...Styles.marginTop30 }}
+      >
+        <Grid
+          item
+          lg={10}
+          xl={10}
+          md={12}
+          sm={11}
+          container
+          justifyContent={isMobile ? "center" : "space-between"}
+          alignItems="center"
+        >
+          {VideoData.GSGVideo.map((val, key) => {
+            return (
+              <React.Fragment key={val.id + key}>
+                <Grid
+                  item
+                  lg={4}
+                  xl={4}
+                  md={6}
+                  xs={11}
+                  sm={6}
+                  direction="row"
+                  justifyContent="center"
+                  container
+                  style={
+                    isMobile2
+                      ? { ...Styles.marginTop24 }
+                      : isMobile
+                      ? { ...Styles.marginTop30 }
+                      : {}
+                  }
+                >
+                  <Iframe
+                    title={val.title}
+                    src={val.videoLink}
+                    width="93%"
+                    height="250px"
+                    id="myId"
+                  />
+                  <Typography
+                    variant="h5"
+                    style={{
+                      ...Styles.centerTxt,
+                      ...Styles.colorCharcoalLight,
+                      ...Styles.marginTop24,
+                    }}
+                  >
+                    {val.descripation}
+                  </Typography>
+                </Grid>
+              </React.Fragment>
+            );
+          })}
+        </Grid>
+      </Grid>
+    </>
   );
 };
 

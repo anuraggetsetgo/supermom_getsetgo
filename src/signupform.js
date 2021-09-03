@@ -1,4 +1,4 @@
-import React, { useState,useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Form, Field, Formik } from "formik";
 import { Typography, Grid, useMediaQuery } from "@material-ui/core";
 import Styles from "./app-style";
@@ -152,14 +152,13 @@ const InfoPopUp = ({
     <Dialog
       classes={{ paper: classes.paper }}
       fullWidth={true}
-      maxWidth={isMobile?'xs':'sm'}
+      maxWidth={isMobile ? "xs" : "sm"}
       keepMounted
       open={open}
       onClose={handleClose}
       scroll="body"
       aria-labelledby="scroll-dialog-title"
       aria-describedby="scroll-dialog-description"
-      
     >
       <DialogActions className="app-dialog-actions">
         <Grid item>
@@ -229,13 +228,12 @@ const InfoPopUp = ({
                 //setSubmitButtonEnable(false);
                 //shiftFocus();
                 handleClose();
-
               }}
             >
               Change Email Address
             </Styles.ColorButton2>
           </Grid>
-        
+
           <Grid item>
             <Styles.ColorButton
               style={
@@ -254,14 +252,14 @@ const InfoPopUp = ({
               YES
             </Styles.ColorButton>
           </Grid>
-         </Grid>
+        </Grid>
       </Grid>
     </Dialog>
   );
 };
 const Signupform = (props) => {
   const theme = useTheme();
-  const emailRef=useRef(null);
+  const emailRef = useRef(null);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("md"));
   console.log(props);
@@ -354,8 +352,7 @@ const Signupform = (props) => {
       mobile: `${values.country}${values.mobile}`,
       email: values.email,
       skip_mobile: isCont ? isCont : isContinue ? 1 : 0,
-      campaign: "supermoms" 
-
+      campaign: "supermoms",
     }); //ANV
 
     //formSubmitted();
@@ -372,9 +369,9 @@ const Signupform = (props) => {
       </Grid>
     );
   }
-//  const shiftFocusToRef=()=>{
-//   console.log(emailRef);//emailRef.current.focus();
-//  }
+  //  const shiftFocusToRef=()=>{
+  //   console.log(emailRef);//emailRef.current.focus();
+  //  }
   // if (!err && !sendingEmail)
   //   return (
   //     <Grid item style={{ padding: "20px 0" }}>
@@ -492,7 +489,7 @@ const Signupform = (props) => {
                           placeholder="Enter your full name"
                           validate={validateName}
                           disabled={formSubmitting}
-                          autoComplete='off'
+                          autoComplete="off"
                           style={{
                             ...Styles.formInputField,
                             ...Styles.fontSize16,
@@ -525,10 +522,10 @@ const Signupform = (props) => {
                             //style={{ ...Styles.feildRadius,...Styles.fontSize16 }}
                             name="country"
                             type="number"
-                            autoComplete='off'
+                            autoComplete="off"
                             validate={validateCountry}
                             disabled={formSubmitting}
-                            autoComplete='off'
+                            autoComplete="off"
                             style={{
                               ...Styles.formInputField,
                               ...Styles.fontSize16,
@@ -557,7 +554,7 @@ const Signupform = (props) => {
                             type="number"
                             disabled={formSubmitting}
                             validate={validateMobile}
-                            autoComplete='off'
+                            autoComplete="off"
                             style={{
                               ...Styles.formInputField,
                               ...Styles.fontSize16,
@@ -589,7 +586,7 @@ const Signupform = (props) => {
                         name="email"
                         type="text"
                         placeholder="Email id"
-                        autoComplete='off'
+                        autoComplete="off"
                         disabled={formSubmitting}
                         validate={validateEmail}
                         style={{

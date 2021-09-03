@@ -10,23 +10,21 @@ const Footer = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Grid item container direction="row" alignItems="center" justify="center" >
-          <Grid item>
-            <Typography
-              variant={isMobile ? "body2" : "subtitle2"}
-              style={{
-                ...Styles.colorCharcoalLight,
-                margin: isMobile ? "30px 0 24px" : "30px 0 36px",
-                ...Styles.centerTxt,
-              }}
-            >
-              © {new Date().getFullYear()} GetSetGo Fitness. All Rights
-              Reserved.
-            </Typography>
-          </Grid>
+      <Grid container justifyContent="center" alignItems="center">
+        <Grid
+          item
+          lg={10}
+          md={10}
+          container
+          justifyContent="center"
+          alignItems="center"
+          style={{ marginBottom: "36px" }}
+        >
+          <Typography variant={isMobile ? "subtitle2" : "subtitle1"}>
+            © {new Date().getFullYear()} GetSetGo Fitness. All Rights Reserved.
+          </Typography>
         </Grid>
-        
-      
+      </Grid>
     </>
   );
 };

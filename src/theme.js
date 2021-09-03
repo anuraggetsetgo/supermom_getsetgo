@@ -24,7 +24,10 @@ const theme = createMuiTheme({
       color: colors.secondary,
     },
     body1: {
-      fontSize: "16px",
+      fontSize: "1.25rem",
+      lineHeight: "28px",
+      fontFamily: "Roboto",
+      color: colors.charcoalDark,
     },
     h1: {
       fontSize: "48px",
@@ -57,14 +60,16 @@ const theme = createMuiTheme({
       lineHeight: "22px",
     },
     subtitle1: {
-      fontSize: "1.5rem",
-      lineHeight: "2.2rem",
+      fontSize: "1rem",
+      lineHeight: "22px",
+      fontFamily: "Roboto",
+      color: colors.charcoalLight,
     },
     subtitle2: {
-      fontSize: "1rem",
-      lineHeight: "1.75rem",
+      fontSize: "0.8rem",
+      lineHeight: "22px",
       fontFamily: "Roboto",
-      fontWeight: "normal",
+      color: colors.charcoalLight,
     },
   },
   MuiButton: {

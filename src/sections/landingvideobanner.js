@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import Iframe from "./iframe";
+import Iframe from "react-iframe";
 const Landingvideobanner = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -13,98 +13,85 @@ const Landingvideobanner = () => {
       <Grid
         item
         container
-        direction="row"
-        justify="center"
-        className="margintopMedia"
-        style={{
-          marginTop: isMobile ? "355px" : isMobile3 ? "550px" : "400px",
-          marginBottom: isMobile ? "0" : "0px",
-          padding: isMobile ? "20px" : "0",
-        }}
+        justifyContent="center"
+        style={isMobile2 ? { marginTop: "500px" } : { marginTop: "374px" }}
       >
-        <Grid item justify="center" xs={12} sm={10} lg={12}>
-          <Grid item>
-            <Typography
-              variant={isMobile ? "h4" : "h3"}
-              style={{ textAlign: "center" }}
-            >
-              Here is why you need us!
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography
-              variant={isMobile ? "h3" : "h1"}
-              style={{
-                textAlign: "center",
-                ...Styles.colorRed,
-                ...Styles.boldTxt,
-              }}
-            >
-              More than{isMobile ? <br></br> : " "}
-              5,000 Moms
-            </Typography>
-          </Grid>
-          <Grid item>
-            <Typography
-              variant={isMobile ? "h3" : "h1"}
-              style={{
-                textAlign: "center",
-                ...Styles.colorReef,
-                marginBottom: isMobile ? "24px" : "32px",
-              }}
-            >
-              have transformed with us
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            xs={12}
-            justify="center"
-            alignItems="center"
-            container
-            style={{
-              margin: "0px",
-              //minHeight: "40vh",
-              //maxHeight: "40vh",
-            }}
+        <Grid
+          item
+          lg={10}
+          xs={12}
+          container
+          justifyContent="center"
+          style={isMobile ? { ...Styles.padding20 } : {}}
+        >
+          <Typography
+            variant={isMobile ? "h4" : "h3"}
+            style={{ ...Styles.colorCharcoalDark, ...Styles.centerTxt }}
           >
-            <Grid
-              item
-              style={
-                {
-                  //position: "absolute",
-                  //minWidth:'100vw',
-                  //maxWidth:'100vw',
-                }
-              }
-            >
-              {/* <img src={Styles.backCoverImg("mother_holding_img.png")} /> */}
-              <Iframe
-                // wd={window.screen.width * 0.7 + "px"}
-                // ht={window.screen.height * 0.45 + "px"}
-                wd={isMobile2 ? "100%" : window.screen.width * 0.62 + "px"}
-                ht={isMobile2 ? "100%" : window.screen.width * 0.35 + "px"}
-                title="GetSetGo Fitness Super Moms"
-                src="https://www.youtube.com/embed/Je_cS24G1JI"
-              />
-            </Grid>
-            {/* <Grid
-              item
-              style={{
-                position: "absolute",
-                right: isMobile ? "5%" : "5%",
-                height: isMobile ? "40vh" : "40vh",
-              }}
-            >
-              <img
-                style={{
-                  width: isMobile ? "20vw" : "100%",
-                  height: isMobile ? "40vh" : "50vh",
-                }}
-                src={Styles.backCoverImg("pngItem_img.png")}
-              />
-            </Grid> */}
-          </Grid>
+            Here is why you need us!
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          lg={10}
+          container
+          justifyContent="center"
+          style={
+            isMobile
+              ? { ...Styles.paddingTextTop, ...Styles.padding20 }
+              : { ...Styles.marginTop24 }
+          }
+        >
+          <Typography
+            variant={isMobile ? "h3" : "h1"}
+            style={
+              isMobile
+                ? {
+                    ...Styles.colorRed,
+                    ...Styles.boldTxt,
+                    ...Styles.padding20,
+                    ...Styles.centerTxt,
+                  }
+                : { ...Styles.colorRed, ...Styles.boldTxt }
+            }
+          >
+            More than 5,000 Mom’s
+          </Typography>
+        </Grid>
+        <Grid item lg={10} container justifyContent="center">
+          <Typography
+            variant={isMobile ? "h3" : "h1"}
+            style={
+              isMobile
+                ? {
+                    ...Styles.colorReef,
+                    ...Styles.centerTxt,
+                    ...Styles.padding20,
+                  }
+                : { ...Styles.colorReef }
+            }
+          >
+            have transformed with us
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          lg={10}
+          container
+          justifyContent="center"
+          style={
+            isMobile
+              ? { ...Styles.marginTop24, ...Styles.padding20 }
+              : { ...Styles.marginTop30 }
+          }
+        >
+          <Iframe
+            title="GetSetGo Fitness Super Moms"
+            src="https://www.youtube.com/embed/Je_cS24G1JI"
+            width="750px"
+            height={isMobile2 ? "300px" : "480px"}
+            id="myId"
+          />
         </Grid>
       </Grid>
     </>

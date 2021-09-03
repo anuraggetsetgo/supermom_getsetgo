@@ -5,93 +5,79 @@ import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 const Success = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const currency=()=>{
-    let currency= props.product[0].pack_currency;
-    let currText=(currency === "INR") ? "₹" : (currency === "USD"? "$" :'AED')    //د.إ 
+  const currency = () => {
+    let currency = props.product[0].pack_currency;
+    let currText = currency === "INR" ? "₹" : currency === "USD" ? "$" : "AED"; //د.إ
     return currText;
-  }
+  };
   return (
     <>
-      <Grid item container alignItems="center" justify="center">
+      <Grid
+        container
+        direction="column"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Grid
           item
+          lg={7}
+          xs={11}
           container
-          alignItems="center"
-          justify="center"
-          direction="column"
-          xs={12}
-          sm={10}
-          lg={10}
-          style={{ padding: isMobile ? "20px" : "0" }}
+          justifyContent="center"
+          styles={{ ...Styles.padding20 }}
         >
-          <Grid item justify="center" alignItems="center">
-            <Typography
-              variant={isMobile ? "h3" : "h2"}
-              style={{ ...Styles.centerTxt, ...Styles.colorRed }}
-            >
-              <span style={Styles.boldTxt}>
-                1,00,000+ GetSetGo community
-                <br /> members
-              </span>{" "}
-              are waiting to hear
-              <br /> your success story!
-            </Typography>
-          </Grid>
-          <Grid item container justify="center" alignItems="center">
-            <img
-              src={Styles.backCoverImg("link_below.png")}
-              alt="Link Below Girl"
-              style={{ objectFit: "cover", width: isMobile ? "100%" : "null" }}
-            />
-          </Grid>
-          <Grid
-            item
-            alignItems="center"
+          <Typography
+            variant={isMobile ? "h3" : "h1"}
             style={{
-              ...Styles.reefBG,
-              ...Styles.cardRadius2,
-              width: isMobile ? "100%" : "null",
-              padding: isMobile ? "13px 8px" : "30px 60px",
-              // width: "max-content",
-              cursor: "pointer",
+              ...Styles.centerTxt,
+              ...Styles.colorRed,
             }}
-            justify="center"
+          >
+            <span style={{ ...Styles.boldTxt }}>
+              1,00,000+ GetSetGo community members
+            </span>{" "}
+            are waiting to hear your success story!
+          </Typography>
+        </Grid>
+        <Grid item xs={11} style={{ lineHeight: "0" }}>
+          <img
+            src={Styles.backCoverImg("link_below.png")}
+            alt="Link Below Girl"
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </Grid>
+        <Grid item lg={7} xs={11}>
+          <Styles.ColorButton2
+            style={
+              isMobile
+                ? { fontSize: "20px", lineHeight: "28px", padding: "13px 30px" }
+                : {}
+            }
             onClick={() => {
               props.createOrder(props.product[0], 0);
             }}
           >
-            <Typography
-              variant={isMobile ? "h5" : "h3"}
-              style={{
-                ...Styles.boldTxt,
-                ...Styles.colorWhite,
-                ...Styles.centerTxt,
-              }}
-            >
-              JOIN THE 2 WEEKS TRAIL NOW
-              <br />
-              AT JUST {currency()} {props.product[0].pack_price}
-            </Typography>
-          </Grid>
-          <Grid
-            item
-            justify="center"
-            alignItems="center"
-            style={{ margin: isMobile ? "15px 0 20px" : "30px 0 64px" }}
+            Join the 2 weeks trial now AT JUST {currency()}
+            {props.product[0].pack_price}
+          </Styles.ColorButton2>
+        </Grid>
+        <Grid item>
+          <Typography
+            variant={isMobile ? "h5" : "h3"}
+            style={{
+              ...Styles.centerTxt,
+              ...Styles.colorCoral,
+              ...Styles.boldTxt,
+              margin: isMobile ? "16px 0 40px 0" : "30px 0 64px 0",
+            }}
           >
-            <Typography
-              variant={isMobile ? "h5" : "h4"}
-              style={{
-                ...Styles.boldTxt,
-                ...Styles.colorCoral,
-                ...Styles.centerTxt,
-              }}
-            >
-              One day or 'Now'?
-              <br />
-              You decide.
-            </Typography>
-          </Grid>
+            One day or 'Now'?
+            <br />
+            You decide.
+          </Typography>
         </Grid>
       </Grid>
     </>

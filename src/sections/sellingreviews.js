@@ -2,10 +2,9 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import customTxt from "./customTxt.json";
+import Facebookcard from "../Common components/Facebookcard.js";
 
 const useStyles = makeStyles({
   root: {
@@ -87,78 +86,9 @@ const Sellingreviews = () => {
         lg={10}
         md={10}
       >
-        <Grid item container alignContent="flex-start" xs={12} sm={6} lg={4}>
-          {customTxt.reviewImages.reviews1.map((txt, i) => (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              lg={12}
-              container
-              justify="center"
-              alignItems="flex-start"
-              key={i}
-              style={{ margin: i === 0 && "0 0 30px" }}
-            >
-              <Card className={classes.root}>
-                <CardContent>
-                  <Grid item container justify="center">
-                    <img src={Styles.backCoverImg(txt)} alt="Logo" />
-                  </Grid>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <Grid item container alignContent="flex-start" xs={12} sm={6} lg={4}>
-          {customTxt.reviewImages.reviews2.map((txt, i) => (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              lg={12}
-              container
-              justify="center"
-              alignItems="flex-start"
-              key={i}
-              style={{ margin: i === 0 && "0 0 30px" }}
-            >
-              <Card className={classes.root}>
-                <CardContent>
-                  <Grid item container justify="center">
-                    <img src={Styles.backCoverImg(txt)} alt="Logo" />
-                  </Grid>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <Grid item container alignContent="flex-start" xs={12} sm={4} lg={4}>
-          {customTxt.reviewImages.reviews3.map((txt, i) => (
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              lg={12}
-              container
-              justify="center"
-              alignItems="flex-start"
-              key={i}
-            >
-              <Card className={classes.root}>
-                <CardContent>
-                  <Grid item container justify="center">
-                    <img
-                      src={Styles.backCoverImg(txt)}
-                      alt="Logo"
-                      style={{ width: "100%", height: "100%" }}
-                    />
-                  </Grid>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+        <Facebookcard ReviewData={customTxt.reviewImages.reviews1} />
+        <Facebookcard ReviewData={customTxt.reviewImages.reviews2} />
+        <Facebookcard ReviewData={customTxt.reviewImages.reviews3} />
       </Grid>
     </Grid>
   );

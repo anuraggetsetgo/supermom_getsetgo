@@ -23,18 +23,22 @@ const ColorButton = withStyles((theme) => ({
 
 const ColorButton2 = withStyles((theme) => ({
   root: {
-    width: "95%",
-    height: "80px",
-    borderRadius: "10px",
-    fontSize: "24px",
+    textTransform: "uppercase",
+    cursor: "pointer",
+    padding: "30px 60px",
+    width: "100%",
+    borderRadius: "20px",
+    fontSize: "40px",
+    lineHeight: "54px",
     fontFamily: "Poppins",
-    color: colors.reef,
-    backgroundColor: colors.transparent,
+    fontWeight: "bold",
+    color: colors.secondary,
+    backgroundColor: colors.reef,
     border: `1px solid ${colors.primary}`,
     "&:hover": {
-      color: "white",
-      backgroundColor: colors.reef,
+      backgroundColor: colors.transparent,
       border: `1px solid ${colors.primary}`,
+      color: colors.reef,
       fontWeight: "bold",
     },
   },
@@ -139,8 +143,44 @@ export default {
   italicTxt: {
     fontStyle: "italic",
   },
+  mediaBannerMargin: {
+    marginBottom: "95px",
+  },
   marginTop: {
     marginTop: "10px",
+  },
+  marginTop100: {
+    marginTop: "100px",
+  },
+  marginTop16: {
+    marginTop: "16px",
+  },
+  marginTop24: {
+    marginTop: "24px",
+  },
+  marginTop30: {
+    marginTop: "32px",
+  },
+  marginTop150: {
+    marginTop: "150px",
+  },
+  marginTop40: {
+    marginTop: "40px",
+  },
+  marginBottom16: {
+    marginBottom: "16px",
+  },
+  marginBottom100: {
+    marginBottom: "100px",
+  },
+  marginRight16: {
+    marginRight: "16px",
+  },
+  paddingTextTop: {
+    paddingTop: "8px",
+  },
+  padding20: {
+    padding: "0 20px",
   },
   padding5: {
     padding: "5%",
@@ -164,6 +204,9 @@ export default {
   spacingVertical: {
     padding: "100px 0",
   },
+  yellowBG: {
+    background: colors.yellow,
+  },
 
   leftTxt: {
     textAlign: "left",
@@ -181,6 +224,15 @@ export default {
   deafultButton: {
     padding: "5px 20px",
     marginTop: "20px",
+  },
+
+  footerHeading: {
+    margin: "0 22px 0 22px",
+  },
+
+  //Join Now
+  joinNowBg: {
+    backgroundColor: "rgba(255, 221, 51, 0.1)",
   },
   landingButton: {
     height: "85px",
@@ -305,4 +357,12 @@ export default {
   special: { display: "inline-block", width: "5%", textAlign: "center" },
   countryContainer: { display: "inline-block", width: "15%" },
   mobileContainer: { display: "inline-block", width: "90%" },
+
+  //Social Media Banner
+  MediaBannerBg: {
+    backgroundColor: colors.primary,
+    borderRadius: "10px",
+    boxShadow: "0px 4px 12px rgba(16, 58, 66, 0.25)",
+    padding: "40px",
+  },
 };

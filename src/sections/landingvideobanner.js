@@ -31,17 +31,7 @@ const Landingvideobanner = () => {
             Here is why you need us!
           </Typography>
         </Grid>
-        <Grid
-          item
-          lg={10}
-          container
-          justifyContent="center"
-          style={
-            isMobile
-              ? { ...Styles.paddingTextTop, ...Styles.padding20 }
-              : { ...Styles.marginTop24 }
-          }
-        >
+        <Grid item lg={10} container justifyContent="center">
           <Typography
             variant={isMobile ? "h3" : "h1"}
             style={

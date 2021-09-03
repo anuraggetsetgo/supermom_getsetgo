@@ -18,7 +18,7 @@ const Footer = (props) => {
           container
           justifyContent="center"
           alignItems="center"
-          style={{ marginBottom: "36px" }}
+          style={{ marginBottom: "36px", ...Styles.marginTop30 }}
         >
           <Typography variant={isMobile ? "subtitle2" : "subtitle1"}>
             © {new Date().getFullYear()} GetSetGo Fitness. All Rights Reserved.

@@ -37,15 +37,16 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile4 = useMediaQuery(theme.breakpoints.down("xl"));
 
   return (
     <>
       <Card
         className={classes.root}
         style={{
-          padding: isMobile ? "10px" : "34px",
-          maxWidth: isMobile ? "100%" : "87%",
-          margin: isMobile ? "0" : "8px 0 0 8px",
+          padding: isMobile ? "10px" : "10px",
+          maxWidth: isMobile ? "100%" : "93%",
+          margin: isMobile ? "0" : "16px 0 0 8px",
         }}
       >
         <CardContent>
@@ -60,7 +61,8 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             <Grid
               container
               item
-              lg={6}
+              xl={7}
+              lg={7}
               md={6}
               sm={6}
               direction="row"
@@ -82,27 +84,29 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
             <Grid
               container
               item
-              lg={6}
+              xl={5}
+              lg={5}
               md={6}
               sm={6}
               direction="column"
               justifyContent="center"
               alignItems="center"
             >
-              <Grid item lg={12} md={12} sm={12} container>
+              <Grid item xl={11} lg={11} md={12} sm={12} container>
                 <Typography variant="body1">{text}</Typography>
               </Grid>
 
               <Grid
                 item
                 container
-                lg={12}
+                xl={11}
+                lg={11}
                 xs={12}
                 md={12}
                 justifyContent="center"
                 style={{ ...Styles.marginTop24 }}
               >
-                <Grid item lg={4} xs={4} md={4} sm={8}>
+                <Grid item xl={4} lg={5} xs={4} md={4} sm={8}>
                   <Avatar
                     alt="Avater Images"
                     src={Styles.backCoverImg(profile)}
@@ -111,7 +115,8 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
                 </Grid>
                 <Grid
                   item
-                  lg={8}
+                  xl={8}
+                  lg={7}
                   xs={8}
                   md={8}
                   sm={8}
@@ -143,6 +148,7 @@ function CarouselItem(props) {
         <Grid
           item
           container
+          xl={10}
           lg={10}
           xs={12}
           md={10}
@@ -165,12 +171,13 @@ function CarouselItem(props) {
         <Grid
           item
           container
+          xl={11}
           lg={11}
           xs={12}
           md={11}
           sm={11}
           style={{
-            height: isMobile2 ? "100%" : isMobile ? "100%" : "450px",
+            height: isMobile2 ? "100%" : isMobile ? "100%" : "100%",
             padding: isMobile ? "20px" : "0",
           }}
         >
@@ -219,14 +226,15 @@ function CarouselItem(props) {
                 modifier: 0,
                 slideShadows: true,
               }}
-              slidesPerView={isMobile2 ? 1 : 1.9}
+              slidesPerView={1.92}
               loop={true}
               autoplay={{
-                delay: 2500,
+                delay: 2500000,
                 disableOnInteraction: false,
               }}
               className="mySwiper"
               pagination={true}
+              style={{ paddingBottom: "40px" }}
             >
               {CarouselData.GSGCarousel.map(
                 ({ image, text, name, profile }, key) => (
@@ -254,12 +262,13 @@ function CarouselItem(props) {
         <Grid
           item
           container
+          xl={11}
           lg={11}
           xs={12}
           md={11}
           sm={12}
           justifyContent="center"
-          style={isMobile ? { ...Styles.padding20 } : null}
+          style={isMobile ? { ...Styles.padding20 } : {}}
         >
           <Button
             style={{

@@ -15,7 +15,10 @@ const Signupbanner = forwardRef((props, ref) => {
         direction="row"
         alignItems="center"
         justifyContent="center"
-        style={{ ...Styles.marginBottom100, ...Styles.marginTop100 }}
+        style={{
+          ...Styles.marginBottom100,
+          ...Styles.marginTop100,
+        }}
       >
         <Grid
           container

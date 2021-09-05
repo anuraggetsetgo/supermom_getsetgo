@@ -345,7 +345,7 @@ const Signupform = (props) => {
       campaign: "supermoms",
     }); //ANV
 
-    //formSubmitted();
+    // formSubmitted();
   };
   if (err) {
     return (
@@ -620,7 +620,7 @@ const Signupform = (props) => {
                         width: isMobile ? "100%" : "100%",
                         marginTop: "20px",
                       }}
-                      // onClick={(e) => setSubmitButtonEnable(true)}
+                      onClick={(e) => setSubmitButtonEnable(true)}
                     >
                       YES I AM
                     </Styles.ColorButton>

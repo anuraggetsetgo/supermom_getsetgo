@@ -11,8 +11,9 @@ function Joinnowcard(props) {
     <>
       <Grid
         item
-        xs={11}
-        sm={11}
+        xs={12}
+        md={11}
+        sm={12}
         lg={4}
         container
         direction="column"

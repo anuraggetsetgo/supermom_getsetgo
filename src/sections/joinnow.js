@@ -27,6 +27,7 @@ const Joinnow = (props) => {
           xs={12}
           sm={12}
           lg={10}
+          md={10}
           style={
             isMobile
               ? { ...Styles.padding20, ...Styles.marginTop100 }
@@ -36,8 +37,9 @@ const Joinnow = (props) => {
           <Grid
             item
             xs={12}
-            sm={12}
+            sm={6}
             lg={4}
+            md={8}
             style={{ position: "relative", top: "-50px" }}
           >
             <Grid item container alignItems="center" justifyContent="center">

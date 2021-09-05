@@ -182,7 +182,7 @@ function CarouselItem(props) {
         >
           {isMobile || isMobile2 ? (
             <Carousel
-              interval={2500}
+              interval={5000}
               animation="slide"
               indicatorIconButtonProps={{
                 style: {
@@ -228,7 +228,7 @@ function CarouselItem(props) {
               slidesPerView={1.92}
               loop={true}
               autoplay={{
-                delay: 2500000,
+                delay: 2500,
                 disableOnInteraction: false,
               }}
               className="mySwiper"

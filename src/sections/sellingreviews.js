@@ -1,64 +1,60 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
-import { makeStyles } from "@material-ui/core/styles";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 import customTxt from "./customTxt.json";
 import Facebookcard from "../Common components/Facebookcard.js";
 
-const useStyles = makeStyles({
-  root: {
-    width: "350px",
-    height: "fit-content",
-    border: "0.362319px solid #4595A4",
-    background: "#FFFFFF",
-    boxShadow: "none",
-    borderRadius: "0",
-  },
-});
+// const useStyles = makeStyles({
+//   root: {
+//     width: "350px",
+//     height: "fit-content",
+//     border: "0.362319px solid #4595A4",
+//     background: "#FFFFFF",
+//     boxShadow: "none",
+//     borderRadius: "0",
+//   },
+// });
 
 const Sellingreviews = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
   const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
-  const classes = useStyles();
+  // const classes = useStyles();
   return (
     <Grid
       item
       container
       direction="column"
       alignItems="center"
-      justify="center"
+      justifyContent="center"
       style={{
         position: "relative",
-        marginBottom: isMobile2
-          ? "2250px"
-          : isMobile
-          ? "1135px"
-          : isMobile3
-          ? "1200px"
-          : "785px",
+        marginBottom: "230px",
       }}
     >
       <Grid
         item
         container
-        justify="center"
+        justifyContent="center"
         style={{
-          padding: isMobile ? "20px 0px 485px" : "100px 0 485px",
+          position: "absolute",
+          top: "0",
+          padding: isMobile ? "20px 0px 1100px" : "100px 0 485px",
           background: "rgba(16, 58, 66, 0.1)",
         }}
       >
         <Grid
           item
           container
-          justify="flex-start"
+          justifyContent="flex-start"
           alignItems="center"
           xl={8}
           xs={12}
-          sm={10}
+          sm={11}
           lg={10}
+          md={10}
           style={{ padding: isMobile ? "20px" : "0" }}
         >
           <Typography
@@ -72,10 +68,11 @@ const Sellingreviews = () => {
       <Grid
         item
         container
-        justify="center"
+        spacing={2}
+        justifyContent="center"
         alignItems="flex-start"
         style={{
-          position: "absolute",
+          position: "relative",
           top: "192px",
           ...Styles.padding30tb,
           ...Styles.whiteBG,
@@ -83,7 +80,7 @@ const Sellingreviews = () => {
           borderRadius: "10px",
         }}
         xl={8}
-        xs={12}
+        xs={11}
         sm={11}
         lg={10}
         md={10}

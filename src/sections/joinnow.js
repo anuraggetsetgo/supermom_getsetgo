@@ -12,7 +12,7 @@ const Joinnow = (props) => {
         item
         container
         alignItems="center"
-        justify="center"
+        justifyContent="center"
         style={{
           ...Styles.joinNowBg,
         }}
@@ -21,7 +21,7 @@ const Joinnow = (props) => {
           item
           container
           alignItems="flex-start"
-          justify="space-between"
+          justifyContent="space-between"
           direction="row"
           xl={8}
           xs={12}
@@ -40,7 +40,7 @@ const Joinnow = (props) => {
             lg={4}
             style={{ position: "relative", top: "-50px" }}
           >
-            <Grid item container alignItems="center" justify="center">
+            <Grid item container alignItems="center" justifyContent="center">
               <Typography
                 variant={isMobile ? "h3" : "h1"}
                 style={{ ...Styles.colorRed, ...Styles.boldTxt }}

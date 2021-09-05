@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
@@ -15,7 +15,7 @@ const Coachwork = () => {
         container
         direction="row"
         alignItems="center"
-        justify="center"
+        justifyContent="center"
         style={{
           position: "relative",
           top: isMobile ? "-100px" : "-58px",
@@ -25,17 +25,19 @@ const Coachwork = () => {
       >
         <Grid
           item
-          justify="flex-start"
+          justifyContent="flex-start"
           alignItems="center"
           xl={8}
           xs={10}
           sm={10}
           lg={10}
           style={
-            isMobile ? { margin: "120px 0 0 0" } : { margin: "158px 0 100px 0" }
+            isMobile
+              ? { margin: "120px 0 40px 0" }
+              : { margin: "158px 0 100px 0" }
           }
         >
-          <Grid item style={{ marginBottom: "30px" }}>
+          <Grid item style={{ ...Styles.marginBottom40, ...Styles.padding20 }}>
             <Typography
               variant={isMobile ? "h3" : "h1"}
               style={{ ...Styles.boldTxt, ...Styles.colorRed }}
@@ -44,13 +46,13 @@ const Coachwork = () => {
             </Typography>
           </Grid>
           {isMobile ? (
-            <Grid item container spacing={4} justify="center">
+            <Grid item container spacing={4} justifyContent="center">
               <CoachCard
                 CoachCardData={customTxt.howDoesGetSetGoWorkTxtMobile.phases1}
               />
             </Grid>
           ) : (
-            <Grid item container spacing={4} justify="center">
+            <Grid item container spacing={4} justifyContent="center">
               <CoachCard
                 CoachCardData={customTxt.howDoesGetSetGoWorkTxt.phases1}
               />

@@ -41,7 +41,7 @@ function CoachCard(props) {
         sm={12}
         lg={6}
         alignContent="flex-start"
-        justify="center"
+        justifyContent="center"
       >
         {CoachCardData.map((txt, i) => (
           <Grid
@@ -119,7 +119,7 @@ function CoachCard(props) {
                   <Grid
                     item
                     container
-                    justify="flex-start"
+                    justifyContent="flex-start"
                     alignItems="flex-start"
                     direction="row"
                     style={{ marginBottom: "10px" }}

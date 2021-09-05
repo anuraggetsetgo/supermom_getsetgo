@@ -37,7 +37,6 @@ const CarouselContainer = ({ imagePath, text, name, profile }, key) => {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile4 = useMediaQuery(theme.breakpoints.down("xl"));
 
   return (
     <>
@@ -154,7 +153,7 @@ function CarouselItem(props) {
           md={10}
           sm={10}
           justifyContent="center"
-          alingnItems="center"
+          alignItems="center"
           style={isMobile ? { ...Styles.padding20 } : null}
         >
           <Typography

@@ -1,8 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography } from "@material-ui/core";
-import { colors } from "../services";
 import Rating from "@material-ui/lab/Rating";
 import { useTheme, useMediaQuery, Slide } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
@@ -11,15 +10,14 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { blue } from "@material-ui/core/colors";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const GoogleReview = ({ review }) => {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  // const theme = useTheme();
+  // const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
       <Grid
@@ -54,9 +52,10 @@ const GoogleReview = ({ review }) => {
               className="app-small-font-size"
               name="read-only"
               readOnly
-              value={review.reviewer_rating}
+              value={Number(review.reviewer_rating)}
             />
             <Typography
+              component={"div"}
               variant="h6"
               style={{ ...Styles.colorReef, ...Styles.boldTxt }}
             >
@@ -70,6 +69,7 @@ const GoogleReview = ({ review }) => {
         <br />
         <Grid item xs={12}>
           <Typography
+            component={"div"}
             variant="subtitle1"
             style={{
               color: "rgba(0, 0, 0, 0.87)",
@@ -87,7 +87,7 @@ const GoogleReview = ({ review }) => {
 
 const Publicreviews = (props) => {
   const [showGoogleReview, setShowGoogleReview] = React.useState(false);
-  const [scroll, setScroll] = React.useState("paper");
+  // const [scroll, setScroll] = React.useState("paper");
   const openDialog = () => {
     setShowGoogleReview(true);
   };
@@ -96,15 +96,13 @@ const Publicreviews = (props) => {
   };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
-  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   const { reviewData, allreviewData } = props;
   return (
     <Grid
       item
       container
       direction="column"
-      justify="center"
+      justifyContent="center"
       alignItems="center"
       style={{
         padding: isMobile ? "50px 0 50px" : "100px 0 50px",
@@ -116,7 +114,7 @@ const Publicreviews = (props) => {
         item
         container
         alignItems="center"
-        justify="center"
+        justifyContent="center"
         direction="column"
         xs={12}
         xl={9}
@@ -131,7 +129,7 @@ const Publicreviews = (props) => {
           container
           direction="column"
           alignItems="flex-start"
-          justify="flex-start"
+          justifyContent="flex-start"
         >
           <Typography
             variant="h3"
@@ -150,7 +148,7 @@ const Publicreviews = (props) => {
           container
           direction="row"
           alignItems="flex-start"
-          justify="flex-start"
+          justifyContent="flex-start"
         >
           <Grid
             xs={12}
@@ -161,7 +159,7 @@ const Publicreviews = (props) => {
             container
             direction="column"
             alignItems="flex-start"
-            justify="flex-start"
+            justifyContent="flex-start"
           >
             <Grid item xs={12} lg={12} sm={12} md={12}>
               <Typography
@@ -181,7 +179,7 @@ const Publicreviews = (props) => {
               container
               direction="row"
               alignItems="flex-end"
-              justify="flex-end"
+              justifyContent="flex-end"
               style={{ marginTop: "8px" }}
             >
               <Grid
@@ -230,7 +228,7 @@ const Publicreviews = (props) => {
                 sm={3}
                 md={2}
                 container
-                justify="flex-end"
+                justifyContent="flex-end"
                 style={isMobile ? {} : { paddingBottom: "16px" }}
               >
                 <Typography
@@ -247,7 +245,7 @@ const Publicreviews = (props) => {
                 sm={2}
                 md={1}
                 container
-                justify="flex-end"
+                justifyContent="flex-end"
                 style={isMobile ? {} : { paddingBottom: "16px" }}
               >
                 <Typography
@@ -291,7 +289,7 @@ const Publicreviews = (props) => {
                   </DialogTitle>
                   <DialogContentText>
                     <DialogContent
-                      dividers={scroll === "paper"}
+                      dividers={"paper"}
                       style={{
                         alignItems: "center",
                         justifyContent: "center",
@@ -302,7 +300,7 @@ const Publicreviews = (props) => {
                         item
                         direction="column"
                         xs={12}
-                        justify="center"
+                        justifyContent="center"
                         alignItems="center"
                         container
                         style={{
@@ -317,7 +315,7 @@ const Publicreviews = (props) => {
                               key={key}
                               item
                               sm={12}
-                              justify="center"
+                              justifyContent="center"
                               md={12}
                               xs={12}
                               style={{ padding: "14px 14px" }}
@@ -346,7 +344,7 @@ const Publicreviews = (props) => {
         direction="column"
         xs={12}
         xl={8}
-        justify="center"
+        justifyContent="center"
         alignItems="center"
       >
         <Grid
@@ -354,7 +352,7 @@ const Publicreviews = (props) => {
           direction="column"
           xs={10}
           xl={12}
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           container
           style={{
@@ -372,7 +370,7 @@ const Publicreviews = (props) => {
                 key={key}
                 item
                 sm={12}
-                justify="center"
+                justifyContent="center"
                 md={8}
                 xs={12}
                 style={{ padding: "14px 14px" }}

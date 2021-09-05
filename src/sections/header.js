@@ -18,7 +18,7 @@ const Header = () => {
           xl={8}
           lg={10}
           xs={11}
-          sm={11}
+          sm={10}
           md={10}
           style={{ height: "90px" }}
         >

@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import ScrollToTop from "./scrolltotop";
+// import ScrollToTop from "./scrolltotop";
 import { ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
+// import Grid from "@material-ui/core/Grid";
 import theme from "./theme";
 import { updateLoc } from "./services";
 import { initReactGA, ga_clicked_JoinNow } from "./reactGA";
@@ -12,7 +12,7 @@ import Home from "./home";
 import Package from "./package";
 import Ordersummary from "./ordersummary";
 import "./fonts/fonts.css";
-import { initFBPixel, fbpixel_track_Purchase } from "./reactFBPixel";
+// import { initFBPixel, fbpixel_track_Purchase } from "./reactFBPixel";
 //import './date.css'
 //import Secret from './secretworkout';
 
@@ -45,7 +45,7 @@ class App extends Component {
   };
   //  component={props=> <Home freezeScroll={(val)=>{this.freezeScroll(val)}} {...props}/>}/>
   render() {
-    let { scrollStatus } = this.state;
+    // let { scrollStatus } = this.state;
     return (
       <Router>
         <ThemeProvider theme={theme}>

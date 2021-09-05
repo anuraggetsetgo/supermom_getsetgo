@@ -1,6 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
+import PreloadImage from "../preloadImg";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
 const Success = (props) => {
   const theme = useTheme();
@@ -23,6 +24,8 @@ const Success = (props) => {
           xl={5}
           lg={7}
           xs={11}
+          md={10}
+          sm={10}
           container
           justifyContent="center"
           styles={{ ...Styles.padding20 }}
@@ -41,7 +44,7 @@ const Success = (props) => {
           </Typography>
         </Grid>
         <Grid item xl={8} xs={11} style={{ lineHeight: "0" }}>
-          <img
+          <PreloadImage
             src={Styles.backCoverImg("link_below.png")}
             alt="Link Below Girl"
             style={{
@@ -50,20 +53,26 @@ const Success = (props) => {
             }}
           />
         </Grid>
-        <Grid item xl={5} lg={7} xs={11}>
-          <Styles.ColorButton2
-            style={
-              isMobile
-                ? { fontSize: "20px", lineHeight: "28px", padding: "13px 30px" }
-                : {}
-            }
-            onClick={() => {
-              props.createOrder(props.product[0], 0);
-            }}
-          >
-            Join the 2 weeks trial now AT JUST {currency()}
-            {props.product[0].pack_price}
-          </Styles.ColorButton2>
+        <Grid container justifyContent="center">
+          <Grid item xl={5} lg={7} xs={11} md={10} sm={10}>
+            <Styles.ColorButton2
+              style={
+                isMobile
+                  ? {
+                      fontSize: "20px",
+                      lineHeight: "28px",
+                      padding: "13px 30px",
+                    }
+                  : {}
+              }
+              onClick={() => {
+                props.createOrder(props.product[0], 0);
+              }}
+            >
+              Join the 2 weeks trial now AT JUST {currency()}
+              {props.product[0].pack_price}
+            </Styles.ColorButton2>
+          </Grid>
         </Grid>
         <Grid item>
           <Typography

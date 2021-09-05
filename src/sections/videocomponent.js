@@ -129,7 +129,7 @@ const Videocomponent = () => {
                     title={val.title}
                     src={val.videoLink}
                     width="93%"
-                    height="300px"
+                    height={isMobile ? "200px" : "300px"}
                     id="myId"
                   />
                   <Typography

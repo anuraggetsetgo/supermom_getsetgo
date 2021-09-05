@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   DialogActions,
   DialogContent,
@@ -6,16 +6,16 @@ import {
   Grid,
   Typography,
 } from "@material-ui/core";
-import { colors } from "./services";
+// import { colors } from "./services";
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
+// import InputLabel from "@material-ui/core/InputLabel";
 import Styles from "./app-style";
-import { docHt, callAPI, getURL, get } from "./services";
+import { callAPI, getURL, get } from "./services";
 import Emailtemplates from "./emailTemplate.json";
-import MenuItem from "@material-ui/core/MenuItem";
+// import MenuItem from "@material-ui/core/MenuItem";
 //import Refercomponents from "./components/FormView";
-import Select from "@material-ui/core/Select";
-import FormControl from "@material-ui/core/FormControl";
+// import Select from "@material-ui/core/Select";
+// import FormControl from "@material-ui/core/FormControl";
 import { api_set_reminder } from "./gsgAPI/api";
 import Footer from "./sections/footer";
 //import { Style, WhatsApp } from "@material-ui/icons";
@@ -24,18 +24,22 @@ import { useMediaQuery } from "@material-ui/core";
 import { Dialog } from "@material-ui/core";
 import HighlightOff from "@material-ui/icons/HighlightOff";
 import BannerImage from "./images/landingpage_banner.png";
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { ga_payment_failed, ga_payment_Success, ga_appointment_scheduled } from "./reactGA";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import {
+  ga_payment_failed,
+  ga_payment_Success,
+  // ga_appointment_scheduled,
+} from "./reactGA";
 //import { DateTimePicker } from "@progress/kendo-react-dateinputs";
-import { TrendingUpTwoTone, WhatsApp } from "@material-ui/icons";
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
+// import { TrendingUpTwoTone, WhatsApp } from "@material-ui/icons";
+import "date-fns";
+import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker,
-} from '@material-ui/pickers';
-import AccessTimeIcon from '@material-ui/icons/AccessTime';
+} from "@material-ui/pickers";
+import AccessTimeIcon from "@material-ui/icons/AccessTime";
 import PreloadImage from "./preloadImg";
 
 const errMsgs = {
@@ -46,24 +50,23 @@ const errMsgs = {
   country: "Did you miss the country code?",
   age: "Please enter a valid age.",
 };
-const empty = [
-  {
-    displayname: "Name",
-    value: "",
-    error: null,
-    type: "text",
-    style: null,
-  },
-  { displayname: "Email", value: "", error: null, type: "email", style: null },
-  { displayname: "Phone", value: "", error: null, type: "mobile", style: null },
-];
+// const empty = [
+//   {
+//     displayname: "Name",
+//     value: "",
+//     error: null,
+//     type: "text",
+//     style: null,
+//   },
+//   { displayname: "Email", value: "", error: null, type: "email", style: null },
+//   { displayname: "Phone", value: "", error: null, type: "mobile", style: null },
+// ];
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
       width: "25ch",
-
     },
   },
   formControl: {
@@ -74,33 +77,30 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(2),
   },
   datetimeLabel: {
-
     //   height:'68px',
-     borderRadius:'10px',
+    borderRadius: "10px",
     //   border: '1px solid rgba(102, 102, 102, 0.3)',
     //   height:'68px',
     //   paddingLeft:'20px',
     //   paddingRight:'20px',
     //   fontSize:'16px',
     //   color: 'rgba(102, 102, 102, 0.75)',
-    '& label': {
-      padding: '0px 0px 0px 0px',
+    "& label": {
+      padding: "0px 0px 0px 0px",
       //marginBottom:'4px',
       //border:'0px',
-
     },
-    '& div': {
-      borderRadius:'10px',
+    "& div": {
+      borderRadius: "10px",
       //marginBottom:'4px',
       //border:'0px',
-
     },
-    margin: '16px 0px 0px 0px',
+    margin: "16px 0px 0px 0px",
     //padding:'0px 10px',
-    '& input': {
-      height: '30px',
-      fontSize: '16px',
-      color: 'rgba(102, 102, 102, 0.75)',
+    "& input": {
+      height: "30px",
+      fontSize: "16px",
+      color: "rgba(102, 102, 102, 0.75)",
     },
   },
 }));
@@ -110,10 +110,10 @@ export const Ordersummary = (props) => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const re = /^([-+] ?)?[0-9]+(,[0-9]+)?$/;
   const classes = useStyles();
-  const userData = JSON.parse(get("userDetails"));
+  // const userData = JSON.parse(get("userDetails"));
   //const [err, setErr] = React.useState(false);
 
-  let err = false;
+  // let err = false;
   let validDate = false;
   const [phone, setPhone] = React.useState("");
   const [countryCode, setCountryCode] = React.useState("91");
@@ -123,7 +123,7 @@ export const Ordersummary = (props) => {
   const [whatsappErr, setErrWhatsapp] = React.useState("");
   //const [submitEnable, setUserMessage] = React.useState("");
   const currency = JSON.parse(get("products")).currency;
-  const region = currency == "₹" ? "ind" : currency == "$" ? "row" : "aed";
+  const region = currency === "₹" ? "ind" : currency === "$" ? "row" : "aed";
   const [orderStatus, setOrderStatus] = React.useState("waiting");
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -134,7 +134,7 @@ export const Ordersummary = (props) => {
   const [open, setOpen] = React.useState(false);
   const [dateTime, setDateTime] = React.useState(new Date());
   const handleDateChange = (date) => {
-    console.log(date)
+    console.log(date);
     setDateTime(date);
   };
   //const [dateTime, setDateTime] = React.useState(new Date());
@@ -157,46 +157,42 @@ export const Ordersummary = (props) => {
     );
   }
   const validatePhone = () => {
-    let er = false
+    let er = false;
     setErrPhone("");
     let isPhoneValid = validateMobile(phone);
     if (isPhoneValid) {
       setErrPhone(isPhoneValid);
-      setErrorForm(true)
-      er = true;  //invalid
-    }
-    else //valid
-      er = false
-    return !er
-  }
+      setErrorForm(true);
+      er = true; //invalid
+    } //valid
+    else er = false;
+    return !er;
+  };
   const validateWhatsApp = () => {
     setErrWhatsapp("");
-    let er = false
+    let er = false;
     let isWhatsappValid = validateMobile(whatapp);
     if (isWhatsappValid) {
       setErrWhatsapp(isWhatsappValid);
-      setErrorForm(true)
+      setErrorForm(true);
       er = true; //invalid
-    }
-    else //valid
-      er = false
-    return !er
-  }
+    } //valid
+    else er = false;
+    return !er;
+  };
 
   const handleChangePhone = (e) => {
-    if (e.target.value === '' || re.test(e.target.value))
+    if (e.target.value === "" || re.test(e.target.value))
       setPhone(e.target.value);
-
   };
   const handleChangeWhatsApp = (e) => {
-    if (e.target.value === '' || re.test(e.target.value))
+    if (e.target.value === "" || re.test(e.target.value))
       setWhatsapp(e.target.value);
   };
 
   const handleChangeDateTime = (event) => {
     //console.log(event.value)
     setDateTime(event.value);
-
   };
 
   React.useEffect(() => {
@@ -226,7 +222,6 @@ export const Ordersummary = (props) => {
     setOrderStatus("successEmailErr");
   };
   const orderData = (data) => {
-    
     console.log("Order successful");
     let {
       order_status,
@@ -236,7 +231,7 @@ export const Ordersummary = (props) => {
       order_date,
       order_amount,
       currency,
-      new_affiliate_id,
+      // new_affiliate_id,
     } = data;
     // let loc = JSON.parse(get('loc'));
     // this.setState({orderStatus: 'success', name: customer_name, email: customer_email});
@@ -256,7 +251,7 @@ export const Ordersummary = (props) => {
         .replace(/#date/g, order_date)
         .replace(/#amount/g, `${currency} ${order_amount}`);
       console.log("Email template", emailBody);
-      callAPI( 
+      callAPI(
         getURL("sendEmail"),
         "post",
         (data) => {
@@ -278,7 +273,6 @@ export const Ordersummary = (props) => {
       setName(customer_name);
       setEmail(customer_email);
     }
-
   };
   const orderStats = (err) => {
     console.log("Ran into errors");
@@ -286,37 +280,49 @@ export const Ordersummary = (props) => {
   };
 
   const formatDate = (data) => {
-    const hour = (data.getHours() >= 12) ? data.getHours() - 12 : data.getHours()
-    const AMPM = (data.getHours() >= 12) ? 'PM' : 'AM'
-    const date = data.getFullYear() + "-" + data.getMonth() + 1 + "-" + data.getDate() + " " + hour + ":" + data.getMinutes() + AMPM
+    const hour = data.getHours() >= 12 ? data.getHours() - 12 : data.getHours();
+    const AMPM = data.getHours() >= 12 ? "PM" : "AM";
+    const date =
+      data.getFullYear() +
+      "-" +
+      data.getMonth() +
+      1 +
+      "-" +
+      data.getDate() +
+      " " +
+      hour +
+      ":" +
+      data.getMinutes() +
+      AMPM;
     return date;
-  }
+  };
   const compareDateWithToday = (d2) => {
     const currentdate = new Date().getTime();
-    if (d2.getTime() > currentdate)
-      validDate = true;
+    if (d2.getTime() > currentdate) validDate = true;
     else {
       validDate = false;
-      handleError({ response: { data: { errormessage: "Date and time cannont be less than current date.Please try again!!! " } } })
+      handleError({
+        response: {
+          data: {
+            errormessage:
+              "Date and time cannont be less than current date.Please try again!!! ",
+          },
+        },
+      });
     }
 
     return validDate;
-
-  }
+  };
   const handleError = (err) => {
     setSubmitting(false);
     setOpen(true);
     //console.log(err.response)
-    setUserMessageErr(
-      err.response.data.errormessage
-    );
-
-  }
-
+    setUserMessageErr(err.response.data.errormessage);
+  };
 
   const handleSubmit = () => {
     //ga_appointment_scheduled();
-    let valid = (validatePhone()) && (validateWhatsApp())
+    let valid = validatePhone() && validateWhatsApp();
     let dateValid = compareDateWithToday(dateTime);
     //console.log(formatDate(dateTime))
     if (valid && dateValid) {
@@ -332,9 +338,8 @@ export const Ordersummary = (props) => {
         (data) => {
           setUserMessage(data.data.successmessage);
         },
-        handleError,
+        handleError
       );
-
     }
   };
 
@@ -347,29 +352,47 @@ export const Ordersummary = (props) => {
   };
   const thumbsUP = (height, width, colourHex) => {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={colourHex}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height={height}
+        viewBox="0 0 24 24"
+        width={width}
+        fill={colourHex}
+      >
         <path d="M0 0h24v24H0V0z" fill="none" />
-        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" /></svg>
-    )
-
-  }
+        <path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z" />
+      </svg>
+    );
+  };
   const thumbsDown = (height, width, colourHex) => {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" height={height} viewBox="0 0 24 24" width={width} fill={colourHex}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height={height}
+        viewBox="0 0 24 24"
+        width={width}
+        fill={colourHex}
+      >
         <path d="M0 0h24v24H0z" fill="none" />
         <path d="M15 3H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 23l6.59-6.59c.36-.36.58-.86.58-1.41V5c0-1.1-.9-2-2-2zm4 0v12h4V3h-4z" />
       </svg>
-    )
-
-
-  }
+    );
+  };
   //let { orderStatus, name, new_affiliate_id } = state;
   return (
     <>
-
       {/* {header} */}
-      <Grid container direction='column' alignItems='center'>
-        <Grid item container alignItems='center' justify={isMobile ? "flex-start" : "center"} style={{ marginTop: isMobile ? "0" : "40px", padding: isMobile ? "20px" : "0" }}>
+      <Grid container direction="column" alignItems="center">
+        <Grid
+          item
+          container
+          alignItems="center"
+          justify={isMobile ? "flex-start" : "center"}
+          style={{
+            marginTop: isMobile ? "0" : "40px",
+            padding: isMobile ? "20px" : "0",
+          }}
+        >
           <svg
             width={isMobile ? "211" : "265"}
             height="60"
@@ -392,39 +415,80 @@ export const Ordersummary = (props) => {
             </defs>
           </svg>
         </Grid>
-        
-        <Grid item direction='column' justify="center" style={{ margin: isMobile?"30px 0px 20px 0px":"40px 0px 20px 0px", maxHeight: '150px' }}>
-          {orderStatus !== 'waiting' && orderStatus !== 'sendingEmail' &&
-            <Grid item style={{ ...Styles.whiteBG, padding: '20px', borderRadius: '80px' }}>
-              {orderStatus === 'success' ? thumbsUP('100px', '100px', '#00FF00') : thumbsDown('100px', '100px', '#FF0000')}
+
+        <Grid
+          item
+          direction="column"
+          justify="center"
+          style={{
+            margin: isMobile ? "30px 0px 20px 0px" : "40px 0px 20px 0px",
+            maxHeight: "150px",
+          }}
+        >
+          {orderStatus !== "waiting" && orderStatus !== "sendingEmail" && (
+            <Grid
+              item
+              style={{
+                ...Styles.whiteBG,
+                padding: "20px",
+                borderRadius: "80px",
+              }}
+            >
+              {orderStatus === "success"
+                ? thumbsUP("100px", "100px", "#00FF00")
+                : thumbsDown("100px", "100px", "#FF0000")}
               {/* {orderStatus == 'fail' || orderStatus==='err' && } */}
-            </Grid>}
-          {orderStatus === 'waiting' || orderStatus === 'sendingEmail' && <CircularProgress color='secondary' />}
+            </Grid>
+          )}
+          {orderStatus === "waiting" ||
+            (orderStatus === "sendingEmail" && (
+              <CircularProgress color="secondary" />
+            ))}
         </Grid>
-        
-        <Grid item container xs={12} direction='column' alignItems='center' justify="center"  style={{ marginTop: "20px"}}>
+
+        <Grid
+          item
+          container
+          xs={12}
+          direction="column"
+          alignItems="center"
+          justify="center"
+          style={{ marginTop: "20px" }}
+        >
           {orderStatus === "waiting" && (
             <Grid item>
-              <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
+              <Typography
+                variant="h5"
+                style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+              >
                 Give us a minute. Completing your registration ...
               </Typography>
             </Grid>
           )}
-          {orderStatus === "sendingEmail" && (<Grid item>
-            <Typography variant="h5" style={{ ...Styles.colorWhite, ...Styles.centerTxt }}>
-              Okay, payment complete. Sending you an email acknowledgement ...
-            </Typography></Grid>
+          {orderStatus === "sendingEmail" && (
+            <Grid item>
+              <Typography
+                variant="h5"
+                style={{ ...Styles.colorWhite, ...Styles.centerTxt }}
+              >
+                Okay, payment complete. Sending you an email acknowledgement ...
+              </Typography>
+            </Grid>
           )}
           {orderStatus === "successEmailErr" && (
             <Grid
-              item container direction='column'
+              item
+              container
+              direction="column"
               style={
                 {
                   //...{ padding: "0 50px", width: "50%" },
                   //...Styles.centerTxt,
                 }
               }
-            > <Grid item>
+            >
+              {" "}
+              <Grid item>
                 <Typography
                   variant="h3"
                   style={{ ...Styles.colorWhite, ...Styles.marginBottom }}
@@ -432,24 +496,25 @@ export const Ordersummary = (props) => {
                   Your registration is complete!!!
                 </Typography>
               </Grid>
-              <Grid item><Typography
-                variant={isMobile ? 'h6' : "h5"}
-                style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
-              >
-                Congratulations {name.split(" ")[0]}! There has been a small
-                glitch: we haven't been able to drop you an email. Don't worry
-                though.
-              </Typography>
+              <Grid item>
+                <Typography
+                  variant={isMobile ? "h6" : "h5"}
+                  style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
+                >
+                  Congratulations {name.split(" ")[0]}! There has been a small
+                  glitch: we haven't been able to drop you an email. Don't worry
+                  though.
+                </Typography>
               </Grid>
               <Grid item>
                 <Typography
-                  variant={isMobile ? 'h6' : "h5"}
+                  variant={isMobile ? "h6" : "h5"}
                   style={{ ...Styles.colorWhite, lineHeight: "2.2rem" }}
                 >
                   Our backend team qill quickly review this. For your
                   registration, our representatives will get in touch with you
-                  within 2 working days. Feel free to drop us an email in case you
-                  have any queries:{" "}
+                  within 2 working days. Feel free to drop us an email in case
+                  you have any queries:{" "}
                   <a
                     href="mailto: info@getsetgo.fitness"
                     style={Styles.colorYellow}
@@ -467,7 +532,7 @@ export const Ordersummary = (props) => {
                 container
                 style={{
                   // ...{ padding: "0 50px", width: "50%" },
-                  ...Styles.centerTxt,//paddingBottom:'10vh', 
+                  ...Styles.centerTxt, //paddingBottom:'10vh',
                 }}
               >
                 <Grid
@@ -486,7 +551,7 @@ export const Ordersummary = (props) => {
                 <Grid
                   item
                   container
-                  direction='column'
+                  direction="column"
                   justify="center"
                   style={{
                     marginTop: "20px",
@@ -501,7 +566,7 @@ export const Ordersummary = (props) => {
                     will get in touch with you within 2 working days.
                   </Typography>
                   <Typography
-                    variant={isMobile ? 'h6' : "h5"}
+                    variant={isMobile ? "h6" : "h5"}
                     style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
                   >
                     Feel free to drop us an email in case you have any queries:{" "}
@@ -513,21 +578,20 @@ export const Ordersummary = (props) => {
                     </a>
                   </Typography>
                 </Grid>
-
               </Grid>
               {/* {!userMessage && <Footer />} */}
-
-
             </>
           )}
 
           {(orderStatus === "fail" || orderStatus === "err") && (
             <>
               <Grid
-                item container direction='column'
+                item
+                container
+                direction="column"
                 style={{
                   // ...{ padding: "0 50px", width: "50%" },
-                  marginTop: isMobile ? "0px" : '0px',
+                  marginTop: isMobile ? "0px" : "0px",
                   ...Styles.centerTxt,
                   //paddingBottom: '10vh'
                 }}
@@ -535,7 +599,7 @@ export const Ordersummary = (props) => {
                 <Grid
                   item
                   container
-                  direction='column'
+                  direction="column"
                   justify="center"
                   style={{ marginTop: "0px" }}
                 >
@@ -550,7 +614,7 @@ export const Ordersummary = (props) => {
                   item
                   container
                   justify="center"
-                  direction='column'
+                  direction="column"
                   style={{
                     marginTop: "20px",
                     padding: isMobile ? "20px" : "0",
@@ -568,7 +632,8 @@ export const Ordersummary = (props) => {
                       variant={isMobile ? "h6" : "h5"}
                       style={{ ...Styles.colorWhite, lineHeight: "2.5rem" }}
                     >
-                      Your package is totally secure. Simply drop us an email at:{" "}
+                      Your package is totally secure. Simply drop us an email
+                      at:{" "}
                       <a
                         href="mailto: info@getsetgo.fitness"
                         style={Styles.colorYellow}
@@ -580,17 +645,13 @@ export const Ordersummary = (props) => {
                     </Typography>
                   </Grid>
                 </Grid>
-
-
               </Grid>
             </>
           )}
         </Grid>
-      
-
       </Grid>
-      <Grid  container direction='column' alignItems='center'>
-        {!userMessage && orderStatus === 'success' && (
+      <Grid container direction="column" alignItems="center">
+        {!userMessage && orderStatus === "success" && (
           <Grid
             item
             container
@@ -600,8 +661,7 @@ export const Ordersummary = (props) => {
               bottom: isMobile ? "-25px" : "-60px",
               position: "relative",
               padding: isMobile ? "20px" : "0",
-              marginBottom: '20px',
-
+              marginBottom: "20px",
             }}
           >
             <Grid
@@ -645,50 +705,60 @@ export const Ordersummary = (props) => {
                 container
                 justify="center"
                 alignItems={isMobile ? "center" : "center"}
-
               >
-
-                <Grid item container xs={12} sm={12} lg={12} >
-
+                <Grid item container xs={12} sm={12} lg={12}>
                   <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                    <Grid item xs={12} container alignItems='center'>
-                      <Grid item container alignItems='flex-start' xs={12} sm={6} lg={6}>
+                    <Grid item xs={12} container alignItems="center">
+                      <Grid
+                        item
+                        container
+                        alignItems="flex-start"
+                        xs={12}
+                        sm={6}
+                        lg={6}
+                      >
                         <KeyboardDatePicker
                           className={classes.datetimeLabel}
-                          style={{ width: isMobile ? '100%' : '90%' }}
+                          style={{ width: isMobile ? "100%" : "90%" }}
                           id="date-picker-dialog"
                           label="Date"
                           format="dd-MMM-yyyy"
                           value={dateTime}
                           onChange={handleDateChange}
-                          inputVariant='outlined'
-
+                          inputVariant="outlined"
                           KeyboardButtonProps={{
-                            'aria-label': 'change date',
+                            "aria-label": "change date",
                           }}
                         />
                       </Grid>
-                      <Grid item container alignItems='center' justify='flex-end' xs={12} sm={6} lg={6}>
+                      <Grid
+                        item
+                        container
+                        alignItems="center"
+                        justify="flex-end"
+                        xs={12}
+                        sm={6}
+                        lg={6}
+                      >
                         <KeyboardTimePicker
                           className={classes.datetimeLabel}
-                          inputVariant='outlined'
-                          style={{ width: isMobile ? '100%' : '97%' }}
+                          inputVariant="outlined"
+                          style={{ width: isMobile ? "100%" : "97%" }}
                           //type="time"
                           id="time-picker"
                           label="Time"
                           value={dateTime}
-
                           onChange={handleDateChange}
                           KeyboardButtonProps={{
-                            'aria-label': 'change time',
+                            "aria-label": "change time",
                           }}
                           keyboardIcon={<AccessTimeIcon />}
-                        /></Grid>
+                        />
+                      </Grid>
                     </Grid>
                   </MuiPickersUtilsProvider>
                   {/* <DateTimePicker onChange={handleChangeDateTime} value={dateTime} /> */}
                 </Grid>
-
               </Grid>
               <Grid xs={8} item container>
                 {/* {!err && (
@@ -754,9 +824,7 @@ export const Ordersummary = (props) => {
                       }}
                     />
                     {phoneErr && (
-                      <Typography style={Styles.err}>
-                        {phoneErr}
-                      </Typography>
+                      <Typography style={Styles.err}>{phoneErr}</Typography>
                     )}
                   </Grid>
                 </Grid>
@@ -805,11 +873,9 @@ export const Ordersummary = (props) => {
                       onBlur={validateWhatsApp}
                       onFocus={validateWhatsApp}
                     />
-                    {whatsappErr &&
-                      (
-                        <Typography style={Styles.err}>
-                          {whatsappErr}
-                        </Typography>)}
+                    {whatsappErr && (
+                      <Typography style={Styles.err}>{whatsappErr}</Typography>
+                    )}
                   </Grid>
                 </Grid>
               </Grid>
@@ -838,15 +904,15 @@ export const Ordersummary = (props) => {
             </Grid>
           </Grid>
         )}
-        <Grid item style={{zIndex:'-1'}}>
-        <PreloadImage src={BannerImage} height='100vh'/>
+        <Grid item style={{ zIndex: "-1" }}>
+          <PreloadImage src={BannerImage} height="100vh" />
         </Grid>
         {userMessage && (
           <Grid
             item
             container
             justify="center"
-            alignItems='center'
+            alignItems="center"
             style={{
               marginTop: "20px",
               padding: isMobile ? "20px" : "0",
@@ -860,9 +926,11 @@ export const Ordersummary = (props) => {
             </Typography>
           </Grid>
         )}
-          {orderStatus==='success'&&< Grid container >
+        {orderStatus === "success" && (
+          <Grid container>
             <Footer />
-            </Grid>}
+          </Grid>
+        )}
       </Grid>
 
       <Dialog open={open} onClose={handleClose}>
@@ -874,7 +942,6 @@ export const Ordersummary = (props) => {
             {userMessageErr}
           </DialogContentText>
           <Grid container direction="row" alignItems="center" justify="center">
-
             <Styles.ColorButton
               style={isMobile ? { width: "45vw" } : { width: "60%" }}
               onClick={() => {
@@ -886,12 +953,17 @@ export const Ordersummary = (props) => {
           </Grid>
         </DialogContent>
       </Dialog>
-      
-      
-        {orderStatus==='fail' || orderStatus==='err' &&(
-        < Grid  item container style={{position:'absolute',bottom:'0',...Styles.whiteBG}} >
-       <Footer />
-        </Grid>)}
+
+      {orderStatus === "fail" ||
+        (orderStatus === "err" && (
+          <Grid
+            item
+            container
+            style={{ position: "absolute", bottom: "0", ...Styles.whiteBG }}
+          >
+            <Footer />
+          </Grid>
+        ))}
     </>
   );
 };

@@ -4,11 +4,8 @@ import Styles from "../app-style.js";
 import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { CancelScheduleSendOutlined, CasinoOutlined } from "@material-ui/icons";
-import TextField from "@material-ui/core/TextField";
 
 const timeHour = [
   { id: 1, hour: "1" },
@@ -111,21 +108,26 @@ export const Thankyou = () => {
   };
   return (
     <>
-      <Grid item direction="row" justify="center" alignItems="center">
+      <Grid item direction="row" justifyContent="center" alignItems="center">
         <Grid
           item
           container
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           style={{
             height: "717px",
             backgroundColor: "#24A64A",
             position: "absolute",
-            top:0,
+            top: 0,
           }}
         >
           <Grid item container>
-            <Grid item container justify="center" style={{ marginTop: "40px" }}>
+            <Grid
+              item
+              container
+              justifyContent="center"
+              style={{ marginTop: "40px" }}
+            >
               <svg
                 width="265"
                 height="60"
@@ -148,7 +150,12 @@ export const Thankyou = () => {
                 </defs>
               </svg>
             </Grid>
-            <Grid item container justify="center" style={{ marginTop: "20px" }}>
+            <Grid
+              item
+              container
+              justifyContent="center"
+              style={{ marginTop: "20px" }}
+            >
               <svg
                 width="173"
                 height="102"
@@ -279,7 +286,12 @@ export const Thankyou = () => {
                 />
               </svg>
             </Grid>
-            <Grid item container justify="center" style={{ marginTop: "20px" }}>
+            <Grid
+              item
+              container
+              justifyContent="center"
+              style={{ marginTop: "20px" }}
+            >
               <Typography
                 variant="h3"
                 style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
@@ -288,7 +300,12 @@ export const Thankyou = () => {
                 <span style={{ ...Styles.boldTxt }}>₹999</span>
               </Typography>
             </Grid>
-            <Grid item container justify="center" style={{ marginTop: "20px" }}>
+            <Grid
+              item
+              container
+              justifyContent="center"
+              style={{ marginTop: "20px" }}
+            >
               <Typography
                 variant="h1"
                 style={{ ...Styles.colorWhite, ...Styles.boldTxt }}
@@ -296,7 +313,12 @@ export const Thankyou = () => {
                 THANK YOU
               </Typography>
             </Grid>
-            <Grid item container justify="center" style={{ marginTop: "20px" }}>
+            <Grid
+              item
+              container
+              justifyContent="center"
+              style={{ marginTop: "20px" }}
+            >
               <Typography
                 variant="h5"
                 style={{ ...Styles.colorWhite, ...Styles.boldNormal }}
@@ -310,14 +332,14 @@ export const Thankyou = () => {
           item
           container
           alignItems="center"
-          justify="center"
-          style={{bottom:'0', position: "relative" }}
+          justifyContent="center"
+          style={{ bottom: "0", position: "relative" }}
         >
           <Grid
             item
             container
             alignItems="center"
-            justify="flex-start"
+            justifyContent="flex-start"
             direction="row"
             xs={12}
             sm={12}
@@ -342,7 +364,7 @@ export const Thankyou = () => {
                 What’s the best time to call you for follow-up
               </Typography>
             </Grid>
-            <Grid item direction="row" container justify="space-between">
+            <Grid item direction="row" container justifyContent="space-between">
               <Grid item direction="row">
                 <FormControl variant="outlined" className={classes.formControl}>
                   <InputLabel id="demo-simple-select-outlined-label">

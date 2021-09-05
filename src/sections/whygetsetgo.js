@@ -9,14 +9,14 @@ const Whygetsetgo = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <>
-      <Grid item container direction="row" justify="center">
+      <Grid item container direction="row" justifyContent="center">
         <Grid
           item
           container
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           xl={8}
-          xs={12}
+          xs={10}
           sm={10}
           lg={10}
           // style={{
@@ -25,7 +25,7 @@ const Whygetsetgo = () => {
           // }}
           style={
             isMobile
-              ? { ...Styles.marginTop24 }
+              ? { ...Styles.marginTop24, ...Styles.marginBottom40 }
               : { ...Styles.marginTop100, ...Styles.marginBottom100 }
           }
         >
@@ -42,7 +42,7 @@ const Whygetsetgo = () => {
             container
             spacing={4}
             alignContent="flex-start"
-            justify="center"
+            justifyContent="center"
           >
             <Whygetsetgocard whygetsetgoData={customTxt.whyGetSetGo.column1} />
             <Whygetsetgocard whygetsetgoData={customTxt.whyGetSetGo.column2} />

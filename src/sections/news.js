@@ -10,13 +10,19 @@ export default function News(props) {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   let history = useHistory();
   return (
-    <Grid item container direction="row" alignItems="center" justify="center">
+    <Grid
+      item
+      container
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+    >
       <Grid
         item
         container
         direction="column"
         alignItems="center"
-        justify="center"
+        justifyContent="center"
         xs={11}
         sm={12}
         lg={10}
@@ -25,7 +31,7 @@ export default function News(props) {
         <Grid
           item
           container
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           style={{ margin: isMobile ? "0 0 10px" : "0 0 66px" }}
         >
@@ -75,7 +81,7 @@ export default function News(props) {
         <Grid
           item
           container
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           xs={12}
           sm={12}
@@ -97,14 +103,18 @@ export default function News(props) {
                   lg={3}
                   key={key}
                   container
-                  justify="center"
+                  justifyContent="center"
                 >
                   <Grid
                     item
                     style={{ padding: isMobile ? "45px 25px" : "45px 15px" }}
                   >
                     <a href={val[1]} target="_blank" rel="noopener noreferrer">
-                      <img width="100%" src={Styles.backCoverImg(val[0])} />
+                      <img
+                        width="100%"
+                        src={Styles.backCoverImg(val[0])}
+                        alt="News Channel Logo"
+                      />
                     </a>
                   </Grid>
                 </Grid>
@@ -112,13 +122,13 @@ export default function News(props) {
             })}
           </Grid>
         </Grid>
-        {history.location.pathname == "/" && (
+        {history.location.pathname === "/" && (
           <>
             <Grid
               item
               container
               alignItems="center"
-              justify="center"
+              justifyContent="center"
               onClick={props.scrollToSignUp}
             >
               <Styles.ColorButton

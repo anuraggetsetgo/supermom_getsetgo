@@ -24,7 +24,7 @@ const Mediabanner = () => {
           lg={10}
           xs={11}
           md={10}
-          sm={10}
+          sm={11}
           style={
             isMobile
               ? { ...Styles.MediaBannerBg, padding: "30px" }

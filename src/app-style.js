@@ -175,6 +175,9 @@ export default {
   marginTop100: {
     marginTop: "100px",
   },
+  marginTop75: {
+    marginTop: "75px",
+  },
   marginTop16: {
     marginTop: "16px",
   },
@@ -192,6 +195,9 @@ export default {
   },
   marginBottom16: {
     marginBottom: "16px",
+  },
+  marginBottom40: {
+    marginBottom: "40px",
   },
   marginBottom100: {
     marginBottom: "100px",
@@ -212,7 +218,7 @@ export default {
     padding: "1%",
   },
   padding30tb: {
-    padding: "30px 0",
+    padding: "30px 0 0",
   },
   padding40: {
     padding: "40px",

@@ -1,23 +1,14 @@
 import React, { useState, useRef } from "react";
 import { Form, Field, Formik } from "formik";
-import { Typography, Grid, useMediaQuery } from "@material-ui/core";
+import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 import Styles from "./app-style";
 import { callAPI, getURL, get, set } from "./services";
 import emailTemplates from "./emailTemplate.json";
 import { useHistory } from "react-router-dom";
-import { makeStyles, withStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
-import {
-  Dialog,
-  DialogActions,
-  Slider,
-  FormControlLabel,
-  Checkbox,
-  MenuItem,
-  FormControl,
-  Snackbar,
-} from "@material-ui/core";
+import { Dialog, DialogActions } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   mui_root: {
     padding: "0 0 16px 0",
@@ -122,9 +113,9 @@ function validateEmail(value) {
 function validateCountry(value) {
   return validate(value, /^[0-9][A-Za-z0-9 -]*$/, "country");
 }
-function validateAge(value) {
-  return validate(value, /^(1[89]|[2-9]\d)$/, "age");
-}
+// function validateAge(value) {
+//   return validate(value, /^(1[89]|[2-9]\d)$/, "age");
+// }
 
 //Dialog for info message
 const InfoPopUp = ({
@@ -146,7 +137,6 @@ const InfoPopUp = ({
   //For Mobile Devices
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <Dialog
@@ -176,7 +166,7 @@ const InfoPopUp = ({
         item
         container
         direction="column"
-        justify="center"
+        justifyContent="center"
         alignItems="center"
         className="app-card2 app-card-background-white"
       >
@@ -211,7 +201,7 @@ const InfoPopUp = ({
           container
           direction={isMobile ? "column" : "row"}
           spacing={2}
-          justify="center"
+          justifyContent="center"
           alignItems="center"
         >
           <Grid item>
@@ -333,8 +323,8 @@ const Signupform = (props) => {
     setSubmitButtonEnable(true);
     set("userDetails", values);
     updateFormSubmitting(true);
-    const campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
-    const affiliate_id = get("affiliate_id") === null ? 2 : get("affiliate_id");
+    // const campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
+    // const affiliate_id = get("affiliate_id") === null ? 2 : get("affiliate_id");
     let loc = get("loc");
     loc = JSON.parse(loc);
     loc.region = loc.region || null;
@@ -426,11 +416,11 @@ const Signupform = (props) => {
           {({ errors, touched, isValidating, values }) => {
             console.log(values);
             return (
-              <Grid item container direction="row" justify="center">
+              <Grid item container direction="row" justifyContent="center">
                 <Grid
                   item
-                  //justify="center"
-                  //justify="center"
+                  //justifyContent="center"
+                  //justifyContent="center"
                   //alignItems="center"
                   xl={12}
                   xs={12}
@@ -444,7 +434,12 @@ const Signupform = (props) => {
                     marginTop: `${isMobile ? "23px" : "55px"}`,
                   }}
                 >
-                  <Grid item container alignItems="center" justify="center">
+                  <Grid
+                    item
+                    container
+                    alignItems="center"
+                    justifyContent="center"
+                  >
                     <Typography
                       variant={isMobile ? "h4" : "h1"}
                       style={{
@@ -526,7 +521,6 @@ const Signupform = (props) => {
                             autoComplete="off"
                             validate={validateCountry}
                             disabled={formSubmitting}
-                            autoComplete="off"
                             style={{
                               ...Styles.formInputField,
                               ...Styles.fontSize16,
@@ -597,11 +591,7 @@ const Signupform = (props) => {
                         }}
                       />
                       {touched.email && errors.email && (
-                        <Typography
-                          variant="h7"
-                          style={Styles.err}
-                          variant="body2"
-                        >
+                        <Typography style={Styles.err} variant="body2">
                           {errors.email}
                         </Typography>
                       )}

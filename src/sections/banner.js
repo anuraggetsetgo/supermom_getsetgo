@@ -64,7 +64,15 @@ const Banner = (props) => {
               }}
             />
           </Grid>
-          <Grid item xs={12} sm={10} lg={12} container justifyContent="center">
+          <Grid
+            item
+            xs={12}
+            sm={12}
+            lg={12}
+            md={12}
+            container
+            justifyContent="center"
+          >
             <Styles.ColorButton2
               style={
                 isMobile

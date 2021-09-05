@@ -1,41 +1,21 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-import {
-  docHt,
-  get,
-  callAPI,
-  getURL,
-  updateLoc,
-  retrievePath,
-  colors,
-} from "./services";
-import {
-  Typography,
-  Button,
-  Fade,
-  Table,
-  TableCell,
-  TableBody,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@material-ui/core";
+import { docHt, get, callAPI, getURL, updateLoc } from "./services";
+import { Typography, Button } from "@material-ui/core";
 import Styles from "./app-style";
-import PreloadImage from "./helpers/preloadimg";
-import GetDiscount from "./sections/getdiscount";
+// import PreloadImage from "./helpers/preloadimg";
+// import GetDiscount from "./sections/getdiscount";
 import { Link } from "react-router-dom";
-import { Style } from "@material-ui/icons";
 import Banner from "./sections/banner";
 import Videocomponent from "./sections/videocomponent";
-import Thankyou from "./sections/thankyou";
+// import Thankyou from "./sections/thankyou";
 import Success from "./sections/success";
 import Mediabanner from "./sections/mediabanner";
 import Sellingreviews from "./sections/sellingreviews";
 import Sellingmidbanner from "./sections/sellingmidbanner";
 import Coachwork from "./sections/coachwork";
-import NewsBanner from './sections/news'
-import {ga_clicked_Payment} from './reactGA'
+import NewsBanner from "./sections/news";
+import { ga_clicked_Payment } from "./reactGA";
 import Header from "./sections/header";
 import Footer from "./sections/footer";
 
@@ -45,7 +25,7 @@ class Package extends Component {
     super(props);
     if (!get("products")) {
       updateLoc();
-      window.location.replace('/')
+      window.location.replace("/");
     }
     let products = JSON.parse(get("products"));
     this.state = {
@@ -82,7 +62,7 @@ class Package extends Component {
           this.errorOrderCreated(err);
         },
         {
-          orderNote: `Super Mom ${product.no_of_users+1} people`,
+          orderNote: `Super Mom ${product.no_of_users + 1} people`,
           package_id: package_id,
           customer_name: userDetails.name,
           customer_email: userDetails.email,
@@ -138,7 +118,8 @@ class Package extends Component {
     let currency = this.state.currency;
     let campaign_id = get("campaign_id") === null ? 2 : get("campaign_id");
     //"https://api.getsetgo.fitness/base_ind/API/v1/fetch_services",
-    let currencytext = currency === "₹" ? "INR" : currency === "aed" ? "AED" :  "USD" ;
+    let currencytext =
+      currency === "₹" ? "INR" : currency === "aed" ? "AED" : "USD";
     callAPI(
       getURL("fetch_services"),
       "post",
@@ -194,94 +175,92 @@ class Package extends Component {
     return element;
   };
   componentDidMount() {
-    
     this.getproducts();
     window.scrollTo(0, 0);
   }
 
   render() {
     let {
-      amount,
+      // amount,
       products,
-      currency,
+      // currency,
       userData,
-      bored,
-      offerAmount,
-      discountDetails,
-      discountActivated,
-      activatingDiscount,
+      // bored,
+      // offerAmount,
+      // discountDetails,
+      // discountActivated,
+      // activatingDiscount,
       //serviceInclusions,
     } = this.state;
-    
-    return (<>
-      <Header />
-      <Grid
-        container
-        style={{
-          minHeight: `${docHt() - 100}px`,
-          // paddingTop: Styles.spacing(10),
-          //...Styles.blueBG,
-          overflowX:'hidden'
-        }}
-        direction="column"
-        alignItems="center"
-        justify="space-evenly"
-      >
-        {!products && (
-          <Grid
-            item
-            style={{
-              ...Styles.colorWhite,
-              ...Styles.centerTxt,
-              ...Styles.marginBottom,
-            }}
-          >
-            Loading services. Please wait ...
-          </Grid>
-        )}
-        {!userData && (
-          <Grid item style={{ padding: "0 50px", textAlign: "center" }}>
-            <Typography variant="h2" >
-              Uh oh, we don't have your user details. Please go back to home and
-              fill your details
-            </Typography>
-            <Link to="/">
-              <Button variant="contained" color="primary">
-                <Typography variant="subtitle1" >
-                  Click here to go to home
-                </Typography>
-              </Button>
-            </Link>
-          </Grid>
-        )}
 
-        
+    return (
+      <>
+        <Header />
+        <Grid
+          container
+          style={{
+            minHeight: `${docHt() - 100}px`,
+            // paddingTop: Styles.spacing(10),
+            //...Styles.blueBG,
+            overflowX: "hidden",
+          }}
+          direction="column"
+          alignItems="center"
+          justify="space-evenly"
+        >
+          {!products && (
+            <Grid
+              item
+              style={{
+                ...Styles.colorWhite,
+                ...Styles.centerTxt,
+                ...Styles.marginBottom,
+              }}
+            >
+              Loading services. Please wait ...
+            </Grid>
+          )}
+          {!userData && (
+            <Grid item style={{ padding: "0 50px", textAlign: "center" }}>
+              <Typography variant="h2">
+                Uh oh, we don't have your user details. Please go back to home
+                and fill your details
+              </Typography>
+              <Link to="/">
+                <Button variant="contained" color="primary">
+                  <Typography variant="subtitle1">
+                    Click here to go to home
+                  </Typography>
+                </Button>
+              </Link>
+            </Grid>
+          )}
 
-        { products && (
-          <React.Fragment>
-            <Banner
-              product={products}
-              createOrder={(data) => this.createOrder(data)}
-            />
-            <Coachwork />
-            <Videocomponent />
-            <Sellingmidbanner
-              product={products}
-              createOrder={(data) => this.createOrder(data)}
-            />
-            <Sellingreviews />
-            <Mediabanner />
-            <Success 
-            product={products}
-            createOrder={(data) => this.createOrder(data)}/>
-            <NewsBanner/>
-            
-                
-          </React.Fragment>
-        )}
-      </Grid>
-    <Footer/>
-    </>);
+          {products && (
+            <React.Fragment>
+              <Banner
+                product={products}
+                createOrder={(data) => this.createOrder(data)}
+              />
+              <Coachwork />
+              <Videocomponent />
+              <Sellingmidbanner
+                product={products}
+                createOrder={(data) => this.createOrder(data)}
+              />
+              <Sellingreviews />
+              <Mediabanner />
+              <Success
+                product={products}
+                createOrder={(data) => this.createOrder(data)}
+              />
+              <NewsBanner />
+            </React.Fragment>
+          )}
+        </Grid>
+        <Footer />
+      </>
+    );
   }
 }
 export default Package;

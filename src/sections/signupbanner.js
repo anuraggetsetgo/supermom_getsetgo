@@ -7,7 +7,6 @@ const Signupbanner = forwardRef((props, ref) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
-  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   return (
     <>
       <Grid
@@ -15,13 +14,13 @@ const Signupbanner = forwardRef((props, ref) => {
         container
         direction="row"
         alignItems="center"
-        justify="center"
+        justifyContent="center"
         style={{ ...Styles.marginBottom100, ...Styles.marginTop100 }}
       >
         <Grid
           container
           direction="row"
-          justify="center"
+          justifyContent="center"
           alignItems="center"
           style={{
             height: isMobile2 ? "620px" : isMobile ? "430px" : "614px",
@@ -41,7 +40,7 @@ const Signupbanner = forwardRef((props, ref) => {
             container
             direction="row"
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{
               marginTop: isMobile ? "40px" : "100px",
               padding: isMobile ? "20px" : "0",

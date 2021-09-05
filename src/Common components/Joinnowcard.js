@@ -17,7 +17,7 @@ function Joinnowcard(props) {
         container
         direction="column"
         alignItems="center"
-        justify="center"
+        justifyContent="center"
       >
         {QuestionsetData.map((val, key) => {
           return (

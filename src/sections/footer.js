@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Styles from "../app-style.js";
 import { Typography, useMediaQuery, useTheme } from "@material-ui/core";
-import customTxt from "./customTxt.json";
-import { useHistory } from "react-router-dom";
 
-const Footer = (props) => {
+const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (

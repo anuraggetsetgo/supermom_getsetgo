@@ -1,4 +1,4 @@
-import { get, set, callAPI, getURL } from "../services";
+import { callAPI, getURL } from "../services";
 
 export function api_google_Reviews(successCallback, errCallback) {
   callAPI(

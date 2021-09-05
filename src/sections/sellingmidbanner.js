@@ -5,7 +5,7 @@ import { Typography, Grid, useMediaQuery, useTheme } from "@material-ui/core";
 const Sellingmidbanner = (props) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  // const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
   const currency = () => {
     let currency = props.product[0].pack_currency;
     let currText = currency === "INR" ? "₹" : currency === "USD" ? "$" : "AED"; //د.إ
@@ -27,14 +27,14 @@ const Sellingmidbanner = (props) => {
             )})`,
             width: "100% ",
             backgroundSize: "100% 100%",
-            height: isMobile ? "60vh" : "614px",
+            height: isMobile ? "380px" : "614px",
           }}
         >
           <Grid
             // justifyContent="center"
             // alignItems="center"
             style={
-              isMobile ? { ...Styles.marginTop100 } : { ...Styles.marginTop150 }
+              isMobile ? { ...Styles.marginTop75 } : { ...Styles.marginTop150 }
             }
           >
             <Typography
@@ -43,6 +43,7 @@ const Sellingmidbanner = (props) => {
                 ...Styles.centerTxt,
                 ...Styles.colorWhite,
                 ...Styles.boldTxt,
+                ...Styles.padding20,
               }}
             >
               ARE YOU READY
@@ -58,7 +59,8 @@ const Sellingmidbanner = (props) => {
                     ? {
                         fontSize: "20px",
                         lineHeight: "28px",
-                        padding: "13px 30px",
+                        padding: "13px 20px",
+                        marginTop: "20px",
                         borderRadius: "10px",
                       }
                     : {}

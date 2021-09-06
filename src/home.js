@@ -9,7 +9,7 @@ import Whygetsetgo from "./sections/whygetsetgo";
 import Mediabanner from "./sections/mediabanner";
 import Publicreviews from "./sections/publicreviews";
 import NewsBanner from "./sections/news";
-import {ga_viewed_HomePage} from './reactGA'
+import { ga_viewed_HomePage } from "./reactGA";
 import Header from "./sections/header";
 import Footer from "./sections/footer";
 export default function Home(props) {
@@ -19,7 +19,7 @@ export default function Home(props) {
   const getReview = () => {
     api_google_Reviews(
       (data) => {
-        console.log(data);
+        // console.log(data);
         setReviewdata(data.data.reviews);
       },
       (err) => {
@@ -37,7 +37,7 @@ export default function Home(props) {
   const getAllReview = () => {
     api_google_All_Reviews(
       (data) => {
-        console.log(data);
+        // console.log(data);
         setAllReviewdata(data.data.reviews);
       },
       (err) => {
@@ -54,7 +54,7 @@ export default function Home(props) {
 
   return (
     <>
-    <Header />
+      <Header />
       <Carousel scrollToSignUp={props.scrollToSignUp} />
       <Signupbanner ref={signUpRef} />
       {/* <Signupform /> */}
@@ -65,7 +65,7 @@ export default function Home(props) {
       <Publicreviews reviewData={reviewData} allreviewData={allreviewData} />
       <Mediabanner />
       <NewsBanner scrollToSignUp={props.scrollToSignUp} />
-      <Footer scrollToSignUp={props.scrollToSignUp}/>
+      <Footer scrollToSignUp={props.scrollToSignUp} />
     </>
   );
 }

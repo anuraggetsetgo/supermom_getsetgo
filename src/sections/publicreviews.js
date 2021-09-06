@@ -289,7 +289,7 @@ const Publicreviews = (props) => {
                   </DialogTitle>
                   <DialogContentText>
                     <DialogContent
-                      dividers={"paper"}
+                      dividers={true}
                       style={{
                         alignItems: "center",
                         justifyContent: "center",

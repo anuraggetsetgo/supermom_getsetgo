@@ -25,6 +25,7 @@ const Coachwork = () => {
       >
         <Grid
           item
+          container
           justifyContent="flex-start"
           alignItems="center"
           xl={8}

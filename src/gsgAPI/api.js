@@ -27,7 +27,7 @@ export function api_signUp(successCallback, errCallback) {
 }
 
 export function api_set_reminder(data, successCallback, errCallback) {
-  console.log(data);
+  // console.log(data);
   callAPI(
     "https://api.getsetgo.fitness/cms/communicate/set_reminder",
     "post",

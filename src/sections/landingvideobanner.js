@@ -18,7 +18,7 @@ const Landingvideobanner = () => {
           isMobile
             ? { marginTop: "375px" }
             : isMobile3
-            ? { marginTop: "510px" }
+            ? { marginTop: "560px" }
             : isMobile2
             ? { marginTop: "500px" }
             : { marginTop: "374px" }

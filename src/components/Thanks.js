@@ -74,7 +74,7 @@ class Thanks extends Component {
               container
               direction="row"
               spacing={2}
-              justify="center"
+              justifyContent="center"
               alignItems="center"
             >
               <Grid

@@ -252,7 +252,7 @@ const Signupform = (props) => {
   const emailRef = useRef(null);
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isMobile2 = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(props);
+  // console.log(props);
   let history = useHistory();
   let [err, updateErr] = useState(false);
   let [formSubmitting, updateFormSubmitting] = useState(false);
@@ -274,7 +274,7 @@ const Signupform = (props) => {
     updateErr(true);
   };
   let formSubmitted = (data) => {
-    console.log(data);
+    // console.log(data);
     let infomessage = data.data.infomessage;
     //console.log(infomessage)
     if (infomessage && !isContinue) {
@@ -414,7 +414,9 @@ const Signupform = (props) => {
           }}
         >
           {({ errors, touched, isValidating, values }) => {
-            console.log(values);
+            {
+              /* console.log(values); */
+            }
             return (
               <Grid item container direction="row" justifyContent="center">
                 <Grid

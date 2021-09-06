@@ -72,7 +72,7 @@ class Package extends Component {
           campaign_id: campaign_id,
         }
       );
-      console.log(affiliate_id);
+      // console.log(affiliate_id);
     }
   }
   orderCreated(data) {
@@ -80,7 +80,7 @@ class Package extends Component {
   }
   errorOrderCreated(err) {
     this.setState({ bored: true });
-    console.log(err);
+    // console.log(err);
   }
   hideDetails = () => {
     this.setState({
@@ -107,9 +107,9 @@ class Package extends Component {
     this.hideDetails();
   };
   setProducts = (data) => {
-    console.log("DATA FETCHED!!");
+    // console.log("DATA FETCHED!!");
     var services = data.data.services;
-    console.log(services);
+    // console.log(services);
     //setServices(services);
     baseurl = data.data.redirect_base_url;
     this.setState({ products: services });
@@ -206,7 +206,7 @@ class Package extends Component {
           }}
           direction="column"
           alignItems="center"
-          justify="space-evenly"
+          justifyContent="space-evenly"
         >
           {!products && (
             <Grid

@@ -19,8 +19,8 @@ import Facebookcard from "../Common components/Facebookcard.js";
 const Sellingreviews = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
-  const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
+  // const isMobile2 = useMediaQuery(theme.breakpoints.down("xs"));
+  // const isMobile3 = useMediaQuery(theme.breakpoints.down("md"));
   // const classes = useStyles();
   return (
     <Grid

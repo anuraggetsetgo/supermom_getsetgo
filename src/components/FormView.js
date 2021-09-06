@@ -34,7 +34,8 @@ class ReferralForm extends React.Component {
 
   validate = (row, col, e) => {
     const emailReg = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/g;
-    const nameReg = /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/g;
+    const nameReg =
+      /^([a-zA-Z0-9]+|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/g;
     const phoneReg = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/g;
     let errorMsg = null;
     const { name, value } = e.target;
@@ -167,7 +168,7 @@ class ReferralForm extends React.Component {
             item
             container
             direction="column"
-            justify="center"
+            justifyContent="center"
             alignItems="center"
           >
             {/* <Typography

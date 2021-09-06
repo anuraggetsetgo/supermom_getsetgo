@@ -134,7 +134,7 @@ export const Ordersummary = (props) => {
   const [open, setOpen] = React.useState(false);
   const [dateTime, setDateTime] = React.useState(new Date());
   const handleDateChange = (date) => {
-    console.log(date);
+    // console.log(date);
     setDateTime(date);
   };
   //const [dateTime, setDateTime] = React.useState(new Date());
@@ -222,7 +222,7 @@ export const Ordersummary = (props) => {
     setOrderStatus("successEmailErr");
   };
   const orderData = (data) => {
-    console.log("Order successful");
+    // console.log("Order successful");
     let {
       order_status,
       customer_phone,
@@ -250,7 +250,7 @@ export const Ordersummary = (props) => {
         .replace(/#mob/g, `${customer_phone}`)
         .replace(/#date/g, order_date)
         .replace(/#amount/g, `${currency} ${order_amount}`);
-      console.log("Email template", emailBody);
+      // console.log("Email template", emailBody);
       callAPI(
         getURL("sendEmail"),
         "post",
@@ -275,7 +275,7 @@ export const Ordersummary = (props) => {
     }
   };
   const orderStats = (err) => {
-    console.log("Ran into errors");
+    // console.log("Ran into errors");
     setOrderStatus("err");
   };
 
@@ -387,7 +387,7 @@ export const Ordersummary = (props) => {
           item
           container
           alignItems="center"
-          justify={isMobile ? "flex-start" : "center"}
+          justifyContent={isMobile ? "flex-start" : "center"}
           style={{
             marginTop: isMobile ? "0" : "40px",
             padding: isMobile ? "20px" : "0",
@@ -419,7 +419,7 @@ export const Ordersummary = (props) => {
         <Grid
           item
           direction="column"
-          justify="center"
+          justifyContent="center"
           style={{
             margin: isMobile ? "30px 0px 20px 0px" : "40px 0px 20px 0px",
             maxHeight: "150px",
@@ -452,7 +452,7 @@ export const Ordersummary = (props) => {
           xs={12}
           direction="column"
           alignItems="center"
-          justify="center"
+          justifyContent="center"
           style={{ marginTop: "20px" }}
         >
           {orderStatus === "waiting" && (
@@ -538,7 +538,7 @@ export const Ordersummary = (props) => {
                 <Grid
                   item
                   container
-                  justify="center"
+                  justifyContent="center"
                   style={{ marginTop: "20px" }}
                 >
                   <Typography
@@ -552,7 +552,7 @@ export const Ordersummary = (props) => {
                   item
                   container
                   direction="column"
-                  justify="center"
+                  justifyContent="center"
                   style={{
                     marginTop: "20px",
                     padding: isMobile ? "20px" : "0",
@@ -600,7 +600,7 @@ export const Ordersummary = (props) => {
                   item
                   container
                   direction="column"
-                  justify="center"
+                  justifyContent="center"
                   style={{ marginTop: "0px" }}
                 >
                   <Typography
@@ -613,7 +613,7 @@ export const Ordersummary = (props) => {
                 <Grid
                   item
                   container
-                  justify="center"
+                  justifyContent="center"
                   direction="column"
                   style={{
                     marginTop: "20px",
@@ -656,7 +656,7 @@ export const Ordersummary = (props) => {
             item
             container
             alignItems="center"
-            justify="center"
+            justifyContent="center"
             style={{
               bottom: isMobile ? "-25px" : "-60px",
               position: "relative",
@@ -668,7 +668,7 @@ export const Ordersummary = (props) => {
               item
               container
               alignItems="center"
-              justify="flex-start"
+              justifyContent="flex-start"
               direction="row"
               xs={12}
               sm={12}
@@ -703,7 +703,7 @@ export const Ordersummary = (props) => {
                 xs={12}
                 direction="row"
                 container
-                justify="center"
+                justifyContent="center"
                 alignItems={isMobile ? "center" : "center"}
               >
                 <Grid item container xs={12} sm={12} lg={12}>
@@ -735,7 +735,7 @@ export const Ordersummary = (props) => {
                         item
                         container
                         alignItems="center"
-                        justify="flex-end"
+                        justifyContent="flex-end"
                         xs={12}
                         sm={6}
                         lg={6}
@@ -769,7 +769,7 @@ export const Ordersummary = (props) => {
                         )} */}
               </Grid>
               <Grid xs={12} item style={{ marginTop: "20px" }}>
-                <Grid item container justify="space-between">
+                <Grid item container justifyContent="space-between">
                   <Grid item md={isMobile ? 4 : 2} xs={4} container>
                     <input
                       type="number"
@@ -796,7 +796,7 @@ export const Ordersummary = (props) => {
                             container
                             xs={1}
                             alignItems="center"
-                            justify="center"
+                            justifyContent="center"
                           >
                             <Typography style={{ textAlign: "center" }}>
                               -
@@ -830,7 +830,7 @@ export const Ordersummary = (props) => {
                 </Grid>
               </Grid>
               <Grid xs={12} item style={{ marginTop: "20px" }}>
-                <Grid item container justify="space-between">
+                <Grid item container justifyContent="space-between">
                   <Grid item md={isMobile ? 4 : 2} xs={4} container>
                     <input
                       type="number"
@@ -885,7 +885,7 @@ export const Ordersummary = (props) => {
                 container
                 direction="row"
                 alignItems="center"
-                justify="center"
+                justifyContent="center"
                 style={{ marginTop: "20px" }}
               ></Grid>
               <Grid item xs={12}>
@@ -911,7 +911,7 @@ export const Ordersummary = (props) => {
           <Grid
             item
             container
-            justify="center"
+            justifyContent="center"
             alignItems="center"
             style={{
               marginTop: "20px",
@@ -941,7 +941,12 @@ export const Ordersummary = (props) => {
           <DialogContentText id="alert-dialog-description">
             {userMessageErr}
           </DialogContentText>
-          <Grid container direction="row" alignItems="center" justify="center">
+          <Grid
+            container
+            direction="row"
+            alignItems="center"
+            justifyContent="center"
+          >
             <Styles.ColorButton
               style={isMobile ? { width: "45vw" } : { width: "60%" }}
               onClick={() => {
